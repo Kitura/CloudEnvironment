@@ -9,9 +9,9 @@ class bluemix_configTests: XCTestCase {
         
         let manager = ConfigurationManager()
         
-        manager.loadBluemixService(type: .cloudant)
+        try? manager.loadFile("config.json").loadEnvironmentVariables()
         
-        let cloudantConfig = manager.getValue(for: "Bluemix:services:cloudant") as? BluemixService
+        let cloudantConfig = manager.getService(type: .cloudant)
         
         if let cloudantConfig = cloudantConfig {
             XCTAssertNotNil(cloudantConfig)

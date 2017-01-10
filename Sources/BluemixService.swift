@@ -4,6 +4,8 @@ import Foundation
 public enum BluemixServiceType {
     case cloudant
     case mongodb
+    case redis
+    case postgresql
     case other
 }
 
@@ -15,6 +17,7 @@ public struct BluemixService {
     var type        : BluemixServiceType?
     var database    : String?
     var port        : Int?
-    var uri         : String?
-        
+    var url         : String?
+    var certificate : String?
+
 }
