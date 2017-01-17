@@ -1,41 +1,58 @@
 import SwiftConfiguration
 
-let cloudantConfigKey = "Bluemix:services:cloudant"
+import CloudFoundryEnv
 
 /**
  Cloudant, MongoDB, Redis, PostgreSQL
  */
 
 extension ConfigurationManager {
-
-    private func loadCloudantConfig () -> BluemixService? {
+    
+    private func findService(name: String) throws -> Service? {
         
-        if let username = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:username"] as? String,
-            let password = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:password"] as? String,
-            let host     = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:host"] as? String,
-            let url      = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:url"] as? String,
-            let port     = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:port"] as? Int,
-            let label    = self["VCAP_SERVICES:cloudantNoSQLDB:0:label"] as? String,
-            let name     = self["VCAP_SERVICES:cloudantNoSQLDB:0:name"] as? String,
-            let tags     = self["VCAP_SERVICES:cloudantNoSQLDB:0:tags"] as? [String]
-        {
-            
-            return CloudantService(host: host, username: username, password: password, port: port, url: url, label: label, name: name, tags: tags)
-        }
-        
-        return nil
+        let appEnv = try CloudFoundryEnv.getAppEnv(configManager: self)
+        return appEnv.getService(spec: name)
         
     }
     
-    public func getService(type: BluemixServiceType) -> BluemixService? {
+    public func getCloudantService(name: String) throws -> CloudantService? {
         
-        switch type {
-        case .cloudant:
-            return loadCloudantConfig()
-        default:
+        if let service = try findService(name: name) {
+            return CloudantService(withService: service)
+        } else {
             return nil
         }
         
+        
+    }
+    
+    public func getRedisService(name: String) throws -> RedisService? {
+        
+        if let service = try findService(name: name) {
+            return RedisService(withService: service)
+        } else {
+            return nil
+        }
+
+    }
+    
+}
+
+
+extension CloudFoundryEnv {
+    
+    public static func getAppEnv(configManager: ConfigurationManager) throws -> AppEnv {
+    
+        let servs = configManager["VCAP_SERVICES"]
+
+        let app = configManager["VCAP_APPLICATION"]
+        var vcap: [String:Any] = [:]
+        
+        vcap["application"] = app
+        vcap["services"] = servs
+        var config: [String:Any] = [:]
+        config["vcap"] = vcap
+        return try AppEnv(options: config)
     }
     
 }
