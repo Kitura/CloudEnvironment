@@ -8,15 +8,32 @@ import CloudFoundryEnv
 
 extension ConfigurationManager {
     
-    
-    public func getCloudantService(name: String) -> CloudantService {
+    private func findService(name: String) throws -> Service? {
         
+        let appEnv = try CloudFoundryEnv.getAppEnv(configManager: self)
+        return appEnv.getService(spec: name)
+        
+    }
+    
+    public func getCloudantService(name: String) throws -> CloudantService? {
+        
+        if let service = try findService(name: name) {
+            return CloudantService(withService: service)
+        } else {
+            return nil
+        }
         
         
     }
     
-    public func getRedisService(name: String) -> RedisService {
+    public func getRedisService(name: String) throws -> RedisService? {
         
+        if let service = try findService(name: name) {
+            return RedisService(withService: service)
+        } else {
+            return nil
+        }
+
     }
     
 }
@@ -25,11 +42,12 @@ extension ConfigurationManager {
 extension CloudFoundryEnv {
     
     public static func getAppEnv(configManager: ConfigurationManager) throws -> AppEnv {
-        // Get services
+    
         let servs = configManager["VCAP_SERVICES"]
-        // Get app
+
         let app = configManager["VCAP_APPLICATION"]
         var vcap: [String:Any] = [:]
+        
         vcap["application"] = app
         vcap["services"] = servs
         var config: [String:Any] = [:]

@@ -10,8 +10,6 @@ public enum BluemixServiceType {
     case other
 }
 
-
-
 public class CloudantService: Service {
     
     public var host        : String = ""
@@ -23,7 +21,7 @@ public class CloudantService: Service {
 
     public init?(withService service: Service) {
     
-        super.init(name:        service.name,
+        super.init(name:       service.name,
                   label:       service.label,
                   plan:        service.plan,
                   tags:        service.tags,
