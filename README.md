@@ -2,8 +2,11 @@
 
 Extensions to the SwiftConfiguration library to simplify loading Bluemix services.
 
+Currently supports Cloudant, Redis, PostgreSQL, and MongoDB.
+
 ## Basic Usage:
 
+```swift
 let manager = ConfigurationManager()
 
 do {
@@ -14,3 +17,4 @@ do {
 } catch {
 
 }
+```
