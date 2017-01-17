@@ -10,10 +10,10 @@ Currently supports Cloudant, Redis, PostgreSQL, and MongoDB.
 let manager = ConfigurationManager()
 
 do {
-  manager.load(.environmentVariables)
+  try manager.load(.EnvironmentVariables)
          .load(file: "config.json")
   
-  let cloudantService = manager.getCloudantService(name: "MyCloudantDB")
+  let cloudantService = try manager.getCloudantService(name: "MyCloudantDB")
 } catch {
 
 }
