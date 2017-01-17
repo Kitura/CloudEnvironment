@@ -1,41 +1,40 @@
 import SwiftConfiguration
 
-let cloudantConfigKey = "Bluemix:services:cloudant"
+import CloudFoundryEnv
 
 /**
  Cloudant, MongoDB, Redis, PostgreSQL
  */
 
 extension ConfigurationManager {
-
-    private func loadCloudantConfig () -> BluemixService? {
+    
+    
+    public func getCloudantService(name: String) -> CloudantService {
         
-        if let username = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:username"] as? String,
-            let password = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:password"] as? String,
-            let host     = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:host"] as? String,
-            let url      = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:url"] as? String,
-            let port     = self["VCAP_SERVICES:cloudantNoSQLDB:0:credentials:port"] as? Int,
-            let label    = self["VCAP_SERVICES:cloudantNoSQLDB:0:label"] as? String,
-            let name     = self["VCAP_SERVICES:cloudantNoSQLDB:0:name"] as? String,
-            let tags     = self["VCAP_SERVICES:cloudantNoSQLDB:0:tags"] as? [String]
-        {
-            
-            return CloudantService(host: host, username: username, password: password, port: port, url: url, label: label, name: name, tags: tags)
-        }
         
-        return nil
         
     }
     
-    public func getService(type: BluemixServiceType) -> BluemixService? {
+    public func getRedisService(name: String) -> RedisService {
         
-        switch type {
-        case .cloudant:
-            return loadCloudantConfig()
-        default:
-            return nil
-        }
-        
+    }
+    
+}
+
+
+extension CloudFoundryEnv {
+    
+    public static func getAppEnv(configManager: ConfigurationManager) throws -> AppEnv {
+        // Get services
+        let servs = configManager["VCAP_SERVICES"]
+        // Get app
+        let app = configManager["VCAP_APPLICATION"]
+        var vcap: [String:Any] = [:]
+        vcap["application"] = app
+        vcap["services"] = servs
+        var config: [String:Any] = [:]
+        config["vcap"] = vcap
+        return try AppEnv(options: config)
     }
     
 }
