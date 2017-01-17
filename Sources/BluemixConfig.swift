@@ -55,4 +55,10 @@ extension CloudFoundryEnv {
         return try AppEnv(options: config)
     }
     
+    public static func applicationPort() throws -> Int {
+        
+        return try CloudFoundryEnv.getAppEnv().port
+        
+    }
+    
 }
