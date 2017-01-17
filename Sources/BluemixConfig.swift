@@ -36,6 +36,15 @@ extension ConfigurationManager {
 
     }
     
+    public var applicationPort: Int {
+    
+        if let port = try? CloudFoundryEnv.getAppEnv().port {
+            return port
+        } else {
+            return 8090     
+        }
+    
+    }
 }
 
 
@@ -53,12 +62,6 @@ extension CloudFoundryEnv {
         var config: [String:Any] = [:]
         config["vcap"] = vcap
         return try AppEnv(options: config)
-    }
-    
-    public static func applicationPort() throws -> Int {
-        
-        return try CloudFoundryEnv.getAppEnv().port
-        
     }
     
 }
