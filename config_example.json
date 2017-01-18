@@ -1,0 +1,45 @@
+{
+	"VCAP_SERVICES": {
+		"cloudantNoSQLDB": [{
+			"credentials": {
+				"host": "<host>",
+				"password": "<password>",
+				"port": 443,
+				"url": "<url>",
+				"username": "<username>"
+			},
+			"label": "cloudantNoSQLDB",
+			"name": "TodoListCloudantDatabase",
+			"plan": "Lite",
+			"provider": null,
+			"syslog_drain_url": null,
+			"tags": [
+				"data_management",
+				"ibm_created",
+				"ibm_dedicated_public"
+			]
+		}]
+	},
+	"VCAP_APPLICATION": {
+		"application_id": "ad28c3b1-744d-446e-bf6e-80d8b916916e",
+		"application_name": "TodoListCloudantApp",
+		"application_uris": [
+			"todolistcloudantapp-undissevered-bumper.mybluemix.net"
+		],
+		"application_version": "1fc300f0-d7cc-4cab-b5cc-748c3fdd10e4",
+		"limits": {
+			"disk": 1024,
+			"fds": 16384,
+			"mem": 256
+		},
+		"name": "TodoListCloudantApp",
+		"space_id": "07628d09-5236-4dc0-9330-4388267b33ce",
+		"space_name": "dev",
+		"uris": [
+			"todolistcloudantapp-undissevered-bumper.mybluemix.net"
+		],
+		"users": null,
+		"version": "1fc300f0-d7cc-4cab-b5cc-748c3fdd10e4"
+	}
+
+}
