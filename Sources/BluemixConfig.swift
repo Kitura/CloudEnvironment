@@ -6,6 +6,10 @@ import CloudFoundryEnv
  Cloudant, MongoDB, Redis, PostgreSQL
  */
 
+public enum ConfigurationManagerError: Error {
+    case noServiceWithName(String)
+}
+
 extension ConfigurationManager {
     
     private func findService(name: String) throws -> Service? {
@@ -15,23 +19,25 @@ extension ConfigurationManager {
         
     }
     
-    public func getCloudantService(name: String) throws -> CloudantService? {
+    public func getCloudantService(name: String) throws -> CloudantService {
         
-        if let service = try findService(name: name) {
-            return CloudantService(withService: service)
+        if let service = try findService(name: name),
+            let cloudantService = CloudantService(withService: service) {
+                return cloudantService
         } else {
-            return nil
+            throw ConfigurationManagerError.noServiceWithName(name)
         }
         
         
     }
     
-    public func getRedisService(name: String) throws -> RedisService? {
+    public func getRedisService(name: String) throws -> RedisService {
         
-        if let service = try findService(name: name) {
-            return RedisService(withService: service)
+        if let service = try findService(name: name),
+            let redisService = RedisService(withService: service) {
+                return redisService
         } else {
-            return nil
+            throw ConfigurationManagerError.noServiceWithName(name)
         }
 
     }

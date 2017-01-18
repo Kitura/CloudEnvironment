@@ -9,19 +9,20 @@ class bluemix_configTests: XCTestCase {
         
         let manager = ConfigurationManager()
         
-        try? manager.loadFile("config.json").loadEnvironmentVariables()
-        
-        let cloudantConfig = manager.getService(type: .cloudant)
-        
-        if let cloudantConfig = cloudantConfig {
-            XCTAssertNotNil(cloudantConfig)
-        } else {
-            fatalError()
+        do {
+            manager.load(.environmentVariables).load("../../config.json")
+            
+            let cloudantService = try manager.getCloudantService(name: "CloudantService")
+            
+            XCTAssertNotNil(cloudantService)
+         
+        } catch {
+            XCTAssertTrue(true, "Could not load configuration")
         }
         
     }
-
-
+    
+    
     static var allTests : [(String, (bluemix_configTests) -> () throws -> Void)] {
         return [
             ("testExample", testExample),
