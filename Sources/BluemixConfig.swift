@@ -1,3 +1,21 @@
+/*
+ * Copyright IBM Corporation 2017
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
 import SwiftConfiguration
 
 import CloudFoundryEnv
@@ -31,6 +49,18 @@ extension ConfigurationManager {
         
     }
     
+    public func getMongoDBService(name: String) throws -> MongoDBService {
+        
+        if let service = try findService(name: name),
+            let mongoDBService = MongoDBService(withService: service) {
+            return mongoDBService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+        
+        
+    }
+    
     public func getRedisService(name: String) throws -> RedisService {
         
         if let service = try findService(name: name),
@@ -40,6 +70,18 @@ extension ConfigurationManager {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
 
+    }
+    
+    public func getPostgreSQLService(name: String) throws -> PostgreSQLService {
+        
+        if let service = try findService(name: name),
+            let postgreSQLService = PostgreSQLService(withService: service) {
+            return postgreSQLService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+        
+        
     }
     
     public var applicationPort: Int {
