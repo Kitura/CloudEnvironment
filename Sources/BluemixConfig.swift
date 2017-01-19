@@ -49,6 +49,18 @@ extension ConfigurationManager {
         
     }
     
+    public func getMongoDBService(name: String) throws -> MongoDBService {
+        
+        if let service = try findService(name: name),
+            let mongoDBService = MongoDBService(withService: service) {
+            return mongoDBService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+        
+        
+    }
+    
     public func getRedisService(name: String) throws -> RedisService {
         
         if let service = try findService(name: name),
@@ -60,11 +72,11 @@ extension ConfigurationManager {
 
     }
     
-    public func getPostgresqlService(name: String) throws -> PostgresqlService {
+    public func getPostgreSQLService(name: String) throws -> PostgreSQLService {
         
         if let service = try findService(name: name),
-            let postgresqlService = PostgresqlService(withService: service) {
-            return postgresqlService
+            let postgreSQLService = PostgreSQLService(withService: service) {
+            return postgreSQLService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
