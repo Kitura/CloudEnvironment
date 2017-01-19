@@ -1,6 +1,6 @@
 import XCTest
-@testable import bluemix_configTests
+@testable import BluemixConfigTests
 
 XCTMain([
-     testCase(bluemix_configTests.allTests),
+     testCase(FileLoadTests.allTests)
 ])

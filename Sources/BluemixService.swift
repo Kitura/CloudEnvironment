@@ -27,15 +27,19 @@ public class CloudantService: Service {
                   tags:        service.tags,
                   credentials: service.credentials)
         
-        guard let credentials = credentials else {
+        guard let credentials = credentials, let host = credentials["host"] as? String,
+              let username = credentials["username"] as? String,
+              let password = credentials["password"] as? String,
+              let port = credentials["port"] as? Int,
+              let url = credentials["url"] as? String else {
             return nil
         }
         
-        host     = (credentials["host"] as? String)!
-        username = (credentials["username"] as? String)!
-        password = (credentials["password"] as? String)!
-        port     = (credentials["port"] as? Int)!
-        url      = (credentials["url"] as? String)!
+        self.host     = host
+        self.username = username
+        self.password = password
+        self.port     = port
+        self.url      = url
         
     }
 }
@@ -43,11 +47,9 @@ public class CloudantService: Service {
 public class RedisService: Service {
     
     public var host        : String = ""
-    public var username    : String = ""
     public var password    : String = ""
     public var port        : Int = 0
-    public var url         : String = ""
-    
+
     
     public init?(withService service: Service) {
         
@@ -57,15 +59,18 @@ public class RedisService: Service {
                    tags:        service.tags,
                    credentials: service.credentials)
         
-        guard let credentials = credentials else {
+        guard let credentials = credentials,
+              let uri = credentials["uri"] as? String,
+              let url = URL(string: uri),
+              let host = url.host,
+              let password = url.password,
+              let port = url.port else {
             return nil
         }
-        
-        host     = (credentials["host"] as? String)!
-        username = (credentials["username"] as? String)!
-        password = (credentials["password"] as? String)!
-        port     = (credentials["port"] as? Int)!
-        url      = (credentials["url"] as? String)!
+
+        self.host     = host
+        self.password = password
+        self.port     = port
         
     }
 }
