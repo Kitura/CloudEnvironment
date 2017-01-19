@@ -1,0 +1,64 @@
+{
+	"VCAP_SERVICES": {
+		"cloudantNoSQLDB": [{
+			"credentials": {
+				"host": "<host>",
+				"password": "<password>",
+				"port": 443,
+				"url": "<url>",
+				"username": "<username>"
+			},
+			"label": "cloudantNoSQLDB",
+			"name": "CloudantService",
+			"plan": "Lite",
+			"provider": null,
+			"syslog_drain_url": null,
+			"tags": [
+				"data_management",
+				"ibm_created",
+				"ibm_dedicated_public"
+			]
+		}],
+		"compose-for-redis": [{
+			"credentials": {
+				"db_type": "redis",
+				"name": "bmix_dal_yp_7370f9fa_41ba_4f83_8209_1c5fbc8d5a0c",
+				"uri_cli": "redis-cli -h bluemix-sandbox-dal-9-portal.4.dblayer.com -p 21514 -a <password>",
+				"deployment_id": "586d6b655eed7d00110013c4",
+				"uri": "redis://username:password@bluemix-sandbox-dal-9-portal.4.dblayer.com:21514"
+			},
+			"syslog_drain_url": null,
+			"label": "compose-for-redis",
+			"provider": null,
+			"plan": "Standard",
+			"name": "RedisService",
+			"tags": [
+				"big_data",
+				"data_management",
+				"ibm_created"
+			]
+		}]
+	},
+	"VCAP_APPLICATION": {
+		"application_id": "ad28c3b1-744d-446e-bf6e-80d8b916916e",
+		"application_name": "TodoListCloudantApp",
+		"application_uris": [
+			"todolistcloudantapp-undissevered-bumper.mybluemix.net"
+		],
+		"application_version": "1fc300f0-d7cc-4cab-b5cc-748c3fdd10e4",
+		"limits": {
+			"disk": 1024,
+			"fds": 16384,
+			"mem": 256
+		},
+		"name": "TodoListCloudantApp",
+		"space_id": "07628d09-5236-4dc0-9330-4388267b33ce",
+		"space_name": "dev",
+		"uris": [
+			"todolistcloudantapp-undissevered-bumper.mybluemix.net"
+		],
+		"users": null,
+		"version": "1fc300f0-d7cc-4cab-b5cc-748c3fdd10e4"
+	}
+
+}
