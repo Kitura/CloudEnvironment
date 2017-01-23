@@ -63,25 +63,49 @@ public class CloudantService: Service {
 
 public class MongoDBService: Service {
     
-    public let user        : String
+    public let host        : String
+    public let username    : String
     public let password    : String
     public let port        : Int
-    public let uri         : String
+    public let certificate : String
     
     public init?(withService service: Service) {
         
-        guard let credentials = service.credentials,
-            let user        = credentials["user"] as? String,
-            let password    = credentials["password"] as? String,
-            let port        = credentials["port"] as? Int,
-            let uri         = credentials["uri"] as? String else {
+        guard let credentials = service.credentials else {
+            print("Service credentials were nil.")
+            return nil
+        }
+        
+        // Use SSL uri if available
+        let initialURI = credentials["uri"] as? String ?? ""
+        let uris = initialURI.components(separatedBy: ",")
+        let filtered  = uris.filter({ $0.contains("ssl=true") })
+        var uriValue: String?
+        if filtered.count == 1, let dbInfo = filtered.first,
+            var credentialInfo = uris.first,
+            let atRange = credentialInfo.range(of: "@") {
+            // substitute non-ssl hostname:port with correct hostname:port
+            credentialInfo.removeSubrange(atRange.upperBound..<credentialInfo.endIndex)
+            uriValue = credentialInfo + dbInfo
+        } else {
+            uriValue = uris.first
+        }
+        
+        guard let stringURL = uriValue, stringURL.characters.count > 0,
+            let url         = URL(string: stringURL),
+            let host        = url.host,
+            let username    = url.user,
+            let password    = url.password,
+            let port        = url.port,
+            let certificate = credentials["ca_certificate_base64"] as? String else {
                 return nil
         }
         
-        self.user       = user
-        self.password   = password
-        self.port       = port
-        self.uri        = uri
+        self.host        = host
+        self.username    = username
+        self.password    = password
+        self.port        = port
+        self.certificate = certificate
         
         super.init(name:        service.name,
                    label:       service.label,
@@ -124,20 +148,25 @@ public class RedisService: Service {
 
 public class PostgreSQLService: Service {
     
-    public let publicHostname   : String
-    public let password         : String
+    public let host             : String
+    public let port             : Int
     public let username         : String
+    public let password         : String
     
     public init?(withService service: Service) {
         
-        guard let credentials = service.credentials,
-            let publicHostname = credentials["public_hostname"] as? String,
-            let username        = credentials["username"] as? String,
-            let password        = credentials["password"] as? String else {
+        guard let credentials   = service.credentials,
+              let uri           = credentials["uri"] as? String,
+              let url           = URL(string: uri),
+              let host          = url.host,
+              let port          = url.port,
+              let username      = url.user,
+              let password      = url.password else {
                 return nil
         }
         
-        self.publicHostname     = publicHostname
+        self.host               = host
+        self.port               = port
         self.username           = username
         self.password           = password
         

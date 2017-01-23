@@ -37,6 +37,46 @@
 				"data_management",
 				"ibm_created"
 			]
+		}],
+		"compose-for-mongodb": [{
+			"credentials": {
+				"db_type": "mongodb",
+				"name": "bmix_dal_yp_eaf81143_0baa_4166_ab8e_21bef291190b",
+				"uri_cli": "mongo --ssl --sslAllowInvalidCertificates bluemix-sandbox-dal-9-portal.5.dblayer.com:19889/admin -u username -p password",
+				"ca_certificate_base64": "certificateString",
+				"deployment_id": "5849981b78ae6b0013000027",
+				"uri": "mongodb://username:password@bluemix-sandbox-dal-9-portal.5.dblayer.com:19889,bluemix-sandbox-dal-9-portal.4.dblayer.com:19889/admin?ssl=true"
+			},
+			"syslog_drain_url": null,
+			"label": "compose-for-mongodb",
+			"provider": null,
+			"plan": "Standard",
+			"name": "TodoList-MongoDB",
+			"tags": [
+				"big_data",
+				"data_management",
+				"ibm_created"
+			]
+		}],
+		"compose-for-postgresql": [{
+			"credentials": {
+				"db_type": "postgresql",
+				"name": "bmix_dal_yp_dcfe66ee_9d04_4ab4_974c_2428eabc4345",
+				"uri_cli": "psql \"sslmode=require host=bluemix-sandbox-dal-9-portal.0.dblayer.com port=22387 dbname=compose user=user\"",
+				"ca_certificate_base64": "certificateString",
+				"deployment_id": "58829bf1d9688600170028fc",
+				"uri": "postgres://user:password@bluemix-sandbox-dal-9-portal.0.dblayer.com:22387/compose"
+			},
+			"syslog_drain_url": null,
+			"label": "compose-for-postgresql",
+			"provider": null,
+			"plan": "Standard",
+			"name": "TodoList-PostgreSQL",
+			"tags": [
+				"big_data",
+				"data_management",
+				"ibm_created"
+			]
 		}]
 	},
 	"VCAP_APPLICATION": {
