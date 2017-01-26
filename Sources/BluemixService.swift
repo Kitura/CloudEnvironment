@@ -181,6 +181,7 @@ public class PostgreSQLService: Service {
 
 public class MySQLService: Service {
     
+    public let database         : String
     public let host             : String
     public let username         : String
     public let password         : String
@@ -189,6 +190,7 @@ public class MySQLService: Service {
     public init?(withService service: Service) {
 
         guard let credentials = service.credentials,
+            let database   = credentials["name"] as? String,
             let host       = credentials["hostname"] as? String,
             let username   = credentials["username"] as? String,
             let password   = credentials["password"] as? String,
@@ -197,6 +199,7 @@ public class MySQLService: Service {
                 return nil
         }
 
+        self.database = database
         self.host = host
         self.username = username
         self.password = password

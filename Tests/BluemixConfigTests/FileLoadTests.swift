@@ -51,6 +51,7 @@ class FileLoadTests: XCTestCase {
             
             let mySQLService = try manager.getMySQLService(name: "TodoList-MySQL")
             
+            XCTAssertGreaterThan(mySQLService.database.characters.count, 0)
             XCTAssertGreaterThan(mySQLService.host.characters.count, 0)
             XCTAssertGreaterThan(mySQLService.username.characters.count, 0)
             XCTAssertGreaterThan(mySQLService.password.characters.count, 0)
