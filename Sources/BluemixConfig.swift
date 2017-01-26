@@ -81,6 +81,27 @@ extension ConfigurationManager {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
         
+    }
+    
+    public func getMySQLService(name: String) throws -> MySQLService {
+        
+        if let service = try findService(name: name),
+            let mySQLService = MySQLService(withService: service) {
+            return mySQLService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+        
+    }
+    
+    public func getDB2Service(name: String) throws -> DB2Service {
+        
+        if let service = try findService(name: name),
+            let myDB2Service = DB2Service(withService: service) {
+            return myDB2Service
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
         
     }
     

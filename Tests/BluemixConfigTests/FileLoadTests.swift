@@ -49,6 +49,21 @@ class FileLoadTests: XCTestCase {
             XCTAssertGreaterThan(postgreSQLService.password.characters.count, 0)
             XCTAssertNotEqual(postgreSQLService.port, 0)
             
+            let mySQLService = try manager.getMySQLService(name: "TodoList-MySQL")
+            
+            XCTAssertGreaterThan(mySQLService.host.characters.count, 0)
+            XCTAssertGreaterThan(mySQLService.username.characters.count, 0)
+            XCTAssertGreaterThan(mySQLService.password.characters.count, 0)
+            XCTAssertNotEqual(mySQLService.port, 0)
+            
+            let db2Service = try manager.getDB2Service(name: "TodoList-DB2-Analytics")
+            
+            XCTAssertGreaterThan(db2Service.database.characters.count, 0)
+            XCTAssertGreaterThan(db2Service.host.characters.count, 0)
+            XCTAssertNotEqual(db2Service.port, 0)
+            XCTAssertGreaterThan(db2Service.uid.characters.count, 0)
+            XCTAssertGreaterThan(db2Service.pwd.characters.count, 0)
+            
         } catch {
             XCTFail("Could not load configuration. Error: \(error)")
         }

@@ -77,7 +77,64 @@
 				"data_management",
 				"ibm_created"
 			]
-		}]
+		}],
+		"cleardb": [{
+	      "credentials": {
+	        "jdbcUrl": "jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/ad_59567cc9d4432b9?user=username&password=password",
+	        "uri": "mysql://username:password@us-cdbr-iron-east-04.cleardb.net:3306/ad_59567cc9d4432b9?reconnect=true",
+	        "name": "ad_59567cc9d4432b9",
+	        "hostname": "us-cdbr-iron-east-04.cleardb.net",
+	        "port": "3306",
+	        "username": "username",
+	        "password": "password"
+	      },
+	      "syslog_drain_url": null,
+	      "label": "cleardb",
+	      "provider": null,
+	      "plan": "spark",
+	      "name": "TodoList-MySQL",
+	      "tags": [
+	        "DBA",
+	        "(S) Cloud",
+	        "(P) Analytics",
+	        "Platform",
+	        "Bluemix",
+	        "ibm_dedicated_public",
+	        "Infrastructure",
+	        "Service",
+	        "data_management",
+	        "Analytics",
+	        "IT Operations",
+	        "ibm_third_party"
+	      ]
+	    }],
+	    "dashDB": [{
+		    "credentials": {
+		     "db": "BLUDB",
+		     "dsn": "DATABASE=BLUDB;HOSTNAME=dashdb-entry-yp-dal09-07.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=uid;PWD=pwd;",
+		     "host": "dashdb-entry-yp-dal09-07.services.dal.bluemix.net",
+		     "hostname": "dashdb-entry-yp-dal09-07.services.dal.bluemix.net",
+		     "https_url": "https://dashdb-entry-yp-dal09-07.services.dal.bluemix.net:8443",
+		     "jdbcurl": "jdbc:db2://dashdb-entry-yp-dal09-07.services.dal.bluemix.net:50000/BLUDB",
+		     "password": "pwd",
+		     "port": 50000,
+		     "ssldsn": "DATABASE=BLUDB;HOSTNAME=dashdb-entry-yp-dal09-07.services.dal.bluemix.net;PORT=50001;PROTOCOL=TCPIP;UID=uid;PWD=pwd;Security=SSL;",
+		     "ssljdbcurl": "jdbc:db2://dashdb-entry-yp-dal09-07.services.dal.bluemix.net:50001/BLUDB:sslConnection=true;",
+		     "uri": "db2://uid:pwd@dashdb-entry-yp-dal09-07.services.dal.bluemix.net:50000/BLUDB",
+		     "username": "uid"
+		    },
+		    "label": "dashDB",
+		    "name": "TodoList-DB2-Analytics",
+		    "plan": "Entry",
+		    "provider": null,
+		    "syslog_drain_url": null,
+		    "tags": [
+		     "big_data",
+		     "ibm_created",
+		     "ibm_dedicated_public"
+		    ]
+		   }
+		]
 	},
 	"VCAP_APPLICATION": {
 		"application_id": "ad28c3b1-744d-446e-bf6e-80d8b916916e",

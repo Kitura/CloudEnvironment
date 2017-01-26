@@ -36,7 +36,7 @@ public class CloudantService: Service {
     public let url         : String
     
     public init?(withService service: Service) {
-    
+
         guard let credentials = service.credentials,
               let host      = credentials["host"] as? String,
               let username  = credentials["username"] as? String,
@@ -177,4 +177,71 @@ public class PostgreSQLService: Service {
                    credentials: service.credentials)
 
     }
+}
+
+public class MySQLService: Service {
+    
+    public let host             : String
+    public let username         : String
+    public let password         : String
+    public let port             : Int
+    
+    public init?(withService service: Service) {
+
+        guard let credentials = service.credentials,
+            let host       = credentials["hostname"] as? String,
+            let username   = credentials["username"] as? String,
+            let password   = credentials["password"] as? String,
+            let stringPort = credentials["port"] as? String,
+            let port       = Int(stringPort) else {
+                return nil
+        }
+
+        self.host = host
+        self.username = username
+        self.password = password
+        self.port = port
+        
+        super.init(name:        service.name,
+                   label:       service.label,
+                   plan:        service.plan,
+                   tags:        service.tags,
+                   credentials: service.credentials)
+    }
+    
+}
+
+public class DB2Service: Service {
+    
+    public let database     : String
+    public let host         : String
+    public let port         : Int
+    public let uid          : String
+    public let pwd          : String
+    
+    public init?(withService service: Service) {
+        
+        guard let credentials = service.credentials,
+            let database = credentials["db"] as? String,
+            let host = credentials["host"] as? String,
+            let port = credentials["port"] as? Int,
+            let uid = credentials["username"] as? String,
+            let pwd = credentials["password"] as? String else {
+            return nil
+        }
+        
+        self.database = database
+        self.host = host
+        self.port = port
+        self.uid = uid
+        self.pwd = pwd
+        
+        super.init(name:        service.name,
+                   label:       service.label,
+                   plan:        service.plan,
+                   tags:        service.tags,
+                   credentials: service.credentials)
+        
+    }
+    
 }
