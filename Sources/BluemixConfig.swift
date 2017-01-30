@@ -16,7 +16,7 @@
 
 
 
-import SwiftConfiguration
+import Configuration
 
 import CloudFoundryEnv
 
