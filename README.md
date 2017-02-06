@@ -1,6 +1,5 @@
-# BluemixConfig
+# SwiftConfiguration
 
-Extensions to the SwiftConfiguration library to simplify loading Bluemix services.
 
 Currently supports Cloudant, Redis, PostgreSQL, MongoDB, MySQL, and DB2.
 
