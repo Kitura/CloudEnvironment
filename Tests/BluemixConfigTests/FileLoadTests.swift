@@ -1,7 +1,7 @@
 import XCTest
 
-import SwiftConfiguration
-@testable import BluemixConfig
+import Configuration
+@testable import CloudFoundry
 
 
 class FileLoadTests: XCTestCase {
@@ -18,7 +18,8 @@ class FileLoadTests: XCTestCase {
         
         do {
             // Modify relative path for your system, make more dynamic later
-            try manager.load(file: "../../config_example.json", relativeFrom: "/Users/tlfrankl/ibm/ibm-swift/bluemix-config/.build/debug")
+            try manager.load(file: "../../config_example.json",
+                             relativeFrom: .customPath("/Users/tlfrankl/ibm/ibm-swift/bluemix-config/.build/debug"))
             
             let cloudantService = try manager.getCloudantService(name: "CloudantService")
             

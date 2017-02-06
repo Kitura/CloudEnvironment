@@ -19,14 +19,6 @@ import Foundation
 
 import CloudFoundryEnv
 
-public enum BluemixServiceType {
-    case cloudant
-    case mongodb
-    case redis
-    case postgresql
-    case other
-}
-
 public class CloudantService: Service {
     
     public let host        : String
