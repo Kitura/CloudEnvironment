@@ -1,5 +1,5 @@
 import XCTest
-@testable import BluemixConfigTests
+@testable import CloudFoundryConfigTests
 
 XCTMain([
      testCase(FileLoadTests.allTests)

@@ -1,7 +1,7 @@
 import XCTest
 
 import Configuration
-@testable import CloudFoundry
+@testable import CloudFoundryConfig
 
 
 class FileLoadTests: XCTestCase {
