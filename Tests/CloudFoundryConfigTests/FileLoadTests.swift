@@ -15,7 +15,7 @@
  */
 
 import XCTest
-
+import Foundation
 import Configuration
 @testable import CloudFoundryConfig
 

@@ -1,0 +1,5 @@
+app:
+  image: ibmcom/swift-ubuntu
+  volumes:
+    - .:/root/CloudConfiguration
+  command: bash -c "cd /root/CloudConfiguration && swift build --clean && swift build && swift test"
