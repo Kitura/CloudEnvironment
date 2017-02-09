@@ -19,6 +19,22 @@
 				"ibm_dedicated_public"
 			]
 		}],
+		"alertnotification": [{
+			"credentials": {
+				"url": "https://ibmnotifybm.mybluemix.net/api/alerts/v1",
+				"id": "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618",
+				"password": "alertnotification-pwd",
+				"swaggerui": "https://ibmnotifybm.mybluemix.net/docs/alerts/v1"
+			},
+			"label": "alertnotification",
+			"name": "IBM Alert Notification-xs",
+			"plan": "authorizedusers",
+			"tags": [
+				"devops",
+				"ibm_created",
+				"ibm_dedicated_public"
+			]
+		}],
 		"compose-for-redis": [{
 			"credentials": {
 				"db_type": "redis",
