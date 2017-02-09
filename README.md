@@ -1,19 +1,33 @@
-# SwiftConfiguration
+# CloudConfiguration
 
+The write once, run anywhere configuration library. Designed to be a platform agnostic way to automatically 
+configuring connections to your hosting services.
 
-Currently supports Cloudant, Redis, PostgreSQL, MongoDB, MySQL, and DB2.
+## Platforms:
+
+- Bluemix
+- Heroku (future)
+- Amazon AWS (future)
+
+## Supported services:
+
+- Cloudant
+- Redis
+- PostgreSQL
+- MongoDB
+- MySQL
 
 ## Basic Usage:
 
 ```swift
 let manager = ConfigurationManager()
 
-do {
-  try manager.load(.EnvironmentVariables)
-         .load(file: "config.json")
-  
-  let cloudantService = try manager.getCloudantService(name: "MyCloudantDB")
-} catch {
+let mongoDBService = try manager.getMongoDBService()
 
-}
+mongoDBService.username
+mongoDBService.password
+mongoDBService.hostname
+mongoDBService.port
+
 ```
+
