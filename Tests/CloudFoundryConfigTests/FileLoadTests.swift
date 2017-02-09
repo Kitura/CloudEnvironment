@@ -83,13 +83,10 @@ class FileLoadTests: XCTestCase {
             XCTAssertGreaterThan(db2Service.pwd.characters.count, 0)
 
             let alertNotificationService = try manager.getAlertNotificationService(name: "IBM Alert Notification-xs")
-
-            //XCTAssertEqual(alertNotificationService.url, "https://ibmnotifybm.mybluemix.net/api/alerts/v1", "Alert Notification Service URL should match.")
-            //XCTAssertEqual(alertNotificationService.id, "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618", "Alert Notification Service ID should match.")
-            //XCTAssertEqual(alertNotificationService.password, "alertnotification-pwd, "Alert Notification Service password should match.")
-            //XCTAssertEqual(alertNotificationService.swaggerUI, "https://ibmnotifybm.mybluemix.net/docs/alerts/v1", "Alert Notification Service swaggerUI should match.")
-
-
+            XCTAssertEqual(alertNotificationService.url, "https://ibmnotifybm.mybluemix.net/api/alerts/v1", "Alert Notification Service URL should match.")
+            XCTAssertEqual(alertNotificationService.id, "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618", "Alert Notification Service ID should match.")
+            XCTAssertEqual(alertNotificationService.password, "alertnotification-pwd", "Alert Notification Service password should match.")
+            XCTAssertEqual(alertNotificationService.swaggerUI, "https://ibmnotifybm.mybluemix.net/docs/alerts/v1", "Alert Notification Service swaggerUI should match.")
 
         } catch {
             XCTFail("Could not load configuration. Error: \(error)")
