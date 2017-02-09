@@ -29,40 +29,40 @@ public enum ConfigurationManagerError: Error {
 }
 
 extension ConfigurationManager {
-    
+
     private func findService(name: String) throws -> Service? {
-        
+
         let appEnv = try CloudFoundryEnv.getAppEnv(configManager: self)
         return appEnv.getService(spec: name)
-        
+
     }
-    
+
     public func getCloudantService(name: String) throws -> CloudantService {
-        
+
         if let service = try findService(name: name),
             let cloudantService = CloudantService(withService: service) {
                 return cloudantService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
-        
-        
+
+
     }
-    
+
     public func getMongoDBService(name: String) throws -> MongoDBService {
-        
+
         if let service = try findService(name: name),
             let mongoDBService = MongoDBService(withService: service) {
             return mongoDBService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
-        
-        
+
+
     }
-    
+
     public func getRedisService(name: String) throws -> RedisService {
-        
+
         if let service = try findService(name: name),
             let redisService = RedisService(withService: service) {
                 return redisService
@@ -71,66 +71,77 @@ extension ConfigurationManager {
         }
 
     }
-    
+
     public func getPostgreSQLService(name: String) throws -> PostgreSQLService {
-        
+
         if let service = try findService(name: name),
             let postgreSQLService = PostgreSQLService(withService: service) {
             return postgreSQLService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
-        
+
     }
-    
+
     public func getMySQLService(name: String) throws -> MySQLService {
-        
+
         if let service = try findService(name: name),
             let mySQLService = MySQLService(withService: service) {
             return mySQLService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
-        
+
     }
-    
+
     public func getDB2Service(name: String) throws -> DB2Service {
-        
+
         if let service = try findService(name: name),
             let myDB2Service = DB2Service(withService: service) {
             return myDB2Service
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
-        
+
     }
-    
+
+    public func getAlertNotificationService(name: String) throws -> AlertNotificationService {
+
+        if let service = try findService(name: name),
+            let alertNotificationService = AlertNotificationService(withService: service) {
+            return alertNotificationService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+
+    }
+
     public var applicationPort: Int {
-    
+
         if let port = try? CloudFoundryEnv.getAppEnv().port {
             return port
         } else {
-            return 8090     
+            return 8080
         }
-    
+
     }
 }
 
 
 extension CloudFoundryEnv {
-    
+
     public static func getAppEnv(configManager: ConfigurationManager) throws -> AppEnv {
-    
+
         let servs = configManager["VCAP_SERVICES"]
 
         let app = configManager["VCAP_APPLICATION"]
         var vcap: [String:Any] = [:]
-        
+
         vcap["application"] = app
         vcap["services"] = servs
         var config: [String:Any] = [:]
         config["vcap"] = vcap
         return try AppEnv(options: config)
     }
-    
+
 }

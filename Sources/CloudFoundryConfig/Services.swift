@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-
 import Foundation
 
 import CloudFoundryEnv
 
 public class CloudantService: Service {
-    
+
     public let host        : String
     public let username    : String
     public let password    : String
     public let port        : Int
     public let url         : String
-    
+
     public init?(withService service: Service) {
 
         guard let credentials = service.credentials,
@@ -37,13 +36,13 @@ public class CloudantService: Service {
               let url       = credentials["url"] as? String else {
             return nil
         }
-        
+
         self.host     = host
         self.username = username
         self.password = password
         self.port     = port
         self.url      = url
-        
+
         super.init(name:       service.name,
                    label:       service.label,
                    plan:        service.plan,
@@ -53,21 +52,51 @@ public class CloudantService: Service {
     }
 }
 
+public class AlertNotificationService: Service {
+
+  public let url: String
+  public let id: String
+  public let password: String
+  public let swaggerUI: String
+
+  public init?(withService service: Service) {
+
+      guard let credentials = service.credentials,
+        let url = credentials["url"] as? String,
+        let id = credentials["name"] as? String,
+        let swaggerUI = credentials["swaggerui"] as? String,
+        let password = credentials["password"] as? String else {
+          return nil
+      }
+
+      self.url = url
+      self.id = id
+      self.password = password
+      self.swaggerUI = swaggerUI
+
+      super.init(name: service.name,
+        label: service.label,
+        plan: service.plan,
+        tags: service.tags,
+        credentials: service.credentials)
+  }
+}
+
 public class MongoDBService: Service {
-    
+
     public let host        : String
     public let username    : String
     public let password    : String
     public let port        : Int
     public let certificate : String
-    
+
     public init?(withService service: Service) {
-        
+
         guard let credentials = service.credentials else {
             print("Service credentials were nil.")
             return nil
         }
-        
+
         // Use SSL uri if available
         let initialURI = credentials["uri"] as? String ?? ""
         let uris = initialURI.components(separatedBy: ",")
@@ -82,7 +111,7 @@ public class MongoDBService: Service {
         } else {
             uriValue = uris.first
         }
-        
+
         guard let stringURL = uriValue, stringURL.characters.count > 0,
             let url         = URL(string: stringURL),
             let host        = url.host,
@@ -92,13 +121,13 @@ public class MongoDBService: Service {
             let certificate = credentials["ca_certificate_base64"] as? String else {
                 return nil
         }
-        
+
         self.host        = host
         self.username    = username
         self.password    = password
         self.port        = port
         self.certificate = certificate
-        
+
         super.init(name:        service.name,
                    label:       service.label,
                    plan:        service.plan,
@@ -110,13 +139,13 @@ public class MongoDBService: Service {
 
 
 public class RedisService: Service {
-    
+
     public let host        : String
     public let password    : String
     public let port        : Int
 
     public init?(withService service: Service) {
-        
+
         guard let credentials = service.credentials,
               let uri       = credentials["uri"] as? String,
               let url       = URL(string: uri),
@@ -129,7 +158,7 @@ public class RedisService: Service {
         self.host     = host
         self.password = password
         self.port     = port
-        
+
         super.init(name:        service.name,
                    label:       service.label,
                    plan:        service.plan,
@@ -139,14 +168,14 @@ public class RedisService: Service {
 }
 
 public class PostgreSQLService: Service {
-    
+
     public let host             : String
     public let port             : Int
     public let username         : String
     public let password         : String
-    
+
     public init?(withService service: Service) {
-        
+
         guard let credentials   = service.credentials,
               let uri           = credentials["uri"] as? String,
               let url           = URL(string: uri),
@@ -156,12 +185,12 @@ public class PostgreSQLService: Service {
               let password      = url.password else {
                 return nil
         }
-        
+
         self.host               = host
         self.port               = port
         self.username           = username
         self.password           = password
-        
+
         super.init(name:        service.name,
                    label:       service.label,
                    plan:        service.plan,
@@ -172,13 +201,13 @@ public class PostgreSQLService: Service {
 }
 
 public class MySQLService: Service {
-    
+
     public let database         : String
     public let host             : String
     public let username         : String
     public let password         : String
     public let port             : Int
-    
+
     public init?(withService service: Service) {
 
         guard let credentials = service.credentials,
@@ -196,26 +225,26 @@ public class MySQLService: Service {
         self.username = username
         self.password = password
         self.port = port
-        
+
         super.init(name:        service.name,
                    label:       service.label,
                    plan:        service.plan,
                    tags:        service.tags,
                    credentials: service.credentials)
     }
-    
+
 }
 
 public class DB2Service: Service {
-    
+
     public let database     : String
     public let host         : String
     public let port         : Int
     public let uid          : String
     public let pwd          : String
-    
+
     public init?(withService service: Service) {
-        
+
         guard let credentials = service.credentials,
             let database = credentials["db"] as? String,
             let host = credentials["host"] as? String,
@@ -224,19 +253,19 @@ public class DB2Service: Service {
             let pwd = credentials["password"] as? String else {
             return nil
         }
-        
+
         self.database = database
         self.host = host
         self.port = port
         self.uid = uid
         self.pwd = pwd
-        
+
         super.init(name:        service.name,
                    label:       service.label,
                    plan:        service.plan,
                    tags:        service.tags,
                    credentials: service.credentials)
-        
+
     }
-    
+
 }
