@@ -19,7 +19,6 @@ import Foundation
 import Configuration
 @testable import CloudFoundryConfig
 
-
 class FileLoadTests: XCTestCase {
 
     static var allTests : [(String, (FileLoadTests) -> () throws -> Void)] {
@@ -35,7 +34,8 @@ class FileLoadTests: XCTestCase {
         do {
             // Modify relative path for your system, make more dynamic later
             let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
-            try manager.load(url: filePath)
+            let loaded = manager.load(url: filePath)
+            XCTAssertTrue(loaded)
 
             let cloudantService = try manager.getCloudantService(name: "CloudantService")
 
