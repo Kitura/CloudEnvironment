@@ -56,7 +56,17 @@ extension ConfigurationManager {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
     }
-
+    
+    public func getObjectStorageService(name: String) throws -> ObjectStorageService {
+        
+        if let service = getService(spec: name),
+            let objStrService = ObjectStorageService(withService: service) {
+            return objStrService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+    
     public func getPostgreSQLService(name: String) throws -> PostgreSQLService {
 
         if let service = getService(spec: name),
