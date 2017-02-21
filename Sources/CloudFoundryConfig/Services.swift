@@ -51,6 +51,40 @@ public class CloudantService: Service {
     }
 }
 
+public class AutoScalingService: Service {
+
+  public let username: String
+  public let password: String
+  public let appID: String
+  public let url: String
+  public let serviceID: String
+
+  public init?(withService service: Service) {
+
+      guard let credentials = service.credentials,
+        let url = credentials["url"] as? String,
+        let username = credentials["agentUsername"] as? String,
+        let password = credentials["agentPassword"] as? String,
+        let appID = credentials["app_id"] as? String,
+        let serviceID = credentials["service_id"] as? String
+         else {
+          return nil
+      }
+
+      self.url = url
+      self.username = username
+      self.password = password
+      self.appID = appID
+      self.serviceID = serviceID
+
+      super.init(name: service.name,
+        label: service.label,
+        plan: service.plan,
+        tags: service.tags,
+        credentials: service.credentials)
+  }
+}
+
 public class AlertNotificationService: Service {
 
   public let url: String
@@ -177,9 +211,9 @@ public class ObjectStorageService: Service {
     public let password:    String
     public let domainID:    String
     public let domainName:  String
-    
+
     public init?(withService service: Service) {
-        
+
         guard let credentials = service.credentials,
             let authURL     = credentials["auth_url"] as? String,
             let project     = credentials["project"] as? String,
@@ -191,11 +225,11 @@ public class ObjectStorageService: Service {
             let domainID    = credentials["domainId"] as? String,
             let domainName  = credentials["domainName"] as? String
         else {
-            
+
                 return nil
-                
+
         }
-        
+
         self.authURL = authURL
         self.project = project
         self.projectID = projectID
@@ -205,15 +239,15 @@ public class ObjectStorageService: Service {
         self.password = password
         self.domainID = domainID
         self.domainName = domainName
-        
+
         super.init(name:        service.name,
                    label:       service.label,
                    plan:        service.plan,
                    tags:        service.tags,
                    credentials: service.credentials)
-        
+
     }
-    
+
 }
 
 // other services
