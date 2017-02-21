@@ -56,9 +56,9 @@ extension ConfigurationManager {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
     }
-    
+
     public func getObjectStorageService(name: String) throws -> ObjectStorageService {
-        
+
         if let service = getService(spec: name),
             let objStrService = ObjectStorageService(withService: service) {
             return objStrService
@@ -66,7 +66,7 @@ extension ConfigurationManager {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
     }
-    
+
     public func getPostgreSQLService(name: String) throws -> PostgreSQLService {
 
         if let service = getService(spec: name),
@@ -102,6 +102,16 @@ extension ConfigurationManager {
         if let service = getService(spec: name),
             let alertNotificationService = AlertNotificationService(withService: service) {
             return alertNotificationService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+
+    public func getAutoScalingService(name: String) throws -> AutoScalingService {
+
+        if let service = getService(spec: name),
+            let autoScalingService = AutoScalingService(withService: service) {
+            return autoScalingService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
