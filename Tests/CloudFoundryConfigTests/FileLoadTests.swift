@@ -34,8 +34,7 @@ class FileLoadTests: XCTestCase {
     do {
       // Modify relative path for your system, make more dynamic later
       let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
-      let loaded = manager.load(url: filePath)
-      XCTAssertTrue(loaded)
+      manager.load(url: filePath)
 
       let cloudantService = try manager.getCloudantService(name: "CloudantService")
 
