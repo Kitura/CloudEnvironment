@@ -166,6 +166,58 @@ public class RedisService: Service {
     }
 }
 
+public class ObjectStorageService: Service {
+
+    public let authURL:     String
+    public let project:     String
+    public let projectID:   String
+    public let region:      String
+    public let userID:      String
+    public let username:    String
+    public let password:    String
+    public let domainID:    String
+    public let domainName:  String
+    
+    public init?(withService service: Service) {
+        
+        guard let credentials = service.credentials,
+            let authURL     = credentials["auth_url"] as? String,
+            let project     = credentials["project"] as? String,
+            let projectID   = credentials["projectId"] as? String,
+            let region      = credentials["region"] as? String,
+            let userID      = credentials["userId"] as? String,
+            let username    = credentials["username"] as? String,
+            let password    = credentials["password"] as? String,
+            let domainID    = credentials["domainId"] as? String,
+            let domainName  = credentials["domainName"] as? String
+        else {
+            
+                return nil
+                
+        }
+        
+        self.authURL = authURL
+        self.project = project
+        self.projectID = projectID
+        self.region = region
+        self.userID = userID
+        self.username = username
+        self.password = password
+        self.domainID = domainID
+        self.domainName = domainName
+        
+        super.init(name:        service.name,
+                   label:       service.label,
+                   plan:        service.plan,
+                   tags:        service.tags,
+                   credentials: service.credentials)
+        
+    }
+    
+}
+
+// other services
+
 public class PostgreSQLService: Service {
 
     public let host             : String
