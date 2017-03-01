@@ -94,6 +94,14 @@ class FileLoadTests: XCTestCase {
       XCTAssertEqual(autoScalingService.appID, "auto-scaling-appID", "Auto-Scaling Service appID should match.")
       XCTAssertEqual(autoScalingService.serviceID, "auto-scaling-serviceID", "Auto-Scaling Service serviceID should match.")
 
+      let appIDService = try manager.getAppIDService(name: "App ID-qt")
+      XCTAssertEqual(appIDService.clientId, "<clientId>", "AppID Service clientId should match.")
+      XCTAssertEqual(appIDService.oauthServerUrl, "https://appid-oauth.stage1.ng.bluemix.net/oauth/v3/ee971e31-eb19-415b-af84-45172c24895c", "AppID oauthServerUrl should match.")
+      XCTAssertEqual(appIDService.profilesUrl, "https://appid-profiles.stage1.ng.bluemix.net", "AppID Service profilesUrl should match.")
+      XCTAssertEqual(appIDService.secret, "<secret>", "AppID Service secret should match.")
+      XCTAssertEqual(appIDService.tenantId, "ee971e31-eb19-415b-af84-45172c24895c", "AppID Service tenantId should match.")
+      XCTAssertEqual(appIDService.version, 3, "AppID Service version should match.")
+
     } catch {
       XCTFail("Could not load configuration. Error: \(error)")
     }

@@ -41,6 +41,30 @@
         ]
       }
     ],
+    "AdvancedMobileAccess": [
+      {
+        "credentials": {
+          "clientId": "<clientId>",
+          "oauthServerUrl": "https://appid-oauth.stage1.ng.bluemix.net/oauth/v3/ee971e31-eb19-415b-af84-45172c24895c",
+          "profilesUrl": "https://appid-profiles.stage1.ng.bluemix.net",
+          "secret": "<secret>",
+          "tenantId": "ee971e31-eb19-415b-af84-45172c24895c",
+          "version": 3
+        },
+        "label": "AdvancedMobileAccess",
+        "name": "App ID-qt",
+        "plan": "Bronze",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "security",
+          "Security",
+          "mobile",
+          "ibm_created",
+          "ibm_dedicated_public"
+        ]
+      }
+    ],
     "alertnotification": [
       {
         "credentials": {

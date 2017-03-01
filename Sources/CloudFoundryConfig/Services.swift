@@ -250,6 +250,43 @@ public class ObjectStorageService: Service {
 
 }
 
+public class AppIDService: Service {
+
+    public let clientId:       String
+    public let oauthServerUrl: String
+    public let profilesUrl:    String
+    public let secret:         String
+    public let tenantId:       String
+    public let version:        Int 
+  
+    public init?(withService service: Service) {
+
+        guard let credentials = service.credentials,
+              let clientId = credentials["clientId"] as? String,
+              let oauthServerUrl = credentials["oauthServerUrl"] as? String,
+              let profilesUrl = credentials["profilesUrl"] as? String,
+              let secret = credentials["secret"] as? String,
+              let tenantId = credentials["tenantId"] as? String,
+              let version = credentials["version"] as? Int 
+        else {
+            return nil
+        }
+
+        self.clientId = clientId 
+        self.oauthServerUrl = oauthServerUrl
+        self.profilesUrl = profilesUrl
+        self.secret = secret
+        self.tenantId = tenantId
+        self.version = version 
+
+        super.init(name:        service.name,
+                   label:       service.label,
+                   plan:        service.plan,
+                   tags:        service.tags,
+                   credentials: service.credentials)
+    }
+}
+
 // other services
 
 public class PostgreSQLService: Service {
