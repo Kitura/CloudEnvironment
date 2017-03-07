@@ -78,6 +78,7 @@ public class AutoScalingService: Service {
       self.password = password
       self.appID = appID
       self.serviceID = serviceID
+      self.apiURL = apiURL
 
       super.init(name: service.name,
         label: service.label,
