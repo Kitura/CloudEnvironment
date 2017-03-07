@@ -58,6 +58,7 @@ public class AutoScalingService: Service {
   public let appID: String
   public let url: String
   public let serviceID: String
+  public let apiURL: String
 
   public init?(withService service: Service) {
 
@@ -66,7 +67,8 @@ public class AutoScalingService: Service {
         let username = credentials["agentUsername"] as? String,
         let password = credentials["agentPassword"] as? String,
         let appID = credentials["app_id"] as? String,
-        let serviceID = credentials["service_id"] as? String
+        let serviceID = credentials["service_id"] as? String,
+        let apiURL = credentials["api_url"] as? String
          else {
           return nil
       }

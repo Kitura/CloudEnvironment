@@ -93,6 +93,7 @@ class FileLoadTests: XCTestCase {
       XCTAssertEqual(autoScalingService.password, "auto-scaling-pwd", "Auto-Scaling Service password should match.")
       XCTAssertEqual(autoScalingService.appID, "auto-scaling-appID", "Auto-Scaling Service appID should match.")
       XCTAssertEqual(autoScalingService.serviceID, "auto-scaling-serviceID", "Auto-Scaling Service serviceID should match.")
+      XCTAssertEqual(autoScalingService.apiURL, "https://auto-scaling.api.ibm.com", "Auto-Scaling Service apiURL should match.")
 
     } catch {
       XCTFail("Could not load configuration. Error: \(error)")

@@ -29,7 +29,7 @@
           "agentPassword": "auto-scaling-pwd",
           "app_id": "auto-scaling-appID",
           "service_id": "auto-scaling-serviceID",
-
+          "api_url": "https://auto-scaling.api.ibm.com"
         },
         "label": "Auto-Scaling",
         "name": "IBM Auto Scaling-xs",
