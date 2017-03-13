@@ -117,4 +117,13 @@ extension ConfigurationManager {
         }
     }
 
+    public func getAppIDService(name: String) throws -> AppIDService {
+
+        if let service = getService(spec: name),
+            let appIDService = AppIDService(withService: service) {
+            return appIDService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
 }
