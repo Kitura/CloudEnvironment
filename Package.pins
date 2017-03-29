@@ -1,0 +1,24 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "CloudFoundryEnv",
+      "reason": null,
+      "repositoryURL": "https://github.com/IBM-Swift/Swift-cfenv.git",
+      "version": "4.0.0"
+    },
+    {
+      "package": "Configuration",
+      "reason": null,
+      "repositoryURL": "https://github.com/IBM-Swift/Configuration.git",
+      "version": "0.2.4"
+    },
+    {
+      "package": "LoggerAPI",
+      "reason": null,
+      "repositoryURL": "https://github.com/IBM-Swift/LoggerAPI.git",
+      "version": "1.7.0"
+    }
+  ],
+  "version": 1
+}
