@@ -9,9 +9,8 @@ configuring connections to your hosting services.
 
 ## Platforms:
 
-- Bluemix
-- Heroku (future)
-- Amazon AWS (future)
+- Bluemix CloudFoundry
+- Bluemix Kubernetes Cluster (future)
 
 ## Supported services:
 
