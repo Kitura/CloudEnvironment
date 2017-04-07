@@ -26,77 +26,8 @@ public enum ConfigurationManagerError: Error {
 }
 
 extension ConfigurationManager {
-
-    public func getCloudantService(name: String) throws -> CloudantService {
-
-        if let service = getService(spec: name),
-            let cloudantService = CloudantService(withService: service) {
-                return cloudantService
-        } else {
-            throw ConfigurationManagerError.noServiceWithName(name)
-        }
-    }
-
-    public func getMongoDBService(name: String) throws -> MongoDBService {
-
-        if let service = getService(spec: name),
-            let mongoDBService = MongoDBService(withService: service) {
-            return mongoDBService
-        } else {
-            throw ConfigurationManagerError.noServiceWithName(name)
-        }
-    }
-
-    public func getRedisService(name: String) throws -> RedisService {
-
-        if let service = getService(spec: name),
-            let redisService = RedisService(withService: service) {
-                return redisService
-        } else {
-            throw ConfigurationManagerError.noServiceWithName(name)
-        }
-    }
-
-    public func getObjectStorageService(name: String) throws -> ObjectStorageService {
-
-        if let service = getService(spec: name),
-            let objStrService = ObjectStorageService(withService: service) {
-            return objStrService
-        } else {
-            throw ConfigurationManagerError.noServiceWithName(name)
-        }
-    }
-
-    public func getPostgreSQLService(name: String) throws -> PostgreSQLService {
-
-        if let service = getService(spec: name),
-            let postgreSQLService = PostgreSQLService(withService: service) {
-            return postgreSQLService
-        } else {
-            throw ConfigurationManagerError.noServiceWithName(name)
-        }
-    }
-
-    public func getMySQLService(name: String) throws -> MySQLService {
-
-        if let service = getService(spec: name),
-            let mySQLService = MySQLService(withService: service) {
-            return mySQLService
-        } else {
-            throw ConfigurationManagerError.noServiceWithName(name)
-        }
-    }
-
-    public func getDB2Service(name: String) throws -> DB2Service {
-
-        if let service = getService(spec: name),
-            let myDB2Service = DB2Service(withService: service) {
-            return myDB2Service
-        } else {
-            throw ConfigurationManagerError.noServiceWithName(name)
-        }
-    }
-
+    /// Get an Alert Notification service configuration by service name
+    /// - parameter name: The name of the Alert Notification service
     public func getAlertNotificationService(name: String) throws -> AlertNotificationService {
 
         if let service = getService(spec: name),
@@ -107,6 +38,20 @@ extension ConfigurationManager {
         }
     }
 
+    /// Get an AppID service configuration by service name
+    /// - parameter name: The name of the AppID service
+    public func getAppIDService(name: String) throws -> AppIDService {
+
+        if let service = getService(spec: name),
+            let appIDService = AppIDService(withService: service) {
+            return appIDService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+
+    /// Get an Auto Scaling service configuration by service name
+    /// - parameter name: The name of the Auto Scaling service
     public func getAutoScalingService(name: String) throws -> AutoScalingService {
 
         if let service = getService(spec: name),
@@ -117,11 +62,85 @@ extension ConfigurationManager {
         }
     }
 
-    public func getAppIDService(name: String) throws -> AppIDService {
+    /// Get a DB2 service configuration by service name
+    /// - parameter name: The name of the DB2 service
+    public func getDB2Service(name: String) throws -> DB2Service {
 
         if let service = getService(spec: name),
-            let appIDService = AppIDService(withService: service) {
-            return appIDService
+            let myDB2Service = DB2Service(withService: service) {
+            return myDB2Service
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+
+    /// Get a Cloudant service configuration by service name
+    /// - parameter name: The name of the Cloudant service
+    public func getCloudantService(name: String) throws -> CloudantService {
+
+        if let service = getService(spec: name),
+            let cloudantService = CloudantService(withService: service) {
+                return cloudantService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+
+    /// Get a MongoDB service configuration by service name
+    /// - parameter name: The name of the MongoDB service
+    public func getMongoDBService(name: String) throws -> MongoDBService {
+
+        if let service = getService(spec: name),
+            let mongoDBService = MongoDBService(withService: service) {
+            return mongoDBService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+
+    /// Get a MySQL service configuration by service name
+    /// - parameter name: The name of the MySQL service
+    public func getMySQLService(name: String) throws -> MySQLService {
+
+        if let service = getService(spec: name),
+            let mySQLService = MySQLService(withService: service) {
+            return mySQLService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+
+    /// Get an Object Storage service configuration by service name
+    /// - parameter name: The name of the Object Storage service
+    public func getObjectStorageService(name: String) throws -> ObjectStorageService {
+
+        if let service = getService(spec: name),
+            let objStrService = ObjectStorageService(withService: service) {
+            return objStrService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+
+    /// Get a PostgreSQL service configuration by service name
+    /// - parameter name: The name of the PostgreSQL service
+    public func getPostgreSQLService(name: String) throws -> PostgreSQLService {
+
+        if let service = getService(spec: name),
+            let postgreSQLService = PostgreSQLService(withService: service) {
+            return postgreSQLService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+
+    /// Get a Redis service configuration by service name
+    /// - parameter name: The name of the Redis service
+    public func getRedisService(name: String) throws -> RedisService {
+
+        if let service = getService(spec: name),
+            let redisService = RedisService(withService: service) {
+                return redisService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }

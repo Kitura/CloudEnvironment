@@ -17,6 +17,114 @@
 import Foundation
 import CloudFoundryEnv
 
+/// Contains the configuration values for an Alert Notification service instance
+public class AlertNotificationService: Service {
+
+    public let url: String
+    public let id: String
+    public let password: String
+    public let swaggerUI: String
+
+    public init?(withService service: Service) {
+
+        guard let credentials = service.credentials,
+            let url = credentials["url"] as? String,
+            let id = credentials["name"] as? String,
+            let swaggerUI = credentials["swaggerui"] as? String,
+            let password = credentials["password"] as? String else {
+                return nil
+        }
+
+        self.url = url
+        self.id = id
+        self.password = password
+        self.swaggerUI = swaggerUI
+
+        super.init(name: service.name,
+                   label: service.label,
+                   plan: service.plan,
+                   tags: service.tags,
+                   credentials: service.credentials)
+    }
+}
+
+/// Contains the configuration values for an AppID service instance
+public class AppIDService: Service {
+
+    public let clientId:       String
+    public let oauthServerUrl: String
+    public let profilesUrl:    String
+    public let secret:         String
+    public let tenantId:       String
+    public let version:        Int
+
+    public init?(withService service: Service) {
+
+        guard let credentials = service.credentials,
+            let clientId = credentials["clientId"] as? String,
+            let oauthServerUrl = credentials["oauthServerUrl"] as? String,
+            let profilesUrl = credentials["profilesUrl"] as? String,
+            let secret = credentials["secret"] as? String,
+            let tenantId = credentials["tenantId"] as? String,
+            let version = credentials["version"] as? Int
+            else {
+                return nil
+        }
+
+        self.clientId = clientId
+        self.oauthServerUrl = oauthServerUrl
+        self.profilesUrl = profilesUrl
+        self.secret = secret
+        self.tenantId = tenantId
+        self.version = version
+
+        super.init(name:        service.name,
+                   label:       service.label,
+                   plan:        service.plan,
+                   tags:        service.tags,
+                   credentials: service.credentials)
+    }
+}
+
+/// Contains the configuration values for an Auto Scaling service instance
+public class AutoScalingService: Service {
+
+    public let username: String
+    public let password: String
+    public let appID: String
+    public let url: String
+    public let serviceID: String
+    public let apiURL: String
+
+    public init?(withService service: Service) {
+
+        guard let credentials = service.credentials,
+            let url = credentials["url"] as? String,
+            let username = credentials["agentUsername"] as? String,
+            let password = credentials["agentPassword"] as? String,
+            let appID = credentials["app_id"] as? String,
+            let serviceID = credentials["service_id"] as? String,
+            let apiURL = credentials["api_url"] as? String
+            else {
+                return nil
+        }
+
+        self.url = url
+        self.username = username
+        self.password = password
+        self.appID = appID
+        self.serviceID = serviceID
+        self.apiURL = apiURL
+
+        super.init(name: service.name,
+                   label: service.label,
+                   plan: service.plan,
+                   tags: service.tags,
+                   credentials: service.credentials)
+    }
+}
+
+/// Contains the configuration values for a Cloudant service instance
 public class CloudantService: Service {
 
     public let host        : String
@@ -28,12 +136,12 @@ public class CloudantService: Service {
     public init?(withService service: Service) {
 
         guard let credentials = service.credentials,
-              let host      = credentials["host"] as? String,
-              let username  = credentials["username"] as? String,
-              let password  = credentials["password"] as? String,
-              let port      = credentials["port"] as? Int,
-              let url       = credentials["url"] as? String else {
-            return nil
+            let host      = credentials["host"] as? String,
+            let username  = credentials["username"] as? String,
+            let password  = credentials["password"] as? String,
+            let port      = credentials["port"] as? Int,
+            let url       = credentials["url"] as? String else {
+                return nil
         }
 
         self.host     = host
@@ -51,73 +159,43 @@ public class CloudantService: Service {
     }
 }
 
-public class AutoScalingService: Service {
+/// Contains the configuration values for a DB2 service instance
+public class DB2Service: Service {
 
-  public let username: String
-  public let password: String
-  public let appID: String
-  public let url: String
-  public let serviceID: String
-  public let apiURL: String
+    public let database     : String
+    public let host         : String
+    public let port         : Int
+    public let uid          : String
+    public let pwd          : String
 
-  public init?(withService service: Service) {
+    public init?(withService service: Service) {
 
-      guard let credentials = service.credentials,
-        let url = credentials["url"] as? String,
-        let username = credentials["agentUsername"] as? String,
-        let password = credentials["agentPassword"] as? String,
-        let appID = credentials["app_id"] as? String,
-        let serviceID = credentials["service_id"] as? String,
-        let apiURL = credentials["api_url"] as? String
-         else {
-          return nil
-      }
+        guard let credentials = service.credentials,
+            let database = credentials["db"] as? String,
+            let host = credentials["host"] as? String,
+            let port = credentials["port"] as? Int,
+            let uid = credentials["username"] as? String,
+            let pwd = credentials["password"] as? String else {
+                return nil
+        }
 
-      self.url = url
-      self.username = username
-      self.password = password
-      self.appID = appID
-      self.serviceID = serviceID
-      self.apiURL = apiURL
+        self.database = database
+        self.host = host
+        self.port = port
+        self.uid = uid
+        self.pwd = pwd
 
-      super.init(name: service.name,
-        label: service.label,
-        plan: service.plan,
-        tags: service.tags,
-        credentials: service.credentials)
-  }
+        super.init(name:        service.name,
+                   label:       service.label,
+                   plan:        service.plan,
+                   tags:        service.tags,
+                   credentials: service.credentials)
+
+    }
+
 }
 
-public class AlertNotificationService: Service {
-
-  public let url: String
-  public let id: String
-  public let password: String
-  public let swaggerUI: String
-
-  public init?(withService service: Service) {
-
-      guard let credentials = service.credentials,
-        let url = credentials["url"] as? String,
-        let id = credentials["name"] as? String,
-        let swaggerUI = credentials["swaggerui"] as? String,
-        let password = credentials["password"] as? String else {
-          return nil
-      }
-
-      self.url = url
-      self.id = id
-      self.password = password
-      self.swaggerUI = swaggerUI
-
-      super.init(name: service.name,
-        label: service.label,
-        plan: service.plan,
-        tags: service.tags,
-        credentials: service.credentials)
-  }
-}
-
+/// Contains the configuration values for a MongoDB service instance
 public class MongoDBService: Service {
 
     public let host        : String
@@ -173,36 +251,7 @@ public class MongoDBService: Service {
     }
 }
 
-
-public class RedisService: Service {
-
-    public let host        : String
-    public let password    : String
-    public let port        : Int
-
-    public init?(withService service: Service) {
-
-        guard let credentials = service.credentials,
-              let uri       = credentials["uri"] as? String,
-              let url       = URL(string: uri),
-              let host      = url.host,
-              let password  = url.password,
-              let port      = url.port else {
-            return nil
-        }
-
-        self.host     = host
-        self.password = password
-        self.port     = port
-
-        super.init(name:        service.name,
-                   label:       service.label,
-                   plan:        service.plan,
-                   tags:        service.tags,
-                   credentials: service.credentials)
-    }
-}
-
+/// Contains the configuration values for an Object Storage service instance
 public class ObjectStorageService: Service {
 
     public let authURL:     String
@@ -227,7 +276,7 @@ public class ObjectStorageService: Service {
             let password    = credentials["password"] as? String,
             let domainID    = credentials["domainId"] as? String,
             let domainName  = credentials["domainName"] as? String
-        else {
+            else {
 
                 return nil
 
@@ -253,45 +302,7 @@ public class ObjectStorageService: Service {
 
 }
 
-public class AppIDService: Service {
-
-    public let clientId:       String
-    public let oauthServerUrl: String
-    public let profilesUrl:    String
-    public let secret:         String
-    public let tenantId:       String
-    public let version:        Int 
-  
-    public init?(withService service: Service) {
-
-        guard let credentials = service.credentials,
-              let clientId = credentials["clientId"] as? String,
-              let oauthServerUrl = credentials["oauthServerUrl"] as? String,
-              let profilesUrl = credentials["profilesUrl"] as? String,
-              let secret = credentials["secret"] as? String,
-              let tenantId = credentials["tenantId"] as? String,
-              let version = credentials["version"] as? Int 
-        else {
-            return nil
-        }
-
-        self.clientId = clientId 
-        self.oauthServerUrl = oauthServerUrl
-        self.profilesUrl = profilesUrl
-        self.secret = secret
-        self.tenantId = tenantId
-        self.version = version 
-
-        super.init(name:        service.name,
-                   label:       service.label,
-                   plan:        service.plan,
-                   tags:        service.tags,
-                   credentials: service.credentials)
-    }
-}
-
-// other services
-
+/// Contains the configuration values for a PostgreSQL service instance
 public class PostgreSQLService: Service {
 
     public let host             : String
@@ -302,12 +313,12 @@ public class PostgreSQLService: Service {
     public init?(withService service: Service) {
 
         guard let credentials   = service.credentials,
-              let uri           = credentials["uri"] as? String,
-              let url           = URL(string: uri),
-              let host          = url.host,
-              let port          = url.port,
-              let username      = url.user,
-              let password      = url.password else {
+            let uri           = credentials["uri"] as? String,
+            let url           = URL(string: uri),
+            let host          = url.host,
+            let port          = url.port,
+            let username      = url.user,
+            let password      = url.password else {
                 return nil
         }
 
@@ -325,6 +336,37 @@ public class PostgreSQLService: Service {
     }
 }
 
+/// Contains the configuration values for a Redis service instance
+public class RedisService: Service {
+
+    public let host        : String
+    public let password    : String
+    public let port        : Int
+
+    public init?(withService service: Service) {
+
+        guard let credentials = service.credentials,
+            let uri       = credentials["uri"] as? String,
+            let url       = URL(string: uri),
+            let host      = url.host,
+            let password  = url.password,
+            let port      = url.port else {
+                return nil
+        }
+
+        self.host     = host
+        self.password = password
+        self.port     = port
+
+        super.init(name:        service.name,
+                   label:       service.label,
+                   plan:        service.plan,
+                   tags:        service.tags,
+                   credentials: service.credentials)
+    }
+}
+
+/// Contains the configuration values for a MySQL service instance
 public class MySQLService: Service {
 
     public let database         : String
@@ -356,41 +398,6 @@ public class MySQLService: Service {
                    plan:        service.plan,
                    tags:        service.tags,
                    credentials: service.credentials)
-    }
-
-}
-
-public class DB2Service: Service {
-
-    public let database     : String
-    public let host         : String
-    public let port         : Int
-    public let uid          : String
-    public let pwd          : String
-
-    public init?(withService service: Service) {
-
-        guard let credentials = service.credentials,
-            let database = credentials["db"] as? String,
-            let host = credentials["host"] as? String,
-            let port = credentials["port"] as? Int,
-            let uid = credentials["username"] as? String,
-            let pwd = credentials["password"] as? String else {
-            return nil
-        }
-
-        self.database = database
-        self.host = host
-        self.port = port
-        self.uid = uid
-        self.pwd = pwd
-
-        super.init(name:        service.name,
-                   label:       service.label,
-                   plan:        service.plan,
-                   tags:        service.tags,
-                   credentials: service.credentials)
-
     }
 
 }
