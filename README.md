@@ -4,26 +4,29 @@
 
 # CloudConfiguration
 
-The write once, run anywhere configuration library. Designed to be a platform agnostic way to automatically
-configuring connections to your hosting services.
+The write once, run anywhere configuration library. Designed to be a platform agnostic way to automatically configure connections to your hosting services.
 
 ## Platforms:
 
 - Bluemix CloudFoundry
-- Bluemix Kubernetes Cluster (future)
 
 ## Supported services:
 
+- Alert Notification
+- AppID
+- Auto Scaling
+- DB2
 - Cloudant
-- Redis
-- PostgreSQL
 - MongoDB
 - MySQL
+- Object Storage
+- PostgreSQL
+- Redis
 
-## Basic Usage:
+## Usage:
 
 ```swift
-let manager = ConfigurationManager()
+let manager = ConfigurationManager().load(.environmentVariables)
 
 let mongoDBService = try manager.getMongoDBService()
 
@@ -31,5 +34,4 @@ mongoDBService.username
 mongoDBService.password
 mongoDBService.hostname
 mongoDBService.port
-
 ```
