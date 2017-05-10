@@ -400,4 +400,30 @@ public class MySQLService: Service {
                    credentials: service.credentials)
     }
 
+    /// Contains the configuration values for a MySQL service instance
+    public class WatsonConversationService: Service {
+
+        public let username         : String
+        public let password         : String
+        public let url              : String
+
+        public init?(withService service: Service) {
+
+            guard let credentials = service.credentials,
+                let username   = credentials["username"] as? String,
+                let password   = credentials["password"] as? String,
+                let url = credentials["url"] as? String, {
+                    return nil
+            }
+
+            self.username = username
+            self.password = password
+            self.url = url
+
+            super.init(name:        service.name,
+                    label:       service.label,
+                    plan:        service.plan,
+                    tags:        service.tags,
+                    credentials: service.credentials)
+        }
 }
