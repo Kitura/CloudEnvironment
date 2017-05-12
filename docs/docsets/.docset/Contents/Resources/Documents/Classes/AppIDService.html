@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>LoggerMessageType Enum Reference</title>
+    <title>AppIDService Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,18 +10,18 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/LoggerMessageType" class="dashAnchor"></a>
-    <a title="LoggerMessageType Enum Reference"></a>
+    <a name="//apple_ref/swift/Class/AppIDService" class="dashAnchor"></a>
+    <a title="AppIDService Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p><a href="../index.html"> Docs</a> (25% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        LoggerMessageType Enum Reference
+        AppIDService Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -31,7 +31,34 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/Log.html">Log</a>
+                <a href="../Classes/AlertNotificationService.html">AlertNotificationService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppIDService.html">AppIDService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AutoScalingService.html">AutoScalingService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CloudantService.html">CloudantService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DB2Service.html">DB2Service</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MongoDBService.html">MongoDBService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MySQLService.html">MySQLService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObjectStorageService.html">ObjectStorageService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PostgreSQLService.html">PostgreSQLService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RedisService.html">RedisService</a>
               </li>
             </ul>
           </li>
@@ -39,15 +66,15 @@
             <a href="../Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums/LoggerMessageType.html">LoggerMessageType</a>
+                <a href="../Enums/ConfigurationManagerError.html">ConfigurationManagerError</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Protocols.html">Protocols</a>
+            <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/Logger.html">Logger</a>
+                <a href="../Extensions/ConfigurationManager.html">ConfigurationManager</a>
               </li>
             </ul>
           </li>
@@ -56,26 +83,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>LoggerMessageType</h1>
+            <h1>AppIDService</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">LoggerMessageType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDService</span><span class="p">:</span> <span class="kt">Service</span></code></pre>
 
                 </div>
               </div>
-            <p>Copyright IBM Corporation 2016</p>
-
-<p>Licensed under the Apache License, Version 2.0 (the <q>License</q>);
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at</p>
-
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-
-<p>Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an <q>AS IS</q> BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.</p>
+            <p>Contains the configuration values for an AppID service instance</p>
 
           </section>
           <section class="section task-group-section">
@@ -84,9 +99,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9LoggerAPI17LoggerMessageType5entryFMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/entry" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9LoggerAPI17LoggerMessageType5entryFMS0_S0_">entry</a>
+                    <a name="/s:vC18CloudFoundryConfig12AppIDService8clientIdSS"></a>
+                    <a name="//apple_ref/swift/Property/clientId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC18CloudFoundryConfig12AppIDService8clientIdSS">clientId</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -94,30 +109,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Log message type for logging entering into a function</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">entry</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDService</span><span class="p">:</span> <span class="kt">Service</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9LoggerAPI17LoggerMessageType4exitFMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/exit" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9LoggerAPI17LoggerMessageType4exitFMS0_S0_">exit</a>
+                    <a name="/s:vC18CloudFoundryConfig12AppIDService14oauthServerUrlSS"></a>
+                    <a name="//apple_ref/swift/Property/oauthServerUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC18CloudFoundryConfig12AppIDService14oauthServerUrlSS">oauthServerUrl</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -125,30 +136,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Log message type for logging exiting from a function</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">exit</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDService</span><span class="p">:</span> <span class="kt">Service</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9LoggerAPI17LoggerMessageType5debugFMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/debug" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9LoggerAPI17LoggerMessageType5debugFMS0_S0_">debug</a>
+                    <a name="/s:vC18CloudFoundryConfig12AppIDService11profilesUrlSS"></a>
+                    <a name="//apple_ref/swift/Property/profilesUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC18CloudFoundryConfig12AppIDService11profilesUrlSS">profilesUrl</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -156,30 +163,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Log message type for logging a debugging message</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">debug</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDService</span><span class="p">:</span> <span class="kt">Service</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9LoggerAPI17LoggerMessageType7verboseFMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/verbose" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9LoggerAPI17LoggerMessageType7verboseFMS0_S0_">verbose</a>
+                    <a name="/s:vC18CloudFoundryConfig12AppIDService6secretSS"></a>
+                    <a name="//apple_ref/swift/Property/secret" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC18CloudFoundryConfig12AppIDService6secretSS">secret</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -187,30 +190,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Log message type for logging messages in verbose mode</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">verbose</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDService</span><span class="p">:</span> <span class="kt">Service</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9LoggerAPI17LoggerMessageType4infoFMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/info" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9LoggerAPI17LoggerMessageType4infoFMS0_S0_">info</a>
+                    <a name="/s:vC18CloudFoundryConfig12AppIDService8tenantIdSS"></a>
+                    <a name="//apple_ref/swift/Property/tenantId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC18CloudFoundryConfig12AppIDService8tenantIdSS">tenantId</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,30 +217,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Log message type for logging an informational message</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">info</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDService</span><span class="p">:</span> <span class="kt">Service</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9LoggerAPI17LoggerMessageType7warningFMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/warning" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9LoggerAPI17LoggerMessageType7warningFMS0_S0_">warning</a>
+                    <a name="/s:vC18CloudFoundryConfig12AppIDService7versionSi"></a>
+                    <a name="//apple_ref/swift/Property/version" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC18CloudFoundryConfig12AppIDService7versionSi">version</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -249,30 +244,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Log message type for logging a warning message</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">warning</span> <span class="o">=</span> <span class="mi">6</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDService</span><span class="p">:</span> <span class="kt">Service</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO9LoggerAPI17LoggerMessageType5errorFMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/error" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO9LoggerAPI17LoggerMessageType5errorFMS0_S0_">error</a>
+                    <a name="/s:FC18CloudFoundryConfig12AppIDServicecFT11withServiceC15CloudFoundryEnv7Service_GSqS0__"></a>
+                    <a name="//apple_ref/swift/Method/init(withService:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC18CloudFoundryConfig12AppIDServicecFT11withServiceC15CloudFoundryEnv7Service_GSqS0__">init(withService:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -280,45 +271,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Log message type for logging an error message</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">error</span> <span class="o">=</span> <span class="mi">7</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vO9LoggerAPI17LoggerMessageType11descriptionSS"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vO9LoggerAPI17LoggerMessageType11descriptionSS">description</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Convert a <code>LoggerMessageType</code> into a pritable format</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDService</span><span class="p">:</span> <span class="kt">Service</span></code></pre>
 
                         </div>
                       </div>
