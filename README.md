@@ -22,6 +22,7 @@ The write once, run anywhere configuration library. Designed to be a platform ag
 - Object Storage
 - PostgreSQL
 - Redis
+- Watson Conversation
 
 ## Usage:
 
