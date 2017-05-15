@@ -21,6 +21,25 @@
         ]
       }
     ],
+    “WatsonConversation”: [
+      {
+        "credentials": {
+          "password": "<password>",
+          "url": "<url>",
+          "username": "<username>"
+        },
+        "label": "WatsonConversation",
+    	"name": "ConversationService",
+    	"plan": "free",
+    	"provider": null,
+    	"syslog_drain_url": null,
+    	"tags": [
+     	  "watson",
+     	  "ibm_created",
+     	  "ibm_dedicated_public"
+        ]
+      }
+    ],
     "Auto-Scaling": [
       {
         "credentials": {

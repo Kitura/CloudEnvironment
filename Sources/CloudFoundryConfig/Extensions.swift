@@ -148,7 +148,7 @@ extension ConfigurationManager {
 
     /// Get a Watson Conversation service configuration by service name
     /// - parameter name: The name of the Watson Conversation service
-    public func getWatsonConversationervice(name: String) throws -> WatsonConversationService {
+    public func getWatsonConversationService(name: String) throws -> WatsonConversationService {
 
         if let service = getService(spec: name),
             let watsonConversationService = WatsonConversationService(withService: service) {

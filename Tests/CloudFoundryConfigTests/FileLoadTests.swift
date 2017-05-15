@@ -103,6 +103,12 @@ class FileLoadTests: XCTestCase {
       XCTAssertEqual(appIDService.tenantId, "ee971e31-eb19-415b-af84-45172c24895c", "AppID Service tenantId should match.")
       XCTAssertEqual(appIDService.version, 3, "AppID Service version should match.")
 
+      let conversationService = try manager.getWatsonConversationService(name: "ConversationService")
+
+      XCTAssertGreaterThan(conversationService.username.characters.count, 0)
+      XCTAssertGreaterThan(conversationService.password.characters.count, 0)
+      XCTAssertGreaterThan(conversationService.url.characters.count, 0)
+
     } catch {
       XCTFail("Could not load configuration. Error: \(error)")
     }
