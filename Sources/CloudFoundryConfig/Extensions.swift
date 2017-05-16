@@ -80,7 +80,7 @@ extension ConfigurationManager {
 
         if let service = getService(spec: name),
             let cloudantService = CloudantService(withService: service) {
-                return cloudantService
+            return cloudantService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
@@ -140,7 +140,7 @@ extension ConfigurationManager {
 
         if let service = getService(spec: name),
             let redisService = RedisService(withService: service) {
-                return redisService
+            return redisService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
@@ -152,7 +152,7 @@ extension ConfigurationManager {
 
         if let service = getService(spec: name),
             let watsonConversationService = WatsonConversationService(withService: service) {
-                return watsonConversationService
+            return watsonConversationService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
