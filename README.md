@@ -22,6 +22,7 @@ A convenience Swift package for accessing Bluemix services.
 - [Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage)
 - [PostgreSQL](https://console.ng.bluemix.net/catalog/services/compose-for-postgresql/)
 - [Redis](https://console.ng.bluemix.net/catalog/services/redis-cloud)
+- [Watson Conversation](https://console.ng.bluemix.net/catalog/services/conversation)
 
 ## Swift version
 The latest version of CloudConfiguration works with the `3.1.1` version of the Swift binaries. You can download this version of the Swift binaries by following this [link](https://swift.org/download/#snapshots).
