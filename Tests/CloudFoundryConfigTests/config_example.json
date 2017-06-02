@@ -21,22 +21,43 @@
         ]
       }
     ],
-    "WatsonConversation": [
+    "imfpush": [
+      {
+        "credentials": {
+          "appGuid": "<appGuid>",
+          "url": "http://imfpush.ng.bluemix.net/imfpush/v1",
+          "admin_url": "//mobile.ng.bluemix.net/imfpushdashboard",
+          "appSecret": "<appSecret>",
+          "clientSecret": "<clientSecret>"
+        },
+        "label": "imfpush",
+        "name": "PushNotificationService",
+        "plan": "Lite",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "mobile",
+          "ibm_created",
+          "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "conversation": [
       {
         "credentials": {
           "password": "<password>",
           "url": "<url>",
           "username": "<username>"
         },
-        "label": "WatsonConversation",
-    	"name": "ConversationService",
-    	"plan": "free",
-    	"provider": null,
-    	"syslog_drain_url": null,
-    	"tags": [
-     	  "watson",
-     	  "ibm_created",
-     	  "ibm_dedicated_public"
+        "label": "conversation",
+    	  "name": "ConversationService",
+    	  "plan": "free",
+    	  "provider": null,
+    	  "syslog_drain_url": null,
+    	  "tags": [
+     	    "watson",
+     	    "ibm_created",
+     	    "ibm_dedicated_public"
         ]
       }
     ],

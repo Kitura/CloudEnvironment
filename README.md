@@ -21,6 +21,7 @@ A convenience Swift package for accessing Bluemix services.
 - [MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql/)
 - [Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage)
 - [PostgreSQL](https://console.ng.bluemix.net/catalog/services/compose-for-postgresql/)
+- [Push SDK](https://console.ng.bluemix.net/catalog/services/push-notifications)
 - [Redis](https://console.ng.bluemix.net/catalog/services/redis-cloud)
 - [Watson Conversation](https://console.ng.bluemix.net/catalog/services/conversation)
 
