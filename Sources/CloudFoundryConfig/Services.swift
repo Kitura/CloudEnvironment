@@ -336,6 +336,40 @@ public class PostgreSQLService: Service {
     }
 }
 
+/// Contains the configuration values for a Push SDK service instance
+public class PushSDKService: Service {
+
+    public let appGuid      : String
+    public let url          : String
+    public let admin_url    : String
+    public let appSecret    : String
+    public let clientSecret : String
+
+    public init?(withService service: Service) {
+
+        guard let credentials   = service.credentials,
+            let appGuid         = credentials["appGuid"] as? String,
+            let url             = credentials["url"] as? String,
+            let admin_url       = credentials["admin_url"] as? String,
+            let appSecret       = credentials["appSecret"] as? String,
+            let clientSecret    = credentials["clientSecret"] as? String else {
+                return nil
+        }
+
+        self.appGuid        = appGuid
+        self.url            = url
+        self.admin_url      = admin_url
+        self.appSecret      = appSecret
+        self.clientSecret   = clientSecret
+
+        super.init(name:        service.name,
+                   label:       service.label,
+                   plan:        service.plan,
+                   tags:        service.tags,
+                   credentials: service.credentials)
+    }
+}
+
 /// Contains the configuration values for a Redis service instance
 public class RedisService: Service {
 

@@ -112,6 +112,14 @@ class FileLoadTests: XCTestCase {
             XCTAssertGreaterThan(conversationService.password.characters.count, 0)
             XCTAssertGreaterThan(conversationService.url.characters.count, 0)
             
+            let pushSDKService = try manager.getPushSDKService(name: "PushNotificationService")
+
+            XCTAssertEqual(pushSDKService.appGuid, "<appGuid>", "PushSDK Service appGuid should match.")
+            XCTAssertEqual(pushSDKService.url, "http://imfpush.ng.bluemix.net/imfpush/v1", "PushSDK Service url should match.")
+            XCTAssertEqual(pushSDKService.admin_url, "//mobile.ng.bluemix.net/imfpushdashboard", "PushSDK Service admin_url should match.")
+            XCTAssertEqual(pushSDKService.appSecret, "<appSecret>", "PushSDK Service appSecret should match.")
+            XCTAssertEqual(pushSDKService.clientSecret, "<clientSecret>", "PushSDK Service clientSecret should match.")
+            
         } catch {
             XCTFail("Could not load configuration. Error: \(error)")
         }

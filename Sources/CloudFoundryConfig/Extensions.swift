@@ -18,7 +18,8 @@ import Configuration
 import CloudFoundryEnv
 
 /**
- Cloudant, MongoDB, Redis, PostgreSQL
+ Cloudant, MongoDB, Redis, PostgreSQL, AppID, Auto-Scaling, DB2, 
+ MySQL, Object Storage, Watson Conversation, Push SDK
  */
 
 public enum ConfigurationManagerError: Error {
@@ -129,6 +130,18 @@ extension ConfigurationManager {
         if let service = getService(spec: name),
             let postgreSQLService = PostgreSQLService(withService: service) {
             return postgreSQLService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+
+    /// Get a Push SDK service configuration by service name
+    /// - parameter name: The name of the Push SDK service
+    public func getPushSDKService(name: String) throws -> PushSDKService {
+
+        if let service = getService(spec: name),
+            let pushSDKService = PushSDKService(withService: service) {
+            return pushSDKService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
