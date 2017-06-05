@@ -140,11 +140,11 @@ public class CloudantService: Service {
             let host      = credentials["host"] as? String,
             let username  = credentials["username"] as? String,
             let password  = credentials["password"] as? String,
-            let secured: Bool   = credentials["secured"] as? Bool ?? true,
             let port      = credentials["port"] as? Int,
             let url       = credentials["url"] as? String else {
                 return nil
         }
+        let secured: Bool = credentials["secured"] as? Bool ?? true
 
         self.host     = host
         self.username = username
