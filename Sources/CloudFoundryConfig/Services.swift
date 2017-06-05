@@ -131,6 +131,7 @@ public class CloudantService: Service {
     public let username    : String
     public let password    : String
     public let port        : Int
+    public let secured     : Bool
     public let url         : String
 
     public init?(withService service: Service) {
@@ -143,10 +144,12 @@ public class CloudantService: Service {
             let url       = credentials["url"] as? String else {
                 return nil
         }
+        let secured: Bool = credentials["secured"] as? Bool ?? true
 
         self.host     = host
         self.username = username
         self.password = password
+        self.secured  = secured
         self.port     = port
         self.url      = url
 
