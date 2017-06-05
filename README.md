@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/IBM-Swift/CloudConfiguration.svg?branch=develop)](https://travis-ci.org/IBM-Swift/CloudConfiguration)
+[![Build Status](https://travis-ci.org/IBM-Swift/CloudConfiguration.svg?branch=master)](https://travis-ci.org/IBM-Swift/CloudConfiguration)
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
 ![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
 
