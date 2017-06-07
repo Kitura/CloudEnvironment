@@ -122,9 +122,9 @@ class FileLoadTests: XCTestCase {
             
             let nluService = try manager.getNaturalLanguageUnderstandingService(name: "NLUService")
             
-            XCTAssertGreaterThan(nluService.username.characters.count, 0)
-            XCTAssertGreaterThan(nluService.password.characters.count, 0)
-            XCTAssertGreaterThan(nluService.url.characters.count, 0)
+            XCTAssertEqual(nluService.username, "natural-language-username")
+            XCTAssertEqual(nluService.password, "<nlu-password>")
+            XCTAssertEqual(nluService.url, "https://gateway.watsonplatform.net/natural-language-understanding/api")
             
         } catch {
             XCTFail("Could not load configuration. Error: \(error)")

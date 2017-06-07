@@ -64,9 +64,9 @@
     "natural-language-understanding": [
       {
         "credentials": {
-          "password": "<password>",
-          "url": "<url>",
-          "username": "<username>"
+          "password": "<nlu-password>",
+          "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
+          "username": "natural-language-username"
         },
         "label": "natural-language-understanding",
     	  "name": "NLUService",
