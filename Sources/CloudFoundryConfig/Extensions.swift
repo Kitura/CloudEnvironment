@@ -19,7 +19,8 @@ import CloudFoundryEnv
 
 /**
  Cloudant, MongoDB, Redis, PostgreSQL, AppID, Auto-Scaling, DB2, 
- MySQL, Object Storage, Watson Conversation, Push SDK
+ MySQL, Object Storage, Watson Conversation, Push SDK,
+ Natural Language Understanding
  */
 
 public enum ConfigurationManagerError: Error {
