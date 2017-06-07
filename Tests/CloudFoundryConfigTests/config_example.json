@@ -68,7 +68,7 @@
           "url": "<url>",
           "username": "<username>"
         },
-        "label": "conversation",
+        "label": "natural-language-understanding",
     	  "name": "NLUService",
     	  "plan": "free",
     	  "provider": null,
