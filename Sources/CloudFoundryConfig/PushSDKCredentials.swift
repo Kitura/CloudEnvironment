@@ -39,7 +39,6 @@ public class PushSDKCredentials {
             self.admin_url      = admin_url
             self.appSecret      = appSecret
             self.clientSecret   = clientSecret
-            self.url            = url
         }
     }
 

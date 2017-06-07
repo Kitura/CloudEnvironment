@@ -133,7 +133,7 @@
           "swaggerui": "https://ibmnotifybm.mybluemix.net/docs/alerts/v1"
         },
         "label": "alertnotification",
-        "name": "IBM Alert Notification-xs",
+        "name": "IBMAlertNotification-xs",
         "plan": "authorizedusers",
         "tags": [
           "devops",
@@ -199,7 +199,7 @@
         "label": "compose-for-postgresql",
         "provider": null,
         "plan": "Standard",
-        "name": "TodoList-PostgreSQL",
+        "name": "PostgreSQLService",
         "tags": [
           "big_data",
           "data_management",
@@ -264,6 +264,32 @@
           "big_data",
           "ibm_created",
           "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "Object-Storage": [
+      {
+        "credentials": {
+          "auth_url": "https://identity.open.softlayer.com",
+          "project": "object_storage",
+          "projectId": "79f5d7e9c6a64e2d1239f866d6b2d13a",
+          "region": "dallas",
+          "userId": "123",
+          "username": "admin_123",
+          "password": "<password>",
+          "domainId": "<domainID>",
+          "domainName": "1070801",
+          "role": "admin"
+        },
+        "label": "Object-Storage",
+        "name": "ObjectStorageService",
+        "plan": "Free",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "storage",
+          "ibm_release",
+          "ibm_created"
         ]
       }
     ]

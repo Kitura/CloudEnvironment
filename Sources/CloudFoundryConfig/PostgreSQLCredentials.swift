@@ -50,7 +50,7 @@ extension ConfigurationManager {
             let host        = url.host,
             let port        = url.port,
             let username    = url.user,
-            let password    = url.password {
+            let password    = url.password else {
 
                 return nil
         }
