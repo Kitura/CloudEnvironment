@@ -19,7 +19,8 @@ import CloudFoundryEnv
 
 /**
  Cloudant, MongoDB, Redis, PostgreSQL, AppID, Auto-Scaling, DB2, 
- MySQL, Object Storage, Watson Conversation, Push SDK
+ MySQL, Object Storage, Watson Conversation, Push SDK,
+ Natural Language Understanding
  */
 
 public enum ConfigurationManagerError: Error {
@@ -166,6 +167,18 @@ extension ConfigurationManager {
         if let service = getService(spec: name),
             let watsonConversationService = WatsonConversationService(withService: service) {
             return watsonConversationService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+    
+    /// Get a Natural Language Understanding service configuration by service name
+    /// - parameter name: The name of the Natural Language Understanding service
+    public func getNaturalLanguageUnderstandingService(name: String) throws -> NaturalLanguageUnderstandingService {
+        
+        if let service = getService(spec: name),
+            let nluService = NaturalLanguageUnderstandingService(withService: service) {
+                return nluService
         } else {
             throw ConfigurationManagerError.noServiceWithName(name)
         }

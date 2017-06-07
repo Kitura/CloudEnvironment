@@ -120,6 +120,12 @@ class FileLoadTests: XCTestCase {
             XCTAssertEqual(pushSDKService.appSecret, "<appSecret>", "PushSDK Service appSecret should match.")
             XCTAssertEqual(pushSDKService.clientSecret, "<clientSecret>", "PushSDK Service clientSecret should match.")
             
+            let nluService = try manager.getNaturalLanguageUnderstandingService(name: "NLUService")
+            
+            XCTAssertEqual(nluService.username, "natural-language-username")
+            XCTAssertEqual(nluService.password, "<nlu-password>")
+            XCTAssertEqual(nluService.url, "https://gateway.watsonplatform.net/natural-language-understanding/api")
+            
         } catch {
             XCTFail("Could not load configuration. Error: \(error)")
         }
