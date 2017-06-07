@@ -61,6 +61,25 @@
         ]
       }
     ],
+    "natural-language-understanding": [
+      {
+        "credentials": {
+          "password": "<password>",
+          "url": "<url>",
+          "username": "<username>"
+        },
+        "label": "conversation",
+    	  "name": "NLUService",
+    	  "plan": "free",
+    	  "provider": null,
+    	  "syslog_drain_url": null,
+    	  "tags": [
+     	    "watson",
+     	    "ibm_created",
+     	    "ibm_dedicated_public"
+        ]
+      }
+    ],
     "Auto-Scaling": [
       {
         "credentials": {

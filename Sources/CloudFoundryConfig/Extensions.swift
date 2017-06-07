@@ -170,4 +170,16 @@ extension ConfigurationManager {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
     }
+    
+    /// Get a Natural Language Understanding service configuration by service name
+    /// - parameter name: The name of the Natural Language Understanding service
+    public func getNaturalLanguageUnderstandingService(name: String) throws -> NaturalLanguageUnderstandingService {
+        
+        if let service = getService(spec: name),
+            let nluService = NaturalLanguageUnderstandingService(withService: service) {
+                return nluService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
 }

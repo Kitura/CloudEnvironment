@@ -120,6 +120,12 @@ class FileLoadTests: XCTestCase {
             XCTAssertEqual(pushSDKService.appSecret, "<appSecret>", "PushSDK Service appSecret should match.")
             XCTAssertEqual(pushSDKService.clientSecret, "<clientSecret>", "PushSDK Service clientSecret should match.")
             
+            let nluService = try manager.getNaturalLanguageUnderstandingService(name: "NLUService")
+            
+            XCTAssertGreaterThan(nluService.username.characters.count, 0)
+            XCTAssertGreaterThan(nluService.password.characters.count, 0)
+            XCTAssertGreaterThan(nluService.url.characters.count, 0)
+            
         } catch {
             XCTFail("Could not load configuration. Error: \(error)")
         }
