@@ -43,7 +43,7 @@ To leverage the CloudConfiguration package in your Swift application, you should
      ...
 
      dependencies: [
-         .Package(url: "https://github.com/IBM-Swift/CloudConfiguration.git", majorVersion: 2),
+         .Package(url: "https://github.com/IBM-Swift/CloudConfiguration.git", majorVersion: 3),
 
          ...
 
@@ -63,14 +63,14 @@ let cloudConfigFile: String = ...
 
 let manager = ConfigurationManager().load(file: cloudConfigFile).load(.environmentVariables)
 
-let cloudantService = try configManager.getCloudantService(name: "Starter-Cloudant")
+let credentials =  manager.getCloudantCredentials(name: "Starter-Cloudant")
 
 // Use credentials for Cloudant to connect to service
 
 ...
 
-cloudantService.username
-cloudantService.password
+credentials.username
+credentials.password
 
 ...
 
