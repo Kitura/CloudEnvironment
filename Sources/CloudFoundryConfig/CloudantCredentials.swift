@@ -18,36 +18,37 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for a Cloudant service instance
+/// Contains the credentials for a Cloudant service instance
 public class CloudantCredentials {
 
-        public let host        : String
-        public let username    : String
-        public let password    : String
-        public let port        : Int
-        public let secured     : Bool
-        public let url         : String
+    public let host        : String
+    public let username    : String
+    public let password    : String
+    public let port        : Int
+    public let secured     : Bool
+    public let url         : String
 
-        public init (
-            host:       String, 
-            username:   String, 
-            password:   String, 
-            port:       Int, 
-            secured:    Bool, 
-            url:        String ) {
+    public init (
+        host:       String,
+        username:   String,
+        password:   String,
+        port:       Int,
+        secured:    Bool,
+        url:        String ) {
 
-                self.host       = host
-                self.username   = username
-                self.password   = password
-                self.port       = port
-                self.secured    = secured
-                self.url        = url
-        }
+        self.host       = host
+        self.username   = username
+        self.password   = password
+        self.port       = port
+        self.secured    = secured
+        self.url        = url
+
     }
+}
 
 extension ConfigurationManager {
-    
-    public func getCloudantCredentials(name: String) -> CloudantCredentials? { 
+
+    public func getCloudantCredentials(name: String) -> CloudantCredentials? {
 
         guard let credentials = getServiceCreds(spec: name),
             let host      = credentials["host"] as? String,
@@ -58,17 +59,17 @@ extension ConfigurationManager {
 
                 return nil
         }
-        
+
         let secured: Bool = credentials["secured"] as? Bool ?? true
 
         return CloudantCredentials (
-            host: host, 
-            username: username, 
+            host: host,
+            username: username,
             password: password,
-            port: port, 
-            secured: secured, 
+            port: port,
+            secured: secured,
             url: url )
-
+        
     }
-
+    
 }

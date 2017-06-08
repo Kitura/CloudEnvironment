@@ -18,8 +18,7 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-//TODO fill in details
-/// Contains the configuration values for a MongoDB service instance
+/// Contains the credentials for a MongoDB service instance
 public class MongoDBCredentials {
 
     public let host        : String
@@ -29,10 +28,10 @@ public class MongoDBCredentials {
     public let certificate : String
 
     public init (
-        host:           String, 
-        username:       String, 
-        password:       String, 
-        port:           Int, 
+        host:           String,
+        username:       String,
+        password:       String,
+        port:           Int,
         certificate:    String ) {
 
         self.host           = host
@@ -40,12 +39,13 @@ public class MongoDBCredentials {
         self.password       = password
         self.port           = port
         self.certificate    = certificate
+        
     }
 }
 
 extension ConfigurationManager {
-    
-    public func getMongoDBCredentials (name: String) -> MongoDBCredentials? { 
+
+    public func getMongoDBCredentials (name: String) -> MongoDBCredentials? {
 
         guard let credentials = getServiceCreds (spec: name) else {
             return nil
@@ -73,15 +73,15 @@ extension ConfigurationManager {
             let password    = url.password,
             let port        = url.port,
             let certificate = credentials["ca_certificate_base64"] as? String else {
-                
+
                 return nil
         }
-        
+
         return MongoDBCredentials (
-            host:           host, 
-            username:       username, 
+            host:           host,
+            username:       username,
             password:       password,
-            port:           port, 
+            port:           port,
             certificate:    certificate )
     }
 }

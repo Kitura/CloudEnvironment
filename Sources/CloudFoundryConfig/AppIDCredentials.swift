@@ -18,7 +18,7 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for a AppID service instance
+/// Contains the credentials for an AppID service instance
 public class AppIDCredentials {
 
     public let clientId:       String
@@ -29,25 +29,26 @@ public class AppIDCredentials {
     public let version:        Int
 
     public init (
-        clientId:       String, 
-        oauthServerUrl: String, 
-        profilesUrl:    String, 
-        secret:         String, 
-        tenantId:       String, 
+        clientId:       String,
+        oauthServerUrl: String,
+        profilesUrl:    String,
+        secret:         String,
+        tenantId:       String,
         version:        Int ) {
 
-            self.clientId       = clientId
-            self.oauthServerUrl = oauthServerUrl
-            self.profilesUrl    = profilesUrl
-            self.secret         = secret
-            self.tenantId       = tenantId
-            self.version        = version
+        self.clientId       = clientId
+        self.oauthServerUrl = oauthServerUrl
+        self.profilesUrl    = profilesUrl
+        self.secret         = secret
+        self.tenantId       = tenantId
+        self.version        = version
+        
     }
-    }
+}
 
 extension ConfigurationManager {
-    
-    public func getAppIDCredentials (name: String) -> AppIDCredentials? { 
+
+    public func getAppIDCredentials (name: String) -> AppIDCredentials? {
 
         guard let credentials   = getServiceCreds(spec: name),
             let clientId        = credentials["clientId"] as? String,
@@ -59,15 +60,15 @@ extension ConfigurationManager {
 
                 return nil
         }
-        
+
         return AppIDCredentials (
-            clientId:       clientId, 
-            oauthServerUrl: oauthServerUrl, 
+            clientId:       clientId,
+            oauthServerUrl: oauthServerUrl,
             profilesUrl:    profilesUrl,
-            secret:         secret, 
-            tenantId:       tenantId, 
+            secret:         secret,
+            tenantId:       tenantId,
             version:        version )
-
+        
     }
-
+    
 }

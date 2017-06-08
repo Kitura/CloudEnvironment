@@ -23,11 +23,11 @@ class PushSDKTests: XCTestCase {
 
     static var allTests : [(String, (PushSDKTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -40,12 +40,12 @@ class PushSDKTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(credentials.appGuid, "<appGuid>", "PushSDK Service appGuid should match.")
-        XCTAssertEqual(credentials.url, "http://imfpush.ng.bluemix.net/imfpush/v1", "PushSDK Service url should match.")
-        XCTAssertEqual(credentials.admin_url, "//mobile.ng.bluemix.net/imfpushdashboard", "PushSDK Service admin_url should match.")
-        XCTAssertEqual(credentials.appSecret, "<appSecret>", "PushSDK Service appSecret should match.")
-        XCTAssertEqual(credentials.clientSecret, "<clientSecret>", "PushSDK Service clientSecret should match.")
-
+        XCTAssertEqual(credentials.appGuid, "<appGuid>", "PushSDK service appGuid should match.")
+        XCTAssertEqual(credentials.url, "http://imfpush.ng.bluemix.net/imfpush/v1", "PushSDK service url should match.")
+        XCTAssertEqual(credentials.admin_url, "//mobile.ng.bluemix.net/imfpushdashboard", "PushSDK service admin_url should match.")
+        XCTAssertEqual(credentials.appSecret, "<appSecret>", "PushSDK service appSecret should match.")
+        XCTAssertEqual(credentials.clientSecret, "<clientSecret>", "PushSDK service clientSecret should match.")
+        
     }
-
+    
 }

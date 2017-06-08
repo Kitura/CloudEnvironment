@@ -23,11 +23,11 @@ class DB2Tests: XCTestCase {
 
     static var allTests : [(String, (DB2Tests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -35,17 +35,17 @@ class DB2Tests: XCTestCase {
         let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
         manager.load(url: filePath)
 
-        guard let credentials =  manager.getDB2Credentials(name: "TodoList-DB2-Analytics") else {
+        guard let credentials =  manager.getDB2Credentials(name: "DB2Service") else {
             XCTFail("Could not load DB2 service credentials.")
             return
         }
 
-        XCTAssertGreaterThan(credentials.database.characters.count, 0)
-        XCTAssertGreaterThan(credentials.host.characters.count, 0)
-        XCTAssertNotEqual(credentials.port, 0)
-        XCTAssertGreaterThan(credentials.uid.characters.count, 0)
-        XCTAssertGreaterThan(credentials.pwd.characters.count, 0)
-
+        XCTAssertEqual(credentials.database, "BLUDB", "DB2 service database should match.")
+        XCTAssertEqual(credentials.host, "dashdb-entry-yp-dal09-07.services.dal.bluemix.net", "DB2 service host should match.")
+        XCTAssertEqual(credentials.port, 50000, "DB2 service port should match.")
+        XCTAssertEqual(credentials.uid, "uid", "DB2 service uid should match.")
+        XCTAssertEqual(credentials.pwd, "pwd", "DB2 service pwd should match.")
+        
     }
-
+    
 }

@@ -18,7 +18,7 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for a PushSDK service instance
+/// Contains the credentials for a PushSDK service instance
 public class PushSDKCredentials {
 
     public let appGuid      : String
@@ -27,24 +27,25 @@ public class PushSDKCredentials {
     public let appSecret    : String
     public let clientSecret : String
 
-        public init (
-            appGuid:        String, 
-            url:            String, 
-            admin_url:      String, 
-            appSecret:      String, 
-            clientSecret:   String ){
+    public init (
+        appGuid:        String,
+        url:            String,
+        admin_url:      String,
+        appSecret:      String,
+        clientSecret:   String ){
 
-            self.appGuid        = appGuid
-            self.url            = url
-            self.admin_url      = admin_url
-            self.appSecret      = appSecret
-            self.clientSecret   = clientSecret
-        }
+        self.appGuid        = appGuid
+        self.url            = url
+        self.admin_url      = admin_url
+        self.appSecret      = appSecret
+        self.clientSecret   = clientSecret
+
     }
+}
 
 extension ConfigurationManager {
-    
-    public func getPushSDKCredentials (name: String) -> PushSDKCredentials? { 
+
+    public func getPushSDKCredentials (name: String) -> PushSDKCredentials? {
 
         guard let credentials = getServiceCreds (spec: name),
             let appGuid         = credentials["appGuid"] as? String,
@@ -55,12 +56,12 @@ extension ConfigurationManager {
 
                 return nil
         }
-        
+
         return PushSDKCredentials (
-            appGuid:        appGuid, 
-            url:            url, 
+            appGuid:        appGuid,
+            url:            url,
             admin_url:      admin_url,
-            appSecret:      appSecret, 
+            appSecret:      appSecret,
             clientSecret:   clientSecret )
 
     }

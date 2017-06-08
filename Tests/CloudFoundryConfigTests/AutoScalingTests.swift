@@ -23,11 +23,11 @@ class AutoScalingTests: XCTestCase {
 
     static var allTests : [(String, (AutoScalingTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -35,7 +35,7 @@ class AutoScalingTests: XCTestCase {
         let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
         manager.load(url: filePath)
 
-        guard let credentials =  manager.getAutoScalingCredentials(name: "IBM Auto Scaling-xs") else {
+        guard let credentials =  manager.getAutoScalingCredentials(name: "AutoScalingService") else {
             XCTFail("Could not load AutoScaling credentials.")
             return
         }
@@ -46,8 +46,8 @@ class AutoScalingTests: XCTestCase {
         XCTAssertEqual(credentials.appID, "auto-scaling-appID", "Auto-Scaling Service appID should match.")
         XCTAssertEqual(credentials.serviceID, "auto-scaling-serviceID", "Auto-Scaling Service serviceID should match.")
         XCTAssertEqual(credentials.apiURL, "https://auto-scaling.api.ibm.com", "Auto-Scaling Service apiURL should match.")
-
-
+        
+        
     }
     
 }

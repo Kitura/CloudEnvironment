@@ -23,11 +23,11 @@ class CloudantTests: XCTestCase {
 
     static var allTests : [(String, (CloudantTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -40,11 +40,12 @@ class CloudantTests: XCTestCase {
             return
         }
 
-        XCTAssertGreaterThan(credentials.host.characters.count, 0)
-        XCTAssertGreaterThan(credentials.username.characters.count, 0)
-        XCTAssertGreaterThan(credentials.password.characters.count, 0)
-        XCTAssertNotEqual(credentials.port, 0)
-        XCTAssertGreaterThan(credentials.url.characters.count, 0)
-    }
+        XCTAssertEqual(credentials.host, "<host>", "Cloudant service host should match.")
+        XCTAssertEqual(credentials.username, "<username>", "Cloudant service username should match.")
+        XCTAssertEqual(credentials.password, "<password>", "Cloudant service password should match.")
+        XCTAssertEqual(credentials.port, 443, "Cloudant service port should match.")
+        XCTAssertEqual(credentials.url, "<url>", "Cloudant service URL should match.")
 
+    }
+    
 }

@@ -18,31 +18,31 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for a PostgreSQL service instance
+/// Contains the credentials for a PostgreSQL service instance
 public class PostgreSQLCredentials {
 
-        public let host        : String
-        public let port        : Int
-        public let username    : String
-        public let password    : String
-        
-        public init (
-            host:       String, 
-            port:       Int,
-            username:   String, 
-            password:   String ){
+    public let host        : String
+    public let port        : Int
+    public let username    : String
+    public let password    : String
 
-                self.host       = host
-                self.port       = port
-                self.username   = username
-                self.password   = password
+    public init (
+        host:       String,
+        port:       Int,
+        username:   String,
+        password:   String ){
 
-        }
+        self.host       = host
+        self.port       = port
+        self.username   = username
+        self.password   = password
+
     }
+}
 
 extension ConfigurationManager {
-    
-    public func getPostgreSQLCredentials (name: String) -> PostgreSQLCredentials? { 
+
+    public func getPostgreSQLCredentials (name: String) -> PostgreSQLCredentials? {
 
         guard let credentials = getServiceCreds (spec: name),
             let uri         = credentials["uri"] as? String,
@@ -54,11 +54,11 @@ extension ConfigurationManager {
 
                 return nil
         }
-        
+
         return PostgreSQLCredentials (
-            host: host, 
-            port: port, 
-            username: username, 
+            host: host,
+            port: port,
+            username: username,
             password: password )
 
     }

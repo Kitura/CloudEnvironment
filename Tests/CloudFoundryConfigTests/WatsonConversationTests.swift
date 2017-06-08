@@ -23,11 +23,11 @@ class WatsonConversationTests: XCTestCase {
 
     static var allTests : [(String, (WatsonConversationTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -40,10 +40,10 @@ class WatsonConversationTests: XCTestCase {
             return
         }
 
-        XCTAssertGreaterThan(credentials.username.characters.count, 0)
-        XCTAssertGreaterThan(credentials.password.characters.count, 0)
-        XCTAssertGreaterThan(credentials.url.characters.count, 0)
-
+        XCTAssertEqual(credentials.username, "<username>", "Watson Conversation service username should match.")
+        XCTAssertEqual(credentials.password, "<password>", "Watson Conversation service password should match.")
+        XCTAssertEqual(credentials.url, "<url>", "Watson Conversation service url should match.")
+        
     }
-
+    
 }

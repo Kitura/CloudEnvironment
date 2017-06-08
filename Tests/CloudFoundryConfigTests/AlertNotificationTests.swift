@@ -23,11 +23,11 @@ class AlertNotificationTests: XCTestCase {
 
     static var allTests : [(String, (AlertNotificationTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 

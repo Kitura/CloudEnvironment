@@ -18,7 +18,7 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for a Redis service instance
+/// Contains the credentials for a Redis service instance
 public class RedisCredentials {
 
     public let host        : String
@@ -26,20 +26,20 @@ public class RedisCredentials {
     public let port        : Int
 
     public init (
-        host:       String, 
-        password:   String, 
+        host:       String,
+        password:   String,
         port:       Int ) {
 
-            self.host       = host
-            self.password   = password
-            self.port       = port
-            
+        self.host       = host
+        self.password   = password
+        self.port       = port
+
     }
 }
 
 extension ConfigurationManager {
-    
-    public func getRedisCredentials (name: String) -> RedisCredentials? { 
+
+    public func getRedisCredentials (name: String) -> RedisCredentials? {
 
         guard let credentials = getServiceCreds (spec: name),
             let uri         = credentials["uri"] as? String,
@@ -50,12 +50,12 @@ extension ConfigurationManager {
 
                 return nil
         }
-        
+
         return RedisCredentials (
-            host:       host, 
+            host:       host,
             password:   password,
             port:       port)
-
+        
     }
-
+    
 }

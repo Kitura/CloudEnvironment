@@ -18,7 +18,7 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for a Auto Scaling service instance
+/// Contains the credentials for an Auto Scaling service instance
 public class AutoScalingCredentials {
 
     public let username:    String
@@ -29,25 +29,26 @@ public class AutoScalingCredentials {
     public let apiURL:      String
 
     public init (
-        username:   String, 
-        password:   String, 
-        appID:      String, 
-        url:        String, 
-        serviceID:  String, 
+        username:   String,
+        password:   String,
+        appID:      String,
+        url:        String,
+        serviceID:  String,
         apiURL:     String ) {
 
-            self.username   = username
-            self.password   = password
-            self.appID      = appID
-            self.url        = url
-            self.serviceID  = serviceID
-            self.apiURL     = apiURL
+        self.username   = username
+        self.password   = password
+        self.appID      = appID
+        self.url        = url
+        self.serviceID  = serviceID
+        self.apiURL     = apiURL
+
     }
-    }
+}
 
 extension ConfigurationManager {
-    
-    public func getAutoScalingCredentials (name: String) -> AutoScalingCredentials? { 
+
+    public func getAutoScalingCredentials (name: String) -> AutoScalingCredentials? {
 
         guard let credentials   = getServiceCreds (spec: name),
             let username        = credentials["agentUsername"] as? String,
@@ -59,15 +60,15 @@ extension ConfigurationManager {
 
                 return nil
         }
-        
+
         return AutoScalingCredentials (
-            username:   username, 
-            password:   password, 
+            username:   username,
+            password:   password,
             appID:      appID,
-            url:        url, 
-            serviceID:  serviceID, 
+            url:        url,
+            serviceID:  serviceID,
             apiURL:     apiURL )
-
+        
     }
-
+    
 }

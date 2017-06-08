@@ -23,11 +23,11 @@ class MongoDBTests: XCTestCase {
 
     static var allTests : [(String, (MongoDBTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -35,17 +35,16 @@ class MongoDBTests: XCTestCase {
         let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
         manager.load(url: filePath)
 
-        guard let credentials =  manager.getMongoDBCredentials(name: "TodoList-MongoDB") else {
+        guard let credentials =  manager.getMongoDBCredentials(name: "MongoDBService") else {
             XCTFail("Could not load MongoDB credentials.")
             return
         }
 
-        XCTAssertGreaterThan(credentials.host.characters.count, 0)
-        XCTAssertGreaterThan(credentials.username.characters.count, 0)
-        XCTAssertGreaterThan(credentials.password.characters.count, 0)
-        XCTAssertNotEqual(credentials.port, 0)
-        XCTAssertGreaterThan(credentials.certificate.characters.count, 0)
-
+        XCTAssertEqual(credentials.host, "bluemix-sandbox-dal-9-portal.4.dblayer.com", "MongoDB service host should match.")
+        XCTAssertEqual(credentials.username, "username", "MongoDB service username should match.")
+        XCTAssertEqual(credentials.password, "password", "MongoDB service password should match.")
+        XCTAssertEqual(credentials.port, 19889, "MongoDB service port should match.")
+        XCTAssertEqual(credentials.certificate, "certificateString", "MongoDB service certificate should match.")
 
     }
     

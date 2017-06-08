@@ -18,7 +18,7 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for a DB2 service instance
+/// Contains the credentials for a DB2 service instance
 public class DB2Credentials {
 
     public let database : String
@@ -28,10 +28,10 @@ public class DB2Credentials {
     public let pwd      : String
 
     public init (
-        database:   String, 
-        host:       String, 
-        port:       Int, 
-        uid:        String, 
+        database:   String,
+        host:       String,
+        port:       Int,
+        uid:        String,
         pwd:        String ) {
 
         self.database   = database
@@ -39,12 +39,13 @@ public class DB2Credentials {
         self.port       = port
         self.uid        = uid
         self.pwd        = pwd
+
     }
 }
 
 extension ConfigurationManager {
-    
-    public func getDB2Credentials (name: String) -> DB2Credentials? { 
+
+    public func getDB2Credentials (name: String) -> DB2Credentials? {
 
         guard let credentials = getServiceCreds (spec: name),
             let database    = credentials["db"] as? String,
@@ -55,14 +56,14 @@ extension ConfigurationManager {
 
                 return nil
         }
-        
+
         return DB2Credentials (
-            database:   database, 
-            host:       host, 
+            database:   database,
+            host:       host,
             port:       port,
-            uid:        uid, 
+            uid:        uid,
             pwd:        pwd )
-
+        
     }
-
+    
 }

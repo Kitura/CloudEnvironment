@@ -33,6 +33,7 @@ public class WatsonConversationCredentials {
             self.username   = username
             self.password   = password
             self.url        = url
+
     }
 }
 
@@ -47,7 +48,6 @@ extension ConfigurationManager {
 
                 return nil
         }
-        
         
         return WatsonConversationCredentials (
             username:   username, 

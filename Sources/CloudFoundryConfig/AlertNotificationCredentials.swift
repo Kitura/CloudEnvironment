@@ -18,7 +18,7 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for a Alert Notification service instance
+/// Contains the credentials for an Alert Notification service instance
 public class AlertNotificationCredentials {
 
     public let url:         String
@@ -26,35 +26,36 @@ public class AlertNotificationCredentials {
     public let password:    String
     public let swaggerUI:   String
 
-        public init (
-            url:        String, 
-            id:         String, 
-            password:   String, 
-            swaggerUI:  String) {
+    public init (
+        url:        String,
+        id:         String,
+        password:   String,
+        swaggerUI:  String ) {
 
-                self.url        = url
-                self.id         = id
-                self.password   = password
-                self.swaggerUI  = swaggerUI
-        }
+        self.url        = url
+        self.id         = id
+        self.password   = password
+        self.swaggerUI  = swaggerUI
+        
     }
+}
 
 extension ConfigurationManager {
-    
-    public func getAlertNotificationCredentials (name: String) -> AlertNotificationCredentials? { 
+
+    public func getAlertNotificationCredentials (name: String) -> AlertNotificationCredentials? {
 
         guard let credentials = getServiceCreds(spec: name),
             let url         = credentials["url"] as? String,
             let id          = credentials["name"] as? String,
             let password    = credentials["password"] as? String,
-            let swaggerUI   = credentials["swaggerUI"] as? String else {
+            let swaggerUI   = credentials["swaggerui"] as? String else {
 
                 return nil
         }
-        
+
         return AlertNotificationCredentials (
-            url:        url, 
-            id:         id, 
+            url:        url,
+            id:         id,
             password:   password,
             swaggerUI:  swaggerUI )
 

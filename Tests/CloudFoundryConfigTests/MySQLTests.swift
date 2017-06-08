@@ -23,11 +23,11 @@ class MySQLTests: XCTestCase {
 
     static var allTests : [(String, (MySQLTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -35,17 +35,17 @@ class MySQLTests: XCTestCase {
         let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
         manager.load(url: filePath)
 
-        guard let credentials =  manager.getMySQLCredentials(name: "TodoList-MySQL") else {
+        guard let credentials =  manager.getMySQLCredentials(name: "MySQLService") else {
             XCTFail("Could not load MySQL credentials.")
             return
         }
 
-        XCTAssertGreaterThan(credentials.database.characters.count, 0)
-        XCTAssertGreaterThan(credentials.host.characters.count, 0)
-        XCTAssertGreaterThan(credentials.username.characters.count, 0)
-        XCTAssertGreaterThan(credentials.password.characters.count, 0)
-        XCTAssertNotEqual(credentials.port, 0)
+        XCTAssertEqual(credentials.database, "ad_59567cc9d4432b9", "MySQL service database should match.")
+        XCTAssertEqual(credentials.host, "us-cdbr-iron-east-04.cleardb.net", "MySQL service host should match.")
+        XCTAssertEqual(credentials.username, "username", "MySQL service username should match.")
+        XCTAssertEqual(credentials.password, "password", "MySQL service password should match.")
+        XCTAssertEqual(credentials.port, 3306, "MySQL service port should match.")
 
     }
-
+    
 }

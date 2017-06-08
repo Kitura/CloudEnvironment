@@ -18,7 +18,7 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for a Object Storage service instance
+/// Contains the credentials for an Object Storage service instance
 public class ObjectStorageCredentials {
 
     public let authURL:     String
@@ -30,17 +30,19 @@ public class ObjectStorageCredentials {
     public let password:    String
     public let domainID:    String
     public let domainName:  String
+    public let role:        String
 
     public init (
-        authURL:    String, 
-        project:    String, 
-        projectID:  String, 
-        region:     String, 
-        userID:     String, 
+        authURL:    String,
+        project:    String,
+        projectID:  String,
+        region:     String,
+        userID:     String,
         username:   String,
-        password:   String, 
-        domainID:   String, 
-        domainName: String ){
+        password:   String,
+        domainID:   String,
+        domainName: String,
+        role:       String ){
 
         self.authURL    = authURL
         self.project    = project
@@ -51,12 +53,14 @@ public class ObjectStorageCredentials {
         self.password   = password
         self.domainID   = domainID
         self.domainName = domainName
+        self.role       = role
+
     }
 }
 
 extension ConfigurationManager {
-    
-    public func getObjectStorageCredentials (name: String) -> ObjectStorageCredentials? { 
+
+    public func getObjectStorageCredentials (name: String) -> ObjectStorageCredentials? {
 
         guard let credentials = getServiceCreds(spec: name),
             let authURL     = credentials["auth_url"] as? String,
@@ -67,22 +71,24 @@ extension ConfigurationManager {
             let username    = credentials["username"] as? String,
             let password    = credentials["password"] as? String,
             let domainID    = credentials["domainId"] as? String,
-            let domainName  = credentials["domainName"] as? String else {
+            let domainName  = credentials["domainName"] as? String,
+            let role        = credentials["role"] as? String else {
 
                 return nil
         }
-        
+
         return ObjectStorageCredentials (
-            authURL:    authURL, 
-            project:    project, 
+            authURL:    authURL,
+            project:    project,
             projectID:  projectID,
-            region:     region, 
-            userID:     userID, 
+            region:     region,
+            userID:     userID,
             username:   username,
-            password:   password, 
-            domainID:   domainID, 
-            domainName: domainName )
-
+            password:   password,
+            domainID:   domainID,
+            domainName: domainName,
+            role:       role )
+        
     }
-
+    
 }

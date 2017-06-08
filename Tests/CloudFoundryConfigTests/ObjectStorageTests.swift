@@ -23,11 +23,11 @@ class ObjectStorageTests: XCTestCase {
 
     static var allTests : [(String, (ObjectStorageTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -49,7 +49,8 @@ class ObjectStorageTests: XCTestCase {
         XCTAssertEqual(credentials.password, "<password>", "Object Storage Service password should match.")
         XCTAssertEqual(credentials.domainID, "<domainID>", "Object Storage Service domainID should match.")
         XCTAssertEqual(credentials.domainName, "1070801", "Object Storage Service domainName should match.")
-
+        XCTAssertEqual(credentials.role, "admin", "Object Storage Service role should match.")
+        
     }
-
+    
 }

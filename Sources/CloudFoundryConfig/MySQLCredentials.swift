@@ -18,7 +18,7 @@ import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the configuration values for MySQL service credentials
+/// Contains the credentials for a MySQL service instance
 public class MySQLCredentials {
 
     public let database : String
@@ -28,10 +28,10 @@ public class MySQLCredentials {
     public let port     : Int
 
     public init (
-        database:   String, 
-        host:       String, 
-        username:   String, 
-        password:   String, 
+        database:   String,
+        host:       String,
+        username:   String,
+        password:   String,
         port:       Int ) {
 
         self.database   = database
@@ -39,12 +39,13 @@ public class MySQLCredentials {
         self.username   = username
         self.password   = password
         self.port       = port
+
     }
 }
 
 extension ConfigurationManager {
-    
-    public func getMySQLCredentials (name: String) -> MySQLCredentials? { 
+
+    public func getMySQLCredentials (name: String) -> MySQLCredentials? {
 
         guard let credentials = getServiceCreds (spec: name),
             let database    = credentials["name"] as? String,
@@ -56,13 +57,13 @@ extension ConfigurationManager {
 
                 return nil
         }
-        
+
         return MySQLCredentials (
-            database: database, 
-            host: host, 
+            database: database,
+            host: host,
             username: username,
-            password: password, 
+            password: password,
             port: port)
     }
-
+    
 }

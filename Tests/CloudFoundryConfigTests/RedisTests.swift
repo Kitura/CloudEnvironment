@@ -23,11 +23,11 @@ class RedisTests: XCTestCase {
 
     static var allTests : [(String, (RedisTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -40,10 +40,10 @@ class RedisTests: XCTestCase {
             return
         }
 
-        XCTAssertGreaterThan(credentials.host.characters.count, 0)
-        XCTAssertGreaterThan(credentials.password.characters.count, 0)
-        XCTAssertNotEqual(credentials.port, 0)
+        XCTAssertEqual(credentials.host, "bluemix-sandbox-dal-9-portal.4.dblayer.com", "Redis service host should match.")
+        XCTAssertEqual(credentials.password, "password", "Redis service password should match.")
+        XCTAssertEqual(credentials.port, 21514, "Redis service port should match.")
 
     }
-
+    
 }

@@ -23,11 +23,11 @@ class AppIDTests: XCTestCase {
 
     static var allTests : [(String, (AppIDTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -36,7 +36,7 @@ class AppIDTests: XCTestCase {
         let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
         manager.load(url: filePath)
 
-        guard let credentials =  manager.getAppIDCredentials(name: "App ID-qt") else {
+        guard let credentials =  manager.getAppIDCredentials(name: "AppIDService") else {
             XCTFail("Could not load AppID credentials.")
             return
         }
@@ -47,7 +47,7 @@ class AppIDTests: XCTestCase {
         XCTAssertEqual(credentials.secret, "<secret>", "AppID Service secret should match.")
         XCTAssertEqual(credentials.tenantId, "ee971e31-eb19-415b-af84-45172c24895c", "AppID Service tenantId should match.")
         XCTAssertEqual(credentials.version, 3, "AppID Service version should match.")
-
+        
     }
-
+    
 }

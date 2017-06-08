@@ -91,7 +91,7 @@
           "api_url": "https://auto-scaling.api.ibm.com"
         },
         "label": "Auto-Scaling",
-        "name": "IBM Auto Scaling-xs",
+        "name": "AutoScalingService",
         "plan": "free",
         "tags": [
           "devops",
@@ -111,7 +111,7 @@
           "version": 3
         },
         "label": "AdvancedMobileAccess",
-        "name": "App ID-qt",
+        "name": "AppIDService",
         "plan": "Bronze",
         "provider": null,
         "syslog_drain_url": null,
@@ -133,7 +133,7 @@
           "swaggerui": "https://ibmnotifybm.mybluemix.net/docs/alerts/v1"
         },
         "label": "alertnotification",
-        "name": "IBMAlertNotification-xs",
+        "name": "AlertNotificationService",
         "plan": "authorizedusers",
         "tags": [
           "devops",
@@ -177,7 +177,7 @@
         "label": "compose-for-mongodb",
         "provider": null,
         "plan": "Standard",
-        "name": "TodoList-MongoDB",
+        "name": "MongoDBService",
         "tags": [
           "big_data",
           "data_management",
@@ -222,7 +222,7 @@
         "label": "cleardb",
         "provider": null,
         "plan": "spark",
-        "name": "TodoList-MySQL",
+        "name": "MySQLService",
         "tags": [
           "DBA",
           "(S) Cloud",
@@ -256,7 +256,7 @@
           "username": "uid"
         },
         "label": "dashDB",
-        "name": "TodoList-DB2-Analytics",
+        "name": "DB2Service",
         "plan": "Entry",
         "provider": null,
         "syslog_drain_url": null,

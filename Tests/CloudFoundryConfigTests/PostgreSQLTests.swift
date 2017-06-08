@@ -23,11 +23,11 @@ class PostgreSQLTests: XCTestCase {
 
     static var allTests : [(String, (PostgreSQLTests) -> () throws -> Void)] {
         return [
-            ("testServiceGetters", testServiceGetters),
+            ("testGetCredentials", testGetCredentials),
         ]
     }
 
-    func testServiceGetters() {
+    func testGetCredentials() {
 
         let manager = ConfigurationManager()
 
@@ -40,11 +40,11 @@ class PostgreSQLTests: XCTestCase {
             return
         }
 
-        XCTAssertGreaterThan(credentials.host.characters.count, 0)
-        XCTAssertGreaterThan(credentials.username.characters.count, 0)
-        XCTAssertGreaterThan(credentials.password.characters.count, 0)
-        XCTAssertNotEqual(credentials.port, 0)
-
+        XCTAssertEqual(credentials.host, "bluemix-sandbox-dal-9-portal.0.dblayer.com", "PostgreSQL service host should match.")
+        XCTAssertEqual(credentials.username, "user", "Object Storage service username should match.")
+        XCTAssertEqual(credentials.password, "password", "Object Storage service password should match.")
+        XCTAssertEqual(credentials.port, 22387, "Object Storage service port should match.")
+        
     }
-
+    
 }
