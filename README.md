@@ -19,6 +19,7 @@ A convenience Swift package for accessing Bluemix services.
 - [Cloudant](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db)
 - [MongoDB](https://console.ng.bluemix.net/docs/services/MongoDB/index.html)
 - [MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql/)
+- [Natural Language Understanding](https://console.ng.bluemix.net/catalog/services/natural-language-understanding)
 - [Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage)
 - [PostgreSQL](https://console.ng.bluemix.net/catalog/services/compose-for-postgresql/)
 - [Push SDK](https://console.ng.bluemix.net/catalog/services/push-notifications)
@@ -43,7 +44,7 @@ To leverage the CloudConfiguration package in your Swift application, you should
      ...
 
      dependencies: [
-         .Package(url: "https://github.com/IBM-Swift/CloudConfiguration.git", majorVersion: 2),
+         .Package(url: "https://github.com/IBM-Swift/CloudConfiguration.git", majorVersion: 3),
 
          ...
 
@@ -53,9 +54,8 @@ To leverage the CloudConfiguration package in your Swift application, you should
  Once the Package.swift file of your application has been updated accordingly, you can import the `CloudFoundryEnv`, `Configuration`, and `CloudFoundryConfig` modules in your code to access:
 
 ```swift
-import Configuration
-import CloudFoundryEnv
-import CloudFoundryConfig
+ import Configuration
+ import CloudFoundryEnv
 
 ...
 
@@ -63,14 +63,14 @@ let cloudConfigFile: String = ...
 
 let manager = ConfigurationManager().load(file: cloudConfigFile).load(.environmentVariables)
 
-let cloudantService = try configManager.getCloudantService(name: "Starter-Cloudant")
+let credentials =  manager.getCloudantCredentials(name: "Starter-Cloudant")
 
 // Use credentials for Cloudant to connect to service
 
 ...
 
-cloudantService.username
-cloudantService.password
+credentials.username
+credentials.password
 
 ...
 

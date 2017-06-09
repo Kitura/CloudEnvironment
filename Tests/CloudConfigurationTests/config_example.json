@@ -1,0 +1,337 @@
+{
+  "VCAP_SERVICES": {
+    "cloudantNoSQLDB": [
+      {
+        "credentials": {
+          "host": "<host>",
+          "password": "<password>",
+          "port": 443,
+          "url": "<url>",
+          "username": "<username>"
+        },
+        "label": "cloudantNoSQLDB",
+        "name": "CloudantService",
+        "plan": "Lite",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "data_management",
+          "ibm_created",
+          "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "imfpush": [
+      {
+        "credentials": {
+          "appGuid": "<appGuid>",
+          "url": "http://imfpush.ng.bluemix.net/imfpush/v1",
+          "admin_url": "//mobile.ng.bluemix.net/imfpushdashboard",
+          "appSecret": "<appSecret>",
+          "clientSecret": "<clientSecret>"
+        },
+        "label": "imfpush",
+        "name": "PushNotificationService",
+        "plan": "Lite",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "mobile",
+          "ibm_created",
+          "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "conversation": [
+      {
+        "credentials": {
+          "password": "<password>",
+          "url": "<url>",
+          "username": "<username>"
+        },
+        "label": "conversation",
+    	  "name": "ConversationService",
+    	  "plan": "free",
+    	  "provider": null,
+    	  "syslog_drain_url": null,
+    	  "tags": [
+     	    "watson",
+     	    "ibm_created",
+     	    "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "natural-language-understanding": [
+      {
+        "credentials": {
+          "password": "<nlu-password>",
+          "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
+          "username": "natural-language-username"
+        },
+        "label": "natural-language-understanding",
+    	  "name": "NLUService",
+    	  "plan": "free",
+    	  "provider": null,
+    	  "syslog_drain_url": null,
+    	  "tags": [
+     	    "watson",
+     	    "ibm_created",
+     	    "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "Auto-Scaling": [
+      {
+        "credentials": {
+          "url": "https://auto-scaling.ibm.com",
+          "agentUsername": "21a084f4-4eb56-74547-3bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618",
+          "agentPassword": "auto-scaling-pwd",
+          "app_id": "auto-scaling-appID",
+          "service_id": "auto-scaling-serviceID",
+          "api_url": "https://auto-scaling.api.ibm.com"
+        },
+        "label": "Auto-Scaling",
+        "name": "AutoScalingService",
+        "plan": "free",
+        "tags": [
+          "devops",
+          "ibm_created",
+          "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "AdvancedMobileAccess": [
+      {
+        "credentials": {
+          "clientId": "<clientId>",
+          "oauthServerUrl": "https://appid-oauth.stage1.ng.bluemix.net/oauth/v3/ee971e31-eb19-415b-af84-45172c24895c",
+          "profilesUrl": "https://appid-profiles.stage1.ng.bluemix.net",
+          "secret": "<secret>",
+          "tenantId": "ee971e31-eb19-415b-af84-45172c24895c",
+          "version": 3
+        },
+        "label": "AdvancedMobileAccess",
+        "name": "AppIDService",
+        "plan": "Bronze",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "security",
+          "Security",
+          "mobile",
+          "ibm_created",
+          "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "alertnotification": [
+      {
+        "credentials": {
+          "url": "https://ibmnotifybm.mybluemix.net/api/alerts/v1",
+          "name": "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618",
+          "password": "alertnotification-pwd",
+          "swaggerui": "https://ibmnotifybm.mybluemix.net/docs/alerts/v1"
+        },
+        "label": "alertnotification",
+        "name": "AlertNotificationService",
+        "plan": "authorizedusers",
+        "tags": [
+          "devops",
+          "ibm_created",
+          "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "compose-for-redis": [
+      {
+        "credentials": {
+          "db_type": "redis",
+          "name": "bmix_dal_yp_7370f9fa_41ba_4f83_8209_1c5fbc8d5a0c",
+          "uri_cli": "redis-cli -h bluemix-sandbox-dal-9-portal.4.dblayer.com -p 21514 -a <password>",
+          "deployment_id": "586d6b655eed7d00110013c4",
+          "uri": "redis://username:password@bluemix-sandbox-dal-9-portal.4.dblayer.com:21514"
+        },
+        "syslog_drain_url": null,
+        "label": "compose-for-redis",
+        "provider": null,
+        "plan": "Standard",
+        "name": "RedisService",
+        "tags": [
+          "big_data",
+          "data_management",
+          "ibm_created"
+        ]
+      }
+    ],
+    "compose-for-mongodb": [
+      {
+        "credentials": {
+          "db_type": "mongodb",
+          "name": "bmix_dal_yp_eaf81143_0baa_4166_ab8e_21bef291190b",
+          "uri_cli": "mongo --ssl --sslAllowInvalidCertificates bluemix-sandbox-dal-9-portal.5.dblayer.com:19889/admin -u username -p password",
+          "ca_certificate_base64": "certificateString",
+          "deployment_id": "5849981b78ae6b0013000027",
+          "uri": "mongodb://username:password@bluemix-sandbox-dal-9-portal.5.dblayer.com:19889,bluemix-sandbox-dal-9-portal.4.dblayer.com:19889/admin?ssl=true"
+        },
+        "syslog_drain_url": null,
+        "label": "compose-for-mongodb",
+        "provider": null,
+        "plan": "Standard",
+        "name": "MongoDBService",
+        "tags": [
+          "big_data",
+          "data_management",
+          "ibm_created"
+        ]
+      }
+    ],
+    "compose-for-postgresql": [
+      {
+        "credentials": {
+          "db_type": "postgresql",
+          "name": "bmix_dal_yp_dcfe66ee_9d04_4ab4_974c_2428eabc4345",
+          "uri_cli": "psql \"sslmode=require host=bluemix-sandbox-dal-9-portal.0.dblayer.com port=22387 dbname=compose user=user\"",
+          "ca_certificate_base64": "certificateString",
+          "deployment_id": "58829bf1d9688600170028fc",
+          "uri": "postgres://user:password@bluemix-sandbox-dal-9-portal.0.dblayer.com:22387/compose"
+        },
+        "syslog_drain_url": null,
+        "label": "compose-for-postgresql",
+        "provider": null,
+        "plan": "Standard",
+        "name": "PostgreSQLService",
+        "tags": [
+          "big_data",
+          "data_management",
+          "ibm_created"
+        ]
+      }
+    ],
+    "cleardb": [
+      {
+        "credentials": {
+          "jdbcUrl": "jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/ad_59567cc9d4432b9?user=username&password=password",
+          "uri": "mysql://username:password@us-cdbr-iron-east-04.cleardb.net:3306/ad_59567cc9d4432b9?reconnect=true",
+          "name": "ad_59567cc9d4432b9",
+          "hostname": "us-cdbr-iron-east-04.cleardb.net",
+          "port": "3306",
+          "username": "username",
+          "password": "password"
+        },
+        "syslog_drain_url": null,
+        "label": "cleardb",
+        "provider": null,
+        "plan": "spark",
+        "name": "MySQLService",
+        "tags": [
+          "DBA",
+          "(S) Cloud",
+          "(P) Analytics",
+          "Platform",
+          "Bluemix",
+          "ibm_dedicated_public",
+          "Infrastructure",
+          "Service",
+          "data_management",
+          "Analytics",
+          "IT Operations",
+          "ibm_third_party"
+        ]
+      }
+    ],
+    "dashDB": [
+      {
+        "credentials": {
+          "db": "BLUDB",
+          "dsn": "DATABASE=BLUDB;HOSTNAME=dashdb-entry-yp-dal09-07.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=uid;PWD=pwd;",
+          "host": "dashdb-entry-yp-dal09-07.services.dal.bluemix.net",
+          "hostname": "dashdb-entry-yp-dal09-07.services.dal.bluemix.net",
+          "https_url": "https://dashdb-entry-yp-dal09-07.services.dal.bluemix.net:8443",
+          "jdbcurl": "jdbc:db2://dashdb-entry-yp-dal09-07.services.dal.bluemix.net:50000/BLUDB",
+          "password": "pwd",
+          "port": 50000,
+          "ssldsn": "DATABASE=BLUDB;HOSTNAME=dashdb-entry-yp-dal09-07.services.dal.bluemix.net;PORT=50001;PROTOCOL=TCPIP;UID=uid;PWD=pwd;Security=SSL;",
+          "ssljdbcurl": "jdbc:db2://dashdb-entry-yp-dal09-07.services.dal.bluemix.net:50001/BLUDB:sslConnection=true;",
+          "uri": "db2://uid:pwd@dashdb-entry-yp-dal09-07.services.dal.bluemix.net:50000/BLUDB",
+          "username": "uid"
+        },
+        "label": "dashDB",
+        "name": "DB2Service",
+        "plan": "Entry",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "big_data",
+          "ibm_created",
+          "ibm_dedicated_public"
+        ]
+      }
+    ],
+    "Object-Storage": [
+      {
+        "credentials": {
+          "auth_url": "https://identity.open.softlayer.com",
+          "project": "object_storage",
+          "projectId": "79f5d7e9c6a64e2d1239f866d6b2d13a",
+          "region": "dallas",
+          "userId": "123",
+          "username": "admin_123",
+          "password": "<password>",
+          "domainId": "<domainID>",
+          "domainName": "1070801",
+          "role": "admin"
+        },
+        "label": "Object-Storage",
+        "name": "ObjectStorageService",
+        "plan": "Free",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "storage",
+          "ibm_release",
+          "ibm_created"
+        ]
+      }
+    ],
+    "natural-language-understanding": [
+      {
+        "credentials": {
+          "password": "<nlu-password>",
+          "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
+          "username": "natural-language-username"
+        },
+        "label": "natural-language-understanding",
+    	  "name": "NLUService",
+    	  "plan": "free",
+    	  "provider": null,
+    	  "syslog_drain_url": null,
+    	  "tags": [
+     	    "watson",
+     	    "ibm_created",
+     	    "ibm_dedicated_public"
+        ]
+      }
+    ]
+  },
+  "VCAP_APPLICATION": {
+    "application_id": "ad28c3b1-744d-446e-bf6e-80d8b916916e",
+    "application_name": "TodoListCloudantApp",
+    "application_uris": [
+      "todolistcloudantapp-undissevered-bumper.mybluemix.net"
+    ],
+    "application_version": "1fc300f0-d7cc-4cab-b5cc-748c3fdd10e4",
+    "limits": {
+      "disk": 1024,
+      "fds": 16384,
+      "mem": 256
+    },
+    "name": "TodoListCloudantApp",
+    "space_id": "07628d09-5236-4dc0-9330-4388267b33ce",
+    "space_name": "dev",
+    "uris": [
+      "todolistcloudantapp-undissevered-bumper.mybluemix.net"
+    ],
+    "users": null,
+    "version": "1fc300f0-d7cc-4cab-b5cc-748c3fdd10e4"
+  }
+}

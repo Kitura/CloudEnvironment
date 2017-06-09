@@ -15,8 +15,20 @@
  */
 
 import XCTest
-@testable import CloudFoundryConfigTests
+@testable import CloudConfigurationTests
 
 XCTMain([
-     testCase(FileLoadTests.allTests)
-])
+    testCase(AlertNotificationTests.allTests),
+    testCase(AppIDTests.allTests),
+    testCase(AutoScalingTests.allTests),
+    testCase(CloudantTests.allTests),
+    testCase(DB2Tests.allTests),
+    testCase(MongoDBTests.allTests),
+    testCase(MySQLTests.allTests),
+    testCase(ObjectStorageTests.allTests),
+    testCase(PostgreSQLTests.allTests),
+    testCase(PushSDKTests.allTests),
+    testCase(RedisTests.allTests),
+    testCase(WatsonConversationTests.allTests),
+    testCase(NaturalLangUnderstandingTests.allTests)
+    ])
