@@ -15,8 +15,6 @@
  */
 
 import XCTest
-import Foundation
-
 import Configuration
 @testable import CloudConfiguration
 

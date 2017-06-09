@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-import Foundation
 import Configuration
 import CloudFoundryEnv
 
-/// Contains the credentials for a Natural Language Understanding service instance
-public class NaturalLangUnderstandingCredentials {
+/// Contains the credentials for a Watson Conversation service instance
+public class WatsonConversationCredentials {
 
     public let username : String
     public let password : String
@@ -39,7 +38,7 @@ public class NaturalLangUnderstandingCredentials {
 
 extension ConfigurationManager {
     
-    public func getNaturalLangUnderstandingCredentials(name: String) -> NaturalLangUnderstandingCredentials? {
+    public func getWatsonConversationCredentials(name: String) -> WatsonConversationCredentials? { 
 
         guard let credentials = getServiceCreds(spec: name),
             let username  = credentials["username"] as? String,
@@ -49,7 +48,7 @@ extension ConfigurationManager {
                 return nil
         }
         
-        return NaturalLangUnderstandingCredentials (
+        return WatsonConversationCredentials (
             username:   username, 
             password:   password,
             url:        url)

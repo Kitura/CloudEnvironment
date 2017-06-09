@@ -54,7 +54,6 @@ To leverage the CloudConfiguration package in your Swift application, you should
  Once the Package.swift file of your application has been updated accordingly, you can import the `CloudFoundryEnv`, `Configuration`, and `CloudFoundryConfig` modules in your code to access:
 
 ```swift
- import Foundation
  import Configuration
  import CloudFoundryEnv
 

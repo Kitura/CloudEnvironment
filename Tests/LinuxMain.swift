@@ -15,7 +15,7 @@
  */
 
 import XCTest
-@testable import CloudFoundryConfigTests
+@testable import CloudConfigurationTests
 
 XCTMain([
     testCase(AlertNotificationTests.allTests),
