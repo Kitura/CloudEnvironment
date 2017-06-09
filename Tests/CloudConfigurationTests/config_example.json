@@ -292,6 +292,25 @@
           "ibm_created"
         ]
       }
+    ],
+    "natural-language-understanding": [
+      {
+        "credentials": {
+          "password": "<nlu-password>",
+          "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
+          "username": "natural-language-username"
+        },
+        "label": "natural-language-understanding",
+    	  "name": "NLUService",
+    	  "plan": "free",
+    	  "provider": null,
+    	  "syslog_drain_url": null,
+    	  "tags": [
+     	    "watson",
+     	    "ibm_created",
+     	    "ibm_dedicated_public"
+        ]
+      }
     ]
   },
   "VCAP_APPLICATION": {
