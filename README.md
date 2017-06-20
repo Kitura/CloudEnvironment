@@ -24,6 +24,7 @@ A convenience Swift package for accessing Bluemix services.
 - [Push SDK](https://console.ng.bluemix.net/catalog/services/push-notifications)
 - [Redis](https://console.ng.bluemix.net/catalog/services/redis-cloud)
 - [Watson Conversation](https://console.ng.bluemix.net/catalog/services/conversation)
+- [Weather Company Data](https://console.ng.bluemix.net/catalog/services/weather-company-data)
 
 ## Swift version
 The latest version of CloudConfiguration works with the `3.1.1` version of the Swift binaries. You can download this version of the Swift binaries by following this [link](https://swift.org/download/#snapshots).
