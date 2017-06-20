@@ -527,25 +527,3 @@ public class WeatherInsightService: Service {
                    credentials: service.credentials)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
