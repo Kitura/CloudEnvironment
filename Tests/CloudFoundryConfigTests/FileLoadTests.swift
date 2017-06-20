@@ -126,6 +126,14 @@ class FileLoadTests: XCTestCase {
             XCTAssertEqual(nluService.password, "<nlu-password>")
             XCTAssertEqual(nluService.url, "https://gateway.watsonplatform.net/natural-language-understanding/api")
             
+            let weatherService = try manager.getWeatherInsightService(name: "WeatherService")
+            
+            XCTAssertEqual(weatherService.username, "weather-insights-username")
+            XCTAssertEqual(weatherService.password, "<weather-insights-password>")
+            XCTAssertEqual(weatherService.host, "twcservice.mybluemix.net")
+            XCTAssertEqual(weatherService.port, 8596)
+            XCTAssertEqual(weatherService.url, "https://<weather-insights-password>:weather-insights-username@twcservice.eu-gb.mybluemix.net")
+            
         } catch {
             XCTFail("Could not load configuration. Error: \(error)")
         }

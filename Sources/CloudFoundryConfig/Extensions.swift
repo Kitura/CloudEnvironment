@@ -183,4 +183,17 @@ extension ConfigurationManager {
             throw ConfigurationManagerError.noServiceWithName(name)
         }
     }
+    
+    /// Get a Weather Company Data service configuration by service name
+    /// - parameter name: The name of the Weather Company Data service
+    public func getWeatherInsightService(name: String) throws -> WeatherInsightService {
+        
+        if let service = getService(spec: name),
+            let weatherService = WeatherInsightService(withService: service) {
+            return weatherService
+        } else {
+            throw ConfigurationManagerError.noServiceWithName(name)
+        }
+    }
+    
 }
