@@ -494,7 +494,7 @@ public class WatsonConversationService: Service {
     }
 }
 
-/// Contains the configuration values for a Weather Company Data service instance
+/// Contains the configuration values for a Weather Insight service instance
 public class WeatherInsightService: Service {
     
     public let username : String

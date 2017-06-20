@@ -184,8 +184,8 @@ extension ConfigurationManager {
         }
     }
     
-    /// Get a Weather Company Data service configuration by service name
-    /// - parameter name: The name of the Weather Company Data service
+    /// Get a Weather Insight service configuration by service name
+    /// - parameter name: The name of the Weather Insight service
     public func getWeatherInsightService(name: String) throws -> WeatherInsightService {
         
         if let service = getService(spec: name),
