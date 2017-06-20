@@ -493,3 +493,37 @@ public class WatsonConversationService: Service {
                    credentials: service.credentials)
     }
 }
+
+/// Contains the configuration values for a Weather Insight service instance
+public class WeatherInsightService: Service {
+    
+    public let username : String
+    public let password : String
+    public let host     : String
+    public let port     : Int
+    public let url      : String
+    
+    public init?(withService service: Service) {
+        
+        guard let credentials = service.credentials,
+            let username    = credentials["username"] as? String,
+            let password    = credentials["password"] as? String,
+            let host        = credentials["host"] as? String,
+            let port        = credentials["port"] as? Int,
+            let url         = credentials["url"] as? String else {
+                return nil
+        }
+        
+        self.username = username
+        self.password = password
+        self.host = host
+        self.port = port
+        self.url = url
+        
+        super.init(name:        service.name,
+                   label:       service.label,
+                   plan:        service.plan,
+                   tags:        service.tags,
+                   credentials: service.credentials)
+    }
+}

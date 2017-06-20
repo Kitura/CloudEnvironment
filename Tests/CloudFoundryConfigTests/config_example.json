@@ -80,6 +80,21 @@
         ]
       }
     ],
+    "weatherinsights": [
+      {
+        "credentials": {
+          "username": "weather-insights-username",
+          "password": "<weather-insights-password>",
+          "url": "https://<weather-insights-password>:weather-insights-username@twcservice.eu-gb.mybluemix.net",
+          "port": 8596,
+          "host": "twcservice.mybluemix.net"
+        },
+        "label": "weatherinsights",
+    	  "name": "WeatherService",
+    	  "plan": "free",
+    	  "tags": []
+      }
+    ],
     "Auto-Scaling": [
       {
         "credentials": {
