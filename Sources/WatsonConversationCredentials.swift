@@ -51,7 +51,7 @@ extension ConfigurationManager {
         return WatsonConversationCredentials (
             username:   username, 
             password:   password,
-            url:        url)
+            url:        url )
 
     }
 
