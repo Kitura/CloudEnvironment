@@ -311,6 +311,27 @@
      	    "ibm_dedicated_public"
         ]
       }
+    ],
+    "weatherinsights": [
+      {
+        "credentials": {
+          "username": "<username>",
+          "password": "<password>",
+          "host": "<host>",
+          "port": 443,
+          "url": "<url>"
+        },
+        "label": "weatherinsights",
+    	  "name": "WeatherCompanyDataService",
+    	  "plan": "Free-v2",
+    	  "provider": null,
+    	  "syslog_drain_url": null,
+    	  "tags": [
+     	    "big_data",
+     	    "ibm_created",
+     	    "ibm_dedicated_public"
+        ]
+      }
     ]
   },
   "VCAP_APPLICATION": {
