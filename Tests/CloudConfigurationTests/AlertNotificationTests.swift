@@ -28,11 +28,7 @@ class AlertNotificationTests: XCTestCase {
 
     func testGetCredentials() {
 
-        let manager = ConfigurationManager()
-
-        // Modify relative path for your system, make more dynamic later
-        let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
-        manager.load(url: filePath)
+        let manager = AppConfiguration()
 
         guard let credentials =  manager.getAlertNotificationCredentials(name: "AlertNotificationService") else {
             XCTFail("Could not load Alert Notification service credentials.")
@@ -43,7 +39,8 @@ class AlertNotificationTests: XCTestCase {
         XCTAssertEqual(credentials.id, "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618", "Alert Notification Service ID should match.")
         XCTAssertEqual(credentials.password, "alertnotification-pwd", "Alert Notification Service password should match.")
         XCTAssertEqual(credentials.swaggerUI, "https://ibmnotifybm.mybluemix.net/docs/alerts/v1", "Alert Notification Service swaggerUI should match.")
-        
+
     }
     
 }
+

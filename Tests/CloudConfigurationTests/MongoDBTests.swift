@@ -28,11 +28,7 @@ class MongoDBTests: XCTestCase {
 
     func testGetCredentials() {
 
-        let manager = ConfigurationManager()
-
-        // Modify relative path for your system, make more dynamic later
-        let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
-        manager.load(url: filePath)
+        let manager = AppConfiguration()
 
         guard let credentials =  manager.getMongoDBCredentials(name: "MongoDBService") else {
             XCTFail("Could not load MongoDB credentials.")

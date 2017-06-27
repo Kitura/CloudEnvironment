@@ -37,11 +37,11 @@ public class RedisCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getRedisCredentials (name: String) -> RedisCredentials? {
 
-        guard let credentials = getServiceCreds (spec: name),
+        guard let credentials = getCredentials (name: name),
             let uri         = credentials["uri"] as? String,
             let url         = URL(string: uri),
             let host        = url.host,

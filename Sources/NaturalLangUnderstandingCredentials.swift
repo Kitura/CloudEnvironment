@@ -36,11 +36,11 @@ public class NaturalLangUnderstandingCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
     
     public func getNaturalLangUnderstandingCredentials(name: String) -> NaturalLangUnderstandingCredentials? {
 
-        guard let credentials = getServiceCreds(spec: name),
+        guard let credentials = getCredentials(name: name),
             let username  = credentials["username"] as? String,
             let password  = credentials["password"] as? String,
             let url       = credentials["url"] as? String else {

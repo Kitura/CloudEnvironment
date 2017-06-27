@@ -42,11 +42,11 @@ public class MySQLCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getMySQLCredentials (name: String) -> MySQLCredentials? {
 
-        guard let credentials = getServiceCreds (spec: name),
+        guard let credentials = getCredentials (name: name),
             let database    = credentials["name"] as? String,
             let host        = credentials["hostname"] as? String,
             let username    = credentials["username"] as? String,

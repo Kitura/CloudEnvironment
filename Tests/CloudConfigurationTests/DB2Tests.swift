@@ -28,11 +28,7 @@ class DB2Tests: XCTestCase {
 
     func testGetCredentials() {
 
-        let manager = ConfigurationManager()
-
-        // Modify relative path for your system, make more dynamic later
-        let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
-        manager.load(url: filePath)
+        let manager = AppConfiguration()
 
         guard let credentials =  manager.getDB2Credentials(name: "DB2Service") else {
             XCTFail("Could not load DB2 service credentials.")

@@ -42,11 +42,11 @@ public class PushSDKCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getPushSDKCredentials (name: String) -> PushSDKCredentials? {
 
-        guard let credentials = getServiceCreds (spec: name),
+        guard let credentials = getCredentials (name: name),
             let appGuid         = credentials["appGuid"] as? String,
             let url             = credentials["url"] as? String,
             let admin_url       = credentials["admin_url"] as? String,
