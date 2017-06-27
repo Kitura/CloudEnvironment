@@ -36,11 +36,11 @@ public class WatsonConversationCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
     
     public func getWatsonConversationCredentials(name: String) -> WatsonConversationCredentials? { 
 
-        guard let credentials = getServiceCreds(spec: name),
+        guard let credentials = getCredentials(name: name),
             let username  = credentials["username"] as? String,
             let password  = credentials["password"] as? String,
             let url       = credentials["url"] as? String else {

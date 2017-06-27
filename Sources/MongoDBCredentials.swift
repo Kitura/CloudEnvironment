@@ -43,11 +43,11 @@ public class MongoDBCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getMongoDBCredentials (name: String) -> MongoDBCredentials? {
 
-        guard let credentials = getServiceCreds (spec: name) else {
+        guard let credentials = getCredentials (name: name) else {
             return nil
         }
 

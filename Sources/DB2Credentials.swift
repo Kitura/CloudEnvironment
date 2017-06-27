@@ -42,11 +42,11 @@ public class DB2Credentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getDB2Credentials (name: String) -> DB2Credentials? {
 
-        guard let credentials = getServiceCreds (spec: name),
+        guard let credentials = getCredentials (name: name),
             let database    = credentials["db"] as? String,
             let host        = credentials["host"] as? String,
             let port        = credentials["port"] as? Int,

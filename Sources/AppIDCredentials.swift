@@ -45,11 +45,11 @@ public class AppIDCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getAppIDCredentials (name: String) -> AppIDCredentials? {
 
-        guard let credentials   = getServiceCreds(spec: name),
+        guard let credentials   = getCredentials(name: name),
             let clientId        = credentials["clientId"] as? String,
             let oauthServerUrl  = credentials["oauthServerUrl"] as? String,
             let profilesUrl     = credentials["profilesUrl"] as? String,

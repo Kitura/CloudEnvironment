@@ -57,11 +57,11 @@ public class ObjectStorageCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getObjectStorageCredentials (name: String) -> ObjectStorageCredentials? {
 
-        guard let credentials = getServiceCreds(spec: name),
+        guard let credentials = getCredentials(name: name),
             let authURL     = credentials["auth_url"] as? String,
             let project     = credentials["project"] as? String,
             let projectID   = credentials["projectId"] as? String,

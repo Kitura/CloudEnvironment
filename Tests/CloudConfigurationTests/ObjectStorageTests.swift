@@ -28,13 +28,15 @@ class ObjectStorageTests: XCTestCase {
 
     func testGetCredentials() {
 
-        let manager = ConfigurationManager()
+        let manager = AppConfiguration()
 
-        // Modify relative path for your system, make more dynamic later
-        let filePath = URL(fileURLWithPath: #file).appendingPathComponent("../config_example.json").standardized
-        manager.load(url: filePath)
+        // Load test mapping.json file
+        manager.loadMappingTestConfigs(path: "Tests/ConfigTests/mapping.json")
 
-        guard let credentials =  manager.getObjectStorageCredentials(name: "ObjectStorageService") else {
+        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        manager.loadCFTestConfigs(path: "Tests/ConfigTests/config_cf_example.json")
+
+        guard let credentials =  manager.getObjectStorageCredentials(name: "ObjectStorageKey") else {
             XCTFail("Could not load Object Storage credentials.")
             return
         }
