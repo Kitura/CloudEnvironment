@@ -40,11 +40,11 @@ public class PostgreSQLCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getPostgreSQLCredentials (name: String) -> PostgreSQLCredentials? {
 
-        guard let credentials = getServiceCreds (spec: name),
+        guard let credentials = getCredentials (name: name),
             let uri         = credentials["uri"] as? String,
             let url         = URL(string: uri),
             let host        = url.host,

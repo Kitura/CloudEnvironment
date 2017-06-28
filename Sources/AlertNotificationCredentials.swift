@@ -39,18 +39,20 @@ public class AlertNotificationCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getAlertNotificationCredentials (name: String) -> AlertNotificationCredentials? {
 
-        guard let credentials = getServiceCreds(spec: name),
+        guard let credentials = getCredentials(name: name),
             let url         = credentials["url"] as? String,
             let id          = credentials["name"] as? String,
             let password    = credentials["password"] as? String,
             let swaggerUI   = credentials["swaggerui"] as? String else {
-
+                print("NO CREDENTIALS")
                 return nil
         }
+
+        print("** CREDENTIALS: \(credentials)")
 
         return AlertNotificationCredentials (
             url:        url,

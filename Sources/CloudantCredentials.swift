@@ -45,11 +45,11 @@ public class CloudantCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getCloudantCredentials(name: String) -> CloudantCredentials? {
 
-        guard let credentials = getServiceCreds(spec: name),
+        guard let credentials = getCredentials(name: name),
             let host      = credentials["host"] as? String,
             let username  = credentials["username"] as? String,
             let password  = credentials["password"] as? String,

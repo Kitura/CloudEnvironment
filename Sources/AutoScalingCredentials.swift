@@ -45,11 +45,11 @@ public class AutoScalingCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getAutoScalingCredentials (name: String) -> AutoScalingCredentials? {
 
-        guard let credentials   = getServiceCreds (spec: name),
+        guard let credentials   = getCredentials (name: name),
             let username        = credentials["agentUsername"] as? String,
             let password        = credentials["agentPassword"] as? String,
             let appID           = credentials["app_id"] as? String,
