@@ -51,6 +51,8 @@ extension AppConfiguration {
                 return nil
         }
 
+        print("** CREDENTIALS: \(credentials)")
+
         return AlertNotificationCredentials (
             url:        url,
             id:         id,

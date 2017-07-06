@@ -51,7 +51,7 @@ public class AppConfiguration {
 
             let key = arr.removeFirst()
             let value = arr.removeFirst()
-
+          
             switch (key) {
             case "cloudfoundry":    // CloudFoundry/swift-cfenv
                 if let credentials = getCloudFoundryCreds(name: value) {
