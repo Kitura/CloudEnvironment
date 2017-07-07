@@ -29,10 +29,8 @@ class WeatherCompanyDataTests: XCTestCase {
 
     func testGetCredentials() {
 
-        let manager = AppConfiguration()
-
-        // Load test mapping.json file
-        manager.loadMappingTestConfigs(path: "Tests/CredentialsTests/resources/mapping.json")
+        // Load test mappings.json file
+        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
 
         // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
         manager.loadCFTestConfigs(path: "Tests/CredentialsTests/resources/config_cf_example.json")

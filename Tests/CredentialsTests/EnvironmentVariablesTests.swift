@@ -28,10 +28,8 @@ class EnvironmentVariablesTests: XCTestCase {
 
     func testGetCredentials() {
 
-        let manager = AppConfiguration()
-
-        // Load test mapping.json file
-        manager.loadMappingTestConfigs(path: "Tests/CredentialsTests/resources/mapping.json")
+        // Load test mappings.json file
+        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
 
         let jsonString = "{\"name\":\"21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618\",\"password\":\"alertnotification-pwd\",\"url\":\"https://ibmnotifybm.mybluemix.net/api/alerts/v1\",\"swaggerui\":\"https://ibmnotifybm.mybluemix.net/docs/alerts/v1\"}"
 

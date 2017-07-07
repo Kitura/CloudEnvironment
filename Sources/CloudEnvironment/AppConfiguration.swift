@@ -1,18 +1,18 @@
 /*
- * Copyright IBM Corporation 2017
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* Copyright IBM Corporation 2017
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
 import Configuration
 import CloudFoundryEnv
@@ -21,114 +21,112 @@ import LoggerAPI
 
 public class AppConfiguration {
 
-    let cloudFoundryManager = ConfigurationManager()
-    let mapManager = ConfigurationManager()
+  // Static variables/constants
+  public static let mappingFile = "mappings.json"
 
-    public init () {
+  // Instance variables/constants
+  let cloudFoundryManager = ConfigurationManager()
+  let mapManager = ConfigurationManager()
 
-        let mappingFile = "mapping.json"
+  public init (mappingsFilePath: String? = nil) {
+    // Compute path to mappings.json
+    let filePath: String = (mappingsFilePath == nil) ? "config" : mappingsFilePath!
 
-        // For local mapping file
-        mapManager.load(file: "config/\(mappingFile)", relativeFrom: .project)
+    // For local execution
+    mapManager.load(file: "\(filePath)/\(AppConfiguration.mappingFile)", relativeFrom: .project)
 
-        // For Cloud Foundry
-        mapManager.load(file: mappingFile, relativeFrom: .pwd)
-        mapManager.load(file: "config/\(mappingFile)", relativeFrom: .pwd)
+    // For Cloud Foundry
+    mapManager.load(file: "\(filePath)/\(AppConfiguration.mappingFile)", relativeFrom: .pwd)
+  }
+
+  public func getCredentials(name: String) -> [String:Any]? {
+
+    guard let searchPatterns = mapManager["\(name):searchPatterns"] as? [String] else {
+      Log.debug("No search patterns found. There may have been a problem loading `mappings.json`")
+      return nil
     }
 
-    public func getCredentials(name: String) -> [String:Any]? {
+    for pattern in searchPatterns {
 
-        guard let searchPatterns = mapManager["\(name):searchPatterns"] as? [String] else {
-            Log.debug("No search patterns found. There may have been a problem loading `mapping.json`")
-            return nil
+      var arr = pattern.components(separatedBy: ":")
+      let key = arr.removeFirst()
+      let value = arr.removeFirst()
+
+      switch (key) {
+      case "cloudfoundry":    // Cloud Foundry/swift-cfenv
+        if let credentials = getCloudFoundryCreds(name: value) {
+          Log.debug("Found cloud foundry credentials.")
+          return credentials
         }
-
-        for pattern in searchPatterns {
-
-            var arr = pattern.components(separatedBy: ":")
-            let key = arr.removeFirst()
-            let value = arr.removeFirst()
-
-            switch (key) {
-            case "cloudfoundry":    // Cloud Foundry/swift-cfenv
-                if let credentials = getCloudFoundryCreds(name: value) {
-                    Log.debug("Found cloud foundry credentials.")
-                    return credentials
-                }
-                break
-            case "env":             // Kubernetes
-                if let credentials = getKubeCreds(evName: value) {
-                    Log.debug("Found credentials from environment variable.")
-                    return credentials
-                }
-                break
-            case "file":            // File- local or in cloud foundry
-                let instance = (arr.count > 0) ? arr[0] : ""
-                if let credentials = getFileCreds(instance: instance, path: value),
-                    credentials.count > 0 {
-                    Log.debug("Found credentials in referenced file.")
-                    return credentials
-                }
-                break
-            default:
-                return nil
-            }
+        break
+      case "env":             // Kubernetes
+        if let credentials = getKubeCreds(evName: value) {
+          Log.debug("Found credentials from environment variable.")
+          return credentials
         }
-        Log.error("Failed to find credentials.")
+        break
+      case "file":            // File- local or in cloud foundry
+        let instance = (arr.count > 0) ? arr[0] : ""
+        if let credentials = getFileCreds(instance: instance, path: value),
+        credentials.count > 0 {
+          Log.debug("Found credentials in referenced file.")
+          return credentials
+        }
+        break
+      default:
         return nil
+      }
+    }
+    Log.error("Failed to find credentials.")
+    return nil
+  }
+
+  private func getCloudFoundryCreds(name: String) -> [String:Any]? {
+
+    cloudFoundryManager.load(.environmentVariables)
+
+    guard let credentials = cloudFoundryManager.getServiceCreds(spec: name) else {
+      return nil
     }
 
-    private func getCloudFoundryCreds(name: String) -> [String:Any]? {
+    return credentials
+  }
 
-        cloudFoundryManager.load(.environmentVariables)
+  private func getKubeCreds(evName: String) -> [String:Any]? {
 
-        guard let credentials = cloudFoundryManager.getServiceCreds(spec: name) else {
-            return nil
-        }
+    let kubeManager = ConfigurationManager()
+    kubeManager.load(.environmentVariables)
 
-        return credentials
+    guard let credentials = kubeManager["\(evName)"] as? [String: Any] else {
+      return nil
     }
 
-    private func getKubeCreds(evName: String) -> [String:Any]? {
+    return credentials
+  }
 
-        let kubeManager = ConfigurationManager()
-        kubeManager.load(.environmentVariables)
+  private func getFileCreds(instance: String, path: String) -> [String:Any]? {
 
-        guard let credentials = kubeManager["\(evName)"] as? [String: Any] else {
-            return nil
-        }
+    let fileManager = ConfigurationManager()
 
-        return credentials
+    // For local mapping file
+    fileManager.load(file: path, relativeFrom: .project)
+
+    // Load file in cloud foundry-- extract filename from path
+    if let fileName = path.components(separatedBy: "/").last {
+      fileManager.load(file: fileName, relativeFrom: .pwd)
     }
 
-    private func getFileCreds(instance: String, path: String) -> [String:Any]? {
-
-        let fileManager = ConfigurationManager()
-
-        // For local mapping file
-        fileManager.load(file: path, relativeFrom: .project)
-
-        // Load file in cloud foundry-- extract filename from path
-        if let fileName = path.components(separatedBy: "/").last {
-            fileManager.load(file: fileName, relativeFrom: .pwd)
-        }
-
-        if instance.isEmpty {
-            return (fileManager.getConfigs() as? [String: Any])
-        } else {
-            return fileManager["\(instance)"] as? [String: Any]
-        }
+    if instance.isEmpty {
+      return (fileManager.getConfigs() as? [String: Any])
+    } else {
+      return fileManager["\(instance)"] as? [String: Any]
     }
+  }
 
-    // Used internally for testing purposes
-    internal func loadCFTestConfigs(path: String) {
+  // Used internally for testing purposes
+  internal func loadCFTestConfigs(path: String) {
 
-        cloudFoundryManager.load(file: path, relativeFrom: .project)
-    }
+    cloudFoundryManager.load(file: path, relativeFrom: .project)
+  }
 
-    // Used internally for testing purposes
-    internal func loadMappingTestConfigs(path: String) {
-
-        mapManager.load(file: path, relativeFrom: .project)
-    }
 }
