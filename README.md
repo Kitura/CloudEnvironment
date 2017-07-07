@@ -8,7 +8,7 @@ CloudEnvironment is a convenience Swift package for accessing environment variab
 ## Swift version
 The latest version of CloudEnvironment works with the `3.1.1` version of the Swift binaries. You can download this version of the Swift binaries by following this [link](https://swift.org/download/#snapshots).
 
-## Supported search patterns types
+## Supported search pattern types
 This package allows you to define an array of search patterns for looking up values, such as service credentials. Each element in a search patterns array will be *executed* until the variable is found. CloudEnvironment supports searching for values using three search pattern types:
 
 - `cloudfoundry` - Allows to search for a value in Cloud Foundry's services environment variable.
@@ -42,19 +42,19 @@ In the example above, `cloudant-credentials` and `object-storage-credentials` ar
 To leverage the CloudEnvironment package in your Swift application, you should specify a dependency for it in your `Package.swift` file:
 
 ```swift
- import PackageDescription
+import PackageDescription
 
- let package = Package(
-     name: "MyAwesomeSwiftProject",
+let package = Package(
+   name: "MyAwesomeSwiftProject",
 
-     ...
+   ...
 
-     dependencies: [
-         .Package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", majorVersion: 3),
+   dependencies: [
+       .Package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", majorVersion: 3),
 
-         ...
+       ...
 
-     ])
+   ])
  ```
 
  Once the `Package.swift` file of your application has been updated accordingly, you can import the `CloudEnvironment` modules in your code:
