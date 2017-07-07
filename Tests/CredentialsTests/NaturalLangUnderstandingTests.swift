@@ -29,19 +29,16 @@ class NaturalLangUnderstandingTests: XCTestCase {
 
     func testGetCredentials() {
 
-        // Load test mappings.json file
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
-
-        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        manager.loadCFTestConfigs(path: "Tests/CredentialsTests/resources/config_cf_example.json")
+        // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
         guard let credentials =  manager.getNaturalLangUnderstandingCredentials(name: "NLUKey") else {
             XCTFail("Could not load Natural Language Understanding service credentials.")
             return
         }
 
-        XCTAssertEqual(credentials.username, "natural-language-username")
-        XCTAssertEqual(credentials.password, "<nlu-password>")
+        XCTAssertEqual(credentials.username, "natural-language-user")
+        XCTAssertEqual(credentials.password, "natural-language-pwd")
         XCTAssertEqual(credentials.url, "https://gateway.watsonplatform.net/natural-language-understanding/api")
 
     }

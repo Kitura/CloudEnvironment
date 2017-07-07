@@ -29,20 +29,17 @@ class WatsonConversationTests: XCTestCase {
 
     func testGetCredentials() {
 
-        // Load test mappings.json file
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
-
-        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        manager.loadCFTestConfigs(path: "Tests/CredentialsTests/resources/config_cf_example.json")
+        // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
         guard let credentials =  manager.getWatsonConversationCredentials(name: "ConversationKey") else {
             XCTFail("Could not load Watson Conversation service credentials.")
             return
         }
 
-        XCTAssertEqual(credentials.username, "<username>", "Watson Conversation service username should match.")
-        XCTAssertEqual(credentials.password, "<password>", "Watson Conversation service password should match.")
-        XCTAssertEqual(credentials.url, "<url>", "Watson Conversation service url should match.")
+        XCTAssertEqual(credentials.username, "conversation-user", "Watson Conversation service username should match.")
+        XCTAssertEqual(credentials.password, "conversation-pwd", "Watson Conversation service password should match.")
+        XCTAssertEqual(credentials.url, "conversation-url", "Watson Conversation service url should match.")
 
     }
 

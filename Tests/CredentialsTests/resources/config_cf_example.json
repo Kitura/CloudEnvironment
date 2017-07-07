@@ -3,11 +3,11 @@
     "cloudantNoSQLDB": [
       {
         "credentials": {
-          "host": "<host>",
-          "password": "<password>",
+          "host": "cloudant-host",
+          "password": "cloudant-pwd",
           "port": 443,
-          "url": "<url>",
-          "username": "<username>"
+          "url": "cloudant-url",
+          "username": "cloudant-user"
         },
         "label": "cloudantNoSQLDB",
         "name": "CloudantService",
@@ -24,11 +24,11 @@
     "imfpush": [
       {
         "credentials": {
-          "appGuid": "<appGuid>",
+          "appGuid": "push-appGuid",
           "url": "http://imfpush.ng.bluemix.net/imfpush/v1",
           "admin_url": "//mobile.ng.bluemix.net/imfpushdashboard",
-          "appSecret": "<appSecret>",
-          "clientSecret": "<clientSecret>"
+          "appSecret": "push-secret",
+          "clientSecret": "push-clientSecret"
         },
         "label": "imfpush",
         "name": "PushNotificationService",
@@ -45,38 +45,38 @@
     "conversation": [
       {
         "credentials": {
-          "password": "<password>",
-          "url": "<url>",
-          "username": "<username>"
+          "password": "conversation-pwd",
+          "url": "conversation-url",
+          "username": "conversation-user"
         },
         "label": "conversation",
-    	  "name": "ConversationService",
-    	  "plan": "free",
-    	  "provider": null,
-    	  "syslog_drain_url": null,
-    	  "tags": [
-     	    "watson",
-     	    "ibm_created",
-     	    "ibm_dedicated_public"
+        "name": "ConversationService",
+        "plan": "free",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "watson",
+          "ibm_created",
+          "ibm_dedicated_public"
         ]
       }
     ],
     "natural-language-understanding": [
       {
         "credentials": {
-          "password": "<nlu-password>",
+          "password": "natural-language-pwd",
           "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
-          "username": "natural-language-username"
+          "username": "natural-language-user"
         },
         "label": "natural-language-understanding",
-    	  "name": "NLUService",
-    	  "plan": "free",
-    	  "provider": null,
-    	  "syslog_drain_url": null,
-    	  "tags": [
-     	    "watson",
-     	    "ibm_created",
-     	    "ibm_dedicated_public"
+        "name": "NLUService",
+        "plan": "free",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "watson",
+          "ibm_created",
+          "ibm_dedicated_public"
         ]
       }
     ],
@@ -103,10 +103,10 @@
     "AdvancedMobileAccess": [
       {
         "credentials": {
-          "clientId": "<clientId>",
+          "clientId": "appID-clientId",
           "oauthServerUrl": "https://appid-oauth.stage1.ng.bluemix.net/oauth/v3/ee971e31-eb19-415b-af84-45172c24895c",
           "profilesUrl": "https://appid-profiles.stage1.ng.bluemix.net",
-          "secret": "<secret>",
+          "secret": "appID-secret",
           "tenantId": "ee971e31-eb19-415b-af84-45172c24895c",
           "version": 3
         },
@@ -276,8 +276,8 @@
           "region": "dallas",
           "userId": "123",
           "username": "admin_123",
-          "password": "<password>",
-          "domainId": "<domainID>",
+          "password": "object-storage-pwd",
+          "domainId": "object-storage-domainID",
           "domainName": "1070801",
           "role": "admin"
         },
@@ -293,43 +293,24 @@
         ]
       }
     ],
-    "natural-language-understanding": [
-      {
-        "credentials": {
-          "password": "<nlu-password>",
-          "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
-          "username": "natural-language-username"
-        },
-        "label": "natural-language-understanding",
-    	  "name": "NLUService",
-    	  "plan": "free",
-    	  "provider": null,
-    	  "syslog_drain_url": null,
-    	  "tags": [
-     	    "watson",
-     	    "ibm_created",
-     	    "ibm_dedicated_public"
-        ]
-      }
-    ],
     "weatherinsights": [
       {
         "credentials": {
-          "username": "<username>",
-          "password": "<password>",
-          "host": "<host>",
+          "username": "weather-user",
+          "password": "weather-pwd",
+          "host": "weather-host",
           "port": 443,
-          "url": "<url>"
+          "url": "weather-url"
         },
         "label": "weatherinsights",
-    	  "name": "WeatherCompanyDataService",
-    	  "plan": "Free-v2",
-    	  "provider": null,
-    	  "syslog_drain_url": null,
-    	  "tags": [
-     	    "big_data",
-     	    "ibm_created",
-     	    "ibm_dedicated_public"
+        "name": "WeatherCompanyDataService",
+        "plan": "Free-v2",
+        "provider": null,
+        "syslog_drain_url": null,
+        "tags": [
+          "big_data",
+          "ibm_created",
+          "ibm_dedicated_public"
         ]
       }
     ]

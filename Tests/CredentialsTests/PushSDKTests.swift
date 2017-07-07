@@ -29,22 +29,19 @@ class PushSDKTests: XCTestCase {
 
     func testGetCredentials() {
 
-        // Load test mappings.json file
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
-
-        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        manager.loadCFTestConfigs(path: "Tests/CredentialsTests/resources/config_cf_example.json")
+        // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
         guard let credentials =  manager.getPushSDKCredentials(name: "PushNotificationKey") else {
             XCTFail("Could not load Push SDK credentials.")
             return
         }
 
-        XCTAssertEqual(credentials.appGuid, "<appGuid>", "PushSDK service appGuid should match.")
+        XCTAssertEqual(credentials.appGuid, "push-appGuid", "PushSDK service appGuid should match.")
         XCTAssertEqual(credentials.url, "http://imfpush.ng.bluemix.net/imfpush/v1", "PushSDK service url should match.")
         XCTAssertEqual(credentials.admin_url, "//mobile.ng.bluemix.net/imfpushdashboard", "PushSDK service admin_url should match.")
-        XCTAssertEqual(credentials.appSecret, "<appSecret>", "PushSDK service appSecret should match.")
-        XCTAssertEqual(credentials.clientSecret, "<clientSecret>", "PushSDK service clientSecret should match.")
+        XCTAssertEqual(credentials.appSecret, "push-secret", "PushSDK service appSecret should match.")
+        XCTAssertEqual(credentials.clientSecret, "push-clientSecret", "PushSDK service clientSecret should match.")
 
     }
 

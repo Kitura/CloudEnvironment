@@ -25,10 +25,14 @@ public class AppConfiguration {
   public static let mappingFile = "mappings.json"
 
   // Instance variables/constants
-  let cloudFoundryManager = ConfigurationManager()
-  let mapManager = ConfigurationManager()
+  private let mapManager = ConfigurationManager()
+  private let cloudFoundryFile: String?
 
-  public init (mappingsFilePath: String? = nil) {
+  public init(mappingsFilePath: String? = nil, cloudFoundryFile: String? = nil) {
+
+    // Set instance properties
+    self.cloudFoundryFile = cloudFoundryFile
+
     // Compute path to mappings.json
     let filePath: String = (mappingsFilePath == nil) ? "config" : mappingsFilePath!
 
@@ -37,6 +41,19 @@ public class AppConfiguration {
 
     // For Cloud Foundry
     mapManager.load(file: "\(filePath)/\(AppConfiguration.mappingFile)", relativeFrom: .pwd)
+  }
+
+  public func getDictionary(name: String) -> [String:Any]? {
+    return getCredentials(name: name)
+  }
+
+  public func getString(name: String) -> String? {
+    if let credentials = getCredentials(name: name) {
+      if let jsonData = try? JSONSerialization.data(withJSONObject: credentials, options: .prettyPrinted) {
+        return String(data: jsonData, encoding: String.Encoding.utf8)
+      }
+    }
+    return nil
   }
 
   public func getCredentials(name: String) -> [String:Any]? {
@@ -82,8 +99,13 @@ public class AppConfiguration {
   }
 
   private func getCloudFoundryCreds(name: String) -> [String:Any]? {
-
-    cloudFoundryManager.load(.environmentVariables)
+    // Load configuration for cloud foundry
+    let cloudFoundryManager = ConfigurationManager()
+    if let cloudFoundryFile = self.cloudFoundryFile {
+      cloudFoundryManager.load(file: cloudFoundryFile, relativeFrom: .project)
+    } else {
+      cloudFoundryManager.load(.environmentVariables)
+    }
 
     guard let credentials = cloudFoundryManager.getServiceCreds(spec: name) else {
       return nil
@@ -121,12 +143,6 @@ public class AppConfiguration {
     } else {
       return fileManager["\(instance)"] as? [String: Any]
     }
-  }
-
-  // Used internally for testing purposes
-  internal func loadCFTestConfigs(path: String) {
-
-    cloudFoundryManager.load(file: path, relativeFrom: .project)
   }
 
 }

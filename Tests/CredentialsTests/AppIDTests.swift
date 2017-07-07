@@ -29,21 +29,18 @@ class AppIDTests: XCTestCase {
 
     func testGetCredentials() {
 
-        // Load test mappings.json file
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
-
-        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        manager.loadCFTestConfigs(path: "Tests/CredentialsTests/resources/config_cf_example.json")
+        // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
         guard let credentials =  manager.getAppIDCredentials(name: "AppIDKey") else {
             XCTFail("Could not load AppID credentials.")
             return
         }
 
-        XCTAssertEqual(credentials.clientId, "<clientId>", "AppID Service clientId should match.")
+        XCTAssertEqual(credentials.clientId, "appID-clientId", "AppID Service clientId should match.")
         XCTAssertEqual(credentials.oauthServerUrl, "https://appid-oauth.stage1.ng.bluemix.net/oauth/v3/ee971e31-eb19-415b-af84-45172c24895c", "AppID oauthServerUrl should match.")
         XCTAssertEqual(credentials.profilesUrl, "https://appid-profiles.stage1.ng.bluemix.net", "AppID Service profilesUrl should match.")
-        XCTAssertEqual(credentials.secret, "<secret>", "AppID Service secret should match.")
+        XCTAssertEqual(credentials.secret, "appID-secret", "AppID Service secret should match.")
         XCTAssertEqual(credentials.tenantId, "ee971e31-eb19-415b-af84-45172c24895c", "AppID Service tenantId should match.")
         XCTAssertEqual(credentials.version, 3, "AppID Service version should match.")
 

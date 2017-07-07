@@ -29,22 +29,19 @@ class CloudantTests: XCTestCase {
 
     func testGetCredentials() {
 
-        // Load test mappings.json file
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
-
-        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        manager.loadCFTestConfigs(path: "Tests/CredentialsTests/resources/config_cf_example.json")
+        // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
         guard let credentials =  manager.getCloudantCredentials(name: "CloudantKey") else {
             XCTFail("Could not load Cloudant credentials.")
             return
         }
 
-        XCTAssertEqual(credentials.host, "<host>", "Cloudant service host should match.")
-        XCTAssertEqual(credentials.username, "<username>", "Cloudant service username should match.")
-        XCTAssertEqual(credentials.password, "<password>", "Cloudant service password should match.")
+        XCTAssertEqual(credentials.host, "cloudant-host", "Cloudant service host should match.")
+        XCTAssertEqual(credentials.username, "cloudant-user", "Cloudant service username should match.")
+        XCTAssertEqual(credentials.password, "cloudant-pwd", "Cloudant service password should match.")
         XCTAssertEqual(credentials.port, 443, "Cloudant service port should match.")
-        XCTAssertEqual(credentials.url, "<url>", "Cloudant service URL should match.")
+        XCTAssertEqual(credentials.url, "cloudant-url", "Cloudant service URL should match.")
 
     }
 

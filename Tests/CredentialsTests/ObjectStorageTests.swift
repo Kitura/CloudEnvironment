@@ -29,11 +29,8 @@ class ObjectStorageTests: XCTestCase {
 
     func testGetCredentials() {
 
-        // Load test mappings.json file
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
-
-        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        manager.loadCFTestConfigs(path: "Tests/CredentialsTests/resources/config_cf_example.json")
+        // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
         guard let credentials =  manager.getObjectStorageCredentials(name: "ObjectStorageKey") else {
             XCTFail("Could not load Object Storage credentials.")
@@ -46,8 +43,8 @@ class ObjectStorageTests: XCTestCase {
         XCTAssertEqual(credentials.region, "dallas", "Object Storage Service region should match.")
         XCTAssertEqual(credentials.userID, "123", "Object Storage Service userID should match.")
         XCTAssertEqual(credentials.username, "admin_123", "Object Storage Service username should match.")
-        XCTAssertEqual(credentials.password, "<password>", "Object Storage Service password should match.")
-        XCTAssertEqual(credentials.domainID, "<domainID>", "Object Storage Service domainID should match.")
+        XCTAssertEqual(credentials.password, "object-storage-pwd", "Object Storage Service password should match.")
+        XCTAssertEqual(credentials.domainID, "object-storage-domainID", "Object Storage Service domainID should match.")
         XCTAssertEqual(credentials.domainName, "1070801", "Object Storage Service domainName should match.")
         XCTAssertEqual(credentials.role, "admin", "Object Storage Service role should match.")
 

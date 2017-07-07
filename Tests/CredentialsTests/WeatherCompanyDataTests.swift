@@ -29,22 +29,19 @@ class WeatherCompanyDataTests: XCTestCase {
 
     func testGetCredentials() {
 
-        // Load test mappings.json file
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
-
-        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        manager.loadCFTestConfigs(path: "Tests/CredentialsTests/resources/config_cf_example.json")
+        // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
         guard let credentials =  manager.getWeatherCompanyDataCredentials(name: "WeatherCompanyDataKey") else {
             XCTFail("Could not load Weather Company Data service credentials.")
             return
         }
 
-        XCTAssertEqual(credentials.username, "<username>", "Weather Company Data service username should match.")
-        XCTAssertEqual(credentials.password, "<password>", "Weather Company Data service password should match.")
-        XCTAssertEqual(credentials.host, "<host>", "Weather Company Data service host should match.")
+        XCTAssertEqual(credentials.username, "weather-user", "Weather Company Data service username should match.")
+        XCTAssertEqual(credentials.password, "weather-pwd", "Weather Company Data service password should match.")
+        XCTAssertEqual(credentials.host, "weather-host", "Weather Company Data service host should match.")
         XCTAssertEqual(credentials.port, 443, "Weather Company Data service port should match.")
-        XCTAssertEqual(credentials.url, "<url>", "Weather Company Data service url should match.")
+        XCTAssertEqual(credentials.url, "weather-url", "Weather Company Data service url should match.")
 
     }
 
