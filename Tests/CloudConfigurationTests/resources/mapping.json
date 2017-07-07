@@ -16,14 +16,14 @@
   },
   "AlertNotificationFileNoKey": {
     "searchPatterns": [
-      "file:Tests/ConfigTests/config_file_no_key.json",
+      "file:Tests/CloudConfigurationTests/resources/config_file_no_key.json",
       "env:KUBE_ENV_WRONG",
       "cloudfoundry:my-cloudant-instance-1"
     ]
   },
   "AlertNotificationFileWithKey": {
     "searchPatterns": [
-      "file:Tests/ConfigTests/config_file_with_key.json:alertnotification",
+      "file:Tests/CloudConfigurationTests/resources/config_file_with_key.json:alertnotification",
       "env:KUBE_ENV_WRONG",
       "cloudfoundry:my-cloudant-instance-1"
     ]

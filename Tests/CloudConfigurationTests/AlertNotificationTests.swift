@@ -31,10 +31,10 @@ class AlertNotificationTests: XCTestCase {
         let manager = AppConfiguration()
 
         // Load test mapping.json file
-        manager.loadMappingTestConfigs(path: "Tests/ConfigTests/mapping.json")
+        manager.loadMappingTestConfigs(path: "Tests/CloudConfigurationTests/resources/mapping.json")
 
-        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION 
-        manager.loadCFTestConfigs(path: "Tests/ConfigTests/config_cf_example.json")
+        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        manager.loadCFTestConfigs(path: "Tests/CloudConfigurationTests/resources/config_cf_example.json")
 
         guard let credentials =  manager.getAlertNotificationCredentials(name: "AlertNotificationKey") else {
             XCTFail("Could not load Alert Notification service credentials.")
@@ -48,4 +48,3 @@ class AlertNotificationTests: XCTestCase {
 
     }
 }
-

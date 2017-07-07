@@ -31,10 +31,10 @@ class AutoScalingTests: XCTestCase {
         let manager = AppConfiguration()
 
         // Load test mapping.json file
-        manager.loadMappingTestConfigs(path: "Tests/ConfigTests/mapping.json")
+        manager.loadMappingTestConfigs(path: "Tests/CloudConfigurationTests/resources/mapping.json")
 
         // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        manager.loadCFTestConfigs(path: "Tests/ConfigTests/config_cf_example.json")
+        manager.loadCFTestConfigs(path: "Tests/CloudConfigurationTests/resources/config_cf_example.json")
 
         guard let credentials =  manager.getAutoScalingCredentials(name: "AutoScalingKey") else {
             XCTFail("Could not load AutoScaling credentials.")
