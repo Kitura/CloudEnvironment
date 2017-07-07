@@ -48,7 +48,6 @@ extension AppConfiguration {
             let id          = credentials["name"] as? String,
             let password    = credentials["password"] as? String,
             let swaggerUI   = credentials["swaggerui"] as? String else {
-                print("NO CREDENTIALS")
                 return nil
         }
 

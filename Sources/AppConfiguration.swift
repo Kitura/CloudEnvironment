@@ -17,112 +17,125 @@
 import Configuration
 import CloudFoundryEnv
 import Foundation
+import LoggerAPI
 
-
-//TODO to test, fork sample app and keep around for future update
 
 public class AppConfiguration {
 
+    let cloudFoundryManager = ConfigurationManager()
     let mapManager = ConfigurationManager()
-
-    let mappingFile = "mapping.json"
-    let mappingFilePath = "../../config/mapping.json"
 
     public init () {
 
-        let filePath = URL(fileURLWithPath: #file).appendingPathComponent(mappingFilePath).standardized
-        mapManager.load(url: filePath)
+        let mappingFile = "mapping.json"
+
+        // For local mapping file
+        mapManager.load(file: "config/\(mappingFile)", relativeFrom: .project)
+
+        // For Cloud Foundry
         mapManager.load(file: mappingFile, relativeFrom: .pwd)
+        mapManager.load(file: "config/\(mappingFile)", relativeFrom: .pwd)
+
     }
 
     public func getCredentials(name: String) -> [String:Any]? {
 
         guard let searchPatterns = mapManager["\(name):searchPatterns"] as? [String] else {
-            print("ERROR")
+            Log.debug("No search patterns found. There may have been a problem loading `mapping.json`")
             return nil
         }
 
-        //TODO cache credentials?
         for pattern in searchPatterns {
 
-            let arr = pattern.components(separatedBy: ":")
-            let key = arr[0]
-            let value = arr[1]
+            var arr = pattern.components(separatedBy: ":")
 
-
+            let key = arr.removeFirst()
+            let value = arr.removeFirst()
+          
             switch (key) {
             case "cloudfoundry":    // CloudFoundry/swift-cfenv
                 if let credentials = getCloudFoundryCreds(name: value) {
+                    Log.debug("Found cloud foundry credentials.")
                     return credentials
                 }
                 break
             case "env":             // Kubernetes
-                if let credentials = getKubeCreds(name: value) {
+                if let credentials = getKubeCreds(evName: value) {
+                    Log.debug("Found credentials from environment variable.")
                     return credentials
                 }
                 break
             case "file":            // File- local or in cloud foundry
-                if let credentials = getLocalCreds(name: name, path: value) {
+                let instance = (arr.count > 0) ? arr[0] : ""
+
+                if let credentials = getLocalCreds(instance: instance, path: value),
+                    credentials.count > 0 {
+                    Log.debug("Found credentials in referenced file.")
                     return credentials
                 }
                 break
             default:
-                print("ERROR")
                 return nil
             }
 
         }
-
+        Log.error("Failed to find credentials.")
         return nil
-
     }
 
     private func getCloudFoundryCreds(name: String) -> [String:Any]? {
 
-        let cfManager = ConfigurationManager()
-        cfManager.load(.environmentVariables)
+        cloudFoundryManager.load(.environmentVariables)
 
-        guard let credentials   = cfManager.getServiceCreds(spec: name) else {
-            print("CLOUD FOUNDRY FAIL")
+        guard let credentials = cloudFoundryManager.getServiceCreds(spec: name) else {
             return nil
         }
 
         return credentials
     }
 
-    private func getKubeCreds(name: String) -> [String:Any]? {
+    private func getKubeCreds(evName: String) -> [String:Any]? {
 
         let kubeManager = ConfigurationManager()
         kubeManager.load(.environmentVariables)
 
-        guard let credentials = kubeManager["\(name)"] else {
-            print("KUBE FAIL")
+        guard let credentials = kubeManager["\(evName)"] as? [String: Any] else {
             return nil
         }
 
-        return credentials as? [String : Any]
+        return credentials
     }
 
-    private func getLocalCreds(name: String, path: String) -> [String:Any]? {
+    private func getLocalCreds(instance: String, path: String) -> [String:Any]? {
 
         let fileManager = ConfigurationManager()
 
-        // Load local file
-        let filePath = URL(fileURLWithPath: #file).appendingPathComponent(path).standardized
-        fileManager.load(url: filePath)
+        // For local mapping file
+        fileManager.load(file: path, relativeFrom: .project)
 
         // Load file in cloud foundry-- extract filename from path
         if let fileName = path.components(separatedBy: "/").last {
             fileManager.load(file: fileName, relativeFrom: .pwd)
         }
 
-        guard let credentials = fileManager.getServiceCreds(spec: name) else {
-            print("LOCAL CREDS FAIL")
-            return nil
+        if instance == "" {
+            return (fileManager.getConfigs() as? [String: Any])
         }
-        
-        return credentials
+        else {
+            return fileManager["\(instance)"] as? [String: Any]
+        }
     }
 
+    // Used internally for testing purposes
+    internal func loadCFTestConfigs(path: String) {
+
+        cloudFoundryManager.load(file: path, relativeFrom: .project)
+    }
+    
+    // Used internally for testing purposes
+    internal func loadMappingTestConfigs(path: String) {
+        
+        mapManager.load(file: path, relativeFrom: .project)
+    }
 }
 

@@ -30,7 +30,13 @@ class AppIDTests: XCTestCase {
 
         let manager = AppConfiguration()
 
-        guard let credentials =  manager.getAppIDCredentials(name: "AppIDService") else {
+        // Load test mapping.json file
+        manager.loadMappingTestConfigs(path: "Tests/ConfigTests/mapping.json")
+
+        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        manager.loadCFTestConfigs(path: "Tests/ConfigTests/config_cf_example.json")
+
+        guard let credentials =  manager.getAppIDCredentials(name: "AppIDKey") else {
             XCTFail("Could not load AppID credentials.")
             return
         }

@@ -31,5 +31,7 @@ XCTMain([
     testCase(RedisTests.allTests),
     testCase(WatsonConversationTests.allTests),
     testCase(NaturalLangUnderstandingTests.allTests),
-    testCase(WeatherCompanyDataTests.allTests)
+    testCase(WeatherCompanyDataTests.allTests),
+    testCase(EnvironmentVariablesTests.allTests),
+    testCase(LocalFileTests.allTests)
     ])

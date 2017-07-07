@@ -30,7 +30,13 @@ class RedisTests: XCTestCase {
 
         let manager = AppConfiguration()
 
-        guard let credentials =  manager.getRedisCredentials(name: "RedisService") else {
+        // Load test mapping.json file
+        manager.loadMappingTestConfigs(path: "Tests/ConfigTests/mapping.json")
+
+        // Load Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        manager.loadCFTestConfigs(path: "Tests/ConfigTests/config_cf_example.json")
+
+        guard let credentials =  manager.getRedisCredentials(name: "RedisKey") else {
             XCTFail("Could not load Redis service credentials.")
             return
         }

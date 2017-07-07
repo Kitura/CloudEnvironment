@@ -42,11 +42,11 @@ public class WeatherCompanyDataCredentials {
     }
 }
 
-extension ConfigurationManager {
+extension AppConfiguration {
 
     public func getWeatherCompanyDataCredentials(name: String) -> WeatherCompanyDataCredentials? {
 
-        guard let credentials = getServiceCreds(spec: name),
+        guard let credentials = getCredentials(name: name),
             let username    = credentials["username"] as? String,
             let password    = credentials["password"] as? String,
             let host        = credentials["host"] as? String,
