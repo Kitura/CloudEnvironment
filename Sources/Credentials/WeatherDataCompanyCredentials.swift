@@ -40,7 +40,7 @@ public class WeatherCompanyDataCredentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getWeatherCompanyDataCredentials(name: String) -> WeatherCompanyDataCredentials? {
 

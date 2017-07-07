@@ -30,9 +30,9 @@ class NaturalLangUnderstandingTests: XCTestCase {
     func testGetCredentials() {
 
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
-        guard let credentials =  manager.getNaturalLangUnderstandingCredentials(name: "NLUKey") else {
+        guard let credentials =  cloudEnv.getNaturalLangUnderstandingCredentials(name: "NLUKey") else {
             XCTFail("Could not load Natural Language Understanding service credentials.")
             return
         }

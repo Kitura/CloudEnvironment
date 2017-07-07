@@ -34,11 +34,10 @@ public class AlertNotificationCredentials {
         self.id         = id
         self.password   = password
         self.swaggerUI  = swaggerUI
-
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getAlertNotificationCredentials (name: String) -> AlertNotificationCredentials? {
 
@@ -55,7 +54,6 @@ extension AppConfiguration {
             id:         id,
             password:   password,
             swaggerUI:  swaggerUI )
-
     }
 
 }

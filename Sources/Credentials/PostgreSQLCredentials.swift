@@ -38,7 +38,7 @@ public class PostgreSQLCredentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getPostgreSQLCredentials (name: String) -> PostgreSQLCredentials? {
 

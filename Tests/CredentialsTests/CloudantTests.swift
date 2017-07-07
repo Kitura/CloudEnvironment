@@ -30,9 +30,9 @@ class CloudantTests: XCTestCase {
     func testGetCredentials() {
 
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
-        guard let credentials =  manager.getCloudantCredentials(name: "CloudantKey") else {
+        guard let credentials =  cloudEnv.getCloudantCredentials(name: "CloudantKey") else {
             XCTFail("Could not load Cloudant credentials.")
             return
         }

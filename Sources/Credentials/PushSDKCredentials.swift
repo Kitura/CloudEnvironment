@@ -40,7 +40,7 @@ public class PushSDKCredentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getPushSDKCredentials (name: String) -> PushSDKCredentials? {
 

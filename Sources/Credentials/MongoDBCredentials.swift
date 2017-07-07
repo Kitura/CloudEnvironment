@@ -42,7 +42,7 @@ public class MongoDBCredentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getMongoDBCredentials (name: String) -> MongoDBCredentials? {
 

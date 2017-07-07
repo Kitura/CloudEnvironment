@@ -33,7 +33,7 @@ public class WatsonConversationCredentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getWatsonConversationCredentials(name: String) -> WatsonConversationCredentials? {
 

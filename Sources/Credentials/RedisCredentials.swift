@@ -35,7 +35,7 @@ public class RedisCredentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getRedisCredentials (name: String) -> RedisCredentials? {
 

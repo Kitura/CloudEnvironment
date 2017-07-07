@@ -40,11 +40,10 @@ public class CloudantCredentials {
         self.port       = port
         self.secured    = secured
         self.url        = url
-
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getCloudantCredentials(name: String) -> CloudantCredentials? {
 

@@ -35,7 +35,7 @@ public class NaturalLangUnderstandingCredentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getNaturalLangUnderstandingCredentials(name: String) -> NaturalLangUnderstandingCredentials? {
 

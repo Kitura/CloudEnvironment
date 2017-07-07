@@ -40,11 +40,10 @@ public class AutoScalingCredentials {
         self.url        = url
         self.serviceID  = serviceID
         self.apiURL     = apiURL
-
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getAutoScalingCredentials (name: String) -> AutoScalingCredentials? {
 
@@ -66,7 +65,6 @@ extension AppConfiguration {
             url:        url,
             serviceID:  serviceID,
             apiURL:     apiURL )
-
     }
 
 }

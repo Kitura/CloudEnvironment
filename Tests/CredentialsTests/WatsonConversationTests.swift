@@ -30,9 +30,9 @@ class WatsonConversationTests: XCTestCase {
     func testGetCredentials() {
 
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
-        guard let credentials =  manager.getWatsonConversationCredentials(name: "ConversationKey") else {
+        guard let credentials =  cloudEnv.getWatsonConversationCredentials(name: "ConversationKey") else {
             XCTFail("Could not load Watson Conversation service credentials.")
             return
         }

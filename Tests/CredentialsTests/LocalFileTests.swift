@@ -30,9 +30,9 @@ class LocalFileTests: XCTestCase {
     func testGetCredsFromFileWithKey() {
 
         // Load test mappings.json file
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CredentialsTests/resources")
 
-        guard let credentials =  manager.getAlertNotificationCredentials(name: "AlertNotificationFileWithKey") else {
+        guard let credentials =  cloudEnv.getAlertNotificationCredentials(name: "AlertNotificationFileWithKey") else {
             XCTFail("Could not load Alert Notification service credentials.")
             return
         }
@@ -47,9 +47,9 @@ class LocalFileTests: XCTestCase {
     func testGetCredsFromFileNoKey () {
 
         // Load test mappings.json file
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources")
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CredentialsTests/resources")
 
-        guard let credentials =  manager.getAlertNotificationCredentials(name: "AlertNotificationFileNoKey") else {
+        guard let credentials =  cloudEnv.getAlertNotificationCredentials(name: "AlertNotificationFileNoKey") else {
             XCTFail("Could not load Alert Notification service credentials.")
             return
         }

@@ -41,7 +41,7 @@ public class DB2Credentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getDB2Credentials (name: String) -> DB2Credentials? {
 

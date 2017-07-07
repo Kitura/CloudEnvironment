@@ -41,7 +41,7 @@ public class MySQLCredentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getMySQLCredentials (name: String) -> MySQLCredentials? {
 

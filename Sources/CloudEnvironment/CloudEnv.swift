@@ -19,7 +19,7 @@ import CloudFoundryEnv
 import Foundation
 import LoggerAPI
 
-public class AppConfiguration {
+public class CloudEnv {
 
   // Static variables/constants
   public static let mappingFile = "mappings.json"
@@ -37,10 +37,10 @@ public class AppConfiguration {
     let filePath: String = (mappingsFilePath == nil) ? "config" : mappingsFilePath!
 
     // For local execution
-    mapManager.load(file: "\(filePath)/\(AppConfiguration.mappingFile)", relativeFrom: .project)
+    mapManager.load(file: "\(filePath)/\(CloudEnv.mappingFile)", relativeFrom: .project)
 
     // For Cloud Foundry
-    mapManager.load(file: "\(filePath)/\(AppConfiguration.mappingFile)", relativeFrom: .pwd)
+    mapManager.load(file: "\(filePath)/\(CloudEnv.mappingFile)", relativeFrom: .pwd)
   }
 
   public func getDictionary(name: String) -> [String:Any]? {
@@ -72,13 +72,13 @@ public class AppConfiguration {
       switch (key) {
       case "cloudfoundry":    // Cloud Foundry/swift-cfenv
         if let credentials = getCloudFoundryCreds(name: value) {
-          Log.debug("Found cloud foundry credentials.")
+          Log.debug("Found credentials in Cloud Foundry env.")
           return credentials
         }
         break
       case "env":             // Kubernetes
         if let credentials = getKubeCreds(evName: value) {
-          Log.debug("Found credentials from environment variable.")
+          Log.debug("Found credentials in environment variable.")
           return credentials
         }
         break
@@ -91,6 +91,7 @@ public class AppConfiguration {
         }
         break
       default:
+        Log.error("Failed to found credentials; invalid key: '\(key)'.")
         return nil
       }
     }
@@ -99,29 +100,26 @@ public class AppConfiguration {
   }
 
   private func getCloudFoundryCreds(name: String) -> [String:Any]? {
-    // Load configuration for cloud foundry
+
     let cloudFoundryManager = ConfigurationManager()
+
+    // Load configuration for cloud foundry
     if let cloudFoundryFile = self.cloudFoundryFile {
       cloudFoundryManager.load(file: cloudFoundryFile, relativeFrom: .project)
     } else {
       cloudFoundryManager.load(.environmentVariables)
     }
 
-    guard let credentials = cloudFoundryManager.getServiceCreds(spec: name) else {
-      return nil
-    }
+    let credentials = cloudFoundryManager.getServiceCreds(spec: name)
 
     return credentials
   }
 
   private func getKubeCreds(evName: String) -> [String:Any]? {
 
-    let kubeManager = ConfigurationManager()
-    kubeManager.load(.environmentVariables)
+    let kubeManager = ConfigurationManager().load(.environmentVariables)
 
-    guard let credentials = kubeManager["\(evName)"] as? [String: Any] else {
-      return nil
-    }
+    let credentials = kubeManager["\(evName)"] as? [String: Any]
 
     return credentials
   }

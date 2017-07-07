@@ -56,7 +56,7 @@ public class ObjectStorageCredentials {
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getObjectStorageCredentials (name: String) -> ObjectStorageCredentials? {
 

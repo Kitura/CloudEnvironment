@@ -30,9 +30,9 @@ class MongoDBTests: XCTestCase {
     func testGetCredentials() {
 
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let manager = AppConfiguration(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CredentialsTests/resources", cloudFoundryFile: "Tests/CredentialsTests/resources/config_cf_example.json")
 
-        guard let credentials =  manager.getMongoDBCredentials(name: "MongoDBKey") else {
+        guard let credentials =  cloudEnv.getMongoDBCredentials(name: "MongoDBKey") else {
             XCTFail("Could not load MongoDB credentials.")
             return
         }

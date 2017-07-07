@@ -40,11 +40,10 @@ public class AppIDCredentials {
         self.secret         = secret
         self.tenantId       = tenantId
         self.version        = version
-
     }
 }
 
-extension AppConfiguration {
+extension CloudEnv {
 
     public func getAppIDCredentials (name: String) -> AppIDCredentials? {
 
@@ -66,7 +65,6 @@ extension AppConfiguration {
             secret:         secret,
             tenantId:       tenantId,
             version:        version )
-
     }
 
 }
