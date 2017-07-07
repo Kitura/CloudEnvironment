@@ -49,7 +49,8 @@ public class CloudEnv {
 
   public func getString(name: String) -> String? {
     if let credentials = getCredentials(name: name) {
-      if let jsonData = try? JSONSerialization.data(withJSONObject: credentials, options: .prettyPrinted) {
+      //if let jsonData = try? JSONSerialization.data(withJSONObject: credentials, options: .prettyPrinted) {
+      if let jsonData = try? JSONSerialization.data(withJSONObject: credentials) {
         return String(data: jsonData, encoding: String.Encoding.utf8)
       }
     }
