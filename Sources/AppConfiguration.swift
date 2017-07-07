@@ -19,7 +19,6 @@ import CloudFoundryEnv
 import Foundation
 import LoggerAPI
 
-
 public class AppConfiguration {
 
     let cloudFoundryManager = ConfigurationManager()
@@ -35,7 +34,6 @@ public class AppConfiguration {
         // For Cloud Foundry
         mapManager.load(file: mappingFile, relativeFrom: .pwd)
         mapManager.load(file: "config/\(mappingFile)", relativeFrom: .pwd)
-
     }
 
     public func getCredentials(name: String) -> [String:Any]? {
@@ -48,12 +46,11 @@ public class AppConfiguration {
         for pattern in searchPatterns {
 
             var arr = pattern.components(separatedBy: ":")
-
             let key = arr.removeFirst()
             let value = arr.removeFirst()
-          
+
             switch (key) {
-            case "cloudfoundry":    // CloudFoundry/swift-cfenv
+            case "cloudfoundry":    // Cloud Foundry/swift-cfenv
                 if let credentials = getCloudFoundryCreds(name: value) {
                     Log.debug("Found cloud foundry credentials.")
                     return credentials
@@ -67,8 +64,7 @@ public class AppConfiguration {
                 break
             case "file":            // File- local or in cloud foundry
                 let instance = (arr.count > 0) ? arr[0] : ""
-
-                if let credentials = getLocalCreds(instance: instance, path: value),
+                if let credentials = getFileCreds(instance: instance, path: value),
                     credentials.count > 0 {
                     Log.debug("Found credentials in referenced file.")
                     return credentials
@@ -77,7 +73,6 @@ public class AppConfiguration {
             default:
                 return nil
             }
-
         }
         Log.error("Failed to find credentials.")
         return nil
@@ -106,7 +101,7 @@ public class AppConfiguration {
         return credentials
     }
 
-    private func getLocalCreds(instance: String, path: String) -> [String:Any]? {
+    private func getFileCreds(instance: String, path: String) -> [String:Any]? {
 
         let fileManager = ConfigurationManager()
 
@@ -118,10 +113,9 @@ public class AppConfiguration {
             fileManager.load(file: fileName, relativeFrom: .pwd)
         }
 
-        if instance == "" {
+        if instance.isEmpty {
             return (fileManager.getConfigs() as? [String: Any])
-        }
-        else {
+        } else {
             return fileManager["\(instance)"] as? [String: Any]
         }
     }
@@ -131,11 +125,10 @@ public class AppConfiguration {
 
         cloudFoundryManager.load(file: path, relativeFrom: .project)
     }
-    
+
     // Used internally for testing purposes
     internal func loadMappingTestConfigs(path: String) {
-        
+
         mapManager.load(file: path, relativeFrom: .project)
     }
 }
-

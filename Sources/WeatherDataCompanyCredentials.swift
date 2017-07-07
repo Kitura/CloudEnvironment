@@ -62,7 +62,7 @@ extension AppConfiguration {
             host:       host,
             port:       port,
             url:        url )
-        
+
     }
     
 }
