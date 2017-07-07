@@ -23,20 +23,20 @@ You specify search patterns in a file named `mappings.json`. This file must exis
         "searchPatterns": [
             "cloudfoundry:my-awesome-cloudant-db",
             "env:my-awesome-cloudant-db-credentials",
-            "file:/localdev/my-awesome-cloudant-db-credentials.json"
+            "file:localdev/my-awesome-cloudant-db-credentials.json"
         ]
     },
     "object-storage-credentials": {
         "searchPatterns": [
             "cloudfoundry:my-awesome-object-storage",
             "env:my-awesome-object-storage-credentials",
-            "file:/localdev/my-awesome-object-storage-credentials.json"
+            "file:localdev/my-awesome-object-storage-credentials.json"
         ]
     }
 }
 ```
 
-In the example above, `cloudant-credentials` and `object-storage-credentials` are the keys your Swift application should use to look up the corresponding credentials.
+In the example above, `cloudant-credentials` and `object-storage-credentials` are the keys your Swift application should use to look up the corresponding credentials. Please note that the paths next to the `file` search pattern must be relative to the root folder of your Swift application.
 
 ## Usage
 To leverage the CloudEnvironment package in your Swift application, you should specify a dependency for it in your `Package.swift` file:
@@ -57,10 +57,10 @@ To leverage the CloudEnvironment package in your Swift application, you should s
      ])
  ```
 
- Once the `Package.swift` file of your application has been updated accordingly, you can import the `CloudFoundryEnv`, `Configuration`, and `CloudFoundryConfig` modules in your code to access:
+ Once the `Package.swift` file of your application has been updated accordingly, you can import the `CloudEnvironment` modules in your code:
 
 ```swift
- import CloudEnvironment
+import CloudEnvironment
 
 ...
 
@@ -71,7 +71,7 @@ let cloudEnv = CloudEnv()
 let cloudantCredentials = cloudEnv.getCloudantCredentials(name: "cloudant-credentials")
 // cloudantCredentials.username, cloudantCredentials.password, etc.
 let objStorageCredentials = cloudEnv.getObjectStorageCredentials(name: "object-storage-credentials")
-
+// objStorageCredentials.username, objStorageCredentials.password, objStorageCredentials.projectID, etc.
 ...
 
 let service1Credentials = cloudEnv.getDictionary("service1-credentials")
@@ -81,7 +81,7 @@ let service1CredentialsStr = cloudEnv.getString("service1-credentials")
 
 ```
 
-This library simplifies obtaining service credentials, as the snippet of code above shows. For details on the different elements (e.g `username`, `password`, `host`, etc.) that make up a credentials set and accessor method for each service, check out the [docs](docs/Classes) directory, which contains [Jazzy](https://github.com/Realm/jazzy) generated documentation.
+This library simplifies obtaining service credentials, as shown above. For details on the different elements (e.g `username`, `password`, `host`, etc.) that make up a credentials set and accessor methods for service credentials, check out the [docs](docs/Classes) directory, which contains [Jazzy](https://github.com/Realm/jazzy) generated documentation.
 
 Following the above approach your application can be implemented in a runtime-environment agnostic way, abstracting differences in environment variable management introduced by different Cloud computing environments.
 
