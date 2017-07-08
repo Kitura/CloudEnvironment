@@ -103,4 +103,4 @@ The following services are currently supported by this library. Therefore, you c
 - [Weather Company Data](https://console.bluemix.net/catalog/services/weather-company-data)
 
 ## Configuration
-It is worth mentioning that the latest version of CloudEnvironment relies on the [Configuration](https://github.com/IBM-Swift/Configuration) package to load configuration data from multiple sources, such as environment variables or JSON files. CloudEnvironment also relies on [Swift-cfenv](https://github.com/IBM-Swift/Swift-cfenv), which provides structures and methods for parsing Cloud Foundry-provided configuration variables, as well as providing default values when running locally.
+The latest version of CloudEnvironment relies on the [Configuration](https://github.com/IBM-Swift/Configuration) package to load configuration data from multiple sources, such as environment variables or JSON files. CloudEnvironment also relies on [Swift-cfenv](https://github.com/IBM-Swift/Swift-cfenv), which provides structures and methods for parsing Cloud Foundry-provided configuration variables.
