@@ -15,7 +15,7 @@
  */
 
 import XCTest
-@testable import CredentialsTests
+@testable import CloudEnvironmentTests
 
 XCTMain([
     testCase(AlertNotificationTests.allTests),
