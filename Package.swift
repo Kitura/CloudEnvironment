@@ -19,8 +19,7 @@ import PackageDescription
 let package = Package(
   name: "CloudEnvironment",
   targets: [
-    Target(name: "CloudEnvironment", dependencies: []),
-    Target(name: "Credentials", dependencies: ["CloudEnvironment"]),
+    Target(name: "CloudEnvironment", dependencies: [])
   ],
   dependencies: [
     .Package(url: "https://github.com/IBM-Swift/LoggerAPI.git", majorVersion: 1),

@@ -1,0 +1,122 @@
+{
+  "AlertNotificationKey": {
+    "searchPatterns": [
+      "file:Tests/CloudEnvironmentTests/resources/non-existing-file.json",
+      "env:kubeEVINVALID",
+      "cloudfoundry:AlertNotificationService"
+
+    ]
+  },
+  "AlertNotificationEVKey": {
+    "searchPatterns": [
+      "file:Tests/CloudEnvironmentTests/resources/non-existing-file.json",
+      "cloudfoundry:my-cloudant-instance-1",
+      "env:KUBE_ENV"
+    ]
+  },
+  "AlertNotificationFileNoKey": {
+    "searchPatterns": [
+      "file:Tests/CloudEnvironmentTests/resources/config_file_no_key.json",
+      "env:KUBE_ENV_WRONG",
+      "cloudfoundry:my-cloudant-instance-1"
+    ]
+  },
+  "AlertNotificationFileWithKey": {
+    "searchPatterns": [
+      "file:Tests/CloudEnvironmentTests/resources/config_file_with_key.json:alertnotification",
+      "env:KUBE_ENV_WRONG",
+      "cloudfoundry:my-cloudant-instance-1"
+    ]
+  },
+  "CloudantKey": {
+    "searchPatterns": [
+      "cloudfoundry:CloudantService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "PushNotificationKey": {
+    "searchPatterns": [
+      "cloudfoundry:PushNotificationService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "ConversationKey": {
+    "searchPatterns": [
+      "cloudfoundry:ConversationService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "NLUKey": {
+    "searchPatterns": [
+      "cloudfoundry:NLUService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "AutoScalingKey": {
+    "searchPatterns": [
+      "cloudfoundry:AutoScalingService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "AppIDKey": {
+    "searchPatterns": [
+      "cloudfoundry:AppIDService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "RedisKey": {
+    "searchPatterns": [
+      "cloudfoundry:RedisService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "MongoDBKey": {
+    "searchPatterns": [
+      "cloudfoundry:MongoDBService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "PostgreSQLKey": {
+    "searchPatterns": [
+      "cloudfoundry:PostgreSQLService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "MySQLKey": {
+    "searchPatterns": [
+      "cloudfoundry:MySQLService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "DB2Key": {
+    "searchPatterns": [
+      "cloudfoundry:DB2Service",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "ObjectStorageKey": {
+    "searchPatterns": [
+      "cloudfoundry:ObjectStorageService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  },
+  "WeatherCompanyDataKey": {
+    "searchPatterns": [
+      "cloudfoundry:WeatherCompanyDataService",
+      "env:my-kube-secret-os-credentials",
+      "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+    ]
+  }
+}
