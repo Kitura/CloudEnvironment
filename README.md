@@ -125,5 +125,5 @@ if let credentials: [String:Any]? = cloudEnv.getDictionary(name: "service1-crede
 ...
 ```
 
-## Configuration
+## Configuration and Swift-cfenv
 The latest version of CloudEnvironment relies on the [Configuration](https://github.com/IBM-Swift/Configuration) package to load configuration data from multiple sources, such as environment variables or JSON files. CloudEnvironment also relies on [Swift-cfenv](https://github.com/IBM-Swift/Swift-cfenv), which provides structures and methods for parsing Cloud Foundry-provided configuration variables.
