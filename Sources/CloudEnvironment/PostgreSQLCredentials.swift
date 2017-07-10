@@ -26,6 +26,12 @@ public class PostgreSQLCredentials {
   public let username    : String
   public let password    : String
 
+  /// Constructor
+  ///
+  /// - Parameter host: host
+  /// - Parameter port: port
+  /// - Parameter username: username
+  /// - Parameter password: password
   public init (
     host:       String,
     port:       Int,

@@ -20,9 +20,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          CloudConfiguration Docs
+          CloudEnvironment Docs
         </a>
-         (21% documented)
+         (37% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -32,7 +32,7 @@
       </p>
     
         <p class="header-col header-col--secondary">
-          <a class="header-link" href="https://github.com/IBM-Swift/CloudConfiguration/">
+          <a class="header-link" href="https://github.com/IBM-Swift/CloudEnvironment/">
             <img class="header-icon" src="img/gh.png"/>
             View on GitHub
           </a>
@@ -41,7 +41,7 @@
     </header>
 
     <p class="breadcrumbs">
-      <a class="breadcrumb" href="index.html">CloudConfiguration Reference</a>
+      <a class="breadcrumb" href="index.html">CloudEnvironment Reference</a>
       <img class="carat" src="img/carat.png" />
       Classes  Reference
     </p>
@@ -62,6 +62,9 @@
                 <a class="nav-group-task-link" href="Classes/AutoScalingCredentials.html">AutoScalingCredentials</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/CloudEnv.html">CloudEnv</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/CloudantCredentials.html">CloudantCredentials</a>
               </li>
               <li class="nav-group-task">
@@ -72,6 +75,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/MySQLCredentials.html">MySQLCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NaturalLangUnderstandingCredentials.html">NaturalLangUnderstandingCredentials</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/ObjectStorageCredentials.html">ObjectStorageCredentials</a>
@@ -88,13 +94,8 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/WatsonConversationCredentials.html">WatsonConversationCredentials</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/ConfigurationManager.html">ConfigurationManager</a>
+                <a class="nav-group-task-link" href="Classes/WeatherCompanyDataCredentials.html">WeatherCompanyDataCredentials</a>
               </li>
             </ul>
           </li>
@@ -117,9 +118,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration28AlertNotificationCredentials"></a>
+                    <a name="/s:C16CloudEnvironment28AlertNotificationCredentials"></a>
                     <a name="//apple_ref/swift/Class/AlertNotificationCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration28AlertNotificationCredentials">AlertNotificationCredentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment28AlertNotificationCredentials">AlertNotificationCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -127,7 +128,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for an Alert Notification service instance</p>
+                        <p>AlertNotificationCredentials class</p>
+
+<p>Contains the credentials for an Alert Notification service instance.</p>
 
                         <a href="Classes/AlertNotificationCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -149,9 +152,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration16AppIDCredentials"></a>
-                    <a name="//apple_ref/swift/Class/AppIDCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration16AppIDCredentials">AppIDCredentials</a>
+                    <a name="/s:C16CloudEnvironment8CloudEnv"></a>
+                    <a name="//apple_ref/swift/Class/CloudEnv" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C16CloudEnvironment8CloudEnv">CloudEnv</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -159,7 +162,45 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for an AppID service instance</p>
+                        <p>CloudEnv class</p>
+
+<p>Convenience class for obtaining environment variables that are mapped to JSON strings.
+Mainly used for obtaining credentials for services so Swift applications can be written in
+a platform agnostic way.</p>
+
+                        <a href="Classes/CloudEnv.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CloudEnv</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C16CloudEnvironment16AppIDCredentials"></a>
+                    <a name="//apple_ref/swift/Class/AppIDCredentials" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C16CloudEnvironment16AppIDCredentials">AppIDCredentials</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>AppIDCredentials class</p>
+
+<p>Contains the credentials for an AppID service instance.</p>
 
                         <a href="Classes/AppIDCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -181,9 +222,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration22AutoScalingCredentials"></a>
+                    <a name="/s:C16CloudEnvironment22AutoScalingCredentials"></a>
                     <a name="//apple_ref/swift/Class/AutoScalingCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration22AutoScalingCredentials">AutoScalingCredentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment22AutoScalingCredentials">AutoScalingCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -191,7 +232,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for an Auto Scaling service instance</p>
+                        <p>AutoScalingCredentials class</p>
+
+<p>Contains the credentials for an Auto Scaling service instance.</p>
 
                         <a href="Classes/AutoScalingCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -213,9 +256,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration19CloudantCredentials"></a>
+                    <a name="/s:C16CloudEnvironment19CloudantCredentials"></a>
                     <a name="//apple_ref/swift/Class/CloudantCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration19CloudantCredentials">CloudantCredentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment19CloudantCredentials">CloudantCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -223,7 +266,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for a Cloudant service instance</p>
+                        <p>CloudantCredentials class</p>
+
+<p>Contains the credentials for a Cloudant service instance.</p>
 
                         <a href="Classes/CloudantCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -245,9 +290,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration14DB2Credentials"></a>
+                    <a name="/s:C16CloudEnvironment14DB2Credentials"></a>
                     <a name="//apple_ref/swift/Class/DB2Credentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration14DB2Credentials">DB2Credentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment14DB2Credentials">DB2Credentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -255,7 +300,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for a DB2 service instance</p>
+                        <p>DB2Credentials class</p>
+
+<p>Contains the credentials for a DB2 service instance.</p>
 
                         <a href="Classes/DB2Credentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -277,9 +324,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration18MongoDBCredentials"></a>
+                    <a name="/s:C16CloudEnvironment18MongoDBCredentials"></a>
                     <a name="//apple_ref/swift/Class/MongoDBCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration18MongoDBCredentials">MongoDBCredentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment18MongoDBCredentials">MongoDBCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -287,7 +334,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for a MongoDB service instance</p>
+                        <p>MongoDBCredentials class</p>
+
+<p>Contains the credentials for a MongoDB service instance.</p>
 
                         <a href="Classes/MongoDBCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -309,9 +358,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration16MySQLCredentials"></a>
+                    <a name="/s:C16CloudEnvironment16MySQLCredentials"></a>
                     <a name="//apple_ref/swift/Class/MySQLCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration16MySQLCredentials">MySQLCredentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment16MySQLCredentials">MySQLCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -319,7 +368,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for a MySQL service instance</p>
+                        <p>MySQLCredentials class</p>
+
+<p>Contains the credentials for a MySQL service instance.</p>
 
                         <a href="Classes/MySQLCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -341,9 +392,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration24ObjectStorageCredentials"></a>
-                    <a name="//apple_ref/swift/Class/ObjectStorageCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration24ObjectStorageCredentials">ObjectStorageCredentials</a>
+                    <a name="/s:C16CloudEnvironment35NaturalLangUnderstandingCredentials"></a>
+                    <a name="//apple_ref/swift/Class/NaturalLangUnderstandingCredentials" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C16CloudEnvironment35NaturalLangUnderstandingCredentials">NaturalLangUnderstandingCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -351,7 +402,43 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for an Object Storage service instance</p>
+                        <p>NaturalLangUnderstandingCredentials class</p>
+
+<p>Contains the credentials for a Natural Language Understanding service instance.</p>
+
+                        <a href="Classes/NaturalLangUnderstandingCredentials.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">NaturalLangUnderstandingCredentials</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C16CloudEnvironment24ObjectStorageCredentials"></a>
+                    <a name="//apple_ref/swift/Class/ObjectStorageCredentials" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C16CloudEnvironment24ObjectStorageCredentials">ObjectStorageCredentials</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ObjectStorageCredentials class</p>
+
+<p>Contains the credentials for an Object Storage service instance.</p>
 
                         <a href="Classes/ObjectStorageCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -373,9 +460,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration21PostgreSQLCredentials"></a>
+                    <a name="/s:C16CloudEnvironment21PostgreSQLCredentials"></a>
                     <a name="//apple_ref/swift/Class/PostgreSQLCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration21PostgreSQLCredentials">PostgreSQLCredentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment21PostgreSQLCredentials">PostgreSQLCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -383,7 +470,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for a PostgreSQL service instance</p>
+                        <p>PostgreSQLCredentials class</p>
+
+<p>Contains the credentials for a PostgreSQL service instance.</p>
 
                         <a href="Classes/PostgreSQLCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -405,9 +494,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration18PushSDKCredentials"></a>
+                    <a name="/s:C16CloudEnvironment18PushSDKCredentials"></a>
                     <a name="//apple_ref/swift/Class/PushSDKCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration18PushSDKCredentials">PushSDKCredentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment18PushSDKCredentials">PushSDKCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -415,7 +504,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for a PushSDK service instance</p>
+                        <p>PushSDKCredentials class</p>
+
+<p>Contains the credentials for a PushSDK service instance.</p>
 
                         <a href="Classes/PushSDKCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -437,9 +528,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration16RedisCredentials"></a>
+                    <a name="/s:C16CloudEnvironment16RedisCredentials"></a>
                     <a name="//apple_ref/swift/Class/RedisCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration16RedisCredentials">RedisCredentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment16RedisCredentials">RedisCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -447,7 +538,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for a Redis service instance</p>
+                        <p>RedisCredentials class</p>
+
+<p>Contains the credentials for a Redis service instance.</p>
 
                         <a href="Classes/RedisCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -469,9 +562,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C18CloudConfiguration29WatsonConversationCredentials"></a>
+                    <a name="/s:C16CloudEnvironment29WatsonConversationCredentials"></a>
                     <a name="//apple_ref/swift/Class/WatsonConversationCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C18CloudConfiguration29WatsonConversationCredentials">WatsonConversationCredentials</a>
+                    <a class="token" href="#/s:C16CloudEnvironment29WatsonConversationCredentials">WatsonConversationCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -479,7 +572,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Contains the credentials for a Watson Conversation service instance</p>
+                        <p>WatsonConversationCredentials class</p>
+
+<p>Contains the credentials for a Watson Conversation service instance.</p>
 
                         <a href="Classes/WatsonConversationCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -496,14 +591,48 @@
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C16CloudEnvironment29WeatherCompanyDataCredentials"></a>
+                    <a name="//apple_ref/swift/Class/WeatherCompanyDataCredentials" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C16CloudEnvironment29WeatherCompanyDataCredentials">WeatherCompanyDataCredentials</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>WeatherCompanyDataCredentials class</p>
+
+<p>Contains the credentials for a Weather Company Data service instance.</p>
+
+                        <a href="Classes/WeatherCompanyDataCredentials.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">WeatherCompanyDataCredentials</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2017-06-08)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2017-07-10)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

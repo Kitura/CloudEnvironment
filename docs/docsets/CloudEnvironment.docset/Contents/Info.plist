@@ -3,11 +3,11 @@
 <plist version="1.0">
   <dict>
     <key>CFBundleIdentifier</key>
-      <string>com.jazzy.cloudconfiguration</string>
+      <string>com.jazzy.cloudenvironment</string>
     <key>CFBundleName</key>
-      <string>CloudConfiguration</string>
+      <string>CloudEnvironment</string>
     <key>DocSetPlatformFamily</key>
-      <string>cloudconfiguration</string>
+      <string>cloudenvironment</string>
     <key>isDashDocset</key>
       <true/>
     <key>dashIndexFilePath</key>

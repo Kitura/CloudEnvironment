@@ -23,17 +23,19 @@ import LoggerAPI
 ///
 /// Convenience class for obtaining environment variables that are mapped to JSON strings.
 /// Mainly used for obtaining credentials for services so Swift applications can be written in
-// a platform agnostic way.
+/// a platform agnostic way.
 public class CloudEnv {
 
-  // Static variables/constants
+  /// Name of mappings file (mappings.json).
   public static let mappingsFile = "mappings.json"
 
+  /// Port number application can listen to.
   public var port: Int {
     let cloudFoundryManager = getCloudFoundryConfigMgr()
     return cloudFoundryManager.port
   }
 
+  /// URL that can be assigned to application.
   public var url: String {
     let cloudFoundryManager = getCloudFoundryConfigMgr()
     return cloudFoundryManager.url
