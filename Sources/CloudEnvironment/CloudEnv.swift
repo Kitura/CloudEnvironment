@@ -24,12 +24,12 @@ public class CloudEnv {
   // Static variables/constants
   public static let mappingsFile = "mappings.json"
 
-  var port: Int {
+  public var port: Int {
     let cloudFoundryManager = getCloudFoundryConfigMgr()
     return cloudFoundryManager.port
   }
 
-  var url: String {
+  public var url: String {
     let cloudFoundryManager = getCloudFoundryConfigMgr()
     return cloudFoundryManager.url
   }
