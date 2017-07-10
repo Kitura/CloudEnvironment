@@ -45,7 +45,7 @@ extension CloudEnv {
 
     public func getAppIDCredentials (name: String) -> AppIDCredentials? {
 
-        guard let credentials   = getCredentials(name: name),
+        guard let credentials   = getDictionary(name: name),
             let clientId        = credentials["clientId"] as? String,
             let oauthServerUrl  = credentials["oauthServerUrl"] as? String,
             let profilesUrl     = credentials["profilesUrl"] as? String,

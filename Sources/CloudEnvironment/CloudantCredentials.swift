@@ -45,7 +45,7 @@ extension CloudEnv {
 
     public func getCloudantCredentials(name: String) -> CloudantCredentials? {
 
-        guard let credentials = getCredentials(name: name),
+        guard let credentials = getDictionary(name: name),
             let host      = credentials["host"] as? String,
             let username  = credentials["username"] as? String,
             let password  = credentials["password"] as? String,

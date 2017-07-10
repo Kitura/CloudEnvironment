@@ -58,7 +58,7 @@ extension CloudEnv {
 
     public func getObjectStorageCredentials (name: String) -> ObjectStorageCredentials? {
 
-        guard let credentials = getCredentials(name: name),
+        guard let credentials = getDictionary(name: name),
             let authURL     = credentials["auth_url"] as? String,
             let project     = credentials["project"] as? String,
             let projectID   = credentials["projectId"] as? String,

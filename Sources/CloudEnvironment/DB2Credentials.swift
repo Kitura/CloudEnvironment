@@ -43,7 +43,7 @@ extension CloudEnv {
 
     public func getDB2Credentials (name: String) -> DB2Credentials? {
 
-        guard let credentials = getCredentials (name: name),
+        guard let credentials = getDictionary(name: name),
             let database    = credentials["db"] as? String,
             let host        = credentials["host"] as? String,
             let port        = credentials["port"] as? Int,

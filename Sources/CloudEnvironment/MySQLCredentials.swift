@@ -43,7 +43,7 @@ extension CloudEnv {
 
     public func getMySQLCredentials (name: String) -> MySQLCredentials? {
 
-        guard let credentials = getCredentials (name: name),
+        guard let credentials = getDictionary(name: name),
             let database    = credentials["name"] as? String,
             let host        = credentials["hostname"] as? String,
             let username    = credentials["username"] as? String,

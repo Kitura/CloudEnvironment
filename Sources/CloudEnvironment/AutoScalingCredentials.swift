@@ -45,7 +45,7 @@ extension CloudEnv {
 
     public func getAutoScalingCredentials (name: String) -> AutoScalingCredentials? {
 
-        guard let credentials   = getCredentials (name: name),
+        guard let credentials   = getDictionary(name: name),
             let username        = credentials["agentUsername"] as? String,
             let password        = credentials["agentPassword"] as? String,
             let appID           = credentials["app_id"] as? String,

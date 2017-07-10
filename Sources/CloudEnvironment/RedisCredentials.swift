@@ -38,7 +38,7 @@ extension CloudEnv {
 
     public func getRedisCredentials (name: String) -> RedisCredentials? {
 
-        guard let credentials = getCredentials (name: name),
+        guard let credentials = getDictionary(name: name),
             let uri         = credentials["uri"] as? String,
             let url         = URL(string: uri),
             let host        = url.host,

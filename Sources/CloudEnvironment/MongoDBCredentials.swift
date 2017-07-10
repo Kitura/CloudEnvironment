@@ -45,7 +45,7 @@ extension CloudEnv {
 
     public func getMongoDBCredentials (name: String) -> MongoDBCredentials? {
 
-        guard let credentials = getCredentials (name: name) else {
+        guard let credentials = getDictionary(name: name) else {
             return nil
         }
 

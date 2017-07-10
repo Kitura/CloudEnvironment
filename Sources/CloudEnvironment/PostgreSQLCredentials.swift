@@ -41,7 +41,7 @@ extension CloudEnv {
 
     public func getPostgreSQLCredentials (name: String) -> PostgreSQLCredentials? {
 
-        guard let credentials = getCredentials (name: name),
+        guard let credentials = getDictionary(name: name),
             let uri         = credentials["uri"] as? String,
             let url         = URL(string: uri),
             let host        = url.host,

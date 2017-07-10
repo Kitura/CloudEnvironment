@@ -42,7 +42,7 @@ extension CloudEnv {
 
     public func getPushSDKCredentials (name: String) -> PushSDKCredentials? {
 
-        guard let credentials = getCredentials (name: name),
+        guard let credentials = getDictionary(name: name),
             let appGuid         = credentials["appGuid"] as? String,
             let url             = credentials["url"] as? String,
             let admin_url       = credentials["admin_url"] as? String,

@@ -37,7 +37,7 @@ extension CloudEnv {
 
     public func getNaturalLangUnderstandingCredentials(name: String) -> NaturalLangUnderstandingCredentials? {
 
-        guard let credentials = getCredentials(name: name),
+        guard let credentials = getDictionary(name: name),
             let username  = credentials["username"] as? String,
             let password  = credentials["password"] as? String,
             let url       = credentials["url"] as? String else {

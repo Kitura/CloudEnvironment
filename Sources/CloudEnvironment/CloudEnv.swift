@@ -22,7 +22,17 @@ import LoggerAPI
 public class CloudEnv {
 
   // Static variables/constants
-  public static let mappingFile = "mappings.json"
+  public static let mappingsFile = "mappings.json"
+
+  var port: Int {
+    let cloudFoundryManager = getCloudFoundryConfigMgr()
+    return cloudFoundryManager.port
+  }
+
+  var url: String {
+    let cloudFoundryManager = getCloudFoundryConfigMgr()
+    return cloudFoundryManager.url
+  }
 
   // Instance variables/constants
   private let mapManager = ConfigurationManager()
@@ -37,30 +47,26 @@ public class CloudEnv {
     let filePath: String = (mappingsFilePath == nil) ? "config" : mappingsFilePath!
 
     // For local execution
-    mapManager.load(file: "\(filePath)/\(CloudEnv.mappingFile)", relativeFrom: .project)
+    mapManager.load(file: "\(filePath)/\(CloudEnv.mappingsFile)", relativeFrom: .project)
 
     // For Cloud Foundry
-    mapManager.load(file: "\(filePath)/\(CloudEnv.mappingFile)", relativeFrom: .pwd)
-  }
-
-  public func getDictionary(name: String) -> [String:Any]? {
-    return getCredentials(name: name)
+    mapManager.load(file: "\(filePath)/\(CloudEnv.mappingsFile)", relativeFrom: .pwd)
   }
 
   public func getString(name: String) -> String? {
-    if let credentials = getCredentials(name: name) {
+    if let dictionary = getDictionary(name: name) {
       //if let jsonData = try? JSONSerialization.data(withJSONObject: credentials, options: .prettyPrinted) {
-      if let jsonData = try? JSONSerialization.data(withJSONObject: credentials) {
+      if let jsonData = try? JSONSerialization.data(withJSONObject: dictionary) {
         return String(data: jsonData, encoding: String.Encoding.utf8)
       }
     }
     return nil
   }
 
-  public func getCredentials(name: String) -> [String:Any]? {
+  public func getDictionary(name: String) -> [String:Any]? {
 
     guard let searchPatterns = mapManager["\(name):searchPatterns"] as? [String] else {
-      Log.debug("No search patterns found. There may have been a problem loading `mappings.json`")
+      Log.debug("No search patterns found. There may have been a problem loading '\(CloudEnv.mappingsFile)'.")
       return nil
     }
 
@@ -72,61 +78,47 @@ public class CloudEnv {
 
       switch (key) {
       case "cloudfoundry":    // Cloud Foundry/swift-cfenv
-        if let credentials = getCloudFoundryCreds(name: value) {
-          Log.debug("Found credentials in Cloud Foundry env.")
+        if let credentials = getCloudFoundryDict(name: value) {
+          Log.debug("Found dictionary in Cloud Foundry env.")
           return credentials
         }
         break
       case "env":             // Kubernetes
-        if let credentials = getKubeCreds(evName: value) {
-          Log.debug("Found credentials in environment variable.")
+        if let credentials = getKubeDict(evName: value) {
+          Log.debug("Found dictionary in environment variable.")
           return credentials
         }
         break
       case "file":            // File- local or in cloud foundry
         let instance = (arr.count > 0) ? arr[0] : ""
-        if let credentials = getFileCreds(instance: instance, path: value),
+        if let credentials = getFileDict(instance: instance, path: value),
         credentials.count > 0 {
-          Log.debug("Found credentials in referenced file.")
+          Log.debug("Found dictionary in referenced file.")
           return credentials
         }
         break
       default:
-        Log.error("Failed to found credentials; invalid key: '\(key)'.")
+        Log.error("Failed to found dictionary; invalid key: '\(key)'.")
         return nil
       }
     }
-    Log.error("Failed to find credentials.")
+    Log.error("Failed to find dictionary.")
     return nil
   }
 
-  private func getCloudFoundryCreds(name: String) -> [String:Any]? {
-
-    let cloudFoundryManager = ConfigurationManager()
-
-    // Load configuration for cloud foundry
-    if let cloudFoundryFile = self.cloudFoundryFile {
-      cloudFoundryManager.load(file: cloudFoundryFile, relativeFrom: .project)
-    } else {
-      cloudFoundryManager.load(.environmentVariables)
-    }
-
+  private func getCloudFoundryDict(name: String) -> [String:Any]? {
+    let cloudFoundryManager = getCloudFoundryConfigMgr()
     let credentials = cloudFoundryManager.getServiceCreds(spec: name)
-
     return credentials
   }
 
-  private func getKubeCreds(evName: String) -> [String:Any]? {
-
+  private func getKubeDict(evName: String) -> [String:Any]? {
     let kubeManager = ConfigurationManager().load(.environmentVariables)
-
     let credentials = kubeManager["\(evName)"] as? [String: Any]
-
     return credentials
   }
 
-  private func getFileCreds(instance: String, path: String) -> [String:Any]? {
-
+  private func getFileDict(instance: String, path: String) -> [String:Any]? {
     let fileManager = ConfigurationManager()
 
     // For local mapping file
@@ -142,6 +134,19 @@ public class CloudEnv {
     } else {
       return fileManager["\(instance)"] as? [String: Any]
     }
+  }
+  private func getCloudFoundryConfigMgr() -> ConfigurationManager {
+    // Create config mgr instance for Cloud Foundry
+    let cloudFoundryManager = ConfigurationManager()
+
+    // Load configuration for cloud foundry
+    if let cloudFoundryFile = self.cloudFoundryFile {
+      cloudFoundryManager.load(file: cloudFoundryFile, relativeFrom: .project)
+    } else {
+      cloudFoundryManager.load(.environmentVariables)
+    }
+
+    return cloudFoundryManager
   }
 
 }

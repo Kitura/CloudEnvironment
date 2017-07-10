@@ -39,7 +39,7 @@ extension CloudEnv {
 
     public func getAlertNotificationCredentials (name: String) -> AlertNotificationCredentials? {
 
-        guard let credentials = getCredentials(name: name),
+        guard let credentials = getDictionary(name: name),
             let url         = credentials["url"] as? String,
             let id          = credentials["name"] as? String,
             let password    = credentials["password"] as? String,

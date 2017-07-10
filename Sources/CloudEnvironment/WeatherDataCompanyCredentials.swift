@@ -42,7 +42,7 @@ extension CloudEnv {
 
     public func getWeatherCompanyDataCredentials(name: String) -> WeatherCompanyDataCredentials? {
 
-        guard let credentials = getCredentials(name: name),
+        guard let credentials = getDictionary(name: name),
             let username    = credentials["username"] as? String,
             let password    = credentials["password"] as? String,
             let host        = credentials["host"] as? String,
