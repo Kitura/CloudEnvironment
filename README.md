@@ -82,6 +82,8 @@ let service1CredentialsStr = cloudEnv.getString("service1-credentials")
 // Get a default PORT and URL
 let port = cloudEnv.port
 let url = cloudEnv.url
+
+...
 ```
 
 This library simplifies obtaining service credentials, as shown above. For details on the different elements (e.g `username`, `password`, `host`, etc.) that make up a credentials set and accessor methods for service credentials, check out the [docs](docs/Classes) directory, which contains [Jazzy](https://github.com/Realm/jazzy) generated documentation.
@@ -119,6 +121,8 @@ let cloudEnv = CloudEnv()
 if let credentials: [String:Any]? = cloudEnv.getDictionary(name: "service1-credentials") {
   // You can now get the corresponding values from dictionary
 }
+
+...
 ```
 
 ## Configuration
