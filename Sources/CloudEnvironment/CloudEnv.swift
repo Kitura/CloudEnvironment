@@ -19,6 +19,11 @@ import CloudFoundryEnv
 import Foundation
 import LoggerAPI
 
+/// CloudEnv class
+///
+/// Convenience class for obtaining environment variables that are mapped to JSON strings.
+/// Mainly used for obtaining credentials for services so Swift applications can be written in
+// a platform agnostic way.
 public class CloudEnv {
 
   // Static variables/constants
@@ -38,6 +43,11 @@ public class CloudEnv {
   private let mapManager = ConfigurationManager()
   private let cloudFoundryFile: String?
 
+  /// Constructor
+  ///
+  /// - Parameter mappingsFilePath: Optional. The path to the `mappings.json` file; this path should be relative to the root folder of the Swift application.
+  /// - Parameter cloudFoundryFile: Optional. The path to a JSON file that contains values for Cloud Foundry environment variables (mainly used for testing);
+  /// this path should also be relative to the root folder of the Swift application.
   public init(mappingsFilePath: String? = nil, cloudFoundryFile: String? = nil) {
 
     // Set instance properties
@@ -53,6 +63,9 @@ public class CloudEnv {
     mapManager.load(file: "\(filePath)/\(CloudEnv.mappingsFile)", relativeFrom: .pwd)
   }
 
+  /// Returns the corresponding JSON dictionary value in a string.
+  ///
+  /// - Parameter name: The key to lookup the environment variable.
   public func getString(name: String) -> String? {
     if let dictionary = getDictionary(name: name) {
       //if let jsonData = try? JSONSerialization.data(withJSONObject: credentials, options: .prettyPrinted) {
@@ -63,6 +76,9 @@ public class CloudEnv {
     return nil
   }
 
+  /// Returns the corresponding dictionary value.
+  ///
+  /// - Parameter name: The key to lookup the environment variable.
   public func getDictionary(name: String) -> [String:Any]? {
 
     guard let searchPatterns = mapManager["\(name):searchPatterns"] as? [String] else {
