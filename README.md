@@ -8,7 +8,7 @@ CloudEnvironment is a convenience Swift package for accessing environment variab
 ## Swift version
 The latest version of CloudEnvironment works with the `3.1.1` version of the Swift binaries. You can download this version of the Swift binaries by following this [link](https://swift.org/download/#snapshots).
 
-## Abstractions and supported search pattern types
+## Abstraction and supported search pattern types
 This package allows you to define a lookup key that your Swift application can leverage for searching its corresponding value. This abstraction decouples your application from the actual name used for the environment variable you are looking for. For example, if you created a Cloudant service named `my-awesome-cloudant-db`, you don't have to use this name as the key in your Swift code to obtain its credentials. Instead, you can define a lookup key, say `cloudant-credentials` and mapped it to the actual service name, `my-awesome-cloudant-db`.
 
 This library also allows you to define an array of search patterns for looking up dictionary values mapped to environment variables, such as service credentials. Each element in a search patterns array will be *executed* until the variable is found. CloudEnvironment supports searching for values using the following three search pattern types:
@@ -92,7 +92,7 @@ This library simplifies obtaining service credentials, as shown above. For detai
 
 Following the above approach your application can be implemented in a runtime-environment agnostic way, abstracting differences in environment variable management introduced by different Cloud computing environments.
 
-## Supported services:
+## Supported services
 The following services are currently supported by this library. Therefore, you can obtain the service credentials for any of these services with minimum effort:
 - [Alert Notification](https://console.ng.bluemix.net/catalog/services/ibm-alert-notification/)
 - [AppID](https://console.ng.bluemix.net/catalog/services/app-id)
