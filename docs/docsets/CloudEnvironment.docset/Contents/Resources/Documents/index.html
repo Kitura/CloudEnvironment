@@ -111,13 +111,15 @@
 <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux"></p>
 <h1 id='cloudenvironment' class='heading'>CloudEnvironment</h1>
 
-<p>CloudEnvironment is a convenience Swift package for accessing environment variables mapped to JSON objects from various Cloud computing environments, such as, but not limited to, Cloud Foundry and Kubernetes. By leveraging this package, you make your Swift application environment-agnostic when it comes to obtaining data from environment variables. For example, to obtain the credentials for accessing a Cloudant database, you would need to parse the <code>VCAP_SERVICES</code> environment variable when running in Cloud Foundry, while to obtain the same credentials when running in Kubernetes, you may need to parse an environment variable named <code>CLOUDANT_CREDENTIALS</code>. Using CloudEnvironment allows you to abstract these low-level details from your application&rsquo;s source code.</p>
+<p>CloudEnvironment is a convenience Swift package for accessing environment variables mapped to JSON objects from various Cloud computing environments, such as, but not limited to, Cloud Foundry and Kubernetes. For example, to obtain the credentials for accessing a Cloudant database, you would need to parse the <code>VCAP_SERVICES</code> environment variable when running in Cloud Foundry, while to obtain the same credentials when running in Kubernetes, you may need to parse an environment variable named <code>CLOUDANT_CREDENTIALS</code>. In other words, the path for obtaining certain environment values may differ from one cloud environment to another. By leveraging this package, you can make your Swift application environment-agnostic when it comes to obtaining such values. Using CloudEnvironment allows you to abstract these low-level details from your application&rsquo;s source code.</p>
 <h2 id='swift-version' class='heading'>Swift version</h2>
 
 <p>The latest version of CloudEnvironment works with the <code>3.1.1</code> version of the Swift binaries. You can download this version of the Swift binaries by following this <a href="https://swift.org/download/#snapshots">link</a>.</p>
-<h2 id='supported-search-pattern-types' class='heading'>Supported search pattern types</h2>
+<h2 id='abstractions-and-supported-search-pattern-types' class='heading'>Abstractions and supported search pattern types</h2>
 
-<p>This package allows you to define an array of search patterns for looking up dictionary values mapped to environment variables, such as service credentials. Each element in a search patterns array will be <em>executed</em> until the variable is found. CloudEnvironment supports searching for values using the following three search pattern types:</p>
+<p>This package allows you to define a lookup key that your Swift application can leverage for searching its corresponding value. This abstraction decouples your application from the actual name used for the environment variable you are looking for. For example, if you created a Cloudant service named <code>my-awesome-cloudant-db</code>, you don&rsquo;t have to use this name as the key in your Swift code to obtain its credentials. Instead, you can define a lookup key, say <code>cloudant-credentials</code> and mapped it to the actual service name, <code>my-awesome-cloudant-db</code>.</p>
+
+<p>This library also allows you to define an array of search patterns for looking up dictionary values mapped to environment variables, such as service credentials. Each element in a search patterns array will be <em>executed</em> until the variable is found. CloudEnvironment supports searching for values using the following three search pattern types:</p>
 
 <ul>
 <li><code>cloudfoundry</code> - Allows to search for a value in Cloud Foundry&rsquo;s services environment variable (i.e. <code>VCAP_SERVICES</code>).</li>
@@ -125,7 +127,7 @@
 <li><code>file</code> - Allows to search for a value in a JSON file.</li>
 </ul>
 
-<p>You specify search patterns in a file named <code>mappings.json</code>. This file must exist in a <code>config</code> folder under the root folder of your Swift project. The following shows an example of a <code>mappings.json</code> file:</p>
+<p>You specify lookup keys and search patterns in a file named <code>mappings.json</code>. This file must exist in a <code>config</code> folder under the root folder of your Swift project. The following shows an example of a <code>mappings.json</code> file:</p>
 <pre class="highlight javascript"><code><span class="p">{</span>
     <span class="s2">"cloudant-credentials"</span><span class="err">:</span> <span class="p">{</span>
         <span class="s2">"searchPatterns"</span><span class="err">:</span> <span class="p">[</span>
@@ -144,7 +146,7 @@
 <span class="p">}</span>
 </code></pre>
 
-<p>In the example above, <code>cloudant-credentials</code> and <code>object-storage-credentials</code> are the keys your Swift application should use to look up the corresponding credentials. Please note that the path next to the <code>file</code> search pattern must be relative to the root folder of your Swift application.</p>
+<p>In the example above, <code>cloudant-credentials</code> and <code>object-storage-credentials</code> are the lookup keys your Swift application should use to look up the corresponding credentials. Please note that the path next to the <code>file</code> search pattern must be relative to the root folder of your Swift application.</p>
 <h2 id='usage' class='heading'>Usage</h2>
 
 <p>To leverage the CloudEnvironment package in your Swift application, you should specify a dependency for it in your <code>Package.swift</code> file:</p>
@@ -229,9 +231,6 @@
 
 <span class="o">...</span>
 </code></pre>
-<h2 id='configuration-and-swift-cfenv' class='heading'>Configuration and Swift-cfenv</h2>
-
-<p>The latest version of CloudEnvironment relies on the <a href="https://github.com/IBM-Swift/Configuration">Configuration</a> package to load configuration data from multiple sources, such as environment variables or JSON files. CloudEnvironment also relies on <a href="https://github.com/IBM-Swift/Swift-cfenv">Swift-cfenv</a>, which provides structures and methods for parsing Cloud Foundry-provided configuration variables.</p>
 
           </div>
         </section>
@@ -240,7 +239,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2017-07-10)</p>
+      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2017-07-11)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

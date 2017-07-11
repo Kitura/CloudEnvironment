@@ -3,19 +3,21 @@
 ![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
 
 # CloudEnvironment
-CloudEnvironment is a convenience Swift package for accessing environment variables mapped to JSON objects from various Cloud computing environments, such as, but not limited to, Cloud Foundry and Kubernetes. By leveraging this package, you make your Swift application environment-agnostic when it comes to obtaining data from environment variables. For example, to obtain the credentials for accessing a Cloudant database, you would need to parse the `VCAP_SERVICES` environment variable when running in Cloud Foundry, while to obtain the same credentials when running in Kubernetes, you may need to parse an environment variable named `CLOUDANT_CREDENTIALS`. Using CloudEnvironment allows you to abstract these low-level details from your application's source code.
+CloudEnvironment is a convenience Swift package for accessing environment variables mapped to JSON objects from various Cloud computing environments, such as, but not limited to, Cloud Foundry and Kubernetes. For example, to obtain the credentials for accessing a Cloudant database, you would need to parse the `VCAP_SERVICES` environment variable when running in Cloud Foundry, while to obtain the same credentials when running in Kubernetes, you may need to parse an environment variable named `CLOUDANT_CREDENTIALS`. In other words, the path for obtaining certain environment values may differ from one cloud environment to another. By leveraging this package, you can make your Swift application environment-agnostic when it comes to obtaining such values. Using CloudEnvironment allows you to abstract these low-level details from your application's source code.
 
 ## Swift version
 The latest version of CloudEnvironment works with the `3.1.1` version of the Swift binaries. You can download this version of the Swift binaries by following this [link](https://swift.org/download/#snapshots).
 
-## Supported search pattern types
-This package allows you to define an array of search patterns for looking up dictionary values mapped to environment variables, such as service credentials. Each element in a search patterns array will be *executed* until the variable is found. CloudEnvironment supports searching for values using the following three search pattern types:
+## Abstractions and supported search pattern types
+This package allows you to define a lookup key that your Swift application can leverage for searching its corresponding value. This abstraction decouples your application from the actual name used for the environment variable you are looking for. For example, if you created a Cloudant service named `my-awesome-cloudant-db`, you don't have to use this name as the key in your Swift code to obtain its credentials. Instead, you can define a lookup key, say `cloudant-credentials` and mapped it to the actual service name, `my-awesome-cloudant-db`.
+
+This library also allows you to define an array of search patterns for looking up dictionary values mapped to environment variables, such as service credentials. Each element in a search patterns array will be *executed* until the variable is found. CloudEnvironment supports searching for values using the following three search pattern types:
 
 - `cloudfoundry` - Allows to search for a value in Cloud Foundry's services environment variable (i.e. `VCAP_SERVICES`).
 - `env` - Allows to search for a value in an environment variable.
 - `file` - Allows to search for a value in a JSON file.
 
-You specify search patterns in a file named `mappings.json`. This file must exist in a `config` folder under the root folder of your Swift project. The following shows an example of a `mappings.json` file:
+You specify lookup keys and search patterns in a file named `mappings.json`. This file must exist in a `config` folder under the root folder of your Swift project. The following shows an example of a `mappings.json` file:
 
 ```javascript
 {
@@ -36,7 +38,7 @@ You specify search patterns in a file named `mappings.json`. This file must exis
 }
 ```
 
-In the example above, `cloudant-credentials` and `object-storage-credentials` are the keys your Swift application should use to look up the corresponding credentials. Please note that the path next to the `file` search pattern must be relative to the root folder of your Swift application.
+In the example above, `cloudant-credentials` and `object-storage-credentials` are the lookup keys your Swift application should use to look up the corresponding credentials. Please note that the path next to the `file` search pattern must be relative to the root folder of your Swift application.
 
 ## Usage
 To leverage the CloudEnvironment package in your Swift application, you should specify a dependency for it in your `Package.swift` file:
@@ -124,6 +126,3 @@ if let credentials: [String:Any]? = cloudEnv.getDictionary(name: "service1-crede
 
 ...
 ```
-
-## Configuration and Swift-cfenv
-The latest version of CloudEnvironment relies on the [Configuration](https://github.com/IBM-Swift/Configuration) package to load configuration data from multiple sources, such as environment variables or JSON files. CloudEnvironment also relies on [Swift-cfenv](https://github.com/IBM-Swift/Swift-cfenv), which provides structures and methods for parsing Cloud Foundry-provided configuration variables.

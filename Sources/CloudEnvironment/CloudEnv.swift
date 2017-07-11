@@ -56,7 +56,13 @@ public class CloudEnv {
     self.cloudFoundryFile = cloudFoundryFile
 
     // Compute path to mappings.json
-    let filePath: String = (mappingsFilePath == nil) ? "config" : mappingsFilePath!
+    let filePath: String
+    if let mappingsFilePath = mappingsFilePath {
+      let sanitizedPath = sanitize(path: mappingsFilePath)
+      filePath = sanitizedPath
+    } else {
+      filePath = "config"
+    }
 
     // For local execution
     mapManager.load(file: "\(filePath)/\(CloudEnv.mappingsFile)", relativeFrom: .project)
@@ -70,7 +76,7 @@ public class CloudEnv {
   /// - Parameter name: The key to lookup the environment variable.
   public func getString(name: String) -> String? {
     if let dictionary = getDictionary(name: name) {
-      //if let jsonData = try? JSONSerialization.data(withJSONObject: credentials, options: .prettyPrinted) {
+      //if let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted) {
       if let jsonData = try? JSONSerialization.data(withJSONObject: dictionary) {
         return String(data: jsonData, encoding: String.Encoding.utf8)
       }
@@ -81,7 +87,7 @@ public class CloudEnv {
   /// Returns the corresponding dictionary value.
   ///
   /// - Parameter name: The key to lookup the environment variable.
-  public func getDictionary(name: String) -> [String:Any]? {
+  public func getDictionary(name: String) -> [String : Any]? {
 
     guard let searchPatterns = mapManager["\(name):searchPatterns"] as? [String] else {
       Log.debug("No search patterns found. There may have been a problem loading '\(CloudEnv.mappingsFile)'.")
@@ -96,23 +102,23 @@ public class CloudEnv {
 
       switch (key) {
       case "cloudfoundry":    // Cloud Foundry/swift-cfenv
-        if let credentials = getCloudFoundryDict(name: value) {
-          Log.debug("Found dictionary in Cloud Foundry env.")
-          return credentials
+        if let dictionary = getCloudFoundryDict(name: value) {
+          Log.debug("Found dictionary entry in Cloud Foundry env.")
+          return dictionary
         }
         break
       case "env":             // Kubernetes
-        if let credentials = getKubeDict(evName: value) {
-          Log.debug("Found dictionary in environment variable.")
-          return credentials
+        if let dictionary = getKubeDict(evName: value) {
+          Log.debug("Found dictionary entry in environment variable.")
+          return dictionary
         }
         break
       case "file":            // File- local or in cloud foundry
-        let instance = (arr.count > 0) ? arr[0] : ""
-        if let credentials = getFileDict(instance: instance, path: value),
-        credentials.count > 0 {
-          Log.debug("Found dictionary in referenced file.")
-          return credentials
+        let keyInFile = (arr.count > 0) ? arr[0] : ""
+        if let dictionary = getFileDict(path: value, key: keyInFile),
+        dictionary.count > 0 {
+          Log.debug("Found dictionary entry in referenced file.")
+          return dictionary
         }
         break
       default:
@@ -124,35 +130,33 @@ public class CloudEnv {
     return nil
   }
 
-  private func getCloudFoundryDict(name: String) -> [String:Any]? {
+  private func getCloudFoundryDict(name: String) -> [String : Any]? {
     let cloudFoundryManager = getCloudFoundryConfigMgr()
-    let credentials = cloudFoundryManager.getServiceCreds(spec: name)
-    return credentials
+    return cloudFoundryManager.getServiceCreds(spec: name)
   }
 
   private func getKubeDict(evName: String) -> [String:Any]? {
     let kubeManager = ConfigurationManager().load(.environmentVariables)
-    let credentials = kubeManager["\(evName)"] as? [String: Any]
-    return credentials
+    return kubeManager["\(evName)"] as? [String : Any]
   }
 
-  private func getFileDict(instance: String, path: String) -> [String:Any]? {
+  private func getFileDict(path: String, key: String) -> [String : Any]? {
+    let sanitizedPath = sanitize(path: path)
     let fileManager = ConfigurationManager()
 
     // For local mapping file
-    fileManager.load(file: path, relativeFrom: .project)
+    fileManager.load(file: sanitizedPath, relativeFrom: .project)
 
-    // Load file in cloud foundry-- extract filename from path
-    if let fileName = path.components(separatedBy: "/").last {
+    // Load file in cloud foundry-- extract filename from sanitizedPath
+    if let fileName = sanitizedPath.components(separatedBy: "/").last {
       fileManager.load(file: fileName, relativeFrom: .pwd)
     }
 
-    if instance.isEmpty {
-      return (fileManager.getConfigs() as? [String: Any])
-    } else {
-      return fileManager["\(instance)"] as? [String: Any]
-    }
+    let dictionary = (key.isEmpty) ?
+    (fileManager.getConfigs() as? [String : Any]) : fileManager["\(key)"] as? [String : Any]
+    return dictionary
   }
+
   private func getCloudFoundryConfigMgr() -> ConfigurationManager {
     // Create config mgr instance for Cloud Foundry
     let cloudFoundryManager = ConfigurationManager()
@@ -165,6 +169,10 @@ public class CloudEnv {
     }
 
     return cloudFoundryManager
+  }
+
+  private func sanitize(path: String) -> String {
+    return path.hasPrefix("/") ? path.substring(from: path.startIndex) : path
   }
 
 }
