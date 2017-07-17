@@ -147,10 +147,8 @@ public class CloudEnv {
     // For local mapping file
     fileManager.load(file: sanitizedPath, relativeFrom: .project)
 
-    // Load file in cloud foundry-- extract filename from sanitizedPath
-    if let fileName = sanitizedPath.components(separatedBy: "/").last {
-      fileManager.load(file: fileName, relativeFrom: .pwd)
-    }
+    // Load file in cloud foundry (working dir as base)
+    fileManager.load(file: sanitizedPath, relativeFrom: .pwd)
 
     let dictionary = (key.isEmpty) ?
     (fileManager.getConfigs() as? [String : Any]) : fileManager["\(key)"] as? [String : Any]
