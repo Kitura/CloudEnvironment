@@ -106,10 +106,10 @@
         <section class="section">
           <div class="section-content">
             
-            <p><a href="https://travis-ci.org/IBM-Swift/CloudConfiguration"><img src="https://travis-ci.org/IBM-Swift/CloudConfiguration.svg?branch=develop" alt="Build Status"></a>
+            <p><a href="https://travis-ci.org/IBM-Swift/CloudEnvironment"><img src="https://travis-ci.org/IBM-Swift/CloudEnvironment.svg?branch=develop" alt="Build Status"></a>
 <img src="https://img.shields.io/badge/os-macOS-green.svg?style=flat" alt="macOS">
 <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
-<a href="https://codecov.io/gh/IBM-Swift/CloudConfiguration"><img src="https://codecov.io/gh/IBM-Swift/CloudConfiguration/branch/develop/graph/badge.svg" alt="codecov"></a></p>
+<a href="https://codecov.io/gh/IBM-Swift/CloudEnvironment"><img src="https://codecov.io/gh/IBM-Swift/CloudEnvironment/branch/develop/graph/badge.svg" alt="codecov"></a></p>
 <h1 id='cloudenvironment' class='heading'>CloudEnvironment</h1>
 
 <p>CloudEnvironment (formerly known as CloudConfiguration) is a convenience Swift package for accessing environment variables mapped to JSON objects from various Cloud computing environments, such as, but not limited to, Cloud Foundry and Kubernetes. For example, to obtain the credentials for accessing a Cloudant database, you need to parse the <code>VCAP_SERVICES</code> environment variable when running in Cloud Foundry, while to obtain the same credentials when running in Kubernetes, you may need to parse an environment variable named <code>CLOUDANT_CREDENTIALS</code>. In other words, the path for obtaining certain environment values may differ from one cloud environment to another. By leveraging this package, you can make your Swift application environment-agnostic when it comes to obtaining such values. Using CloudEnvironment allows you to abstract these low-level details from your application&rsquo;s source code.</p>
