@@ -15,7 +15,7 @@ This package allows you to define a lookup key that your Swift application can l
 This library also allows you to define an array of search patterns for looking up a JSON object mapped to environment variables, such as service credentials. Each element in the search patterns array will be *executed* until the variable is found. CloudEnvironment supports searching for values using the following three search pattern types:
 
 - `cloudfoundry` - Allows to search for a value in Cloud Foundry's services environment variable (i.e. `VCAP_SERVICES`).
-- `env` - Allows to search for a value in an environment variable.
+- `env` - Allows to search for a value mapped to an environment variable.
 - `file` - Allows to search for a value in a JSON file.
 
 You specify lookup keys and search patterns in a file named `mappings.json`. This file must exist in a `config` folder under the root folder of your Swift project. The following shows an example of a `mappings.json` file:
@@ -25,14 +25,14 @@ You specify lookup keys and search patterns in a file named `mappings.json`. Thi
     "cloudant-credentials": {
         "searchPatterns": [
             "cloudfoundry:my-awesome-cloudant-db",
-            "env:my-awesome-cloudant-db-credentials",
+            "env:my_awesome_cloudant_db_credentials",
             "file:localdev/my-awesome-cloudant-db-credentials.json"
         ]
     },
     "object-storage-credentials": {
         "searchPatterns": [
             "cloudfoundry:my-awesome-object-storage",
-            "env:my-awesome-object-storage-credentials",
+            "env:my_awesome_object_storage_credentials",
             "file:localdev/my-awesome-object-storage-credentials.json"
         ]
     }
