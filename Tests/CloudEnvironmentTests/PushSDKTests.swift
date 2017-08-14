@@ -37,11 +37,7 @@ class PushSDKTests: XCTestCase {
         }
 
         XCTAssertEqual(credentials.appGuid, "push-appGuid", "PushSDK service appGuid should match.")
-        XCTAssertEqual(credentials.url, "http://imfpush.ng.bluemix.net/imfpush/v1", "PushSDK service url should match.")
-        XCTAssertEqual(credentials.admin_url, "//mobile.ng.bluemix.net/imfpushdashboard", "PushSDK service admin_url should match.")
         XCTAssertEqual(credentials.appSecret, "push-secret", "PushSDK service appSecret should match.")
-        XCTAssertEqual(credentials.clientSecret, "push-clientSecret", "PushSDK service clientSecret should match.")
-
     }
 
 }

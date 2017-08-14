@@ -20,48 +20,29 @@
 public class PushSDKCredentials {
 
   public let appGuid      : String
-  public let url          : String
-  public let admin_url    : String
   public let appSecret    : String
-  public let clientSecret : String
 
-  public init (
-    appGuid:        String,
-    url:            String,
-    admin_url:      String,
-    appSecret:      String,
-  clientSecret:   String ) {
-
+  public init(appGuid: String, appSecret: String) {
     self.appGuid        = appGuid
-    self.url            = url
-    self.admin_url      = admin_url
     self.appSecret      = appSecret
-    self.clientSecret   = clientSecret
   }
+
 }
 
 extension CloudEnv {
 
-  /// Returns an getPushSDKCredentials object with the corresponding credentials.
+  /// Returns a PushSDKCredentials object with the corresponding credentials.
   ///
-  /// - Parameter name: The key to lookup the environment variable.
-  public func getPushSDKCredentials (name: String) -> PushSDKCredentials? {
+  /// - Parameter name: The key to lookup the credentials.
+  public func getPushSDKCredentials(name: String) -> PushSDKCredentials? {
 
     guard let credentials = getDictionary(name: name),
     let appGuid         = credentials["appGuid"] as? String,
-    let url             = credentials["url"] as? String,
-    let admin_url       = credentials["admin_url"] as? String,
-    let appSecret       = credentials["appSecret"] as? String,
-    let clientSecret    = credentials["clientSecret"] as? String else {
+    let appSecret       = credentials["appSecret"] as? String else {
       return nil
     }
 
-    return PushSDKCredentials (
-      appGuid:        appGuid,
-      url:            url,
-      admin_url:      admin_url,
-      appSecret:      appSecret,
-    clientSecret:   clientSecret )
+    return PushSDKCredentials(appGuid: appGuid, appSecret: appSecret)
   }
 
 }
