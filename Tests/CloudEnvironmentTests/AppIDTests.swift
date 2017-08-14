@@ -41,8 +41,6 @@ class AppIDTests: XCTestCase {
         XCTAssertEqual(credentials.profilesUrl, "https://appid-profiles.stage1.ng.bluemix.net", "AppID Service profilesUrl should match.")
         XCTAssertEqual(credentials.secret, "appID-secret", "AppID Service secret should match.")
         XCTAssertEqual(credentials.tenantId, "ee971e31-eb19-415b-af84-45172c24895c", "AppID Service tenantId should match.")
-        XCTAssertEqual(credentials.version, 3, "AppID Service version should match.")
-
     }
 
 }
