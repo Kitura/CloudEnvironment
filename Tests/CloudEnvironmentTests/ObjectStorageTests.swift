@@ -36,17 +36,10 @@ class ObjectStorageTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(credentials.authURL, "https://identity.open.softlayer.com", "Object Storage Service authURL should match.")
-        XCTAssertEqual(credentials.project, "object_storage", "Object Storage Service project should match.")
         XCTAssertEqual(credentials.projectID, "79f5d7e9c6a64e2d1239f866d6b2d13a", "Object Storage Service projectID should match.")
         XCTAssertEqual(credentials.region, "dallas", "Object Storage Service region should match.")
         XCTAssertEqual(credentials.userID, "123", "Object Storage Service userID should match.")
-        XCTAssertEqual(credentials.username, "admin_123", "Object Storage Service username should match.")
         XCTAssertEqual(credentials.password, "object-storage-pwd", "Object Storage Service password should match.")
-        XCTAssertEqual(credentials.domainID, "object-storage-domainID", "Object Storage Service domainID should match.")
-        XCTAssertEqual(credentials.domainName, "1070801", "Object Storage Service domainName should match.")
-        XCTAssertEqual(credentials.role, "admin", "Object Storage Service role should match.")
-
     }
 
 }
