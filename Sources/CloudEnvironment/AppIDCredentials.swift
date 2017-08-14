@@ -32,7 +32,7 @@ public class AppIDCredentials {
     profilesUrl:    String,
     secret:         String,
     tenantId:       String,
-  version:        Int ) {
+    version:        Int) {
 
     self.clientId       = clientId
     self.oauthServerUrl = oauthServerUrl
@@ -66,7 +66,7 @@ extension CloudEnv {
       profilesUrl:    profilesUrl,
       secret:         secret,
       tenantId:       tenantId,
-    version:        version )
+      version:        version)
   }
 
 }
