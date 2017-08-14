@@ -17,27 +17,8 @@
 /// WeatherCompanyDataCredentials class
 ///
 /// Contains the credentials for a Weather Company Data service instance.
-public class WeatherCompanyDataCredentials {
-
-  public let username : String
-  public let password : String
-  public let host     : String
-  public let port     : Int
-  public let url      : String
-
-  public init (
-    username:   String,
-    password:   String,
-    host:       String,
-    port:       Int,
-  url:        String ){
-
-    self.username   = username
-    self.password   = password
-    self.host       = host
-    self.port       = port
-    self.url        = url
-  }
+public class WeatherCompanyDataCredentials: Credentials {
+  // Just a simpler wrapper to provide a type for weather credentials
 }
 
 extension CloudEnv {
@@ -50,18 +31,14 @@ extension CloudEnv {
     guard let credentials = getDictionary(name: name),
     let username    = credentials["username"] as? String,
     let password    = credentials["password"] as? String,
-    let host        = credentials["host"] as? String,
-    let port        = credentials["port"] as? Int,
     let url         = credentials["url"] as? String else {
       return nil
     }
 
-    return WeatherCompanyDataCredentials (
+    return WeatherCompanyDataCredentials(
       username:   username,
       password:   password,
-      host:       host,
-      port:       port,
-    url:        url )
+      url:        url)
   }
 
 }

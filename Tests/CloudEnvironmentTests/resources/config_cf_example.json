@@ -290,9 +290,7 @@
         "credentials": {
           "username": "weather-user",
           "password": "weather-pwd",
-          "host": "weather-host",
-          "port": 443,
-          "url": "weather-url"
+          "url": "https://weather-user:weather-user@twcservice.mybluemix.net",
         },
         "label": "weatherinsights",
         "name": "WeatherCompanyDataService",

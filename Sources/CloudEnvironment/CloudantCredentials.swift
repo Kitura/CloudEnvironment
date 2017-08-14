@@ -19,74 +19,8 @@ import Foundation
 /// CloudantCredentials class
 ///
 /// Contains the credentials for a Cloudant service instance.
-public class CloudantCredentials {
-
-  public let host        : String
-  public let username    : String
-  public let password    : String
-  public let port        : Int
-  public let secured     : Bool
-  public let url         : String
-
-  public init?(username: String, password: String, url: String) {
-
-    self.username   = username
-    self.password   = password
-    self.url        = url
-
-    guard let scheme = CloudantCredentials.parseScheme(url: url) else {
-      return nil
-    }
-
-    self.secured = (scheme == "https") ? true : false
-
-    guard let host = CloudantCredentials.parseHost(url: url) else {
-      return nil
-    }
-
-    guard let port = CloudantCredentials.parsePort(url: url) else {
-      return nil
-    }
-
-    self.host = host
-    self.port = port
-  }
-
-  private static func parseHost(url: String) -> String? {
-    guard let parsedURL = URLComponents(string: url) else {
-      return nil
-    }
-    return parsedURL.host
-  }
-
-  private static func parseScheme(url: String) -> String? {
-    guard let parsedURL = URLComponents(string: url) else {
-      return nil
-    }
-
-    guard let scheme = parsedURL.scheme else {
-      return nil
-    }
-
-    return scheme.lowercased()
-  }
-
-  private static func parsePort(url: String) -> Int? {
-    guard let parsedURL = URLComponents(string: url) else {
-      return nil
-    }
-
-    if let port = parsedURL.port {
-      return port
-    }
-
-    guard let scheme = parseScheme(url: url) else {
-      return nil
-    }
-
-    return (scheme == "https") ? 443 : 80
-  }
-
+public class CloudantCredentials: Credentials {
+  // Just a simpler wrapper to provide a type for cloudant credentials
 }
 
 extension CloudEnv {
@@ -102,7 +36,7 @@ extension CloudEnv {
       return nil
     }
 
-    return CloudantCredentials (
+    return CloudantCredentials(
       username: username,
       password: password,
       url: url
