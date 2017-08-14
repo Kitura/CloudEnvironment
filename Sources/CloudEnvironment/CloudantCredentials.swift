@@ -14,6 +14,8 @@
 * limitations under the License.
 */
 
+import Foundation
+
 /// CloudantCredentials class
 ///
 /// Contains the credentials for a Cloudant service instance.
@@ -26,21 +28,65 @@ public class CloudantCredentials {
   public let secured     : Bool
   public let url         : String
 
-  public init (
-    host:       String,
-    username:   String,
-    password:   String,
-    port:       Int,
-    secured:    Bool,
-  url:        String ) {
+  public init?(username: String, password: String, url: String) {
 
-    self.host       = host
     self.username   = username
     self.password   = password
-    self.port       = port
-    self.secured    = secured
     self.url        = url
+
+    guard let scheme = CloudantCredentials.parseScheme(url: url) else {
+      return nil
+    }
+
+    self.secured = (scheme == "https") ? true : false
+
+    guard let host = CloudantCredentials.parseHost(url: url) else {
+      return nil
+    }
+
+    guard let port = CloudantCredentials.parsePort(url: url) else {
+      return nil
+    }
+
+    self.host = host
+    self.port = port
   }
+
+  private static func parseHost(url: String) -> String? {
+    guard let parsedURL = URLComponents(string: url) else {
+      return nil
+    }
+    return parsedURL.host
+  }
+
+  private static func parseScheme(url: String) -> String? {
+    guard let parsedURL = URLComponents(string: url) else {
+      return nil
+    }
+
+    guard let scheme = parsedURL.scheme else {
+      return nil
+    }
+
+    return scheme.lowercased()
+  }
+
+  private static func parsePort(url: String) -> Int? {
+    guard let parsedURL = URLComponents(string: url) else {
+      return nil
+    }
+
+    if let port = parsedURL.port {
+      return port
+    }
+
+    guard let scheme = parseScheme(url: url) else {
+      return nil
+    }
+
+    return (scheme == "https") ? 443 : 80
+  }
+
 }
 
 extension CloudEnv {
@@ -49,25 +95,18 @@ extension CloudEnv {
   ///
   /// - Parameter name: The key to lookup the environment variable.
   public func getCloudantCredentials(name: String) -> CloudantCredentials? {
-
     guard let credentials = getDictionary(name: name),
-    let host      = credentials["host"] as? String,
     let username  = credentials["username"] as? String,
     let password  = credentials["password"] as? String,
-    let port      = credentials["port"] as? Int,
     let url       = credentials["url"] as? String else {
       return nil
     }
 
-    let secured: Bool = credentials["secured"] as? Bool ?? true
-
     return CloudantCredentials (
-      host: host,
       username: username,
       password: password,
-      port: port,
-      secured: secured,
-    url: url )
+      url: url
+    )
   }
 
 }
