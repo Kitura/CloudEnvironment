@@ -3,10 +3,8 @@
     "cloudantNoSQLDB": [
       {
         "credentials": {
-          "host": "cloudant-host",
           "password": "cloudant-pwd",
-          "port": 443,
-          "url": "cloudant-url",
+          "url": "https://cloudant-user:cloudant-pwd@dbhost-bluemix.cloudant.com",
           "username": "cloudant-user"
         },
         "label": "cloudantNoSQLDB",
