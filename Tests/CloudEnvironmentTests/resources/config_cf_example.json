@@ -268,16 +268,10 @@
     "Object-Storage": [
       {
         "credentials": {
-          "auth_url": "https://identity.open.softlayer.com",
-          "project": "object_storage",
           "projectId": "79f5d7e9c6a64e2d1239f866d6b2d13a",
           "region": "dallas",
           "userId": "123",
-          "username": "admin_123",
           "password": "object-storage-pwd",
-          "domainId": "object-storage-domainID",
-          "domainName": "1070801",
-          "role": "admin"
         },
         "label": "Object-Storage",
         "name": "ObjectStorageService",
