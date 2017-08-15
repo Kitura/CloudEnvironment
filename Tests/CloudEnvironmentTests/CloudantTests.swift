@@ -41,7 +41,8 @@ class CloudantTests: XCTestCase {
         XCTAssertEqual(credentials.password, "cloudant-pwd", "Cloudant service password should match.")
         XCTAssertEqual(credentials.port, 443, "Cloudant service port should match.")
         XCTAssertEqual(credentials.url, "https://cloudant-user:cloudant-pwd@dbhost-bluemix.cloudant.com", "Cloudant service URL should match.")
-
+        XCTAssertEqual(credentials.host, "dbhost-bluemix.cloudant.com", "Cloudant host should match.")
+        XCTAssertTrue(credentials.secured, "Cloudant service url should be secured.")
     }
 
 }

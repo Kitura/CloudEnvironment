@@ -20,35 +20,33 @@ import Foundation
 ///
 /// Contains the credentials for a MongoDB service instance.
 public class MongoDBCredentials {
-
   public let host        : String
   public let username    : String
   public let password    : String
   public let port        : Int
   public let certificate : String
 
-  public init (
+  public init(
     host:           String,
     username:       String,
     password:       String,
     port:           Int,
-  certificate:    String ) {
+    certificate:    String) {
 
     self.host           = host
     self.username       = username
     self.password       = password
     self.port           = port
     self.certificate    = certificate
-
   }
 }
 
 extension CloudEnv {
 
-  /// Returns an MongoDBCredentials object with the corresponding credentials.
+  /// Returns a MongoDBCredentials object with the corresponding credentials.
   ///
-  /// - Parameter name: The key to lookup the environment variable.
-  public func getMongoDBCredentials (name: String) -> MongoDBCredentials? {
+  /// - Parameter name: The key to lookup the credentials object.
+  public func getMongoDBCredentials(name: String) -> MongoDBCredentials? {
 
     guard let credentials = getDictionary(name: name) else {
       return nil
@@ -70,22 +68,22 @@ extension CloudEnv {
     }
 
     guard let stringURL = uriValue, stringURL.characters.count > 0,
-    let url         = URL(string: stringURL),
-    let host        = url.host,
-    let username    = url.user,
-    let password    = url.password,
-    let port        = url.port,
-    let certificate = credentials["ca_certificate_base64"] as? String else {
+      let url         = URL(string: stringURL),
+      let host        = url.host,
+      let username    = url.user,
+      let password    = url.password,
+      let port        = url.port,
+      let certificate = credentials["ca_certificate_base64"] as? String else {
 
       return nil
     }
 
-    return MongoDBCredentials (
+    return MongoDBCredentials(
       host:           host,
       username:       username,
       password:       password,
       port:           port,
-    certificate:    certificate )
+      certificate:    certificate)
   }
 
 }

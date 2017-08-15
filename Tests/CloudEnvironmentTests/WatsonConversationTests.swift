@@ -38,8 +38,10 @@ class WatsonConversationTests: XCTestCase {
 
         XCTAssertEqual(credentials.username, "conversation-user", "Watson Conversation service username should match.")
         XCTAssertEqual(credentials.password, "conversation-pwd", "Watson Conversation service password should match.")
-        XCTAssertEqual(credentials.url, "conversation-url", "Watson Conversation service url should match.")
-
+        XCTAssertEqual(credentials.url, "https://gateway.watsonplatform.net/conversation/api", "Watson Conversation service url should match.")
+        XCTAssertEqual(credentials.port, 443, "Watson Conversation service port should match.")
+        XCTAssertEqual(credentials.host, "gateway.watsonplatform.net", "Watson Conversation service host should match.")
+        XCTAssertTrue(credentials.secured, "Watson Conversation service url should be secured.")
     }
 
 }

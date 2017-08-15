@@ -17,20 +17,8 @@
 /// WatsonConversationCredentials class
 ///
 /// Contains the credentials for a Watson Conversation service instance.
-public class WatsonConversationCredentials {
-
-  public let username : String
-  public let password : String
-  public let url      : String
-
-  public init (
-    username:   String,
-    password:   String,
-  url:        String ) {
-    self.username   = username
-    self.password   = password
-    self.url        = url
-  }
+public class WatsonConversationCredentials: Credentials {
+  // Just a simpler wrapper to provide a type for conversation credentials
 }
 
 extension CloudEnv {
@@ -39,18 +27,15 @@ extension CloudEnv {
   ///
   /// - Parameter name: The key to lookup the environment variable.
   public func getWatsonConversationCredentials(name: String) -> WatsonConversationCredentials? {
-
     guard let credentials = getDictionary(name: name),
-    let username  = credentials["username"] as? String,
-    let password  = credentials["password"] as? String,
-    let url       = credentials["url"] as? String else {
+      let username  = credentials["username"] as? String,
+      let password  = credentials["password"] as? String,
+      let url       = credentials["url"] as? String else {
+
       return nil
     }
 
-    return WatsonConversationCredentials (
-      username:   username,
-      password:   password,
-    url:        url )
+    return WatsonConversationCredentials(username: username, password: password, url: url)
   }
 
 }

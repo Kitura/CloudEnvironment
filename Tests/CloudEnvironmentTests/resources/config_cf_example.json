@@ -44,7 +44,7 @@
       {
         "credentials": {
           "password": "conversation-pwd",
-          "url": "conversation-url",
+          "url": "https://gateway.watsonplatform.net/conversation/api",
           "username": "conversation-user"
         },
         "label": "conversation",

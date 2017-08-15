@@ -41,7 +41,7 @@ class WeatherCompanyDataTests: XCTestCase {
         XCTAssertEqual(credentials.host, "twcservice.mybluemix.net", "Weather Company Data service host should match.")
         XCTAssertEqual(credentials.port, 443, "Weather Company Data service port should match.")
         XCTAssertEqual(credentials.url, "https://weather-user:weather-user@twcservice.mybluemix.net", "Weather Company Data service url should match.")
-
+        XCTAssertTrue(credentials.secured, "Weather Company Data service url should be secured.")
     }
 
 }
