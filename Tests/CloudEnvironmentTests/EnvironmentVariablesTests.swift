@@ -35,9 +35,8 @@ class EnvironmentVariablesTests: XCTestCase {
 
         guard let json = convertToDictionary(text: jsonString),
             let testUrl         = json["url"] as? String,
-            let testId          = json["name"] as? String,
-            let testPassword    = json["password"] as? String,
-            let testSwaggerUI   = json["swaggerui"] as? String else {
+            let testName        = json["name"] as? String,
+            let testPassword    = json["password"] as? String else {
 
                 XCTFail("Loading test values failure.")
                 return
@@ -53,9 +52,8 @@ class EnvironmentVariablesTests: XCTestCase {
             }
 
             XCTAssertEqual(credentials.url, testUrl, "Alert Notification Service URL should match.")
-            XCTAssertEqual(credentials.id, testId, "Alert Notification Service ID should match.")
+            XCTAssertEqual(credentials.name, testName, "Alert Notification Service name should match.")
             XCTAssertEqual(credentials.password, testPassword, "Alert Notification Service password should match.")
-            XCTAssertEqual(credentials.swaggerUI, testSwaggerUI, "Alert Notification Service swaggerUI should match.")
 
             // Unset env var
             XCTAssertEqual(unsetenv("KUBE_ENV"), 0)

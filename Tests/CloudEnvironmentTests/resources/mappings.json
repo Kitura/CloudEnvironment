@@ -4,7 +4,6 @@
       "file:Tests/CloudEnvironmentTests/resources/non-existing-file.json",
       "env:kubeEVINVALID",
       "cloudfoundry:AlertNotificationService"
-
     ]
   },
   "AlertNotificationEVKey": {

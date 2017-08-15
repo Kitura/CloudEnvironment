@@ -38,10 +38,8 @@ class LocalFileTests: XCTestCase {
         }
 
         XCTAssertEqual(credentials.url, "https://ibmnotifybm.mybluemix.net/api/alerts/v1", "Alert Notification Service URL should match.")
-        XCTAssertEqual(credentials.id, "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618", "Alert Notification Service ID should match.")
+        XCTAssertEqual(credentials.name, "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618", "Alert Notification Service name should match.")
         XCTAssertEqual(credentials.password, "alertnotification-pwd", "Alert Notification Service password should match.")
-        XCTAssertEqual(credentials.swaggerUI, "https://ibmnotifybm.mybluemix.net/docs/alerts/v1", "Alert Notification Service swaggerUI should match.")
-
     }
 
     func testGetCredsFromFileNoKey () {
@@ -55,9 +53,7 @@ class LocalFileTests: XCTestCase {
         }
 
         XCTAssertEqual(credentials.url, "https://ibmnotifybm.mybluemix.net/api/alerts/v1", "Alert Notification Service URL should match.")
-        XCTAssertEqual(credentials.id, "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618", "Alert Notification Service ID should match.")
+        XCTAssertEqual(credentials.name, "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618", "Alert Notification Service name should match.")
         XCTAssertEqual(credentials.password, "alertnotification-pwd", "Alert Notification Service password should match.")
-        XCTAssertEqual(credentials.swaggerUI, "https://ibmnotifybm.mybluemix.net/docs/alerts/v1", "Alert Notification Service swaggerUI should match.")
-
     }
 }
