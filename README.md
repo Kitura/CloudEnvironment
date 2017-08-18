@@ -53,7 +53,7 @@ let package = Package(
    ...
 
    dependencies: [
-       .Package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", majorVersion: 3),
+       .Package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", majorVersion: 4),
 
        ...
 
@@ -72,7 +72,7 @@ let cloudEnv = CloudEnv()
 ...
 
 let cloudantCredentials = cloudEnv.getCloudantCredentials(name: "cloudant-credentials")
-// cloudantCredentials.username, cloudantCredentials.password, etc.
+// cloudantCredentials.username, cloudantCredentials.password, cloudantCredentials.url, etc.
 let objStorageCredentials = cloudEnv.getObjectStorageCredentials(name: "object-storage-credentials")
 // objStorageCredentials.username, objStorageCredentials.password, objStorageCredentials.projectID, etc.
 ...
@@ -89,7 +89,7 @@ let url = cloudEnv.url
 ...
 ```
 
-This library simplifies obtaining service credentials, as shown above. For details on the different elements (e.g `username`, `password`, `host`, etc.) that make up a credentials set and accessor methods for service credentials, check out the [docs](docs/Classes) directory, which contains [Jazzy](https://github.com/Realm/jazzy) generated documentation.
+This library simplifies obtaining service credentials, as shown above. For details on the different elements (e.g `username`, `password`, `url`, etc.) that make up a credentials set and accessor methods for service credentials, check out the [docs](docs/Classes) directory, which contains [Jazzy](https://github.com/Realm/jazzy) generated documentation.
 
 Following the above approach your application can be implemented in a runtime-environment agnostic way, abstracting differences in environment variable management introduced by different Cloud computing environments.
 

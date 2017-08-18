@@ -22,7 +22,7 @@
         <a class="header-link" href="index.html">
           CloudEnvironment Docs
         </a>
-         (37% documented)
+         (46% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -65,7 +65,10 @@
                 <a class="nav-group-task-link" href="Classes/CloudEnv.html">CloudEnv</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/CloudantCredentials.html">CloudantCredentials</a>
+                <a class="nav-group-task-link" href="Classes.html#/s:C16CloudEnvironment19CloudantCredentials">CloudantCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Credentials.html">Credentials</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/DB2Credentials.html">DB2Credentials</a>
@@ -77,7 +80,7 @@
                 <a class="nav-group-task-link" href="Classes/MySQLCredentials.html">MySQLCredentials</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/NaturalLangUnderstandingCredentials.html">NaturalLangUnderstandingCredentials</a>
+                <a class="nav-group-task-link" href="Classes.html#/s:C16CloudEnvironment35NaturalLangUnderstandingCredentials">NaturalLangUnderstandingCredentials</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/ObjectStorageCredentials.html">ObjectStorageCredentials</a>
@@ -92,10 +95,10 @@
                 <a class="nav-group-task-link" href="Classes/RedisCredentials.html">RedisCredentials</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/WatsonConversationCredentials.html">WatsonConversationCredentials</a>
+                <a class="nav-group-task-link" href="Classes.html#/s:C16CloudEnvironment29WatsonConversationCredentials">WatsonConversationCredentials</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/WeatherCompanyDataCredentials.html">WeatherCompanyDataCredentials</a>
+                <a class="nav-group-task-link" href="Classes.html#/s:C16CloudEnvironment29WeatherCompanyDataCredentials">WeatherCompanyDataCredentials</a>
               </li>
             </ul>
           </li>
@@ -124,7 +127,7 @@
 
 <ul>
 <li><code>cloudfoundry</code> - Allows to search for a value in Cloud Foundry&rsquo;s services environment variable (i.e. <code>VCAP_SERVICES</code>).</li>
-<li><code>env</code> - Allows to search for a value in an environment variable.</li>
+<li><code>env</code> - Allows to search for a value mapped to an environment variable.</li>
 <li><code>file</code> - Allows to search for a value in a JSON file.</li>
 </ul>
 
@@ -133,14 +136,14 @@
     <span class="s2">"cloudant-credentials"</span><span class="err">:</span> <span class="p">{</span>
         <span class="s2">"searchPatterns"</span><span class="err">:</span> <span class="p">[</span>
             <span class="s2">"cloudfoundry:my-awesome-cloudant-db"</span><span class="p">,</span>
-            <span class="s2">"env:my-awesome-cloudant-db-credentials"</span><span class="p">,</span>
+            <span class="s2">"env:my_awesome_cloudant_db_credentials"</span><span class="p">,</span>
             <span class="s2">"file:localdev/my-awesome-cloudant-db-credentials.json"</span>
         <span class="p">]</span>
     <span class="p">},</span>
     <span class="s2">"object-storage-credentials"</span><span class="err">:</span> <span class="p">{</span>
         <span class="s2">"searchPatterns"</span><span class="err">:</span> <span class="p">[</span>
             <span class="s2">"cloudfoundry:my-awesome-object-storage"</span><span class="p">,</span>
-            <span class="s2">"env:my-awesome-object-storage-credentials"</span><span class="p">,</span>
+            <span class="s2">"env:my_awesome_object_storage_credentials"</span><span class="p">,</span>
             <span class="s2">"file:localdev/my-awesome-object-storage-credentials.json"</span>
         <span class="p">]</span>
     <span class="p">}</span>
@@ -159,7 +162,7 @@
    <span class="o">...</span>
 
    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-       <span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/IBM-Swift/CloudEnvironment.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">3</span><span class="p">),</span>
+       <span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/IBM-Swift/CloudEnvironment.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">4</span><span class="p">),</span>
 
        <span class="o">...</span>
 
@@ -176,7 +179,7 @@
 <span class="o">...</span>
 
 <span class="k">let</span> <span class="nv">cloudantCredentials</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getCloudantCredentials</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"cloudant-credentials"</span><span class="p">)</span>
-<span class="c1">// cloudantCredentials.username, cloudantCredentials.password, etc.</span>
+<span class="c1">// cloudantCredentials.username, cloudantCredentials.password, cloudantCredentials.url, etc.</span>
 <span class="k">let</span> <span class="nv">objStorageCredentials</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getObjectStorageCredentials</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"object-storage-credentials"</span><span class="p">)</span>
 <span class="c1">// objStorageCredentials.username, objStorageCredentials.password, objStorageCredentials.projectID, etc.</span>
 <span class="o">...</span>
@@ -193,7 +196,7 @@
 <span class="o">...</span>
 </code></pre>
 
-<p>This library simplifies obtaining service credentials, as shown above. For details on the different elements (e.g <code>username</code>, <code>password</code>, <code>host</code>, etc.) that make up a credentials set and accessor methods for service credentials, check out the <a href="docs/Classes">docs</a> directory, which contains <a href="https://github.com/Realm/jazzy">Jazzy</a> generated documentation.</p>
+<p>This library simplifies obtaining service credentials, as shown above. For details on the different elements (e.g <code>username</code>, <code>password</code>, <code>url</code>, etc.) that make up a credentials set and accessor methods for service credentials, check out the <a href="docs/Classes">docs</a> directory, which contains <a href="https://github.com/Realm/jazzy">Jazzy</a> generated documentation.</p>
 
 <p>Following the above approach your application can be implemented in a runtime-environment agnostic way, abstracting differences in environment variable management introduced by different Cloud computing environments.</p>
 <h2 id='supported-services' class='heading'>Supported services</h2>
@@ -240,8 +243,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2017-07-17)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2017-08-15)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

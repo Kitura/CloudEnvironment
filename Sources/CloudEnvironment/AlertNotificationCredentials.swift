@@ -19,21 +19,14 @@
 /// Contains the credentials for an Alert Notification service instance.
 public class AlertNotificationCredentials {
 
-  public let url:         String
-  public let id:          String
-  public let password:    String
-  public let swaggerUI:   String
+  public let url: String
+  public let name: String
+  public let password: String
 
-  public init (
-    url:        String,
-    id:         String,
-    password:   String,
-  swaggerUI:  String ) {
-
-    self.url        = url
-    self.id         = id
-    self.password   = password
-    self.swaggerUI  = swaggerUI
+  public init(url: String, name: String, password: String) {
+    self.url = url
+    self.name = name
+    self.password = password
   }
 }
 
@@ -45,18 +38,14 @@ extension CloudEnv {
   public func getAlertNotificationCredentials (name: String) -> AlertNotificationCredentials? {
 
     guard let credentials = getDictionary(name: name),
-    let url         = credentials["url"] as? String,
-    let id          = credentials["name"] as? String,
-    let password    = credentials["password"] as? String,
-    let swaggerUI   = credentials["swaggerui"] as? String else {
+      let url = credentials["url"] as? String,
+      let name = credentials["name"] as? String,
+      let password = credentials["password"] as? String else {
+
       return nil
     }
 
-    return AlertNotificationCredentials (
-      url:        url,
-      id:         id,
-      password:   password,
-    swaggerUI:  swaggerUI )
+    return AlertNotificationCredentials(url: url, name: name, password: password)
   }
 
 }

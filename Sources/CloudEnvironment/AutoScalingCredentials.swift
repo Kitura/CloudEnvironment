@@ -32,7 +32,7 @@ public class AutoScalingCredentials {
     appID:      String,
     url:        String,
     serviceID:  String,
-  apiURL:     String ) {
+    apiURL:     String ) {
 
     self.username   = username
     self.password   = password
@@ -51,12 +51,13 @@ extension CloudEnv {
   public func getAutoScalingCredentials (name: String) -> AutoScalingCredentials? {
 
     guard let credentials   = getDictionary(name: name),
-    let username        = credentials["agentUsername"] as? String,
-    let password        = credentials["agentPassword"] as? String,
-    let appID           = credentials["app_id"] as? String,
-    let url             = credentials["url"] as? String,
-    let serviceID       = credentials["service_id"] as? String,
-    let apiURL          = credentials["api_url"] as? String else {
+      let username        = credentials["agentUsername"] as? String,
+      let password        = credentials["agentPassword"] as? String,
+      let appID           = credentials["app_id"] as? String,
+      let url             = credentials["url"] as? String,
+      let serviceID       = credentials["service_id"] as? String,
+      let apiURL          = credentials["api_url"] as? String else {
+      
       return nil
     }
 
@@ -66,7 +67,7 @@ extension CloudEnv {
       appID:      appID,
       url:        url,
       serviceID:  serviceID,
-    apiURL:     apiURL )
+      apiURL:     apiURL )
   }
 
 }

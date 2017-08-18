@@ -3,10 +3,8 @@
     "cloudantNoSQLDB": [
       {
         "credentials": {
-          "host": "cloudant-host",
           "password": "cloudant-pwd",
-          "port": 443,
-          "url": "cloudant-url",
+          "url": "https://cloudant-user:cloudant-pwd@dbhost-bluemix.cloudant.com",
           "username": "cloudant-user"
         },
         "label": "cloudantNoSQLDB",
@@ -46,7 +44,7 @@
       {
         "credentials": {
           "password": "conversation-pwd",
-          "url": "conversation-url",
+          "url": "https://gateway.watsonplatform.net/conversation/api",
           "username": "conversation-user"
         },
         "label": "conversation",
@@ -129,8 +127,7 @@
         "credentials": {
           "url": "https://ibmnotifybm.mybluemix.net/api/alerts/v1",
           "name": "21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618",
-          "password": "alertnotification-pwd",
-          "swaggerui": "https://ibmnotifybm.mybluemix.net/docs/alerts/v1"
+          "password": "alertnotification-pwd"
         },
         "label": "alertnotification",
         "name": "AlertNotificationService",
@@ -270,16 +267,10 @@
     "Object-Storage": [
       {
         "credentials": {
-          "auth_url": "https://identity.open.softlayer.com",
-          "project": "object_storage",
           "projectId": "79f5d7e9c6a64e2d1239f866d6b2d13a",
           "region": "dallas",
           "userId": "123",
-          "username": "admin_123",
           "password": "object-storage-pwd",
-          "domainId": "object-storage-domainID",
-          "domainName": "1070801",
-          "role": "admin"
         },
         "label": "Object-Storage",
         "name": "ObjectStorageService",
@@ -298,9 +289,7 @@
         "credentials": {
           "username": "weather-user",
           "password": "weather-pwd",
-          "host": "weather-host",
-          "port": 443,
-          "url": "weather-url"
+          "url": "https://weather-user:weather-user@twcservice.mybluemix.net",
         },
         "label": "weatherinsights",
         "name": "WeatherCompanyDataService",

@@ -10,7 +10,7 @@
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/AlertNotificationCredentials.swift",
       "line": 23,
-      "symbol": "AlertNotificationCredentials.id",
+      "symbol": "AlertNotificationCredentials.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -23,15 +23,8 @@
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/AlertNotificationCredentials.swift",
-      "line": 25,
-      "symbol": "AlertNotificationCredentials.swaggerUI",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/AlertNotificationCredentials.swift",
-      "line": 27,
-      "symbol": "AlertNotificationCredentials.init(url:id:password:swaggerUI:)",
+      "line": 26,
+      "symbol": "AlertNotificationCredentials.init(url:name:password:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -72,15 +65,8 @@
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/AppIDCredentials.swift",
-      "line": 27,
-      "symbol": "AppIDCredentials.version",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/AppIDCredentials.swift",
-      "line": 29,
-      "symbol": "AppIDCredentials.init(clientId:oauthServerUrl:profilesUrl:secret:tenantId:version:)",
+      "line": 28,
+      "symbol": "AppIDCredentials.init(clientId:oauthServerUrl:profilesUrl:secret:tenantId:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -134,51 +120,51 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/CloudantCredentials.swift",
-      "line": 22,
-      "symbol": "CloudantCredentials.host",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/CloudantCredentials.swift",
+      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/Credentials.swift",
       "line": 23,
-      "symbol": "CloudantCredentials.username",
+      "symbol": "Credentials.host",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/CloudantCredentials.swift",
+      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/Credentials.swift",
       "line": 24,
-      "symbol": "CloudantCredentials.password",
+      "symbol": "Credentials.username",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/CloudantCredentials.swift",
+      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/Credentials.swift",
       "line": 25,
-      "symbol": "CloudantCredentials.port",
+      "symbol": "Credentials.password",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/CloudantCredentials.swift",
+      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/Credentials.swift",
       "line": 26,
-      "symbol": "CloudantCredentials.secured",
+      "symbol": "Credentials.port",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/CloudantCredentials.swift",
+      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/Credentials.swift",
       "line": 27,
-      "symbol": "CloudantCredentials.url",
+      "symbol": "Credentials.secured",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/CloudantCredentials.swift",
-      "line": 29,
-      "symbol": "CloudantCredentials.init(host:username:password:port:secured:url:)",
+      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/Credentials.swift",
+      "line": 28,
+      "symbol": "Credentials.url",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/Credentials.swift",
+      "line": 30,
+      "symbol": "Credentials.init(username:password:url:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -226,42 +212,42 @@
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
-      "line": 24,
+      "line": 23,
       "symbol": "MongoDBCredentials.host",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
-      "line": 25,
+      "line": 24,
       "symbol": "MongoDBCredentials.username",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
-      "line": 26,
+      "line": 25,
       "symbol": "MongoDBCredentials.password",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
-      "line": 27,
+      "line": 26,
       "symbol": "MongoDBCredentials.port",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
-      "line": 28,
+      "line": 27,
       "symbol": "MongoDBCredentials.certificate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
-      "line": 30,
+      "line": 29,
       "symbol": "MongoDBCredentials.init(host:username:password:port:certificate:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -309,51 +295,23 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/NaturalLangUnderstandingCredentials.swift",
-      "line": 22,
-      "symbol": "NaturalLangUnderstandingCredentials.username",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/NaturalLangUnderstandingCredentials.swift",
-      "line": 23,
-      "symbol": "NaturalLangUnderstandingCredentials.password",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/NaturalLangUnderstandingCredentials.swift",
-      "line": 24,
-      "symbol": "NaturalLangUnderstandingCredentials.url",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/NaturalLangUnderstandingCredentials.swift",
-      "line": 26,
-      "symbol": "NaturalLangUnderstandingCredentials.init(username:password:url:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
       "line": 22,
-      "symbol": "ObjectStorageCredentials.authURL",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
-      "line": 23,
-      "symbol": "ObjectStorageCredentials.project",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
-      "line": 24,
       "symbol": "ObjectStorageCredentials.projectID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
+      "line": 23,
+      "symbol": "ObjectStorageCredentials.userID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
+      "line": 24,
+      "symbol": "ObjectStorageCredentials.password",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -366,50 +324,8 @@
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
-      "line": 26,
-      "symbol": "ObjectStorageCredentials.userID",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
       "line": 27,
-      "symbol": "ObjectStorageCredentials.username",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
-      "line": 28,
-      "symbol": "ObjectStorageCredentials.password",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
-      "line": 29,
-      "symbol": "ObjectStorageCredentials.domainID",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
-      "line": 30,
-      "symbol": "ObjectStorageCredentials.domainName",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
-      "line": 31,
-      "symbol": "ObjectStorageCredentials.role",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/ObjectStorageCredentials.swift",
-      "line": 33,
-      "symbol": "ObjectStorageCredentials.init(authURL:project:projectID:region:userID:username:password:domainID:domainName:role:)",
+      "symbol": "ObjectStorageCredentials.init(projectID:userID:password:region:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -451,35 +367,14 @@
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/PushSDKCredentials.swift",
       "line": 23,
-      "symbol": "PushSDKCredentials.url",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/PushSDKCredentials.swift",
-      "line": 24,
-      "symbol": "PushSDKCredentials.admin_url",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/PushSDKCredentials.swift",
-      "line": 25,
       "symbol": "PushSDKCredentials.appSecret",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/PushSDKCredentials.swift",
-      "line": 26,
-      "symbol": "PushSDKCredentials.clientSecret",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/PushSDKCredentials.swift",
-      "line": 28,
-      "symbol": "PushSDKCredentials.init(appGuid:url:admin_url:appSecret:clientSecret:)",
+      "line": 25,
+      "symbol": "PushSDKCredentials.init(appGuid:appSecret:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -508,76 +403,6 @@
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/RedisCredentials.swift",
       "line": 28,
       "symbol": "RedisCredentials.init(host:password:port:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WatsonConversationCredentials.swift",
-      "line": 22,
-      "symbol": "WatsonConversationCredentials.username",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WatsonConversationCredentials.swift",
-      "line": 23,
-      "symbol": "WatsonConversationCredentials.password",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WatsonConversationCredentials.swift",
-      "line": 24,
-      "symbol": "WatsonConversationCredentials.url",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WatsonConversationCredentials.swift",
-      "line": 26,
-      "symbol": "WatsonConversationCredentials.init(username:password:url:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WeatherDataCompanyCredentials.swift",
-      "line": 22,
-      "symbol": "WeatherCompanyDataCredentials.username",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WeatherDataCompanyCredentials.swift",
-      "line": 23,
-      "symbol": "WeatherCompanyDataCredentials.password",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WeatherDataCompanyCredentials.swift",
-      "line": 24,
-      "symbol": "WeatherCompanyDataCredentials.host",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WeatherDataCompanyCredentials.swift",
-      "line": 25,
-      "symbol": "WeatherCompanyDataCredentials.port",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WeatherDataCompanyCredentials.swift",
-      "line": 26,
-      "symbol": "WeatherCompanyDataCredentials.url",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/WeatherDataCompanyCredentials.swift",
-      "line": 28,
-      "symbol": "WeatherCompanyDataCredentials.init(username:password:host:port:url:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }

@@ -30,7 +30,7 @@ public class DB2Credentials {
     host:       String,
     port:       Int,
     uid:        String,
-  pwd:        String ) {
+    pwd:        String ) {
 
     self.database   = database
     self.host       = host
@@ -62,7 +62,7 @@ extension CloudEnv {
       host:       host,
       port:       port,
       uid:        uid,
-    pwd:        pwd )
+      pwd:        pwd )
   }
 
 }

@@ -24,22 +24,19 @@ public class AppIDCredentials {
   public let profilesUrl:    String
   public let secret:         String
   public let tenantId:       String
-  public let version:        Int
 
-  public init (
+  public init(
     clientId:       String,
     oauthServerUrl: String,
     profilesUrl:    String,
     secret:         String,
-    tenantId:       String,
-  version:        Int ) {
+    tenantId:       String) {
 
     self.clientId       = clientId
     self.oauthServerUrl = oauthServerUrl
     self.profilesUrl    = profilesUrl
     self.secret         = secret
     self.tenantId       = tenantId
-    self.version        = version
   }
 }
 
@@ -48,25 +45,23 @@ extension CloudEnv {
   /// Returns an AppIDCredentials object with the corresponding credentials.
   ///
   /// - Parameter name: The key to lookup the environment variable.
-  public func getAppIDCredentials (name: String) -> AppIDCredentials? {
+  public func getAppIDCredentials(name: String) -> AppIDCredentials? {
 
     guard let credentials   = getDictionary(name: name),
-    let clientId        = credentials["clientId"] as? String,
-    let oauthServerUrl  = credentials["oauthServerUrl"] as? String,
-    let profilesUrl     = credentials["profilesUrl"] as? String,
+    let clientId        = credentials["clientId"] as? String ?? credentials["client_id"] as? String,
+    let oauthServerUrl  = credentials["oauthServerUrl"] as? String ?? credentials["oauth_server_url"] as? String,
+    let profilesUrl     = credentials["profilesUrl"] as? String ?? credentials["profiles_url"] as? String,
     let secret          = credentials["secret"] as? String,
-    let tenantId        = credentials["tenantId"] as? String,
-    let version         = credentials["version"] as? Int else {
+    let tenantId        = credentials["tenantId"] as? String ?? credentials["tenant_id"] as? String else {
       return nil
     }
 
-    return AppIDCredentials (
+    return AppIDCredentials(
       clientId:       clientId,
       oauthServerUrl: oauthServerUrl,
       profilesUrl:    profilesUrl,
       secret:         secret,
-      tenantId:       tenantId,
-    version:        version )
+      tenantId:       tenantId)
   }
 
 }

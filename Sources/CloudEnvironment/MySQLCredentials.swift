@@ -25,12 +25,12 @@ public class MySQLCredentials {
   public let password : String
   public let port     : Int
 
-  public init (
+  public init(
     database:   String,
     host:       String,
     username:   String,
     password:   String,
-  port:       Int ) {
+    port:       Int) {
 
     self.database   = database
     self.host       = host
@@ -49,21 +49,22 @@ extension CloudEnv {
   public func getMySQLCredentials (name: String) -> MySQLCredentials? {
 
     guard let credentials = getDictionary(name: name),
-    let database    = credentials["name"] as? String,
-    let host        = credentials["hostname"] as? String,
-    let username    = credentials["username"] as? String,
-    let password    = credentials["password"] as? String,
-    let stringPort  = credentials["port"] as? String,
-    let port        = Int(stringPort) else {
+      let database    = credentials["name"] as? String,
+      let host        = credentials["hostname"] as? String,
+      let username    = credentials["username"] as? String,
+      let password    = credentials["password"] as? String,
+      let stringPort  = credentials["port"] as? String,
+      let port        = Int(stringPort) else {
+
       return nil
     }
 
-    return MySQLCredentials (
+    return MySQLCredentials(
       database: database,
       host: host,
       username: username,
       password: password,
-    port: port )
+      port: port)
   }
 
 }

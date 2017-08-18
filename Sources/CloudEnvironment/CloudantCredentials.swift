@@ -14,33 +14,13 @@
 * limitations under the License.
 */
 
+import Foundation
+
 /// CloudantCredentials class
 ///
 /// Contains the credentials for a Cloudant service instance.
-public class CloudantCredentials {
-
-  public let host        : String
-  public let username    : String
-  public let password    : String
-  public let port        : Int
-  public let secured     : Bool
-  public let url         : String
-
-  public init (
-    host:       String,
-    username:   String,
-    password:   String,
-    port:       Int,
-    secured:    Bool,
-  url:        String ) {
-
-    self.host       = host
-    self.username   = username
-    self.password   = password
-    self.port       = port
-    self.secured    = secured
-    self.url        = url
-  }
+public class CloudantCredentials: Credentials {
+  // Just a simpler wrapper to provide a type for cloudant credentials
 }
 
 extension CloudEnv {
@@ -49,25 +29,18 @@ extension CloudEnv {
   ///
   /// - Parameter name: The key to lookup the environment variable.
   public func getCloudantCredentials(name: String) -> CloudantCredentials? {
-
     guard let credentials = getDictionary(name: name),
-    let host      = credentials["host"] as? String,
     let username  = credentials["username"] as? String,
     let password  = credentials["password"] as? String,
-    let port      = credentials["port"] as? Int,
     let url       = credentials["url"] as? String else {
       return nil
     }
 
-    let secured: Bool = credentials["secured"] as? Bool ?? true
-
-    return CloudantCredentials (
-      host: host,
+    return CloudantCredentials(
       username: username,
       password: password,
-      port: port,
-      secured: secured,
-    url: url )
+      url: url
+    )
   }
 
 }

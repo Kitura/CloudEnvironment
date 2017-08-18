@@ -21,18 +21,14 @@ import Foundation
 /// Contains the credentials for a Redis service instance.
 public class RedisCredentials {
 
-  public let host        : String
-  public let password    : String
-  public let port        : Int
+  public let host: String
+  public let password: String
+  public let port: Int
 
-  public init (
-    host:       String,
-    password:   String,
-  port:       Int ) {
-
-    self.host       = host
-    self.password   = password
-    self.port       = port
+  public init(host: String, password: String, port: Int ) {
+    self.host = host
+    self.password = password
+    self.port = port
   }
 }
 
@@ -40,21 +36,19 @@ extension CloudEnv {
   /// Returns an RedisCredentials object with the corresponding credentials.
   ///
   /// - Parameter name: The key to lookup the environment variable.
-  public func getRedisCredentials (name: String) -> RedisCredentials? {
+  public func getRedisCredentials(name: String) -> RedisCredentials? {
 
     guard let credentials = getDictionary(name: name),
-    let uri         = credentials["uri"] as? String,
-    let url         = URL(string: uri),
-    let host        = url.host,
-    let password    = url.password,
-    let port        = url.port else {
+      let uri = credentials["uri"] as? String,
+      let url = URL(string: uri),
+      let host = url.host,
+      let password = url.password,
+      let port = url.port else {
+
       return nil
     }
 
-    return RedisCredentials (
-      host:       host,
-      password:   password,
-    port:       port )
+    return RedisCredentials(host: host, password: password, port: port)
   }
 
 }
