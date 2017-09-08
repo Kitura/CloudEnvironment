@@ -170,7 +170,13 @@ public class CloudEnv {
   }
 
   private func sanitize(path: String) -> String {
-    return path.hasPrefix("/") ? path.substring(from: path.startIndex) : path
+    if path.hasPrefix("/") {
+      guard let range = path.range(of: "/") else {
+        return path
+      }
+      return path.substring(from: range.upperBound)
+    }
+    return path
   }
 
 }
