@@ -19,30 +19,8 @@ import Foundation
 /// PostgreSQLCredentials class
 ///
 /// Contains the credentials for a PostgreSQL service instance.
-public class PostgreSQLCredentials {
-
-  public let host        : String
-  public let port        : Int
-  public let username    : String
-  public let password    : String
-
-  /// Constructor
-  ///
-  /// - Parameter host: host
-  /// - Parameter port: port
-  /// - Parameter username: username
-  /// - Parameter password: password
-  public init (
-    host:       String,
-    port:       Int,
-    username:   String,
-  password:   String ) {
-
-    self.host       = host
-    self.port       = port
-    self.username   = username
-    self.password   = password
-  }
+public class PostgreSQLCredentials: Credentials {
+   // Just a simpler wrapper to provide a type for postgresql credentials
 }
 
 extension CloudEnv {
@@ -51,22 +29,12 @@ extension CloudEnv {
   ///
   /// - Parameter name: The key to lookup the environment variable.
   public func getPostgreSQLCredentials (name: String) -> PostgreSQLCredentials? {
-
     guard let credentials = getDictionary(name: name),
-    let uri         = credentials["uri"] as? String,
-    let url         = URL(string: uri),
-    let host        = url.host,
-    let port        = url.port,
-    let username    = url.user,
-    let password    = url.password else {
+      let uri = credentials["uri"] as? String else {
       return nil
     }
 
-    return PostgreSQLCredentials (
-      host: host,
-      port: port,
-      username: username,
-    password: password )
+    return PostgreSQLCredentials(url: uri)
   }
 
 }
