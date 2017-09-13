@@ -27,10 +27,18 @@ public class Credentials {
   public let secured     : Bool
   public let url         : String
 
-  public init?(username: String, password: String, url: String) {
-    self.username   = username
-    self.password   = password
-    self.url        = url
+  public init?(username: String? = nil, password: String? = nil, url: String) {
+
+    self.url = url
+    guard let user = username ?? Credentials.parseUsername(url: url) else {
+      return nil
+    }
+    self.username = user
+
+    guard let pwd = password ?? Credentials.parsePassword(url: url) else {
+      return nil
+    }
+    self.password = pwd
 
     guard let scheme = Credentials.parseScheme(url: url) else {
       return nil
@@ -84,4 +92,29 @@ public class Credentials {
 
     return (scheme == "https") ? 443 : 80
   }
+
+   private static func parseUsername(url: String) -> String? {
+    guard let parsedURL = URLComponents(string: url) else {
+      return nil
+    }
+
+    guard let username = parsedURL.user else {
+      return nil
+    }
+
+    return username
+  }
+
+   private static func parsePassword(url: String) -> String? {
+    guard let parsedURL = URLComponents(string: url) else {
+      return nil
+    }
+
+    guard let password = parsedURL.password else {
+      return nil
+    }
+
+    return password
+  }
+
 }

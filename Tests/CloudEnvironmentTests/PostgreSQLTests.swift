@@ -37,9 +37,10 @@ class PostgreSQLTests: XCTestCase {
         }
 
         XCTAssertEqual(credentials.host, "bluemix-sandbox-dal-9-portal.0.dblayer.com", "PostgreSQL service host should match.")
-        XCTAssertEqual(credentials.username, "user", "Object Storage service username should match.")
-        XCTAssertEqual(credentials.password, "password", "Object Storage service password should match.")
-        XCTAssertEqual(credentials.port, 22387, "Object Storage service port should match.")
+        XCTAssertEqual(credentials.username, "user", "PostgreSQL service username should match.")
+        XCTAssertEqual(credentials.password, "password", "PostgreSQL service password should match.")
+        XCTAssertEqual(credentials.port, 22387, "PostgreSQL service port should match.")
+        XCTAssertEqual(credentials.database, "compose", "PostgreSQL service database should match.")
 
     }
 
