@@ -213,42 +213,42 @@
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
       "line": 23,
-      "symbol": "MongoDBCredentials.host",
+      "symbol": "MongoDBCredentials.uri",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
       "line": 24,
-      "symbol": "MongoDBCredentials.username",
+      "symbol": "MongoDBCredentials.host",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
       "line": 25,
-      "symbol": "MongoDBCredentials.password",
+      "symbol": "MongoDBCredentials.username",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
       "line": 26,
-      "symbol": "MongoDBCredentials.port",
+      "symbol": "MongoDBCredentials.password",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
       "line": 27,
-      "symbol": "MongoDBCredentials.certificate",
+      "symbol": "MongoDBCredentials.port",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/MongoDBCredentials.swift",
       "line": 29,
-      "symbol": "MongoDBCredentials.init(host:username:password:port:certificate:)",
+      "symbol": "MongoDBCredentials.init(uri:host:username:password:port:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -332,28 +332,7 @@
     {
       "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/PostgreSQLCredentials.swift",
       "line": 24,
-      "symbol": "PostgreSQLCredentials.host",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/PostgreSQLCredentials.swift",
-      "line": 25,
-      "symbol": "PostgreSQLCredentials.port",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/PostgreSQLCredentials.swift",
-      "line": 26,
-      "symbol": "PostgreSQLCredentials.username",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/olivieri/git/CloudEnvironment/Sources/CloudEnvironment/PostgreSQLCredentials.swift",
-      "line": 27,
-      "symbol": "PostgreSQLCredentials.password",
+      "symbol": "PostgreSQLCredentials.database",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
