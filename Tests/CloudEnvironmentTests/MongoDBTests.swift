@@ -40,7 +40,7 @@ class MongoDBTests: XCTestCase {
         XCTAssertEqual(credentials.username, "username", "MongoDB service username should match.")
         XCTAssertEqual(credentials.password, "password", "MongoDB service password should match.")
         XCTAssertEqual(credentials.port, 19889, "MongoDB service port should match.")
-        XCTAssertEqual(credentials.certificate, "certificateString", "MongoDB service certificate should match.")
+        XCTAssertEqual(credentials.uri, "mongodb://username:password@bluemix-sandbox-dal-9-portal.5.dblayer.com:19889,bluemix-sandbox-dal-9-portal.4.dblayer.com:19889/admin?ssl=true", "MongoDB service uri should match.")
 
     }
 
