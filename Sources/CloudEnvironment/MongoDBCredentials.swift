@@ -20,24 +20,24 @@ import Foundation
 ///
 /// Contains the credentials for a MongoDB service instance.
 public class MongoDBCredentials {
-  public let host        : String
-  public let username    : String
-  public let password    : String
-  public let port        : Int
-  public let certificate : String
-
+  public let uri: String
+  public let host: String
+  public let username: String
+  public let password: String
+  public let port: Int
+  
   public init(
-    host:           String,
-    username:       String,
-    password:       String,
-    port:           Int,
-    certificate:    String) {
+    uri: String,
+    host: String,
+    username: String,
+    password: String,
+    port: Int) {
 
-    self.host           = host
-    self.username       = username
-    self.password       = password
-    self.port           = port
-    self.certificate    = certificate
+    self.uri = uri
+    self.host = host
+    self.username = username
+    self.password = password
+    self.port = port
   }
 }
 
@@ -52,19 +52,25 @@ extension CloudEnv {
       return nil
     }
 
+    // For detail on the format for the URI connection string that MongoDB supports, 
+    // see: https://docs.mongodb.com/manual/reference/connection-string/
+    // It is possible to specify more than one host in the URI connection string
+
     // Use SSL uri if available
-    let initialURI = credentials["uri"] as? String ?? ""
-    let uris = initialURI.components(separatedBy: ",")
-    let filtered  = uris.filter({ $0.contains("ssl=true") })
-    var uriValue: String?
-    if filtered.count == 1, let dbInfo = filtered.first,
-    var credentialInfo = uris.first,
-    let atRange = credentialInfo.range(of: "@") {
-      // substitute non-ssl hostname:port with correct hostname:port
-      credentialInfo.removeSubrange(atRange.upperBound..<credentialInfo.endIndex)
-      uriValue = credentialInfo + dbInfo
+    guard let uri = credentials["uri"] as? String else {
+      return nil
+    }
+
+    let uriItems = uri.components(separatedBy: ",")
+    let filtered  = uriItems.filter({ $0.contains("ssl=true") })
+    let uriValue: String?
+    if filtered.count == 1, let dbInfo = filtered.first, var credentialInfo = uriItems.first,
+      let atRange = credentialInfo.range(of: "@") {
+        // Substitute non-ssl hostname:port with correct hostname:port
+        credentialInfo.removeSubrange(atRange.upperBound..<credentialInfo.endIndex)
+        uriValue = credentialInfo + dbInfo
     } else {
-      uriValue = uris.first
+      uriValue = uriItems.first
     }
 
     guard let stringURL = uriValue, stringURL.characters.count > 0,
@@ -72,18 +78,17 @@ extension CloudEnv {
       let host        = url.host,
       let username    = url.user,
       let password    = url.password,
-      let port        = url.port,
-      let certificate = credentials["ca_certificate_base64"] as? String else {
+      let port        = url.port else {
 
       return nil
     }
 
     return MongoDBCredentials(
-      host:           host,
-      username:       username,
-      password:       password,
-      port:           port,
-      certificate:    certificate)
+      uri: uri,
+      host: host,
+      username: username,
+      password: password,
+      port: port)
   }
 
 }

@@ -49,7 +49,7 @@ public class CloudEnv {
   ///
   /// - Parameter mappingsFilePath: Optional. The path to the `mappings.json` file; this path should be relative to the root folder of the Swift application.
   /// - Parameter cloudFoundryFile: Optional. The path to a JSON file that contains values for Cloud Foundry environment variables (mainly used for testing);
-  /// this path should also be relative to the root folder of the Swift application.
+  /// this path should be relative to the current working directory (which in most cases it is the folder of the Swift application).
   public init(mappingsFilePath: String? = nil, cloudFoundryFile: String? = nil) {
 
     // Set instance properties
@@ -64,10 +64,9 @@ public class CloudEnv {
       filePath = "config"
     }
 
-    // For local execution
-    mapManager.load(file: "\(filePath)/\(CloudEnv.mappingsFile)", relativeFrom: .project)
-
-    // For Cloud Foundry
+    // Load mappings file (Cloud Foundry & local execution)
+    // If running locally, make sure the app is starter from the project folder
+    // In other words, the current working directory should be the project folder
     mapManager.load(file: "\(filePath)/\(CloudEnv.mappingsFile)", relativeFrom: .pwd)
   }
 
@@ -144,10 +143,7 @@ public class CloudEnv {
     let sanitizedPath = sanitize(path: path)
     let fileManager = ConfigurationManager()
 
-    // For local mapping file
-    fileManager.load(file: sanitizedPath, relativeFrom: .project)
-
-    // Load file in cloud foundry (working dir as base)
+    // Load file in Cloud Foundry (working dir as base)
     fileManager.load(file: sanitizedPath, relativeFrom: .pwd)
 
     let dictionary = (key.isEmpty) ?
@@ -161,7 +157,7 @@ public class CloudEnv {
 
     // Load configuration for cloud foundry
     if let cloudFoundryFile = self.cloudFoundryFile {
-      cloudFoundryManager.load(file: cloudFoundryFile, relativeFrom: .project)
+      cloudFoundryManager.load(file: cloudFoundryFile, relativeFrom: .pwd)
     } else {
       cloudFoundryManager.load(.environmentVariables)
     }
