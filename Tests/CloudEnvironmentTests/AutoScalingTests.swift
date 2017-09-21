@@ -18,7 +18,7 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class AutoScalingTests: XCTestCase {
+class AutoScalingTests: BaseTest {
 
     static var allTests : [(String, (AutoScalingTests) -> () throws -> Void)] {
         return [
@@ -29,7 +29,7 @@ class AutoScalingTests: XCTestCase {
     func testGetCredentials() {
 
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
+        let cloudEnv = CloudEnv(mappingsFileFolder: resourcesFolder, cloudFoundryFile: cloudFoundryFile)
 
         guard let credentials =  cloudEnv.getAutoScalingCredentials(name: "AutoScalingKey") else {
             XCTFail("Could not load AutoScaling credentials.")

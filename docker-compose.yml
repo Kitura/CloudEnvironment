@@ -1,5 +1,5 @@
 app:
-  image: ibmcom/swift-ubuntu:3.1.1
+  image: ibmcom/swift-ubuntu:4.0
   volumes:
     - .:/CloudEnvironment
-  command: bash -c "cd /CloudEnvironment && swift package clean && swift build && swift test && swift package clean"
+  command: bash -c "cd /CloudEnvironment && swift package --build-path .build-linux clean && swift build --build-path .build-linux && swift test --build-path .build-linux && swift package --build-path .build-linux clean"
