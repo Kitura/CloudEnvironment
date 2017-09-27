@@ -164,7 +164,7 @@ public class CloudEnv {
       guard let range = path.range(of: "/") else {
         return path
       }
-      return path.substring(from: range.upperBound)
+      return String(path[range.upperBound...])
     }
     return path
   }
