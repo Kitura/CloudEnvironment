@@ -3,3 +3,4 @@
 /.build-linux/
 /*.xcodeproj
 /build
+Package.resolved
