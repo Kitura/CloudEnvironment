@@ -47,27 +47,21 @@ public class CloudEnv {
 
   /// Constructor
   ///
-  /// - Parameter mappingsFilePath: Optional. The path to the `mappings.json` file; this path should be relative to the root folder of the Swift application.
-  /// - Parameter cloudFoundryFile: Optional. The path to a JSON file that contains values for Cloud Foundry environment variables (mainly used for testing);
-  /// this path should be relative to the current working directory (which in most cases it is the folder of the Swift application).
-  public init(mappingsFilePath: String? = nil, cloudFoundryFile: String? = nil) {
+  /// - Parameter mappingsFilePath: Optional. The absolute path to a `mappings.json` file.
+  /// - Parameter cloudFoundryFile: Optional. The absolute path to a JSON file that contains values for Cloud Foundry environment variables.
+  /// (mainly used for testing).
+  public init(mappingsFileFolder: String? = nil, cloudFoundryFile: String? = nil) {
 
     // Set instance properties
     self.cloudFoundryFile = cloudFoundryFile
 
     // Compute path to mappings.json
-    let filePath: String
-    if let mappingsFilePath = mappingsFilePath {
-      let sanitizedPath = sanitize(path: mappingsFilePath)
-      filePath = sanitizedPath
-    } else {
-      filePath = "config"
-    }
-
+    let mappingsFilePath: String = (mappingsFileFolder != nil) ? mappingsFileFolder! : "config"
+ 
     // Load mappings file (Cloud Foundry & local execution)
-    // If running locally, make sure the app is starter from the project folder
-    // In other words, the current working directory should be the project folder
-    mapManager.load(file: "\(filePath)/\(CloudEnv.mappingsFile)", relativeFrom: .pwd)
+    // If running locally, make sure the app is started from the root folder of the project
+    // In other words, the current working directory should be the project folder.
+    mapManager.load(file: "\(mappingsFilePath)/\(CloudEnv.mappingsFile)", relativeFrom: .pwd)
   }
 
   /// Returns the corresponding JSON dictionary value in a string.
@@ -170,7 +164,7 @@ public class CloudEnv {
       guard let range = path.range(of: "/") else {
         return path
       }
-      return path.substring(from: range.upperBound)
+      return String(path[range.upperBound...])
     }
     return path
   }

@@ -18,7 +18,7 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class MySQLTests: XCTestCase {
+class MySQLTests: BaseTest {
 
     static var allTests : [(String, (MySQLTests) -> () throws -> Void)] {
         return [
@@ -29,7 +29,7 @@ class MySQLTests: XCTestCase {
     func testGetCredentials() {
 
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
+        let cloudEnv = CloudEnv(mappingsFileFolder: resourcesFolder, cloudFoundryFile: cloudFoundryFile)
 
         guard let credentials =  cloudEnv.getMySQLCredentials(name: "MySQLKey") else {
             XCTFail("Could not load MySQL credentials.")

@@ -18,7 +18,7 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class DB2Tests: XCTestCase {
+class DB2Tests: BaseTest {
 
     static var allTests : [(String, (DB2Tests) -> () throws -> Void)] {
         return [
@@ -29,7 +29,7 @@ class DB2Tests: XCTestCase {
     func testGetCredentials() {
 
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
+        let cloudEnv = CloudEnv(mappingsFileFolder: resourcesFolder, cloudFoundryFile: cloudFoundryFile)
 
         guard let credentials =  cloudEnv.getDB2Credentials(name: "DB2Key") else {
             XCTFail("Could not load DB2 service credentials.")

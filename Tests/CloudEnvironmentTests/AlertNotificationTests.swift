@@ -18,7 +18,7 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class AlertNotificationTests: XCTestCase {
+class AlertNotificationTests: BaseTest {
 
     static var allTests : [(String, (AlertNotificationTests) -> () throws -> Void)] {
         return [
@@ -29,7 +29,7 @@ class AlertNotificationTests: XCTestCase {
     func testGetCredentials() {
 
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
+        let cloudEnv = CloudEnv(mappingsFileFolder: resourcesFolder, cloudFoundryFile: cloudFoundryFile)
 
         guard let credentials =  cloudEnv.getAlertNotificationCredentials(name: "AlertNotificationKey") else {
             XCTFail("Could not load Alert Notification service credentials.")
