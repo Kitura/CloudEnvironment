@@ -53,7 +53,7 @@ let package = Package(
    ...
 
    dependencies: [
-       .Package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", majorVersion: 5),
+       .package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", .upToNextMajor(from: "5.0.0")),
 
        ...
 
