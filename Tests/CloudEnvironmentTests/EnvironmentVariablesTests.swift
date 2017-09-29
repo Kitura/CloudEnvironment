@@ -18,7 +18,7 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class EnvironmentVariablesTests: BaseTest {
+class EnvironmentVariablesTests: XCTestCase {
 
     static var allTests : [(String, (EnvironmentVariablesTests) -> () throws -> Void)] {
         return [
@@ -29,7 +29,7 @@ class EnvironmentVariablesTests: BaseTest {
     func testGetCredentials() {
 
         // Load test mappings.json file
-        let cloudEnv = CloudEnv(mappingsFileFolder: "Tests/CloudEnvironmentTests/resources")
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources")
 
         let jsonString = "{\"name\":\"21a084f4-4eb3-4de4-9834-33bdc7be5df9/d2a85740-da7a-4615-aabf-5bdc35c63618\",\"password\":\"alertnotification-pwd\",\"url\":\"https://ibmnotifybm.mybluemix.net/api/alerts/v1\",\"swaggerui\":\"https://ibmnotifybm.mybluemix.net/docs/alerts/v1\"}"
 
