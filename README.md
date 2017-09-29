@@ -53,12 +53,8 @@ let package = Package(
    ...
 
    dependencies: [
-        // Swift 3.1.1
-       .Package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", majorVersion: 4),
-       
        //Swift 4.0
        .package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", .upToNextMajor(from: "4.0.0")),
-
        ...
 
    ])
