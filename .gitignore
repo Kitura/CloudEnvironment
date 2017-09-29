@@ -1,6 +1,4 @@
 .DS_Store
-/.build
-/*.xcodeproj
-/build
-.build-linux/
-Package.resolved
+.build/*
+*.xcodeproj/*
+
