@@ -18,7 +18,7 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class AppIDTests: BaseTest {
+class AppIDTests: XCTestCase {
 
     static var allTests : [(String, (AppIDTests) -> () throws -> Void)] {
         return [
@@ -27,8 +27,9 @@ class AppIDTests: BaseTest {
     }
 
     func testGetCredentials() {
+
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let cloudEnv = CloudEnv(mappingsFileFolder: resourcesFolder, cloudFoundryFile: cloudFoundryFile)
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
 
         guard let credentials =  cloudEnv.getAppIDCredentials(name: "AppIDKey") else {
             XCTFail("Could not load AppID credentials.")

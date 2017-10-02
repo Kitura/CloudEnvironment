@@ -18,7 +18,7 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class CloudantTests: BaseTest {
+class CloudantTests: XCTestCase {
 
     static var allTests : [(String, (CloudantTests) -> () throws -> Void)] {
         return [
@@ -29,7 +29,7 @@ class CloudantTests: BaseTest {
     func testGetCredentials() {
 
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
-        let cloudEnv = CloudEnv(mappingsFileFolder: resourcesFolder, cloudFoundryFile: cloudFoundryFile)
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
 
         guard let credentials =  cloudEnv.getCloudantCredentials(name: "CloudantKey") else {
             XCTFail("Could not load Cloudant credentials.")
