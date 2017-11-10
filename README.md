@@ -97,6 +97,7 @@ The following services are currently supported by this library. Therefore, you c
 - [AppID](https://console.ng.bluemix.net/catalog/services/app-id)
 - [Auto Scaling](https://console.ng.bluemix.net/catalog/services/auto-scaling)
 - [DB2](https://console.ng.bluemix.net/catalog/services/ibm-db2-on-cloud)
+- [Cloud Functions](https://console.bluemix.net/docs/openwhisk/index.html#getting-started-with-cloud-functions)
 - [Cloudant](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db)
 - [MongoDB](https://console.ng.bluemix.net/docs/services/MongoDB/index.html)
 - [MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql/)
