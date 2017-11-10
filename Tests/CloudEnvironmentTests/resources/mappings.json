@@ -117,5 +117,10 @@
       "env:my-kube-secret-os-credentials",
       "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
     ]
-  }
+  },
+  "CloudFunctionsCredentials": {
+    "searchPatterns": [
+        "file:Tests/CloudEnvironmentTests/resources/config_file_with_key.json:CloudFunctions"
+    ]
+}
 }
