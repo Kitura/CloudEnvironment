@@ -73,7 +73,7 @@ extension CloudEnv {
       uriValue = uriItems.first
     }
 
-    guard let stringURL = uriValue, stringURL.characters.count > 0,
+    guard let stringURL = uriValue, stringURL.count > 0,
       let url         = URL(string: stringURL),
       let host        = url.host,
       let username    = url.user,
