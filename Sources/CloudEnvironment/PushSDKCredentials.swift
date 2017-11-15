@@ -17,14 +17,18 @@
 /// PushSDKCredentials class
 ///
 /// Contains the credentials for a PushSDK service instance.
+import Foundation
+
 public class PushSDKCredentials {
 
   public let appGuid      : String
   public let appSecret    : String
+  public let region       : String
 
-  public init(appGuid: String, appSecret: String) {
+  public init(appGuid: String, appSecret: String, region: String) {
     self.appGuid        = appGuid
     self.appSecret      = appSecret
+    self.region         = region
   }
 
 }
@@ -38,11 +42,27 @@ extension CloudEnv {
 
     guard let credentials = getDictionary(name: name),
       let appGuid = credentials["appGuid"] as? String ?? credentials["app_guid"] as? String,
-      let appSecret = credentials["appSecret"] as? String ?? credentials["app_secret"] as? String else {
+      let appSecret = credentials["appSecret"] as? String ?? credentials["app_secret"] as? String,
+      let pushURL = credentials["url"] as? String,
+      let url = URL(string: pushURL),
+      let region = getRegion(from: url)
+      else {
         return nil
     }
 
-    return PushSDKCredentials(appGuid: appGuid, appSecret: appSecret)
+    return PushSDKCredentials(appGuid: appGuid, appSecret: appSecret, region: region)
   }
 
+  private func getRegion(from url: URL) -> String? {
+    guard let host = url.host,
+      host.hasSuffix(".bluemix.net")
+    else{
+      return nil
+    }
+    let parts = host.split(separator: ".").suffix(3)
+    guard parts.count > 2 && parts.first != "imfpush" else {
+      return nil
+    }
+    return parts.joined(separator: ".")
+  }
 }
