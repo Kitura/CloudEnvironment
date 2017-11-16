@@ -35,9 +35,9 @@ class PushSDKTests: XCTestCase {
             XCTFail("Could not load Push SDK credentials.")
             return
         }
-
         XCTAssertEqual(credentials.appGuid, "push-appGuid", "PushSDK service appGuid should match.")
         XCTAssertEqual(credentials.appSecret, "push-secret", "PushSDK service appSecret should match.")
+        XCTAssertEqual(credentials.region, "ng.bluemix.net", "PushSDK service region should match.")
     }
 
 }
