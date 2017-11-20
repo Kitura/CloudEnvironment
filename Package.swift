@@ -27,7 +27,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/IBM-Swift/Swift-cfenv.git", .upToNextMajor(from: "5.0.0")),
+        .package(url: "https://github.com/IBM-Swift/Swift-cfenv.git", .upToNextMajor(from: "6.0.0")),
         .package(url: "https://github.com/IBM-Swift/LoggerAPI.git", .upToNextMajor(from: "1.0.0"))
     ],
     targets: [
@@ -41,4 +41,3 @@ let package = Package(
         )
     ]
 )
-
