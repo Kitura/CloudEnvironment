@@ -30,7 +30,7 @@ public class PostgreSQLCredentials: Credentials {
       var database = parsedURL.path
       database.remove(at: database.startIndex)
 
-      if database.characters.count == 0 {
+      if database.count == 0 {
         return nil
       }
 

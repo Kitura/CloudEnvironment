@@ -40,4 +40,3 @@ let package = Package(
         )
     ]
 )
-

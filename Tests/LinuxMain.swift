@@ -33,5 +33,6 @@ XCTMain([
     testCase(NaturalLangUnderstandingTests.allTests),
     testCase(WeatherCompanyDataTests.allTests),
     testCase(EnvironmentVariablesTests.allTests),
-    testCase(LocalFileTests.allTests)
+    testCase(LocalFileTests.allTests),
+    testCase(CloudFunctionsTests.allTests)
     ])

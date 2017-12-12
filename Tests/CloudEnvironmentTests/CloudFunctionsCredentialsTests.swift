@@ -18,9 +18,9 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class PushSDKTests: XCTestCase {
+class CloudFunctionsTests: XCTestCase {
 
-    static var allTests : [(String, (PushSDKTests) -> () throws -> Void)] {
+    static var allTests : [(String, (CloudFunctionsTests) -> () throws -> Void)] {
         return [
             ("testGetCredentials", testGetCredentials),
         ]
@@ -31,13 +31,15 @@ class PushSDKTests: XCTestCase {
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
         let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
 
-        guard let credentials =  cloudEnv.getPushSDKCredentials(name: "PushNotificationKey") else {
-            XCTFail("Could not load Push SDK credentials.")
+        guard let credentials =  cloudEnv.getCloudFunctionsCredentials(name: "CloudFunctionsCredentials") else {
+            XCTFail("Could not load Alert Notification service credentials.")
             return
         }
-        XCTAssertEqual(credentials.appGuid, "push-appGuid", "PushSDK service appGuid should match.")
-        XCTAssertEqual(credentials.appSecret, "push-secret", "PushSDK service appSecret should match.")
-        XCTAssertEqual(credentials.region, "ng.bluemix.net", "PushSDK service region should match.")
-    }
 
+        let computedAuthToken = "f4a7ebaf".data(using: String.Encoding.utf8)?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
+
+        XCTAssertEqual(credentials.hostName, "openwhisk.ng.bluemix.net", "Cloud Functions host should match.")
+        XCTAssertEqual(credentials.urlPath, "/path", "Cloud Functions url path should match.")
+        XCTAssertEqual(credentials.authToken, computedAuthToken, "Cloud Functions auth token should match.")
+    }
 }
