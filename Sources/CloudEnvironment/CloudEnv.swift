@@ -88,7 +88,7 @@ public class CloudEnv {
   /// - Parameter name: The key to lookup the environment variable.
   public func getDictionary(name: String) -> [String : Any]? {
 
-    guard let searchPatterns = mapManager["\(name):searchPatterns"] as? [String] else {
+    guard let searchPatterns = mapManager["\(name):credentials:searchPatterns"] as? [String] else {
       Log.debug("No search patterns found. There may have been a problem loading '\(CloudEnv.mappingsFile)'.")
       return nil
     }
