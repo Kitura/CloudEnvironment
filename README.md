@@ -23,18 +23,22 @@ You specify lookup keys and search patterns in a file named `mappings.json`. Thi
 ```javascript
 {
     "cloudant-credentials": {
-        "searchPatterns": [
-            "cloudfoundry:my-awesome-cloudant-db",
-            "env:my_awesome_cloudant_db_credentials",
-            "file:localdev/my-awesome-cloudant-db-credentials.json"
-        ]
+        "credentials": {
+            "searchPatterns": [
+                "cloudfoundry:my-awesome-cloudant-db",
+                "env:my_awesome_cloudant_db_credentials",
+                "file:localdev/my-awesome-cloudant-db-credentials.json"
+            ]
+        }
     },
     "object-storage-credentials": {
-        "searchPatterns": [
-            "cloudfoundry:my-awesome-object-storage",
-            "env:my_awesome_object_storage_credentials",
-            "file:localdev/my-awesome-object-storage-credentials.json"
-        ]
+        "credentials": {
+            "searchPatterns": [
+                "cloudfoundry:my-awesome-object-storage",
+                "env:my_awesome_object_storage_credentials",
+                "file:localdev/my-awesome-object-storage-credentials.json"
+            ]
+        }
     }
 }
 ```
