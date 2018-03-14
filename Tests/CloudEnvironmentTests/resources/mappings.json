@@ -158,5 +158,14 @@
         "file:Tests/CloudEnvironmentTests/resources/config_file_with_key.json:CloudFunctions"
       ]
     }
-  }
+  },
+  "hypersecuredbaas": {
+      "credentials": {
+       "searchPatterns": [
+         "cloudfoundry:hypersecuredbaas",
+         "env:service_hypersecuredbaas",
+         "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+       ]
+   }
+ }
 }
