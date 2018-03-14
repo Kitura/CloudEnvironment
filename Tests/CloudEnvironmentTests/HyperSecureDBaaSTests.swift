@@ -1,5 +1,5 @@
 /*
- * Copyright IBM Corporation 2017
+ * Copyright IBM Corporation 2018
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ class HyperSecureDBaaSTests: XCTestCase {
         let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
 
         guard let credentials =  cloudEnv.getHyperSecureDBaaSCredentials(name: "hypersecuredbaas") else {
-            XCTFail("Could not load HypersercureDBaaS credentials.")
+            XCTFail("Could not load HyperSercureDBaaS credentials.")
             return
         }
 

@@ -1,5 +1,5 @@
 /*
-* Copyright IBM Corporation 2017
+* Copyright IBM Corporation 2018
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@
 
 import Foundation
 
-/// HDBaaSCredentials class
+/// HyperSecureDBaaSCredentials class
 ///
-/// Contains the credentials for a HDBaaS service instance.
+/// Contains the credentials for a HyperSecureDBaaS service instance.
 public class HyperSecureDBaaSCredentials {
   public let uri: String
   public let host: String
@@ -46,7 +46,7 @@ public class HyperSecureDBaaSCredentials {
 
 extension CloudEnv {
 
-  /// Returns a HDBaaSCredentials object with the corresponding credentials.
+  /// Returns a HyperSecureDBaaSCredentials object with the corresponding credentials.
   ///
   /// - Parameter name: The key to lookup the credentials object.
   public func getHyperSecureDBaaSCredentials(name: String) -> HyperSecureDBaaSCredentials? {
@@ -54,10 +54,6 @@ extension CloudEnv {
     guard let credentials = getDictionary(name: name) else {
       return nil
     }
-
-    // For detail on the format for the URI connection string that MongoDB supports,
-    // see: https://docs.mongodb.com/manual/reference/connection-string/
-    // It is possible to specify more than one host in the URI connection string
 
     guard let uri = credentials["url"] as? String,
         let cert = credentials["cert"] as? String else {
@@ -94,5 +90,4 @@ extension CloudEnv {
       password: password,
       port: port)
   }
-
 }
