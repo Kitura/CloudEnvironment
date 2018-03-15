@@ -23,6 +23,7 @@ XCTMain([
     testCase(AutoScalingTests.allTests),
     testCase(CloudantTests.allTests),
     testCase(DB2Tests.allTests),
+    testCase(HyperSecureDBaaSTests.allTests),
     testCase(MongoDBTests.allTests),
     testCase(MySQLTests.allTests),
     testCase(ObjectStorageTests.allTests),

@@ -19,6 +19,20 @@
         ]
       }
     ],
+    "hypersecuredbaas": [
+    {
+      "label": "hypersecuredbaas",
+      "name": "hypersecuredbaas",
+      "plan": "Basic Plan",
+      "credentials": {
+        "apikey": "hj4v2352",
+        "cert": "-----BEGIN CERTIFICATE-----\nMIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh\n-----END CERTIFICATE-----\n",
+        "password": "199b3db8be4c4b2baeb0b460f6e3fa20",
+        "url": "mongodb://7f49ed06-d822-426f-bda6-76a515884450:199b3db8be4c4b2baeb0b460f6e3fa20@dbaas08.hypersecuredbaas.ibm.com:20489,dbaas10.hypersecuredbaas.ibm.com:20553,dbaas09.hypersecuredbaas.ibm.com:20229/7f49ed06-d822-426f-bda6-76a515884450?replicaSet=testerclus",
+        "userid": "7f49ed06-d822-426f-bda6-76a515884450"
+      }
+    }
+    ],
     "imfpush": [
       {
         "credentials": {
