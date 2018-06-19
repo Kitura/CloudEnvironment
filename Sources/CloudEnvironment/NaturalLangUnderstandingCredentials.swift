@@ -17,14 +17,11 @@
 /// NaturalLangUnderstandingCredentials class
 ///
 /// Contains the credentials for a Natural Language Understanding service instance.
-//public class NaturalLangUnderstandingCredentials: Credentials {
-  // Just a simpler wrapper to provide a type for natural language credentials
-//}
 public class NaturalLangUnderstandingCredentials {
-    
+
     public let apiKey:   String
     public let url:      String
-    
+
     public init(apiKey: String, url: String) {
         self.apiKey  = apiKey
         self.url     = url

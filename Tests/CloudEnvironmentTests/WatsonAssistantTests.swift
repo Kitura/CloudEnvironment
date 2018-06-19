@@ -39,5 +39,4 @@ class WatsonAssistantTests: XCTestCase {
         XCTAssertEqual(credentials.apiKey, "assistant-apikey", "Watson Assistant service username should match.")
         XCTAssertEqual(credentials.url, "https://gateway.watsonplatform.net/assistant/api", "Watson Assistant service url should match.")
     }
-
 }
