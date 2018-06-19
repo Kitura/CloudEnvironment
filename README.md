@@ -110,7 +110,7 @@ The following services are currently supported by this library. Therefore, you c
 - [PostgreSQL](https://console.ng.bluemix.net/catalog/services/compose-for-postgresql/)
 - [Push SDK](https://console.ng.bluemix.net/catalog/services/push-notifications)
 - [Redis](https://console.ng.bluemix.net/catalog/services/redis-cloud)
-- [Watson Conversation](https://console.ng.bluemix.net/catalog/services/conversation)
+- [Watson Assistant](https://console.ng.bluemix.net/catalog/services/watson-assistant-formerly-conversation)
 - [Weather Company Data](https://console.bluemix.net/catalog/services/weather-company-data)
 
 If you don't see listed above the service you intend to use in your Swift application, you can leverage the generic `getDictionary(name: String)` method to get the corresponding credentials:

@@ -36,8 +36,7 @@ class NaturalLangUnderstandingTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(credentials.username, "natural-language-user")
-        XCTAssertEqual(credentials.password, "natural-language-pwd")
+        XCTAssertEqual(credentials.apiKey, "natural-language-apikey")
         XCTAssertEqual(credentials.url, "https://gateway.watsonplatform.net/natural-language-understanding/api")
 
     }

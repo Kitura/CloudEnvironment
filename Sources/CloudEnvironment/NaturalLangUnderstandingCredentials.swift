@@ -17,8 +17,18 @@
 /// NaturalLangUnderstandingCredentials class
 ///
 /// Contains the credentials for a Natural Language Understanding service instance.
-public class NaturalLangUnderstandingCredentials: Credentials {
+//public class NaturalLangUnderstandingCredentials: Credentials {
   // Just a simpler wrapper to provide a type for natural language credentials
+//}
+public class NaturalLangUnderstandingCredentials {
+    
+    public let apiKey:   String
+    public let url:      String
+    
+    public init(apiKey: String, url: String) {
+        self.apiKey  = apiKey
+        self.url     = url
+    }
 }
 
 extension CloudEnv {
@@ -29,17 +39,12 @@ extension CloudEnv {
   public func getNaturalLangUnderstandingCredentials(name: String) -> NaturalLangUnderstandingCredentials? {
 
     guard let credentials = getDictionary(name: name),
-      let username = credentials["username"] as? String,
-      let password  = credentials["password"] as? String,
+      let apiKey = credentials["apikey"] as? String,
       let url = credentials["url"] as? String else {
 
       return nil
     }
 
-    return NaturalLangUnderstandingCredentials(
-      username:   username,
-      password:   password,
-      url:        url)
+    return NaturalLangUnderstandingCredentials(apiKey: apiKey, url: url)
   }
-
 }

@@ -30,7 +30,7 @@ XCTMain([
     testCase(PostgreSQLTests.allTests),
     testCase(PushSDKTests.allTests),
     testCase(RedisTests.allTests),
-    testCase(WatsonConversationTests.allTests),
+    testCase(WatsonAssistantTests.allTests),
     testCase(NaturalLangUnderstandingTests.allTests),
     testCase(WeatherCompanyDataTests.allTests),
     testCase(EnvironmentVariablesTests.allTests),

@@ -14,28 +14,34 @@
 * limitations under the License.
 */
 
-/// WatsonConversationCredentials class
+/// WatsonAssistantCredentials class
 ///
-/// Contains the credentials for a Watson Conversation service instance.
-public class WatsonConversationCredentials: Credentials {
-  // Just a simpler wrapper to provide a type for conversation credentials
+/// Contains the credentials for a Watson Assistant service instance.
+public class WatsonAssistantCredentials {
+    
+    public let apiKey:   String
+    public let url:      String
+    
+    public init(apiKey: String, url: String) {
+        self.apiKey  = apiKey
+        self.url     = url
+    }
 }
+
 
 extension CloudEnv {
 
-  /// Returns an WatsonConversationCredentials object with the corresponding credentials.
+  /// Returns an WatsonAssistantCredentials object with the corresponding credentials.
   ///
   /// - Parameter name: The key to lookup the environment variable.
-  public func getWatsonConversationCredentials(name: String) -> WatsonConversationCredentials? {
+  public func getWatsonAssistantCredentials(name: String) -> WatsonAssistantCredentials? {
     guard let credentials = getDictionary(name: name),
-      let username  = credentials["username"] as? String,
-      let password  = credentials["password"] as? String,
-      let url       = credentials["url"] as? String else {
+      let apiKey  = credentials["apikey"] as? String,
+      let url     = credentials["url"] as? String else {
 
       return nil
     }
 
-    return WatsonConversationCredentials(username: username, password: password, url: url)
+    return WatsonAssistantCredentials(apiKey: apiKey, url: url)
   }
-
 }
