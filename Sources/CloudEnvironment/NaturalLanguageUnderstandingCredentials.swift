@@ -14,10 +14,10 @@
 * limitations under the License.
 */
 
-/// NaturalLangUnderstandingCredentials class
+/// NaturalLanguageUnderstandingCredentials class
 ///
 /// Contains the credentials for a Natural Language Understanding service instance.
-public class NaturalLangUnderstandingCredentials {
+public class NaturalLanguageUnderstandingCredentials {
 
     public let apiKey:   String
     public let url:      String
@@ -30,10 +30,10 @@ public class NaturalLangUnderstandingCredentials {
 
 extension CloudEnv {
 
-  /// Returns a NaturalLangUnderstandingCredentials object with the corresponding credentials.
+  /// Returns a NaturalLanguageUnderstandingCredentials object with the corresponding credentials.
   ///
   /// - Parameter name: The key to lookup the credentials object.
-  public func getNaturalLangUnderstandingCredentials(name: String) -> NaturalLangUnderstandingCredentials? {
+  public func getNaturalLanguageUnderstandingCredentials(name: String) -> NaturalLanguageUnderstandingCredentials? {
 
     guard let credentials = getDictionary(name: name),
       let apiKey = credentials["apikey"] as? String,
@@ -42,6 +42,6 @@ extension CloudEnv {
       return nil
     }
 
-    return NaturalLangUnderstandingCredentials(apiKey: apiKey, url: url)
+    return NaturalLanguageUnderstandingCredentials(apiKey: apiKey, url: url)
   }
 }

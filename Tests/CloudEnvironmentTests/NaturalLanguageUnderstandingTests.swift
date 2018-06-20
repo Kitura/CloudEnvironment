@@ -18,9 +18,9 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class NaturalLangUnderstandingTests: XCTestCase {
+class NaturalLanguageUnderstandingTests: XCTestCase {
 
-    static var allTests : [(String, (NaturalLangUnderstandingTests) -> () throws -> Void)] {
+    static var allTests : [(String, (NaturalLanguageUnderstandingTests) -> () throws -> Void)] {
         return [
             ("testGetCredentials", testGetCredentials),
         ]
@@ -31,7 +31,7 @@ class NaturalLangUnderstandingTests: XCTestCase {
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
         let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
 
-        guard let credentials =  cloudEnv.getNaturalLangUnderstandingCredentials(name: "NLUKey") else {
+        guard let credentials =  cloudEnv.getNaturalLanguageUnderstandingCredentials(name: "NLUKey") else {
             XCTFail("Could not load Natural Language Understanding service credentials.")
             return
         }
