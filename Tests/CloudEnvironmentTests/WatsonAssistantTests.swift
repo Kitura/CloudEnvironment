@@ -18,9 +18,9 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class WatsonConversationTests: XCTestCase {
+class WatsonAssistantTests: XCTestCase {
 
-    static var allTests : [(String, (WatsonConversationTests) -> () throws -> Void)] {
+    static var allTests : [(String, (WatsonAssistantTests) -> () throws -> Void)] {
         return [
             ("testGetCredentials", testGetCredentials),
         ]
@@ -31,17 +31,12 @@ class WatsonConversationTests: XCTestCase {
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
         let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
 
-        guard let credentials =  cloudEnv.getWatsonConversationCredentials(name: "ConversationKey") else {
-            XCTFail("Could not load Watson Conversation service credentials.")
+        guard let credentials =  cloudEnv.getWatsonAssistantCredentials(name: "AssistantKey") else {
+            XCTFail("Could not load Watson Assistant service credentials.")
             return
         }
 
-        XCTAssertEqual(credentials.username, "conversation-user", "Watson Conversation service username should match.")
-        XCTAssertEqual(credentials.password, "conversation-pwd", "Watson Conversation service password should match.")
-        XCTAssertEqual(credentials.url, "https://gateway.watsonplatform.net/conversation/api", "Watson Conversation service url should match.")
-        XCTAssertEqual(credentials.port, 443, "Watson Conversation service port should match.")
-        XCTAssertEqual(credentials.host, "gateway.watsonplatform.net", "Watson Conversation service host should match.")
-        XCTAssertTrue(credentials.secured, "Watson Conversation service url should be secured.")
+        XCTAssertEqual(credentials.apiKey, "assistant-apikey", "Watson Assistant service username should match.")
+        XCTAssertEqual(credentials.url, "https://gateway.watsonplatform.net/assistant/api", "Watson Assistant service url should match.")
     }
-
 }

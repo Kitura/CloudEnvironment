@@ -43,9 +43,8 @@
     "conversation": [
       {
         "credentials": {
-          "password": "conversation-pwd",
-          "url": "https://gateway.watsonplatform.net/conversation/api",
-          "username": "conversation-user"
+          "apikey": "assistant-apikey",
+          "url": "https://gateway.watsonplatform.net/assistant/api"
         },
         "label": "conversation",
         "name": "ConversationService",
@@ -62,9 +61,8 @@
     "natural-language-understanding": [
       {
         "credentials": {
-          "password": "natural-language-pwd",
+          "apikey": "natural-language-apikey",
           "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
-          "username": "natural-language-user"
         },
         "label": "natural-language-understanding",
         "name": "NLUService",
