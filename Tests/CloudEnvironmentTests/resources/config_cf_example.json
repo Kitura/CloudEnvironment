@@ -44,10 +44,6 @@
       {
         "credentials": {
           "apikey": "assistant-apikey",
-          "iam_apikey_description": "Auto generated apikey during resource-key operation for Instance - crn:v1:bluemix:public:conversation:au-syd:a/0abf627bc63ab2e45c2b60838a7de045:7e7ceb57-4c16-4a63-afbb-d9848bbb9aa1::",
-          "iam_apikey_name": "auto-generated-apikey-c94ac094-b83f-48ec-9282-64094b48d1d2",
-          "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
-          "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/0abf627bc63ab2e45c2b60838a7de045::serviceid:ServiceId-d9893726-7b8f-4fb3-aa85-e27cfec541ca",
           "url": "https://gateway.watsonplatform.net/assistant/api"
         },
         "label": "conversation",

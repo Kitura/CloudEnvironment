@@ -18,16 +18,15 @@
 ///
 /// Contains the credentials for a Watson Assistant service instance.
 public class WatsonAssistantCredentials {
-    
+
     public let apiKey:   String
     public let url:      String
-    
+
     public init(apiKey: String, url: String) {
         self.apiKey  = apiKey
         self.url     = url
     }
 }
-
 
 extension CloudEnv {
 
