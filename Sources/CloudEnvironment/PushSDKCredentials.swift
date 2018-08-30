@@ -22,12 +22,12 @@ import Foundation
 public class PushSDKCredentials {
 
   public let appGuid      : String
-  public let appSecret    : String
+  public let apiKey       : String
   public let region       : String
 
-  public init(appGuid: String, appSecret: String, region: String) {
+  public init(appGuid: String, apiKey: String, region: String) {
     self.appGuid        = appGuid
-    self.appSecret      = appSecret
+    self.apiKey         = apiKey
     self.region         = region
   }
 
@@ -42,7 +42,7 @@ extension CloudEnv {
 
     guard let credentials = getDictionary(name: name),
       let appGuid = credentials["appGuid"] as? String ?? credentials["app_guid"] as? String,
-      let appSecret = credentials["appSecret"] as? String ?? credentials["app_secret"] as? String,
+      let apiKey = credentials["apikey"] as? String,
       let pushURL = credentials["url"] as? String,
       let url = URL(string: pushURL),
       let region = getRegion(from: url)
@@ -50,7 +50,7 @@ extension CloudEnv {
         return nil
     }
 
-    return PushSDKCredentials(appGuid: appGuid, appSecret: appSecret, region: region)
+    return PushSDKCredentials(appGuid: appGuid, apiKey: apiKey, region: region)
   }
 
   private func getRegion(from url: URL) -> String? {

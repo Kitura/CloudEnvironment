@@ -25,7 +25,7 @@
           "appGuid": "push-appGuid",
           "url": "http://imfpush.ng.bluemix.net/imfpush/v1",
           "admin_url": "//mobile.ng.bluemix.net/imfpushdashboard",
-          "appSecret": "push-secret",
+          "apikey": "push-apikey",
           "clientSecret": "push-clientSecret"
         },
         "label": "imfpush",
