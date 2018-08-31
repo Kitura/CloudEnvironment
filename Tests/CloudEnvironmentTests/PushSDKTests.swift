@@ -36,7 +36,7 @@ class PushSDKTests: XCTestCase {
             return
         }
         XCTAssertEqual(credentials.appGuid, "push-appGuid", "PushSDK service appGuid should match.")
-        XCTAssertEqual(credentials.appSecret, "push-secret", "PushSDK service appSecret should match.")
+        XCTAssertEqual(credentials.apiKey, "push-apikey", "PushSDK service apiKey should match.")
         XCTAssertEqual(credentials.region, "ng.bluemix.net", "PushSDK service region should match.")
     }
 
