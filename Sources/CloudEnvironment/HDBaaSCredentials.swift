@@ -16,17 +16,26 @@
 
 import Foundation
 
-/// HyperSecureDBaaSCredentials class
+/// Contains the credentials for a HyperSecureDBaaS service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getHyperSecureDBaaSCredentials(name: String)`.
 ///
-/// Contains the credentials for a HyperSecureDBaaS service instance.
+/// Reference [Hyper Protect DBaaS](https://console.bluemix.net/catalog/services/hyper-protect-dbaas).
 public class HyperSecureDBaaSCredentials {
+
+  /// The URI from the Hyper Protext DBaaS service instance credentials.
   public let uri: String
+  /// The host from the Hyper Protext DBaaS service instance credentials.
   public let host: String
+  /// The certificate from the Hyper Protext DBaaS service instance credentials.
   public let cert: String
+  /// The username from the Hyper Protext DBaaS service instance credentials.
   public let username: String
+  /// The password from the Hyper Protext DBaaS service instance credentials.
   public let password: String
+  /// The port from the Hyper Protext DBaaS service instance credentials.
   public let port: Int
 
+  /// Initializes an instance of the Hyper Protext DBaaS service credentials.
   public init(
     uri: String,
     host: String,
@@ -48,6 +57,12 @@ extension CloudEnv {
 
   /// Returns a HyperSecureDBaaSCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getHyperSecureDBaaSCredentials(name: "HyperSecureDBaaSKey")
+  /// ```
   /// - Parameter name: The key to lookup the credentials object.
   public func getHyperSecureDBaaSCredentials(name: String) -> HyperSecureDBaaSCredentials? {
 

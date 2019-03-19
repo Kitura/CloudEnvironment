@@ -16,17 +16,24 @@
 
 import Foundation
 
-/// CloudantCredentials class
+/// Contains the credentials for a Cloudant service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getCloudantCredentials(name: String)`.
 ///
-/// Contains the credentials for a Cloudant service instance.
+/// Reference [Cloudant](https://console.ng.bluemix.net/catalog/services/cloudant).
 public class CloudantCredentials: Credentials {
-  // Just a simpler wrapper to provide a type for cloudant credentials
+  // Just a simpler wrapper to provide a type for Cloudant credentials
 }
 
 extension CloudEnv {
 
   /// Returns a CloudantCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getCloudantCredentials(name: "CloudantKey")
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getCloudantCredentials(name: String) -> CloudantCredentials? {
     guard let credentials = getDictionary(name: name),

@@ -14,14 +14,18 @@
 * limitations under the License.
 */
 
-/// WatsonAssistantCredentials class
+/// Contains the credentials for a Watson Assistant service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getWatsonAssistantCredentials(name: String)`.
 ///
-/// Contains the credentials for a Watson Assistant service instance.
+/// Reference [Watson Assistant](https://console.ng.bluemix.net/catalog/services/watson-assistant).
 public class WatsonAssistantCredentials {
 
+    /// The apiKey from the Watson Assistant service instance credentials.
     public let apiKey:   String
+    /// The URL from the Watson Assistant service instance credentials.
     public let url:      String
 
+    /// Initializes an instance of the Watson Assistant service credentials.
     public init(apiKey: String, url: String) {
         self.apiKey  = apiKey
         self.url     = url
@@ -32,6 +36,12 @@ extension CloudEnv {
 
   /// Returns an WatsonAssistantCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getWatsonAssistantCredentials(name: "WatsonAssistantCredentialsKey")
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getWatsonAssistantCredentials(name: String) -> WatsonAssistantCredentials? {
     guard let credentials = getDictionary(name: name),

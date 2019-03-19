@@ -14,14 +14,18 @@
 * limitations under the License.
 */
 
-/// NaturalLanguageUnderstandingCredentials class
+/// Contains the credentials for a Natural Language Understanding service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getNaturalLanguageUnderstandingCredentials(name: String)`.
 ///
-/// Contains the credentials for a Natural Language Understanding service instance.
+/// Reference [Natural Language Understanding](https://console.ng.bluemix.net/catalog/services/natural-language-understanding).
 public class NaturalLanguageUnderstandingCredentials {
 
+    /// The apiKey from the Natural Language Understanding service instance credentials.
     public let apiKey:   String
+    /// The URL from the Natural Language Understanding service instance credentials.
     public let url:      String
 
+    /// Initializes an instance of the Natural Language Understanding service credentials.
     public init(apiKey: String, url: String) {
         self.apiKey  = apiKey
         self.url     = url
@@ -32,6 +36,12 @@ extension CloudEnv {
 
   /// Returns a NaturalLanguageUnderstandingCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getNaturalLanguageUnderstandingCredentials(name: "NaturalLanguageUnderstandingKey")
+  /// ```
   /// - Parameter name: The key to lookup the credentials object.
   public func getNaturalLanguageUnderstandingCredentials(name: String) -> NaturalLanguageUnderstandingCredentials? {
 

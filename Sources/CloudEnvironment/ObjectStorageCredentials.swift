@@ -14,16 +14,22 @@
 * limitations under the License.
 */
 
-/// ObjectStorageCredentials class
+/// Contains the credentials for an Object Storage service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getObjectStorageCredentials(name: String)`.
 ///
-/// Contains the credentials for an Object Storage service instance.
+/// Reference [Object Storage](https://console.ng.bluemix.net/catalog/services/cloud-object-storage).
 public class ObjectStorageCredentials {
 
+  /// The project ID from the Object Storage service instance credentials.
   public let projectID:   String
+  /// The user ID from the Object Storage service instance credentials.
   public let userID:      String
+  /// The password from the Object Storage service instance credentials.
   public let password:    String
+  /// The region from the Object Storage service instance credentials.
   public let region:      String
 
+  /// Initializes an instance of the Object Storage service credentials.
   public init(projectID: String, userID: String, password: String, region: String) {
     self.projectID  = projectID
     self.userID     = userID
@@ -36,6 +42,12 @@ extension CloudEnv {
 
   /// Returns an ObjectStorageCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getObjectStorageCredentials(name: "ObjectStorageKey")
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getObjectStorageCredentials(name: String) -> ObjectStorageCredentials? {
     guard let credentials = getDictionary(name: name),

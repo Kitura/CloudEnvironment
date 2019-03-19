@@ -14,9 +14,10 @@
 * limitations under the License.
 */
 
-/// WeatherCompanyDataCredentials class
+/// Contains the credentials for a Weather Company Data service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getWeatherCompanyDataCredentials(name: String)`.
 ///
-/// Contains the credentials for a Weather Company Data service instance.
+/// Reference [Weather Company Data](https://console.bluemix.net/catalog/services/weather-company-data).
 public class WeatherCompanyDataCredentials: Credentials {
   // Just a simpler wrapper to provide a type for weather credentials
 }
@@ -25,6 +26,12 @@ extension CloudEnv {
 
   /// Returns an WeatherCompanyDataCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getWeatherCompanyDataCredentials(name: "WeatherCompanyDataKey")
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getWeatherCompanyDataCredentials(name: String) -> WeatherCompanyDataCredentials? {
 

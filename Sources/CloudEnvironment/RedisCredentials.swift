@@ -16,15 +16,20 @@
 
 import Foundation
 
-/// RedisCredentials class
+/// Contains the credentials for a Redis service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getRedisCredentials(name: String)`.
 ///
-/// Contains the credentials for a Redis service instance.
+/// Reference [Redis](https://console.ng.bluemix.net/catalog/services/compose-for-redis).
 public class RedisCredentials {
 
+  /// The host name from the Redis service instance credentials.
   public let host: String
+  /// The password from the Redis service instance credentials.
   public let password: String
+  /// The port from the Redis service instance credentials.
   public let port: Int
 
+  /// Initializes an instance of the Redis service credentials.
   public init(host: String, password: String, port: Int ) {
     self.host = host
     self.password = password
@@ -35,6 +40,12 @@ public class RedisCredentials {
 extension CloudEnv {
   /// Returns an RedisCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getRedisCredentials(name: "RedisKey")
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getRedisCredentials(name: String) -> RedisCredentials? {
 

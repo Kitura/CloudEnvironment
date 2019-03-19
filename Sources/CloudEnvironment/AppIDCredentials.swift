@@ -14,17 +14,24 @@
 * limitations under the License.
 */
 
-/// AppIDCredentials class
+/// Contains the credentials for an App ID service instance.
 ///
-/// Contains the credentials for an AppID service instance.
+/// Reference [AppID](https://console.ng.bluemix.net/catalog/services/app-id). You will typically
+/// receive an instance of this type through `cloudEnv.getAppIDCredentials(name: String)`.
 public class AppIDCredentials {
 
+  /// The clientId from the App ID service instance credentials.
   public let clientId:       String
+  /// The oauthServerUrl from the App ID service instance credentials.
   public let oauthServerUrl: String
+  /// The profilesUrl from the App ID service instance credentials.
   public let profilesUrl:    String
+  /// The secret from the App ID service instance credentials.
   public let secret:         String
+  /// The tenantId from the App ID service instance credentials.
   public let tenantId:       String
 
+  /// Initializes an instance of the App ID service credentials.
   public init(
     clientId:       String,
     oauthServerUrl: String,
@@ -43,6 +50,12 @@ public class AppIDCredentials {
 extension CloudEnv {
 
   /// Returns an AppIDCredentials object with the corresponding credentials.
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getAppIDCredentials(name: "AppIDKey")
+  /// ```
   ///
   /// - Parameter name: The key to lookup the environment variable.
   public func getAppIDCredentials(name: String) -> AppIDCredentials? {

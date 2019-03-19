@@ -14,17 +14,24 @@
 * limitations under the License.
 */
 
-/// MySQLCredentials class
+/// Contains the credentials for a MySQL service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getMySQLCredentials(name: String)`.
 ///
-/// Contains the credentials for a MySQL service instance.
+/// Reference [MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql/).
 public class MySQLCredentials {
 
+  /// The database name from the MySQL service instance credentials.
   public let database : String
+  /// The host name from the MySQL service instance credentials.
   public let host     : String
+  /// The username from the MySQL service instance credentials.
   public let username : String
+  /// The password from the MySQL service instance credentials.
   public let password : String
+  /// The port from the MySQL service instance credentials.
   public let port     : Int
 
+  /// Initializes an instance of the MySQL service credentials.
   public init(
     database:   String,
     host:       String,
@@ -45,6 +52,12 @@ extension CloudEnv {
 
   /// Returns an MySQLCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getMySQLCredentials(name: "MySQLKey")
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getMySQLCredentials (name: String) -> MySQLCredentials? {
 
