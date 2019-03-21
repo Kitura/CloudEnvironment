@@ -14,10 +14,13 @@
 * limitations under the License.
 */
 
-/// Contains the credentials for an Object Storage service instance. You will typically
+/// Contains the credentials for an OpenStack Object Storage service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getObjectStorageCredentials(name: String)`.
 ///
-/// Reference [Object Storage](https://console.ng.bluemix.net/catalog/services/cloud-object-storage).
+/// Note: This has been removed from the IBM Cloud service catalog, but is still an industry
+/// standard for Storage APIs.
+///
+/// Reference [Object Storage](https://docs.openstack.org/swift/latest/).
 public class ObjectStorageCredentials {
 
   /// The project ID from the Object Storage service instance credentials.
