@@ -109,22 +109,22 @@ Following the above approach your application can be implemented in a runtime-en
 
 ## Supported services
 The following services are currently supported by this library. Therefore, you can obtain the service credentials for any of these services with minimum effort:
-- [Alert Notification](https://console.ng.bluemix.net/catalog/services/alert-notification/)
-- [AppID](https://console.ng.bluemix.net/catalog/services/app-id)
-- [Auto-Scaling](https://console.ng.bluemix.net/catalog/services/auto-scaling)
-- [Cloudant](https://console.ng.bluemix.net/catalog/services/cloudant)
-- [Cloud Functions](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-index#getting-started-with-cloud-functions)
-- [Db2](https://console.ng.bluemix.net/catalog/services/db2)
-- [Hyper Protect DBaaS](https://console.bluemix.net/catalog/services/hyper-protect-dbaas)
-- [MongoDB](https://console.ng.bluemix.net/docs/services/MongoDB/index.html)
-- [MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql/)
-- [Natural Language Understanding](https://console.ng.bluemix.net/catalog/services/natural-language-understanding)
-- [Object Storage](https://console.ng.bluemix.net/catalog/services/cloud-object-storage)
-- [PostgreSQL](https://console.ng.bluemix.net/catalog/services/compose-for-postgresql/)
-- [Push SDK](https://console.ng.bluemix.net/catalog/services/push-notifications)
-- [Redis](https://console.ng.bluemix.net/catalog/services/compose-for-redis)
-- [Watson Assistant](https://console.ng.bluemix.net/catalog/services/watson-assistant)
-- [Weather Company Data](https://console.bluemix.net/catalog/services/weather-company-data)
+- [Alert Notification](https://cloud.ibm.com/catalog/services/alert-notification)
+- [AppID](https://cloud.ibm.com/catalog/services/appID)
+- [Auto-Scaling](https://cloud.ibm.com/catalog/services/auto-scaling)
+- [Cloudant](https://cloud.ibm.com/catalog/services/cloudant)
+- [Cloud Functions](https://cloud.ibm.com/openwhisk)
+- [Db2](https://cloud.ibm.com/catalog/services/db2-hosted)
+- [Hyper Protect DBaaS](https://cloud.ibm.com/catalog/services/hyper-protect-dbaas)
+- [MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb)
+- [MySQL](https://cloud.ibm.com/catalog/services/compose-for-mysql)
+- [Natural Language Understanding](https://cloud.ibm.com/catalog/services/natural-language-understanding)
+- [Object Storage](https://docs.openstack.org/swift/latest/)
+- [PostgreSQL](https://cloud.ibm.com/catalog/services/databases-for-postgresql)
+- [Push SDK](https://cloud.ibm.com/catalog/services/push-notifications)
+- [Redis](https://cloud.ibm.com/catalog/services/databases-for-redis)
+- [Watson Assistant](https://cloud.ibm.com/catalog/services/watson-assistant)
+- [Weather Company Data](https://cloud.ibm.com/catalog/services/weather-company-data)
 
 If you don't see listed above the service you intend to use in your Swift application, you can leverage the generic `getDictionary(name: String)` method to get the corresponding credentials:
 

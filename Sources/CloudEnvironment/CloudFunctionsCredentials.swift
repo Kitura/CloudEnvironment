@@ -19,7 +19,7 @@ import Foundation
 /// Contains the credentials for a Cloud Functions instance. You will typically
 /// receive an instance of this type through `cloudEnv.getCloudFunctionsCredentials(name: String)`.
 ///
-/// Reference [Cloud Functions](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-index#getting-started-with-cloud-functions).
+/// Reference [Cloud Functions](https://cloud.ibm.com/openwhisk).
 public struct CloudFunctionsCredentials {
 
   /// Cloud Functions host name.

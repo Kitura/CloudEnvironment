@@ -18,7 +18,7 @@ import Foundation
 /// Contains the credentials for a PushSDK service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getPushSDKCredentials(name: String)`.
 ///
-/// Reference [Push Notification](https://console.ng.bluemix.net/catalog/services/push-notifications).
+/// Reference [Push Notification](https://cloud.ibm.com/catalog/services/push-notifications).
 public class PushSDKCredentials {
 
   /// The appGuid from the Push Notification service instance credentials.

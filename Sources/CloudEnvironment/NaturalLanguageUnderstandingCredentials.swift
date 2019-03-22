@@ -17,7 +17,7 @@
 /// Contains the credentials for a Natural Language Understanding service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getNaturalLanguageUnderstandingCredentials(name: String)`.
 ///
-/// Reference [Natural Language Understanding](https://console.ng.bluemix.net/catalog/services/natural-language-understanding).
+/// Reference [Natural Language Understanding](https://cloud.ibm.com/catalog/services/natural-language-understanding).
 public class NaturalLanguageUnderstandingCredentials {
 
     /// The apiKey from the Natural Language Understanding service instance credentials.

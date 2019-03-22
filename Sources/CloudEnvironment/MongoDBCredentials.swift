@@ -19,7 +19,7 @@ import Foundation
 /// Contains the credentials for a MongoDB service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getMongoDBCredentials(name: String)`.
 ///
-/// Reference [MongoDB](https://console.ng.bluemix.net/docs/services/MongoDB/index.html).
+/// Reference [MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb).
 public class MongoDBCredentials {
 
   /// The URI from the MongoDB service instance credentials.

@@ -17,7 +17,7 @@
 /// Contains the credentials for a Watson Assistant service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getWatsonAssistantCredentials(name: String)`.
 ///
-/// Reference [Watson Assistant](https://console.ng.bluemix.net/catalog/services/watson-assistant).
+/// Reference [Watson Assistant](https://cloud.ibm.com/catalog/services/watson-assistant).
 public class WatsonAssistantCredentials {
 
     /// The apiKey from the Watson Assistant service instance credentials.

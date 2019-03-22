@@ -19,7 +19,7 @@ import Foundation
 /// Contains the credentials for a PostgreSQL service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getPostgreSQLCredentials(name: String)`.
 ///
-/// Reference [PostgreSQL](https://console.ng.bluemix.net/catalog/services/compose-for-postgresql/).
+/// Reference [PostgreSQL](https://cloud.ibm.com/catalog/services/databases-for-postgresql).
 public class PostgreSQLCredentials: Credentials {
 
   /// The database name from the PostgreSQL service instance credentials.

@@ -17,7 +17,7 @@
 /// Contains the credentials for a Weather Company Data service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getWeatherCompanyDataCredentials(name: String)`.
 ///
-/// Reference [Weather Company Data](https://console.bluemix.net/catalog/services/weather-company-data).
+/// Reference [Weather Company Data](https://cloud.ibm.com/catalog/services/weather-company-data).
 public class WeatherCompanyDataCredentials: Credentials {
   // Just a simpler wrapper to provide a type for weather credentials
 }

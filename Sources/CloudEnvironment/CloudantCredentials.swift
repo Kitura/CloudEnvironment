@@ -19,7 +19,7 @@ import Foundation
 /// Contains the credentials for a Cloudant service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getCloudantCredentials(name: String)`.
 ///
-/// Reference [Cloudant](https://console.ng.bluemix.net/catalog/services/cloudant).
+/// Reference [Cloudant](https://cloud.ibm.com/catalog/services/cloudant).
 public class CloudantCredentials: Credentials {
   // Just a simpler wrapper to provide a type for Cloudant credentials
 }

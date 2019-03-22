@@ -19,7 +19,7 @@ import Foundation
 /// Contains the credentials for a HyperSecureDBaaS service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getHyperSecureDBaaSCredentials(name: String)`.
 ///
-/// Reference [Hyper Protect DBaaS](https://console.bluemix.net/catalog/services/hyper-protect-dbaas).
+/// Reference [Hyper Protect DBaaS](https://cloud.ibm.com/catalog/services/hyper-protect-dbaas).
 public class HyperSecureDBaaSCredentials {
 
   /// The URI from the Hyper Protext DBaaS service instance credentials.

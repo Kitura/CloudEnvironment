@@ -19,7 +19,7 @@ import Foundation
 /// Contains the credentials for a Redis service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getRedisCredentials(name: String)`.
 ///
-/// Reference [Redis](https://console.ng.bluemix.net/catalog/services/compose-for-redis).
+/// Reference [Redis](https://cloud.ibm.com/catalog/services/databases-for-redis).
 public class RedisCredentials {
 
   /// The host name from the Redis service instance credentials.

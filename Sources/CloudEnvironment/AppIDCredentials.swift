@@ -16,7 +16,7 @@
 
 /// Contains the credentials for an App ID service instance.
 ///
-/// Reference [AppID](https://console.ng.bluemix.net/catalog/services/app-id). You will typically
+/// Reference [AppID](https://cloud.ibm.com/catalog/services/appID). You will typically
 /// receive an instance of this type through `cloudEnv.getAppIDCredentials(name: String)`.
 public class AppIDCredentials {
 

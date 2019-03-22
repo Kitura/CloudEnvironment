@@ -17,7 +17,7 @@
 /// Contains the credentials for an Alert Notification service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getAlertNotificationCredentials(name: String)`.
 ///
-/// Reference [Alert Notification](https://console.bluemix.net/catalog/services/alert-notification/).
+/// Reference [Alert Notification](https://cloud.ibm.com/catalog/services/alert-notification).
 public class AlertNotificationCredentials {
 
   /// The credentials URL associated with the Alert Notification service instance.

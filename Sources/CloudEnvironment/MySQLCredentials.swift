@@ -17,7 +17,7 @@
 /// Contains the credentials for a MySQL service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getMySQLCredentials(name: String)`.
 ///
-/// Reference [MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql/).
+/// Reference [MySQL](https://cloud.ibm.com/catalog/services/compose-for-mysql).
 public class MySQLCredentials {
 
   /// The database name from the MySQL service instance credentials.
