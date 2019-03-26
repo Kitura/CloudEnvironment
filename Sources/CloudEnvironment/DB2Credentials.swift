@@ -17,7 +17,7 @@
 /// Contains the credentials for a DB2 service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getDB2Credentials(name: String)`.
 ///
-/// Reference [Db2](https://cloud.ibm.com/catalog/services/db2-hosted).
+/// Reference [Db2](https://cloud.ibm.com/catalog/services/db2-on-cloud).
 public class DB2Credentials {
 
   /// The database name from the Db2 service instance credentials.

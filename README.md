@@ -114,7 +114,7 @@ The following services are currently supported by this library. Therefore, you c
 - [Auto-Scaling](https://cloud.ibm.com/catalog/services/auto-scaling)
 - [Cloudant](https://cloud.ibm.com/catalog/services/cloudant)
 - [Cloud Functions](https://cloud.ibm.com/openwhisk)
-- [Db2](https://cloud.ibm.com/catalog/services/db2-hosted)
+- [Db2](https://cloud.ibm.com/catalog/services/db2-on-cloud)
 - [Hyper Protect DBaaS](https://cloud.ibm.com/catalog/services/hyper-protect-dbaas)
 - [MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb)
 - [MySQL](https://cloud.ibm.com/catalog/services/compose-for-mysql)
