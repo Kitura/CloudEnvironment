@@ -22,7 +22,7 @@
         <a class="header-link" href="index.html">
           CloudEnvironment Docs
         </a>
-         (47% documented)
+         (100% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -74,13 +74,16 @@
                 <a class="nav-group-task-link" href="Classes/DB2Credentials.html">DB2Credentials</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperSecureDBaaSCredentials.html">HyperSecureDBaaSCredentials</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/MongoDBCredentials.html">MongoDBCredentials</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/MySQLCredentials.html">MySQLCredentials</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/s:16CloudEnvironment35NaturalLangUnderstandingCredentialsC">NaturalLangUnderstandingCredentials</a>
+                <a class="nav-group-task-link" href="Classes/NaturalLanguageUnderstandingCredentials.html">NaturalLanguageUnderstandingCredentials</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/ObjectStorageCredentials.html">ObjectStorageCredentials</a>
@@ -95,7 +98,7 @@
                 <a class="nav-group-task-link" href="Classes/RedisCredentials.html">RedisCredentials</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/s:16CloudEnvironment29WatsonConversationCredentialsC">WatsonConversationCredentials</a>
+                <a class="nav-group-task-link" href="Classes/WatsonAssistantCredentials.html">WatsonAssistantCredentials</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes.html#/s:16CloudEnvironment29WeatherCompanyDataCredentialsC">WeatherCompanyDataCredentials</a>
@@ -117,92 +120,102 @@
         <section class="section">
           <div class="section-content">
             
-            <p><a href="https://travis-ci.org/IBM-Swift/CloudEnvironment"><img src="https://travis-ci.org/IBM-Swift/CloudEnvironment.svg?branch=master" alt="Build Status"></a>
-<img src="https://img.shields.io/badge/os-macOS-green.svg?style=flat" alt="macOS">
-<img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
-<a href="https://codecov.io/gh/IBM-Swift/CloudEnvironment"><img src="https://codecov.io/gh/IBM-Swift/CloudEnvironment/branch/master/graph/badge.svg" alt="codecov"></a></p>
+            <p align="center">
+    <a href="http://kitura.io/">
+        <img src="https://raw.githubusercontent.com/IBM-Swift/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
+    </a>
+</p>
+
+<p align="center">
+<a href="https://ibm-swift.github.io/CloudEnvironment/index.html">
+<img src="https://img.shields.io/badge/apidoc-CloudEnvironment-1FBCE4.svg?style=flat" alt="APIDoc">
+</a>
+    <a href="https://travis-ci.org/IBM-Swift/CloudEnvironment">
+    <img src="https://travis-ci.org/IBM-Swift/CloudEnvironment.svg?branch=master" alt="Build Status - Master">
+    </a>
+    <img src="https://img.shields.io/badge/os-macOS-green.svg?style=flat" alt="macOS">
+    <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
+    <img src="https://img.shields.io/badge/license-Apache2-blue.svg?style=flat" alt="Apache 2">
+    <a href="http://swift-at-ibm-slack.mybluemix.net/">
+    <img src="http://swift-at-ibm-slack.mybluemix.net/badge.svg" alt="Slack Status">
+    </a>
+</p>
 <h1 id='cloudenvironment' class='heading'>CloudEnvironment</h1>
 
-<p>CloudEnvironment (formerly known as CloudConfiguration) is a convenience Swift package for accessing environment variables mapped to JSON objects from various Cloud computing environments, such as, but not limited to, Cloud Foundry and Kubernetes. For example, to obtain the credentials for accessing a Cloudant database, you need to parse the <code>VCAP_SERVICES</code> environment variable when running in Cloud Foundry, while to obtain the same credentials when running in Kubernetes, you may need to parse an environment variable named <code>CLOUDANT_CREDENTIALS</code>. In other words, the path for obtaining certain environment values may differ from one cloud environment to another. By leveraging this package, you can make your Swift application environment-agnostic when it comes to obtaining such values. Using CloudEnvironment allows you to abstract these low-level details from your application&rsquo;s source code.</p>
+<p>CloudEnvironment (formerly known as CloudConfiguration) is a convenience Swift package for accessing environment variables mapped to JSON objects from various Cloud computing environments, such as, but not limited to, Cloud Foundry and Kubernetes.</p>
+
+<p>For example, to obtain the credentials for accessing a Cloudant database, you need to parse the <code>VCAP_SERVICES</code> environment variable when running in Cloud Foundry, while to obtain the same credentials when running in Kubernetes, you may need to parse an environment variable named <code>CLOUDANT_CREDENTIALS</code>. In other words, the path for obtaining certain environment values may differ from one cloud environment to another. By leveraging this package, you can make your Swift application environment-agnostic when it comes to obtaining such values. Using CloudEnvironment allows you to abstract these low-level details from your application&rsquo;s source code.</p>
 <h2 id='swift-version' class='heading'>Swift version</h2>
 
-<p>The latest version of CloudEnvironment works with the <code>4.0</code> and newer versions of the Swift binaries. You can download any of these versions of the Swift binaries by following this <a href="https://swift.org/download/#releases">link</a>.</p>
+<p>The latest version of CloudEnvironment works with <code>4.0</code> and newer versions of the Swift binaries. You can download Swift binaries by following this <a href="https://swift.org/download/#releases">link</a>.</p>
 <h2 id='abstraction-and-supported-search-pattern-types' class='heading'>Abstraction and supported search pattern types</h2>
 
-<p>This package allows you to define a lookup key that your Swift application can leverage for searching its corresponding value. This abstraction decouples your application from the actual name used for the environment variable you are looking for. For example, if you created a Cloudant service named <code>my-awesome-cloudant-db</code>, you don&rsquo;t have to use this name as the key in your Swift code to obtain its credentials. Instead, you can define a lookup key, say <code>cloudant-credentials</code> and mapped it to the actual service name, <code>my-awesome-cloudant-db</code>.</p>
+<p>This package allows you to define a lookup key that your Swift application can leverage when searching for its corresponding value. This abstraction decouples your application from the actual name used for the environment variable you are looking for. For example, if you created a Cloudant service named <code>my-awesome-cloudant-db</code>, you don&rsquo;t have to use this name as the key in your Swift code to obtain its credentials. Instead, you can define a lookup key, say <code>cloudant-credentials</code> and map it to the actual service name, <code>my-awesome-cloudant-db</code>.</p>
 
-<p>This library also allows you to define an array of search patterns for looking up a JSON object mapped to environment variables, such as service credentials. Each element in the search patterns array will be <em>executed</em> until the variable is found. CloudEnvironment supports searching for values using the following three search pattern types:</p>
+<p>This library also allows you to define an array of search patterns for looking up a JSON object which is mapped to an environment variable, such as service credentials. Each element in the search patterns array will be <em>executed</em> until the variable is found. CloudEnvironment supports searching for values using the following three search pattern types:</p>
 
 <ul>
-<li><code>cloudfoundry</code> - Allows to search for a value in Cloud Foundry&rsquo;s services environment variable (i.e. <code>VCAP_SERVICES</code>).</li>
-<li><code>env</code> - Allows to search for a value mapped to an environment variable.</li>
-<li><code>file</code> - Allows to search for a value in a JSON file.</li>
+<li><code>cloudfoundry</code> - Allows you to search for a value in Cloud Foundry&rsquo;s services environment variable (i.e. <code>VCAP_SERVICES</code>).</li>
+<li><code>env</code> - Allows you to search for a value mapped to an environment variable.</li>
+<li><code>file</code> - Allows you to search for a value in a JSON file.</li>
 </ul>
 
 <p>You specify lookup keys and search patterns in a file named <code>mappings.json</code>. This file must exist in a <code>config</code> folder under the root folder of your Swift project. The following shows an example of a <code>mappings.json</code> file:</p>
 <pre class="highlight javascript"><code><span class="p">{</span>
-    <span class="s2">"cloudant-credentials"</span><span class="err">:</span> <span class="p">{</span>
-        <span class="s2">"searchPatterns"</span><span class="err">:</span> <span class="p">[</span>
-            <span class="s2">"cloudfoundry:my-awesome-cloudant-db"</span><span class="p">,</span>
-            <span class="s2">"env:my_awesome_cloudant_db_credentials"</span><span class="p">,</span>
-            <span class="s2">"file:localdev/my-awesome-cloudant-db-credentials.json"</span>
-        <span class="p">]</span>
+    <span class="s2">"cloudant-credentials"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"credentials"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"searchPatterns"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">"cloudfoundry:my-awesome-cloudant-db"</span><span class="p">,</span>
+                <span class="s2">"env:my_awesome_cloudant_db_credentials"</span><span class="p">,</span>
+                <span class="s2">"file:localdev/my-awesome-cloudant-db-credentials.json"</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
     <span class="p">},</span>
-    <span class="s2">"object-storage-credentials"</span><span class="err">:</span> <span class="p">{</span>
-        <span class="s2">"searchPatterns"</span><span class="err">:</span> <span class="p">[</span>
-            <span class="s2">"cloudfoundry:my-awesome-object-storage"</span><span class="p">,</span>
-            <span class="s2">"env:my_awesome_object_storage_credentials"</span><span class="p">,</span>
-            <span class="s2">"file:localdev/my-awesome-object-storage-credentials.json"</span>
-        <span class="p">]</span>
+    <span class="s2">"object-storage-credentials"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"credentials"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"searchPatterns"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">"cloudfoundry:my-awesome-object-storage"</span><span class="p">,</span>
+                <span class="s2">"env:my_awesome_object_storage_credentials"</span><span class="p">,</span>
+                <span class="s2">"file:localdev/my-awesome-object-storage-credentials.json"</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 
 <p>In the example above, <code>cloudant-credentials</code> and <code>object-storage-credentials</code> are the lookup keys your Swift application should use to look up the corresponding credentials. Please note that the path next to the <code>file</code> search pattern must be relative to the root folder of your Swift application.</p>
 <h2 id='usage' class='heading'>Usage</h2>
+<h4 id='add-dependencies' class='heading'>Add dependencies</h4>
 
-<p>To leverage the CloudEnvironment package in your Swift application, you should specify a dependency for it in your <code>Package.swift</code> file:</p>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PackageDescription</span>
-
-<span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
-   <span class="nv">name</span><span class="p">:</span> <span class="s">"MyAwesomeSwiftProject"</span><span class="p">,</span>
-
-   <span class="o">...</span>
-
-   <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-       <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/IBM-Swift/CloudEnvironment.git"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"5.0.0"</span><span class="p">)),</span>
-       <span class="o">...</span>
-   <span class="p">])</span>
+<p>Add the <code>CloudEnvironment</code> package to the dependencies within your application’s <code>Package.swift</code> file. Substitute <code>&quot;x.x.x&quot;</code> with the latest <code>CloudEnvironment</code> <a href="https://github.com/IBM-Swift/CloudEnvironment/releases">release</a>.</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/IBM-Swift/CloudEnvironment.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"x.x.x"</span><span class="p">)</span>
 </code></pre>
 
-<p>Once the <code>Package.swift</code> file of your application has been updated accordingly, you can import the <code>CloudEnvironment</code> modules in your code:</p>
+<p>Add <code>CloudEnvironment</code> to your target&rsquo;s dependencies:</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">target</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"example"</span><span class="p">,</span> <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="s">"CloudEnvironment"</span><span class="p">]),</span>
+</code></pre>
+
+<p>Once the <code>Package.swift</code> file of your application has been updated, import the <code>CloudEnvironment</code> modules and initialize an instance of <code>CloudEnvironment</code>:</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">CloudEnvironment</span>
 
-<span class="o">...</span>
-
 <span class="k">let</span> <span class="nv">cloudEnv</span> <span class="o">=</span> <span class="kt">CloudEnv</span><span class="p">()</span>
+</code></pre>
 
-<span class="o">...</span>
-
-<span class="k">let</span> <span class="nv">cloudantCredentials</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getCloudantCredentials</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"cloudant-credentials"</span><span class="p">)</span>
+<p>Once you have a <code>cloudEnv</code> instance you can use it to query the credentials for one of the supported services, such as, Cloudant or ObjectStorage, as shown below this will return the credentials associated with that service:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">cloudantCredentials</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getCloudantCredentials</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"cloudant-credentials"</span><span class="p">)</span>
 <span class="c1">// cloudantCredentials.username, cloudantCredentials.password, cloudantCredentials.url, etc.</span>
 <span class="k">let</span> <span class="nv">objStorageCredentials</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getObjectStorageCredentials</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"object-storage-credentials"</span><span class="p">)</span>
 <span class="c1">// objStorageCredentials.username, objStorageCredentials.password, objStorageCredentials.projectID, etc.</span>
-<span class="o">...</span>
 
 <span class="k">let</span> <span class="nv">service1Credentials</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getDictionary</span><span class="p">(</span><span class="s">"service1-credentials"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">service1CredentialsStr</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getString</span><span class="p">(</span><span class="s">"service1-credentials"</span><span class="p">)</span>
 
-<span class="o">...</span>
-
 <span class="c1">// Get a default PORT and URL</span>
 <span class="k">let</span> <span class="nv">port</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="n">port</span>
 <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="n">url</span>
-
-<span class="o">...</span>
 </code></pre>
 
-<p>This library simplifies obtaining service credentials, as shown above. For details on the different elements (e.g <code>username</code>, <code>password</code>, <code>url</code>, etc.) that make up a credentials set and accessor methods for service credentials, check out the <a href="docs/Classes">docs</a> directory, which contains <a href="https://github.com/Realm/jazzy">Jazzy</a> generated documentation.</p>
+<p>This library simplifies obtaining service credentials, as shown above. For details on the different elements (e.g. <code>username</code>, <code>password</code>, <code>url</code>, etc.) that make up a credentials set and accessor methods for service credentials, check out the API reference documentation.</p>
 
 <p>Following the above approach your application can be implemented in a runtime-environment agnostic way, abstracting differences in environment variable management introduced by different Cloud computing environments.</p>
 <h2 id='supported-services' class='heading'>Supported services</h2>
@@ -210,38 +223,42 @@
 <p>The following services are currently supported by this library. Therefore, you can obtain the service credentials for any of these services with minimum effort:</p>
 
 <ul>
-<li><a href="https://console.ng.bluemix.net/catalog/services/ibm-alert-notification/">Alert Notification</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/app-id">AppID</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/auto-scaling">Auto Scaling</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/ibm-db2-on-cloud">DB2</a></li>
-<li><a href="https://console.bluemix.net/docs/openwhisk/index.html#getting-started-with-cloud-functions">Cloud Functions</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db">Cloudant</a></li>
-<li><a href="https://console.ng.bluemix.net/docs/services/MongoDB/index.html">MongoDB</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/compose-for-mysql/">MySQL</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/natural-language-understanding">Natural Language Understanding</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/object-storage">Object Storage</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/compose-for-postgresql/">PostgreSQL</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/push-notifications">Push SDK</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/redis-cloud">Redis</a></li>
-<li><a href="https://console.ng.bluemix.net/catalog/services/conversation">Watson Conversation</a></li>
-<li><a href="https://console.bluemix.net/catalog/services/weather-company-data">Weather Company Data</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/alert-notification">Alert Notification</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/appID">AppID</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/auto-scaling">Auto-Scaling</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/cloudant">Cloudant</a></li>
+<li><a href="https://cloud.ibm.com/openwhisk">Cloud Functions</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/db2-on-cloud">Db2</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/hyper-protect-dbaas">Hyper Protect DBaaS</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/databases-for-mongodb">MongoDB</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/compose-for-mysql">MySQL</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/natural-language-understanding">Natural Language Understanding</a></li>
+<li><a href="https://docs.openstack.org/swift/latest/">Object Storage</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/databases-for-postgresql">PostgreSQL</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/push-notifications">Push SDK</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/databases-for-redis">Redis</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/watson-assistant">Watson Assistant</a></li>
+<li><a href="https://cloud.ibm.com/catalog/services/weather-company-data">Weather Company Data</a></li>
 </ul>
 
 <p>If you don&rsquo;t see listed above the service you intend to use in your Swift application, you can leverage the generic <code>getDictionary(name: String)</code> method to get the corresponding credentials:</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">CloudEnvironment</span>
 
-<span class="o">...</span>
-
 <span class="k">let</span> <span class="nv">cloudEnv</span> <span class="o">=</span> <span class="kt">CloudEnv</span><span class="p">()</span>
 
-<span class="o">...</span>
-
-<span class="k">if</span> <span class="k">let</span> <span class="nv">credentials</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getDictionary</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"service1-credentials"</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// You can now get the corresponding values from dictionary</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">credentials</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getDictionary</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"service1-credentials"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// You can now get the corresponding values from the dictionary</span>
 <span class="p">}</span>
-
-<span class="o">...</span>
 </code></pre>
+<h2 id='api-documentation' class='heading'>API documentation</h2>
+
+<p>For more information visit our <a href="http://ibm-swift.github.io/CloudEnvironment/">API reference</a>.</p>
+<h2 id='community' class='heading'>Community</h2>
+
+<p>We love to talk server-side Swift, and Kitura. Join our <a href="http://swift-at-ibm-slack.mybluemix.net/">Slack</a> to meet the team!</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>This library is licensed under Apache 2.0. Full license text is available in <a href="https://github.com/IBM-Swift/CloudEnvironment/blob/master/LICENSE">LICENSE</a>.</p>
 
           </div>
         </section>
@@ -250,8 +267,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2017-11-10)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2019-03-26)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
