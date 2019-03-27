@@ -14,15 +14,20 @@
 * limitations under the License.
 */
 
-/// AlertNotificationCredentials class
+/// Contains the credentials for an Alert Notification service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getAlertNotificationCredentials(name: String)`.
 ///
-/// Contains the credentials for an Alert Notification service instance.
+/// Reference [Alert Notification](https://cloud.ibm.com/catalog/services/alert-notification).
 public class AlertNotificationCredentials {
 
+  /// The credentials URL associated with the Alert Notification service instance.
   public let url: String
+  /// The credentials name associated with the Alert Notification service instance.
   public let name: String
+  /// The credentials password associated with the Alert Notification service instance.
   public let password: String
 
+  /// Initializes an instance of the Alert Notification service credentials.
   public init(url: String, name: String, password: String) {
     self.url = url
     self.name = name
@@ -31,21 +36,25 @@ public class AlertNotificationCredentials {
 }
 
 extension CloudEnv {
+    /// Returns an AlertNotificationCredentials object with the corresponding credentials.
+    /// ### Usage Example: ###
+    /// ```swift
+    /// let cloudEnv = CloudEnv()
+    ///
+    /// credentials =  cloudEnv.getAlertNotificationCredentials(name: "AlertNotificationKey")
+    /// ```
+    /// - Parameter name: The key to lookup the environment variable.
+    public func getAlertNotificationCredentials (name: String) -> AlertNotificationCredentials? {
 
-  /// Returns an AlertNotificationCredentials object with the corresponding credentials.
-  ///
-  /// - Parameter name: The key to lookup the environment variable.
-  public func getAlertNotificationCredentials (name: String) -> AlertNotificationCredentials? {
+        guard let credentials = getDictionary(name: name),
+            let url = credentials["url"] as? String,
+            let name = credentials["name"] as? String,
+            let password = credentials["password"] as? String else {
 
-    guard let credentials = getDictionary(name: name),
-      let url = credentials["url"] as? String,
-      let name = credentials["name"] as? String,
-      let password = credentials["password"] as? String else {
+                return nil
+        }
 
-      return nil
+        return AlertNotificationCredentials(url: url, name: name, password: password)
     }
-
-    return AlertNotificationCredentials(url: url, name: name, password: password)
-  }
 
 }

@@ -16,21 +16,22 @@
 
 import Foundation
 
-/// CloudFunctionsCredentials class
+/// Contains the credentials for a Cloud Functions instance. You will typically
+/// receive an instance of this type through `cloudEnv.getCloudFunctionsCredentials(name: String)`.
 ///
-/// Contains the credentials for a Cloud Functions instance.
+/// Reference [Cloud Functions](https://cloud.ibm.com/openwhisk).
 public struct CloudFunctionsCredentials {
 
-  // Cloud Functions Host Name
+  /// Cloud Functions host name.
   public let hostName: String
 
-  // URL Path to Cloud Functions action
+  /// URL path to the Cloud Functions action.
   public let urlPath: String
 
-  // The base64 encoded auth token
+  /// The base64 encoded auth token.
   public let authToken: String
 
-  // Constructor
+  /// Initializes an instance of the Cloud Functions service credentials.
   public init(hostName: String, urlPath: String, authToken: String) {
     self.hostName = hostName
     self.urlPath = urlPath
@@ -61,6 +62,12 @@ extension CloudEnv {
 
   /// Returns a CloudFunctionsCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getCloudFunctionsCredentials(name: "CloudFunctionsKey")
+  /// ```
   /// - Parameter name: The key to lookup the credentials.
   public func getCloudFunctionsCredentials(name: String) -> CloudFunctionsCredentials? {
 

@@ -14,17 +14,24 @@
 * limitations under the License.
 */
 
-/// DB2Credentials class
+/// Contains the credentials for a DB2 service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getDB2Credentials(name: String)`.
 ///
-/// Contains the credentials for a DB2 service instance.
+/// Reference [Db2](https://cloud.ibm.com/catalog/services/db2-on-cloud).
 public class DB2Credentials {
 
+  /// The database name from the Db2 service instance credentials.
   public let database : String
+  /// The host name from the Db2 service instance credentials.
   public let host     : String
+  /// The port from the Db2 service instance credentials.
   public let port     : Int
+  /// The user ID from the Db2 service instance credentials.
   public let uid      : String
+  /// The password from the Db2 service instance credentials.
   public let pwd      : String
 
+  /// Initializes an instance of the Db2 service credentials.
   public init (
     database:   String,
     host:       String,
@@ -45,6 +52,12 @@ extension CloudEnv {
 
   /// Returns an DB2Credentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getDB2Credentials(name: "DB2Key")
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getDB2Credentials (name: String) -> DB2Credentials? {
 

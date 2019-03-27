@@ -16,33 +16,43 @@
 
 import Foundation
 
-/// PostgreSQLCredentials class
+/// Contains the credentials for a PostgreSQL service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getPostgreSQLCredentials(name: String)`.
 ///
-/// Contains the credentials for a PostgreSQL service instance.
+/// Reference [PostgreSQL](https://cloud.ibm.com/catalog/services/databases-for-postgresql).
 public class PostgreSQLCredentials: Credentials {
 
+  /// The database name from the PostgreSQL service instance credentials.
   public let database: String
-    init?(uri: String) {      
-      guard let parsedURL = URLComponents(string: uri) else {
-        return nil
-      }
-      // Remove slash from path
-      var database = parsedURL.path
-      database.remove(at: database.startIndex)
 
-      if database.count == 0 {
-        return nil
-      }
-
-      self.database = database
-      super.init(url: uri)
+  /// Initializes an instance of the PostgreSQL service credentials.
+  init?(uri: String) {
+    guard let parsedURL = URLComponents(string: uri) else {
+      return nil
     }
+    // Remove slash from path
+    var database = parsedURL.path
+    database.remove(at: database.startIndex)
+
+    if database.count == 0 {
+      return nil
+    }
+
+    self.database = database
+    super.init(url: uri)
+  }
 }
 
 extension CloudEnv {
 
   /// Returns an PostgreSQLCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getPostgreSQLCredentials(name: "PostgreSQLKey")
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getPostgreSQLCredentials(name: String) -> PostgreSQLCredentials? {
     guard let credentials = getDictionary(name: name),

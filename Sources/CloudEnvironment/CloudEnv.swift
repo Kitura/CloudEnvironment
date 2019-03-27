@@ -19,23 +19,25 @@ import CloudFoundryEnv
 import Foundation
 import LoggerAPI
 
-/// CloudEnv class
-///
-/// Convenience class for obtaining environment variables that are mapped to JSON strings.
-/// Mainly used for obtaining credentials for services so Swift applications can be written in
+/// A convenience class for obtaining environment variables that are mapped to JSON strings.
+/// It is mainly used for obtaining credentials for services so Swift applications can be written in
 /// a platform agnostic way.
+///
+/// There is a lot of information in the [README](https://github.com/IBM-Swift/CloudEnvironment/blob/master/README.md)
+/// explaining how you can use `cloudEnv` to access credentials for your services; more specific information is listed in the
+/// API documentation below.
 public class CloudEnv {
 
-  /// Name of mappings file (mappings.json).
+  /// Name of the mappings file. This is set to "mappings.json".
   public static let mappingsFile = "mappings.json"
 
-  /// Port number application can listen to.
+  /// Port number the application can listen to.
   public var port: Int {
     let cloudFoundryManager = getCloudFoundryConfigMgr()
     return cloudFoundryManager.port
   }
 
-  /// URL that can be assigned to application.
+  /// URL that can be assigned to the application.
   public var url: String {
     let cloudFoundryManager = getCloudFoundryConfigMgr()
     return cloudFoundryManager.url
@@ -45,11 +47,22 @@ public class CloudEnv {
   private let mapManager = ConfigurationManager()
   private let cloudFoundryFile: String?
 
-  /// Constructor
-  ///
-  /// - Parameter mappingsFilePath: Optional. The path to the `mappings.json` file; this path should be relative to the root folder of the Swift application.
-  /// - Parameter cloudFoundryFile: Optional. The path to a JSON file that contains values for Cloud Foundry environment variables (mainly used for testing);
-  /// this path should be relative to the current working directory (which in most cases it is the folder of the Swift application).
+  /// Initialize an instance of `CloudEnv`.
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  /// ```
+  /// The example below shows how to load configuration from both a `mappings.json` file and a Cloud Foundry
+  /// credentials file when neither are in the default directory.
+  /// ```swift
+  /// let cloudEnv = CloudEnv(mappingsFilePath: "resources/mappings", cloudFoundryFile: "resources
+  /// cfresources/cf.json")
+  /// ```
+  /// - Parameter mappingsFilePath: Optional. The path to the `mappings.json` file; this path should be relative
+  /// to the root folder of the Swift application.
+  /// - Parameter cloudFoundryFile: Optional. The path to a JSON file that contains values for Cloud Foundry environment
+  /// variables (mainly used for testing); this path should be relative to the current working directory (which in most
+  /// cases is the folder of the Swift application).
   public init(mappingsFilePath: String? = nil, cloudFoundryFile: String? = nil) {
 
     // Set instance properties
@@ -65,13 +78,24 @@ public class CloudEnv {
     }
 
     // Load mappings file (Cloud Foundry & local execution)
-    // If running locally, make sure the app is starter from the project folder
+    // If running locally, make sure the app is started from the project folder
     // In other words, the current working directory should be the project folder
     mapManager.load(file: "\(filePath)/\(CloudEnv.mappingsFile)", relativeFrom: .pwd)
   }
 
   /// Returns the corresponding JSON dictionary value in a string.
   ///
+  /// If the service you intend to use in your Swift application is not one which we explicitly support,
+  /// you can leverage the generic `getString(name: String)` method to get the corresponding credentials.
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// if let credentials = cloudEnv.getString(name: "service1-credentials") {
+  ///   // You can now get the corresponding values from the credentials string.
+  ///   // The result string will follow JSON notation.
+  /// }
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getString(name: String) -> String? {
     if let dictionary = getDictionary(name: name) {
@@ -85,6 +109,16 @@ public class CloudEnv {
 
   /// Returns the corresponding dictionary value.
   ///
+  /// If the service you intend to use in your Swift application is not one which we explicitly support,
+  /// you can leverage the generic `getDictionary(name: String)` method to get the corresponding credentials.
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// if let credentials: [String:Any] = cloudEnv.getDictionary(name: "service1-credentials") {
+  ///   // You can now get the corresponding values from the dictionary.
+  /// }
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getDictionary(name: String) -> [String : Any]? {
 
@@ -175,7 +209,7 @@ public class CloudEnv {
       #else
         return path.substring(from: range.upperBound)
       #endif
-        
+
     }
     return path
   }

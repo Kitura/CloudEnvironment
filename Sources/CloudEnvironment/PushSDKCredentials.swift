@@ -13,18 +13,22 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
-/// PushSDKCredentials class
-///
-/// Contains the credentials for a PushSDK service instance.
 import Foundation
 
+/// Contains the credentials for a PushSDK service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getPushSDKCredentials(name: String)`.
+///
+/// Reference [Push Notification](https://cloud.ibm.com/catalog/services/push-notifications).
 public class PushSDKCredentials {
 
+  /// The appGuid from the Push Notification service instance credentials.
   public let appGuid      : String
+  /// The apiKey from the Push Notification service instance credentials.
   public let apiKey       : String
+  /// The region from the Push Notification service instance credentials.
   public let region       : String
 
+  /// Initializes an instance of the Push Notification service credentials.
   public init(appGuid: String, apiKey: String, region: String) {
     self.appGuid        = appGuid
     self.apiKey         = apiKey
@@ -37,6 +41,12 @@ extension CloudEnv {
 
   /// Returns a PushSDKCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getPushSDKCredentials(name: "PushNotificationKey")
+  /// ```
   /// - Parameter name: The key to lookup the credentials.
   public func getPushSDKCredentials(name: String) -> PushSDKCredentials? {
 

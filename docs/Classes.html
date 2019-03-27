@@ -22,7 +22,7 @@
         <a class="header-link" href="index.html">
           CloudEnvironment Docs
         </a>
-         (47% documented)
+         (100% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -74,13 +74,16 @@
                 <a class="nav-group-task-link" href="Classes/DB2Credentials.html">DB2Credentials</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperSecureDBaaSCredentials.html">HyperSecureDBaaSCredentials</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/MongoDBCredentials.html">MongoDBCredentials</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/MySQLCredentials.html">MySQLCredentials</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/s:16CloudEnvironment35NaturalLangUnderstandingCredentialsC">NaturalLangUnderstandingCredentials</a>
+                <a class="nav-group-task-link" href="Classes/NaturalLanguageUnderstandingCredentials.html">NaturalLanguageUnderstandingCredentials</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/ObjectStorageCredentials.html">ObjectStorageCredentials</a>
@@ -95,7 +98,7 @@
                 <a class="nav-group-task-link" href="Classes/RedisCredentials.html">RedisCredentials</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/s:16CloudEnvironment29WatsonConversationCredentialsC">WatsonConversationCredentials</a>
+                <a class="nav-group-task-link" href="Classes/WatsonAssistantCredentials.html">WatsonAssistantCredentials</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes.html#/s:16CloudEnvironment29WeatherCompanyDataCredentialsC">WeatherCompanyDataCredentials</a>
@@ -139,9 +142,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>AlertNotificationCredentials class</p>
+                        <p>Contains the credentials for an Alert Notification service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getAlertNotificationCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for an Alert Notification service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/alert-notification">Alert Notification</a>.</p>
 
                         <a href="Classes/AlertNotificationCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -149,7 +153,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AlertNotificationCredentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AlertNotificationCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -173,11 +177,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>CloudEnv class</p>
-
-<p>Convenience class for obtaining environment variables that are mapped to JSON strings.
-Mainly used for obtaining credentials for services so Swift applications can be written in
+                        <p>A convenience class for obtaining environment variables that are mapped to JSON strings.
+It is mainly used for obtaining credentials for services so Swift applications can be written in
 a platform agnostic way.</p>
+
+<p>There is a lot of information in the <a href="https://github.com/IBM-Swift/CloudEnvironment/blob/master/README.md">README</a>
+explaining how you can use <code>cloudEnv</code> to access credentials for your services; more specific information is listed in the
+API documentation below.</p>
 
                         <a href="Classes/CloudEnv.html" class="slightly-smaller">See more</a>
                       </div>
@@ -185,7 +191,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CloudEnv</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CloudEnv</span></code></pre>
 
                         </div>
                       </div>
@@ -209,9 +215,10 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>AppIDCredentials class</p>
+                        <p>Contains the credentials for an App ID service instance.</p>
 
-<p>Contains the credentials for an AppID service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/appID">AppID</a>. You will typically
+receive an instance of this type through <code>cloudEnv.getAppIDCredentials(name: String)</code>.</p>
 
                         <a href="Classes/AppIDCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -219,7 +226,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDCredentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AppIDCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -243,9 +250,10 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>AutoScalingCredentials class</p>
+                        <p>Contains the credentials for an Auto-Scaling service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getAutoScalingCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for an Auto Scaling service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/auto-scaling">Auto-Scaling</a>.</p>
 
                         <a href="Classes/AutoScalingCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -253,7 +261,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AutoScalingCredentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AutoScalingCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -277,16 +285,17 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>CloudantCredentials class</p>
+                        <p>Contains the credentials for a Cloudant service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getCloudantCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a Cloudant service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/cloudant">Cloudant</a>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CloudantCredentials</span><span class="p">:</span> <span class="kt"><a href="Classes/Credentials.html">Credentials</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CloudantCredentials</span><span class="p">:</span> <span class="kt"><a href="Classes/Credentials.html">Credentials</a></span></code></pre>
 
                         </div>
                       </div>
@@ -310,9 +319,7 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Credentials class</p>
-
-<p>Contains a basic common set of credential elements.</p>
+                        <p>Contains a basic common set of credential elements.</p>
 
                         <a href="Classes/Credentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -320,7 +327,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Credentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Credentials</span></code></pre>
 
                         </div>
                       </div>
@@ -344,9 +351,10 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>DB2Credentials class</p>
+                        <p>Contains the credentials for a DB2 service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getDB2Credentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a DB2 service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/db2-on-cloud">Db2</a>.</p>
 
                         <a href="Classes/DB2Credentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -354,7 +362,42 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">DB2Credentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">DB2Credentials</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CloudEnvironment27HyperSecureDBaaSCredentialsC"></a>
+                    <a name="//apple_ref/swift/Class/HyperSecureDBaaSCredentials" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CloudEnvironment27HyperSecureDBaaSCredentialsC">HyperSecureDBaaSCredentials</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Contains the credentials for a HyperSecureDBaaS service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getHyperSecureDBaaSCredentials(name: String)</code>.</p>
+
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/hyper-protect-dbaas">Hyper Protect DBaaS</a>.</p>
+
+                        <a href="Classes/HyperSecureDBaaSCredentials.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">HyperSecureDBaaSCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -378,9 +421,10 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>MongoDBCredentials class</p>
+                        <p>Contains the credentials for a MongoDB service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getMongoDBCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a MongoDB service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/databases-for-mongodb">MongoDB</a>.</p>
 
                         <a href="Classes/MongoDBCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -388,7 +432,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MongoDBCredentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MongoDBCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -412,9 +456,10 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>MySQLCredentials class</p>
+                        <p>Contains the credentials for a MySQL service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getMySQLCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a MySQL service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/compose-for-mysql">MySQL</a>.</p>
 
                         <a href="Classes/MySQLCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -422,7 +467,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MySQLCredentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MySQLCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -436,9 +481,9 @@ a platform agnostic way.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:16CloudEnvironment35NaturalLangUnderstandingCredentialsC"></a>
-                    <a name="//apple_ref/swift/Class/NaturalLangUnderstandingCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:16CloudEnvironment35NaturalLangUnderstandingCredentialsC">NaturalLangUnderstandingCredentials</a>
+                    <a name="/s:16CloudEnvironment39NaturalLanguageUnderstandingCredentialsC"></a>
+                    <a name="//apple_ref/swift/Class/NaturalLanguageUnderstandingCredentials" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CloudEnvironment39NaturalLanguageUnderstandingCredentialsC">NaturalLanguageUnderstandingCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -446,16 +491,18 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>NaturalLangUnderstandingCredentials class</p>
+                        <p>Contains the credentials for a Natural Language Understanding service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getNaturalLanguageUnderstandingCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a Natural Language Understanding service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/natural-language-understanding">Natural Language Understanding</a>.</p>
 
+                        <a href="Classes/NaturalLanguageUnderstandingCredentials.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">NaturalLangUnderstandingCredentials</span><span class="p">:</span> <span class="kt"><a href="Classes/Credentials.html">Credentials</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">NaturalLanguageUnderstandingCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -479,9 +526,13 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>ObjectStorageCredentials class</p>
+                        <p>Contains the credentials for an OpenStack Object Storage service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getObjectStorageCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for an Object Storage service instance.</p>
+<p>Note: This has been removed from the IBM Cloud service catalog, but is still an industry
+standard for Storage APIs.</p>
+
+<p>Reference <a href="https://docs.openstack.org/swift/latest/">Object Storage</a>.</p>
 
                         <a href="Classes/ObjectStorageCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -489,7 +540,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ObjectStorageCredentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ObjectStorageCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -513,9 +564,10 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>PostgreSQLCredentials class</p>
+                        <p>Contains the credentials for a PostgreSQL service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getPostgreSQLCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a PostgreSQL service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/databases-for-postgresql">PostgreSQL</a>.</p>
 
                         <a href="Classes/PostgreSQLCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -523,7 +575,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PostgreSQLCredentials</span><span class="p">:</span> <span class="kt"><a href="Classes/Credentials.html">Credentials</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PostgreSQLCredentials</span><span class="p">:</span> <span class="kt"><a href="Classes/Credentials.html">Credentials</a></span></code></pre>
 
                         </div>
                       </div>
@@ -547,9 +599,10 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>PushSDKCredentials class</p>
+                        <p>Contains the credentials for a PushSDK service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getPushSDKCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a PushSDK service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/push-notifications">Push Notification</a>.</p>
 
                         <a href="Classes/PushSDKCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -557,7 +610,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PushSDKCredentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PushSDKCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -581,9 +634,10 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>RedisCredentials class</p>
+                        <p>Contains the credentials for a Redis service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getRedisCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a Redis service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/databases-for-redis">Redis</a>.</p>
 
                         <a href="Classes/RedisCredentials.html" class="slightly-smaller">See more</a>
                       </div>
@@ -591,7 +645,7 @@ a platform agnostic way.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RedisCredentials</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RedisCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -605,9 +659,9 @@ a platform agnostic way.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:16CloudEnvironment29WatsonConversationCredentialsC"></a>
-                    <a name="//apple_ref/swift/Class/WatsonConversationCredentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:16CloudEnvironment29WatsonConversationCredentialsC">WatsonConversationCredentials</a>
+                    <a name="/s:16CloudEnvironment26WatsonAssistantCredentialsC"></a>
+                    <a name="//apple_ref/swift/Class/WatsonAssistantCredentials" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CloudEnvironment26WatsonAssistantCredentialsC">WatsonAssistantCredentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -615,16 +669,18 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>WatsonConversationCredentials class</p>
+                        <p>Contains the credentials for a Watson Assistant service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getWatsonAssistantCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a Watson Conversation service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/watson-assistant">Watson Assistant</a>.</p>
 
+                        <a href="Classes/WatsonAssistantCredentials.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">WatsonConversationCredentials</span><span class="p">:</span> <span class="kt"><a href="Classes/Credentials.html">Credentials</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">WatsonAssistantCredentials</span></code></pre>
 
                         </div>
                       </div>
@@ -648,16 +704,17 @@ a platform agnostic way.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>WeatherCompanyDataCredentials class</p>
+                        <p>Contains the credentials for a Weather Company Data service instance. You will typically
+receive an instance of this type through <code>cloudEnv.getWeatherCompanyDataCredentials(name: String)</code>.</p>
 
-<p>Contains the credentials for a Weather Company Data service instance.</p>
+<p>Reference <a href="https://cloud.ibm.com/catalog/services/weather-company-data">Weather Company Data</a>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">WeatherCompanyDataCredentials</span><span class="p">:</span> <span class="kt"><a href="Classes/Credentials.html">Credentials</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">WeatherCompanyDataCredentials</span><span class="p">:</span> <span class="kt"><a href="Classes/Credentials.html">Credentials</a></span></code></pre>
 
                         </div>
                       </div>
@@ -672,8 +729,8 @@ a platform agnostic way.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2017-11-10)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2019-03-27)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

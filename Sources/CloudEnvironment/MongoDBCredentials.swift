@@ -16,16 +16,24 @@
 
 import Foundation
 
-/// MongoDBCredentials class
+/// Contains the credentials for a MongoDB service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getMongoDBCredentials(name: String)`.
 ///
-/// Contains the credentials for a MongoDB service instance.
+/// Reference [MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb).
 public class MongoDBCredentials {
+
+  /// The URI from the MongoDB service instance credentials.
   public let uri: String
+  /// The host name from the MongoDB service instance credentials.
   public let host: String
+  /// The username from the MongoDB service instance credentials.
   public let username: String
+  /// The password from the MongoDB service instance credentials.
   public let password: String
+  /// The port from the MongoDB service instance credentials.
   public let port: Int
-  
+
+  /// Initializes an instance of the MongoDB service credentials.
   public init(
     uri: String,
     host: String,
@@ -45,6 +53,12 @@ extension CloudEnv {
 
   /// Returns a MongoDBCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getMongoDBCredentials(name: "MongoDBKey")
+  /// ```
   /// - Parameter name: The key to lookup the credentials object.
   public func getMongoDBCredentials(name: String) -> MongoDBCredentials? {
 
@@ -52,7 +66,7 @@ extension CloudEnv {
       return nil
     }
 
-    // For detail on the format for the URI connection string that MongoDB supports, 
+    // For detail on the format for the URI connection string that MongoDB supports,
     // see: https://docs.mongodb.com/manual/reference/connection-string/
     // It is possible to specify more than one host in the URI connection string
 

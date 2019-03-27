@@ -14,18 +14,26 @@
 * limitations under the License.
 */
 
-/// AutoScalingCredentials class
+/// Contains the credentials for an Auto-Scaling service instance. You will typically
+/// receive an instance of this type through `cloudEnv.getAutoScalingCredentials(name: String)`.
 ///
-/// Contains the credentials for an Auto Scaling service instance.
+/// Reference [Auto-Scaling](https://cloud.ibm.com/catalog/services/auto-scaling).
 public class AutoScalingCredentials {
 
+  /// The username from the Auto-Scaling service instance credentials.
   public let username:    String
+  /// The password from the Auto-Scaling service instance credentials.
   public let password:    String
+  /// The App ID from the Auto-Scaling service instance credentials.
   public let appID:       String
+  /// The URL from the Auto-Scaling service instance credentials.
   public let url:         String
+  /// The service ID from the Auto-Scaling service instance credentials.
   public let serviceID:   String
+  /// The apiURL from the Auto-Scaling service instance credentials.
   public let apiURL:      String
 
+  /// Initializes an instance of the Auto-Scaling service credentials.
   public init (
     username:   String,
     password:   String,
@@ -47,6 +55,12 @@ extension CloudEnv {
 
   /// Returns an AutoScalingCredentials object with the corresponding credentials.
   ///
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials =  cloudEnv.getAutoScalingCredentials(name: "AutoScalingKey")
+  /// ```
   /// - Parameter name: The key to lookup the environment variable.
   public func getAutoScalingCredentials (name: String) -> AutoScalingCredentials? {
 
@@ -57,7 +71,7 @@ extension CloudEnv {
       let url             = credentials["url"] as? String,
       let serviceID       = credentials["service_id"] as? String,
       let apiURL          = credentials["api_url"] as? String else {
-      
+
       return nil
     }
 

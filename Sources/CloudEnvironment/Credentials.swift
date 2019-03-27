@@ -16,17 +16,22 @@
 
 import Foundation
 
-/// Credentials class
-///
 /// Contains a basic common set of credential elements.
 public class Credentials {
+  /// The host name.
   public let host        : String
+  /// The username.
   public let username    : String
+  /// The password.
   public let password    : String
+  /// The port.
   public let port        : Int
+  /// Indicates whether the credentials are secured or not.
   public let secured     : Bool
+  /// The URL.
   public let url         : String
 
+  /// Initalizes an instance of `Credentials`.
   public init?(username: String? = nil, password: String? = nil, url: String) {
 
     self.url = url
