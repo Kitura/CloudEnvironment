@@ -202,6 +202,80 @@
         ]
       }
     ],
+    "databases-for-postgresql": [
+        {
+            "binding_name": null,
+            "credentials": {
+                "connection": {
+                    "cli": {
+                        "arguments": [
+                            [
+                                "host=123456789.123456789.databases.appdomain.cloud port=12345 dbname=dbname user=ibm_cloud_1234 sslmode=verify-full"
+                            ]
+                        ],
+                        "bin": "psql",
+                        "certificate": {
+                            "certificate_base64": "AAAAA",
+                            "name": "aaaa"
+                        },
+                        "composed": [
+                            "PGPASSWORD=qwerty PGSSLROOTCERT=aaaaaaaa-bbbb-cccc-cccc-dddddddddddd psql 'host=123456789.123456789.databases.appdomain.cloud port=12345 dbname=dbname user=ibm_cloud_1234 sslmode=verify-full'"
+                        ],
+                        "environment": {
+                            "PGPASSWORD": "qwertyuiop",
+                            "PGSSLROOTCERT": "aaaaaaaa-bbbb-cccc-cccc-dddddddddddd"
+                        },
+                        "type": "cli"
+                    },
+                    "postgres": {
+                        "authentication": {
+                            "method": "direct",
+                            "password": "qwertyuiop",
+                            "username": "ibm_cloud_1234"
+                        },
+                        "certificate": {
+                            "certificate_base64": "AAAA",
+                            "name": "aaaaaaaa-bbbb-cccc-cccc-dddddddddddd"
+                        },
+                        "composed": [
+                            "postgres://ibm_cloud_1234:qwertyuiop@123456789.123456789.databases.appdomain.cloud:12345/dbname?sslmode=verify-full"
+                        ],
+                        "database": "dbname",
+                        "hosts": [
+                            {
+                                "hostname": "123456789.123456789.databases.appdomain.cloud",
+                                "port": 12345
+                            }
+                        ],
+                        "path": "/dbname",
+                        "query_options": {
+                            "sslmode": "verify-full"
+                        },
+                        "scheme": "postgres",
+                        "type": "uri"
+                    }
+                },
+                "instance_administration_api": {
+                    "deployment_id": "crn:v1:bluemix:public:databases-for-postgresql:region:c/1234:1234::",
+                    "instance_id": "crn:v1:bluemix:public:databases-for-postgresql:region:c/1234:1234::",
+                    "root": "https://api.region.databases.cloud.ibm.com/v4/ibm"
+                }
+            },
+            "instance_name": "PostgreSQLService",
+            "label": "databases-for-postgresql",
+            "name": "PostgreSQLService",
+            "plan": "standard",
+            "provider": null,
+            "syslog_drain_url": null,
+            "tags": [
+                "data_management",
+                "ibm_created",
+                "rc_compatible",
+                "ibmcloud-alias"
+            ],
+            "volume_mounts": []
+        }
+    ],
     "cleardb": [
       {
         "credentials": {
