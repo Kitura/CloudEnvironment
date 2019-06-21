@@ -261,9 +261,9 @@
                     "root": "https://api.region.databases.cloud.ibm.com/v4/ibm"
                 }
             },
-            "instance_name": "PostgreSQLService",
+            "instance_name": "PostgreSQLServiceDB",
             "label": "databases-for-postgresql",
-            "name": "PostgreSQLService",
+            "name": "PostgreSQLServiceDB",
             "plan": "standard",
             "provider": null,
             "syslog_drain_url": null,

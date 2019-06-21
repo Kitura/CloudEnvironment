@@ -23,6 +23,7 @@ class PostgreSQLTests: XCTestCase {
     static var allTests : [(String, (PostgreSQLTests) -> () throws -> Void)] {
         return [
             ("testGetCredentials", testGetCredentials),
+            ("testGetCredentialsDB", testGetCredentialsDB),
         ]
     }
 
@@ -49,7 +50,7 @@ class PostgreSQLTests: XCTestCase {
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
         let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
         
-        guard let credentials =  cloudEnv.getPostgreSQLDatabaseCredentials(name: "PostgreSQLKey") else {
+        guard let credentials =  cloudEnv.getPostgreSQLDatabaseCredentials(name: "PostgreSQLKeyDB") else {
             XCTFail("Could not load PostgreSQL credentials.")
             return
         }

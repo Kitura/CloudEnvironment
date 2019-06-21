@@ -108,13 +108,22 @@
     }
   },
   "PostgreSQLKey": {
-    "credentials": {
-      "searchPatterns": [
-        "cloudfoundry:PostgreSQLService",
-        "env:my-kube-secret-os-credentials",
-        "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
-      ]
-    }
+      "credentials": {
+          "searchPatterns": [
+              "cloudfoundry:PostgreSQLService",
+              "env:my-kube-secret-os-credentials",
+              "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+          ]
+      }
+  },
+  "PostgreSQLKeyDB": {
+      "credentials": {
+          "searchPatterns": [
+              "cloudfoundry:PostgreSQLServiceDB",
+              "env:my-kube-secret-os-credentials",
+              "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
+          ]
+      }
   },
   "MySQLKey": {
     "credentials": {
