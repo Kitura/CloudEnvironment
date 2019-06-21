@@ -47,6 +47,9 @@ extension CloudEnv {
 
   /// Returns an PostgreSQLCredentials object with the corresponding credentials.
   ///
+  /// This function retrieve the credentials for "Compose for PostgreSQL".
+  /// If you want to retrieve the credentials for "Databases for PostgreSQL",
+  /// use [getPostgreSQLDatabaseCredentials](x-source-tag://getPostgreSQLDatabaseCredentials).
   /// ### Usage Example: ###
   /// ```swift
   /// let cloudEnv = CloudEnv()
@@ -54,12 +57,37 @@ extension CloudEnv {
   /// credentials =  cloudEnv.getPostgreSQLCredentials(name: "PostgreSQLKey")
   /// ```
   /// - Parameter name: The key to lookup the environment variable.
+  /// - Tag: getPostgreSQLCredentials
   public func getPostgreSQLCredentials(name: String) -> PostgreSQLCredentials? {
     guard let credentials = getDictionary(name: name),
       let uri = credentials["uri"] as? String else {
       return nil
     }
 
+    return PostgreSQLCredentials(uri: uri)
+  }
+
+  /// Returns an PostgreSQLCredentials object with the corresponding credentials.
+  ///
+  /// This function retrieve the credentials for "Databases for PostgreSQL".
+  /// If you want to retrieve the credentials for "Compose for PostgreSQL",
+  /// use [getPostgreSQLCredentials](x-source-tag://getPostgreSQLCredentials).
+  /// ### Usage Example: ###
+  /// ```swift
+  /// let cloudEnv = CloudEnv()
+  ///
+  /// credentials = cloudEnv.getPostgreSQLDatabaseCredentials(name: "PostgreSQLKey")
+  /// ```
+  /// - Parameter name: The key to lookup the environment variable.
+  /// - Tag: getPostgreSQLDatabaseCredentials
+  public func getPostgreSQLDatabaseCredentials(name: String) -> PostgreSQLCredentials? {
+    guard let credentials = getDictionary(name: name),
+      let connection = credentials["connection"] as? [String: Any],
+      let postgres = connection["postgres"] as? [String: Any],
+      let composed = postgres["composed"] as? [String],
+      let uri = composed.first else {
+        return nil
+    }
     return PostgreSQLCredentials(uri: uri)
   }
 

@@ -23,6 +23,7 @@ class PostgreSQLTests: XCTestCase {
     static var allTests : [(String, (PostgreSQLTests) -> () throws -> Void)] {
         return [
             ("testGetCredentials", testGetCredentials),
+            ("testGetCredentialsDB", testGetCredentialsDB),
         ]
     }
 
@@ -43,5 +44,23 @@ class PostgreSQLTests: XCTestCase {
         XCTAssertEqual(credentials.database, "compose", "PostgreSQL service database should match.")
 
     }
-
+    
+    func testGetCredentialsDB() {
+        
+        // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
+        let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
+        
+        guard let credentials =  cloudEnv.getPostgreSQLDatabaseCredentials(name: "PostgreSQLKeyDB") else {
+            XCTFail("Could not load PostgreSQL credentials.")
+            return
+        }
+        
+        XCTAssertEqual(credentials.host, "123456789.123456789.databases.appdomain.cloud", "PostgreSQL service host should match.")
+        XCTAssertEqual(credentials.username, "ibm_cloud_1234", "PostgreSQL service username should match.")
+        XCTAssertEqual(credentials.password, "qwertyuiop", "PostgreSQL service password should match.")
+        XCTAssertEqual(credentials.port, 12345, "PostgreSQL service port should match.")
+        XCTAssertEqual(credentials.database, "dbname", "PostgreSQL service database should match.")
+        
+    }
+    
 }
