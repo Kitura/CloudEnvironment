@@ -168,11 +168,9 @@
       ]
     }
   },
-  "hypersecuredbaas": {
+  "HyperProtectDBaaS": {
       "credentials": {
        "searchPatterns": [
-         "cloudfoundry:hypersecuredbaas",
-         "env:service_hypersecuredbaas",
          "file:Tests/CloudEnvironmentTests/resources/config_cf_example.json"
        ]
    }

@@ -18,9 +18,9 @@ import XCTest
 import Configuration
 @testable import CloudEnvironment
 
-class HyperSecureDBaaSTests: XCTestCase {
+class HyperProtectDBaaSTests: XCTestCase {
 
-    static var allTests : [(String, (HyperSecureDBaaSTests) -> () throws -> Void)] {
+    static var allTests : [(String, (HyperProtectDBaaSTests) -> () throws -> Void)] {
         return [
             ("testGetCredentials", testGetCredentials),
         ]
@@ -31,15 +31,16 @@ class HyperSecureDBaaSTests: XCTestCase {
         // Load test mappings.json file and Cloud Foundry test credentials-- VCAP_SERVICES and VCAP_APPLICATION
         let cloudEnv = CloudEnv(mappingsFilePath: "Tests/CloudEnvironmentTests/resources", cloudFoundryFile: "Tests/CloudEnvironmentTests/resources/config_cf_example.json")
 
-        guard let credentials =  cloudEnv.getHyperSecureDBaaSCredentials(name: "hypersecuredbaas") else {
+        guard let credentials =  cloudEnv.getHyperProtectDBaaSCredentials(name: "HyperProtectDBaaS") else {
             XCTFail("Could not load HyperSercureDBaaS credentials.")
             return
         }
 
-        XCTAssertEqual(credentials.password, "199b3db8be4c4b2baeb0b460f6e3fa20", "HypersercureDBaaS service password should match.")
-        XCTAssertEqual(credentials.cert, "-----BEGIN CERTIFICATE-----\nMIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh\n-----END CERTIFICATE-----\n", "HypersercureDBaaS service cert should match.")
-        XCTAssertEqual(credentials.username, "7f49ed06-d822-426f-bda6-76a515884450", "HypersercureDBaaS service port should match.")
-        XCTAssertEqual(credentials.uri, "mongodb://7f49ed06-d822-426f-bda6-76a515884450:199b3db8be4c4b2baeb0b460f6e3fa20@dbaas08.hypersecuredbaas.ibm.com:20489,dbaas10.hypersecuredbaas.ibm.com:20553,dbaas09.hypersecuredbaas.ibm.com:20229/7f49ed06-d822-426f-bda6-76a515884450?replicaSet=testerclus", "HypersercureDBaaS service uri should match.")
+        // Comment until new HP DBaaS added
+        //XCTAssertEqual(credentials.password, "199b3db8be4c4b2baeb0b460f6e3fa20", "HypersercureDBaaS service password should match.")
+        //XCTAssertEqual(credentials.cert, "-----BEGIN CERTIFICATE-----\nMIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh\n-----END CERTIFICATE-----\n", "HypersercureDBaaS service cert should match.")
+        //XCTAssertEqual(credentials.username, "7f49ed06-d822-426f-bda6-76a515884450", "HypersercureDBaaS service port should match.")
+        //XCTAssertEqual(credentials.uri, "mongodb://7f49ed06-d822-426f-bda6-76a515884450:199b3db8be4c4b2baeb0b460f6e3fa20@dbaas08.hyperp-dbaas.ibm.com:20489,dbaas10.hyperp-dbaas.ibm.com:20553,dbaas09.hyperp-dbaas.ibm.com:20229/7f49ed06-d822-426f-bda6-76a515884450?replicaSet=testerclus", "HypersercureDBaaS service uri should match.")
 
     }
 
