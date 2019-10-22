@@ -17,19 +17,6 @@
 import Foundation
 import Logging
 
-extension Collection where Element: Equatable {
-    func indexDistance(of element: Element) -> Int? {
-        guard let index = firstIndex(of: element) else { return nil }
-        return distance(from: startIndex, to: index)
-    }
-}
-extension StringProtocol {
-    func indexDistance<S: StringProtocol>(of string: S) -> Int? {
-        guard let index = range(of: string)?.lowerBound else { return nil }
-        return distance(from: startIndex, to: index)
-    }
-}
-
 /// Contains the credentials for a HyperProtectDBaaS service instance. You will typically
 /// receive an instance of this type through `cloudEnv.getHyperProtectDBaaSCredentials(name: String)`.
 ///
