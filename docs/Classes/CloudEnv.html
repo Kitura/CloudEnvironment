@@ -78,6 +78,9 @@
                 <a class="nav-group-task-link" href="../Classes/HyperProtectDBaaSCredentials.html">HyperProtectDBaaSCredentials</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperSecureDBaaSCredentials.html">HyperSecureDBaaSCredentials</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/MongoDBCredentials.html">MongoDBCredentials</a>
               </li>
               <li class="nav-group-task">
@@ -766,6 +769,61 @@ you can leverage the generic <code>getDictionary(name: String)</code> method to 
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getHyperProtectDBaaSCredentials</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/HyperProtectDBaaSCredentials.html">HyperProtectDBaaSCredentials</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key to lookup the credentials object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CloudEnvironment0A3EnvC30getHyperSecureDBaaSCredentialsAA0efgH0CSgSS4name_tF"></a>
+                    <a name="//apple_ref/swift/Method/getHyperSecureDBaaSCredentials(name:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CloudEnvironment0A3EnvC30getHyperSecureDBaaSCredentialsAA0efgH0CSgSS4name_tF">getHyperSecureDBaaSCredentials(name:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a HyperSecureDBaaSCredentials object with the corresponding credentials.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">cloudEnv</span> <span class="o">=</span> <span class="kt">CloudEnv</span><span class="p">()</span>
+
+<span class="n">credentials</span> <span class="o">=</span>  <span class="n">cloudEnv</span><span class="o">.</span><span class="nf">getHyperSecureDBaaSCredentials</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"HyperSecureDBaaSKey"</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getHyperSecureDBaaSCredentials</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/HyperSecureDBaaSCredentials.html">HyperSecureDBaaSCredentials</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
