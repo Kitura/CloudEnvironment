@@ -1,15 +1,15 @@
 <p align="center">
-    <a href="http://kitura.io/">
-        <img src="https://raw.githubusercontent.com/IBM-Swift/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
+    <a href="http://kitura.dev/">
+        <img src="https://raw.githubusercontent.com/Kitura/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
     </a>
 </p>
 
 <p align="center">
-<a href="https://ibm-swift.github.io/CloudEnvironment/index.html">
+<a href="https://kitura.github.io/CloudEnvironment/index.html">
 <img src="https://img.shields.io/badge/apidoc-CloudEnvironment-1FBCE4.svg?style=flat" alt="APIDoc">
 </a>
-    <a href="https://travis-ci.org/IBM-Swift/CloudEnvironment">
-    <img src="https://travis-ci.org/IBM-Swift/CloudEnvironment.svg?branch=master" alt="Build Status - Master">
+    <a href="https://travis-ci.org/Kitura/CloudEnvironment">
+    <img src="https://travis-ci.org/Kitura/CloudEnvironment.svg?branch=master" alt="Build Status - Master">
     </a>
     <img src="https://img.shields.io/badge/os-macOS-green.svg?style=flat" alt="macOS">
     <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
@@ -67,10 +67,10 @@ In the example above, `cloudant-credentials` and `object-storage-credentials` ar
 
 #### Add dependencies
 
-Add the `CloudEnvironment` package to the dependencies within your application’s `Package.swift` file. Substitute `"x.x.x"` with the latest `CloudEnvironment` [release](https://github.com/IBM-Swift/CloudEnvironment/releases).
+Add the `CloudEnvironment` package to the dependencies within your application’s `Package.swift` file. Substitute `"x.x.x"` with the latest `CloudEnvironment` [release](https://github.com/Kitura/CloudEnvironment/releases).
 
 ```swift
-.package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", from: "x.x.x")
+.package(url: "https://github.com/Kitura/CloudEnvironment.git", from: "x.x.x")
 ```
 
 Add `CloudEnvironment` to your target's dependencies:
@@ -140,7 +140,7 @@ if let credentials: [String:Any] = cloudEnv.getDictionary(name: "service1-creden
 
 ## API documentation
 
-For more information visit our [API reference](http://ibm-swift.github.io/CloudEnvironment/).
+For more information visit our [API reference](http://kitura.github.io/CloudEnvironment/).
 
 ## Community
 
@@ -148,4 +148,4 @@ We love to talk server-side Swift, and Kitura. Join our [Slack](http://swift-at-
 
 ## License
 
-This library is licensed under Apache 2.0. Full license text is available in [LICENSE](https://github.com/IBM-Swift/CloudEnvironment/blob/master/LICENSE).
+This library is licensed under Apache 2.0. Full license text is available in [LICENSE](https://github.com/Kitura/CloudEnvironment/blob/master/LICENSE).

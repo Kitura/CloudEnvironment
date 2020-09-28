@@ -1,6 +1,6 @@
 module: CloudEnvironment
-author: IBM
-github_url: https://github.com/IBM-Swift/CloudEnvironment/
+author: IBM and the Kitura project authors
+github_url: https://github.com/Kitura/CloudEnvironment/
 
 theme: fullwidth
 clean: true
